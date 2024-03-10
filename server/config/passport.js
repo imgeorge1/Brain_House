@@ -93,6 +93,9 @@ passport.use(
 passport.serializeUser(function (user, done) {
   console.log('serialized user', user);
   console.log('useriddd0', user._id);
+
+  console.log('serialized user', user);
+
   done(null, user);
 });
 
@@ -100,12 +103,11 @@ passport.deserializeUser(async (email, done) => {
   try {
     console.log('deserializeUser()', email);
     // Find the user based on their ID
-    const user = await User.findOne({ email: email });
+    const user = await UserModel.findOne({ email: email });
     console.log('user', user);
-    console.log('email', email);
 
     if (user) {
-      console.log('if is user', user);
+      console.log('if is running', user);
       return done(null, user);
     } else {
       console.log('else is running');

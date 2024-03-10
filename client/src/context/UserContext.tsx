@@ -21,9 +21,13 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const getUser = async () => {
     try {
+      console.log("i am in");
+
       const response = await API.get<{ user: FullUser }>("/login/success", {
         withCredentials: true,
       });
+
+      console.log("res: ", response);
 
       setCurrentUser(response.data.user);
     } catch (error) {
