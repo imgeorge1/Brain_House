@@ -105,7 +105,7 @@ passport.deserializeUser(async (email, done) => {
     console.log('email', email);
 
     if (user) {
-      console.log('if is running', user);
+      console.log('if is user', user);
       return done(null, user);
     } else {
       console.log('else is running');
