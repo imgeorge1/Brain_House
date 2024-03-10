@@ -8,7 +8,7 @@ const passport = require("passport");
 
 // AUTH with GOOGLE
 
-const DEV_MODE = process.env.NODE_ENV !== "production";
+const DEV_MODE = process.env.NODE_ENV === "production";
 
 passport.use(
   new GoogleStrategy(
