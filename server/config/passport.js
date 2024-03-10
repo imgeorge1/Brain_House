@@ -96,6 +96,7 @@ passport.serializeUser(function (user, done) {
   done(null, user);
 });
 
+console.log('Hello');
 passport.deserializeUser(async (id, done) => {
   console.log('hello');
   try {
