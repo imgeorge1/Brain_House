@@ -102,6 +102,7 @@ passport.deserializeUser(async (email, done) => {
     // Find the user based on their ID
     const user = await User.findOne({ email: email });
     console.log('user', user);
+    console.log('email', email);
 
     if (user) {
       console.log('if is running', user);
