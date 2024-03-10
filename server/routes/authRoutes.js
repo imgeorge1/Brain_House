@@ -16,12 +16,29 @@ const {
   getUserById,
   updateUserPaidStatus,
 } = require('../controllers/showUsers');
-const passport = require('../config/passport');
+const googleStrategy = require('../config/passport/google');
+const facebookStrategy = require('../config/passport/facebook');
+
 const authRoutes = express.Router();
 // Passport JS
 // auth with google
 
-authRoutes.get('/login/success', login);
+authRoutes.get('/login/success', (req, res) => {
+  try {
+    console.log('req   user', req.user);
+    if (req.user) {
+      // If user is authenticated, send the serialized user data
+      res.status(200).json({ message: 'user Login', user: req.user });
+    } else {
+      // If user is not authenticated, send an error message
+      res.status(400).json({ message: 'Not Authorized' });
+    }
+  } catch (error) {
+    // Handle any errors that might occur
+    console.error('Error in login:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
 
 authRoutes.get('/login/failed', (req, res) => {
   res.status(401).json({
@@ -37,12 +54,12 @@ authRoutes.get('/logout', (req, res) => {
 
 authRoutes.get(
   '/auth/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
+  googleStrategy.authenticate('google', { scope: ['profile', 'email'] })
 );
 
 authRoutes.get(
   '/auth/google/callback',
-  passport.authenticate('google', {
+  googleStrategy.authenticate('google', {
     successRedirect: process.env.CLIENT_URL,
     failureRedirect: '/login/failed',
   })
@@ -51,12 +68,12 @@ authRoutes.get(
 // auth with facebook
 authRoutes.get(
   '/auth/facebook',
-  passport.authenticate('facebook', { scope: ['email'] })
+  facebookStrategy.authenticate('facebook', { scope: ['email'] })
 );
 
 authRoutes.get(
   '/auth/facebook/callback',
-  passport.authenticate('facebook', {
+  facebookStrategy.authenticate('facebook', {
     successRedirect: process.env.CLIENT_URL,
     failureRedirect: '/login/failed',
   })
