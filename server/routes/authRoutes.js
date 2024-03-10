@@ -21,17 +21,7 @@ const authRoutes = express.Router();
 // Passport JS
 // auth with google
 
-authRoutes.get("/login/success", (req, res) => {
-  if (req.user) {
-    console.log("REQ, user", req.user);
-    res.status(200).json({
-      success: true,
-      message: "successfull",
-      user: req.user,
-      cookies: req.cookies,
-    });
-  }
-});
+authRoutes.get("/login/success", login);
 
 authRoutes.get("/login/failed", (req, res) => {
   res.status(401).json({
