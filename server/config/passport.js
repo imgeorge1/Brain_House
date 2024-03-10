@@ -96,16 +96,23 @@ passport.serializeUser(function (user, done) {
   done(null, user);
 });
 
-console.log('Hello');
-passport.deserializeUser(async (id, done) => {
-  console.log('hello');
+passport.deserializeUser(async (email, done) => {
   try {
-    const user = await User.findById(id);
-    console.log('Deserialized user', user);
-    done(null, user);
+    console.log('deserializeUser()', email);
+    // Find the user based on their ID
+    const user = await User.findOne({ email: email });
+    console.log('user', user);
+
+    if (user) {
+      console.log('if is running', user);
+      return done(null, user);
+    } else {
+      console.log('else is running');
+      return done(null, false);
+    }
   } catch (error) {
-    console.error('Error deserializing user:', error);
-    done(error, null);
+    console.error('deserializeUser() error:', error);
+    return done(error);
   }
 });
 
