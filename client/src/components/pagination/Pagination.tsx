@@ -133,10 +133,7 @@ function Pagination({
   };
 
   return (
-    <div
-      className="container flex justify-center gap-[5px]"
-      // style={{ display: "flex", justifyContent: "center", gap: "5px" }}
-    >
+    <div className="container flex flex-wrap md:flex-nowrap justify-center gap-[5px]">
       {renderPages()}
     </div>
   );
