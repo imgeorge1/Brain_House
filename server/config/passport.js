@@ -91,10 +91,16 @@ passport.use(
 // Deserialize by user id
 
 passport.serializeUser(function (user, done) {
+
+  console.log('serialized user', user);
+  console.log('useriddd0', user._id);
+
   console.log("serialized user", user);
+
   done(null, user);
 });
 
+console.log('Hello');
 passport.deserializeUser(async (id, done) => {
   console.log("hello");
   try {
