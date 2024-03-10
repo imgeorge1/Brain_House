@@ -23,7 +23,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     try {
       console.log("i am in");
 
-      const response = await API.get("/login/success", {
+      const response = await API.get<{ user: FullUser }>("/login/success", {
         withCredentials: true,
       });
 
