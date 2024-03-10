@@ -1,0 +1,25 @@
+POST http://localhost:3001/signup
+Content-Type: application/json
+
+{
+  "userId": "65defc510860db8a46a6d4b9",
+  "age": 20,
+  "city": "rustavi",
+  "phone": 551515646
+}
+
+
+###
+
+GET http://localhost:3001/api/checkUser
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YThlZDZmY2VlZDBkNDk0OTc4Y2I5NCIsImlhdCI6MTcwNTU3MDY4OCwiZXhwIjoxNzA2MTc1NDg4fQ.AoHVfBkEUmy8YuSEy6HNnsLdb28vCmccWHVu_MBapPw
+
+###
+
+POST http://localhost:3001/api/lessons
+Content-Type: application/json
+
+{
+  "title": "intro to javascript",
+  "userId":"65a907127f15d279458566de"
+}
