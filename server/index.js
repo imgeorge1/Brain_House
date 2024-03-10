@@ -23,6 +23,14 @@ const secretKey = generateSecretKey();
 
 const DEV_MODE = process.env.NODE_ENV === 'production';
 
+app.use(
+  cors({
+    origin: DEV_MODE
+      ? 'http://localhost:5173'
+      : 'https://brain-house.vercel.app',
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
@@ -45,15 +53,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use(
-  cors({
-    origin: DEV_MODE
-      ? 'http://localhost:5173'
-      : 'https://brain-house.vercel.app',
-    credentials: true,
-  })
-);
 app.use('/', router);
 
 const PORT = process.env.PORT || 3001;
