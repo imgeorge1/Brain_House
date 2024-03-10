@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
-import { Modal, Button } from "react-bootstrap";
-import "../../index.css";
-import { Link } from "react-router-dom";
-import { UserContext } from "../../context/UserContext";
-import google from "../../assets/google.png";
+import { useContext, useState } from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import '../../index.css';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
+import google from '../../assets/google.png';
 
 function SignInModal() {
   const [show, setShow] = useState(false);
@@ -16,15 +16,18 @@ function SignInModal() {
   const handleShow = () => setShow(true);
 
   const logout = () => {
-    window.open("http://localhost:3001/logout", "_self"); // https://brain-house.onrender.com/
+    window.open('https://brain-house-vkk7.onrender.com/logout', '_self'); // https://brain-house.onrender.com/
   };
 
   const googleAuth = () => {
-    window.open("http://localhost:3001/auth/google/callback", "_self");
+    window.open(
+      'https://brain-house-vkk7.onrender.com/auth/google/callback',
+      '_self'
+    );
   };
 
   const facebookAuth = () => {
-    window.open("http://localhost:3001/auth/facebook", "_self");
+    window.open('https://brain-house-vkk7.onrender.com/auth/facebook', '_self');
   };
 
   return (
@@ -35,14 +38,14 @@ function SignInModal() {
             <Link
               to="dashboard"
               className="bg-green-500 p-2 rounded-2xl text-xl font-bold text-white"
-              style={{ textDecoration: "none" }}
+              style={{ textDecoration: 'none' }}
             >
               Dashboard
             </Link>
           )}
 
           <h4 className="mt-2">
-            {currentUser.firstName + " " + currentUser.lastName}
+            {currentUser.firstName + ' ' + currentUser.lastName}
           </h4>
           <button
             className="buttonBorder px-6 py-2 rounded-3xl hover:bg-orange-500 text-xl text-white"
