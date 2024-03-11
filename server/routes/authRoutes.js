@@ -74,6 +74,7 @@ authRoutes.get(
 );
 
 authRoutes.get('/login/success', (req, res) => {
+  console.log('req user successsss', req.user);
   if (req.user) {
     res.status(200).json({
       success: true,
