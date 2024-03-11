@@ -33,6 +33,7 @@ authRoutes.get('/login/success', (req, res) => {
       const token = jwt.sign({ userId: req.user.id }, JWT_SECRET, {
         expiresIn: '4h', // Token expires in 4 hours
       });
+      console.log('token', token);
       // Set the JWT token as a cookie with maxAge 4 hours
       res.cookie('jwt', token, { maxAge: 4 * 60 * 60 * 1000, httpOnly: true });
       // Redirect to client URL with the encoded JWT token as a query parameter
