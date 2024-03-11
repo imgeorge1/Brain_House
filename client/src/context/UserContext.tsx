@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import PropTypes from 'prop-types'; // Import prop types
+import { useParams } from 'react-router-dom'; // Import useParams
 import API from '../utils/API';
 import { FullUser } from '../types/Types';
 
@@ -16,49 +17,32 @@ interface UserProviderProps {
 }
 
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState<FullUser | null>(null);
+  const { token } = useParams(); // Extract token from URL
 
   const getUser = async () => {
     try {
-      // Get JWT token from local storage
-      const jwtToken = localStorage.getItem('jwtToken');
-      console.log('jwtToken', jwtToken);
+      const response = await API.get<{ user: FullUser }>(
+        `/login/success/${token}`,
+        {
+          withCredentials: true,
+        }
+      );
 
-      if (jwtToken) {
-        // Include token in request headers
-        const response = await API.get('/user', {
-          headers: {
-            Authorization: `Bearer ${jwtToken}`,
-          },
-        });
-        setCurrentUser(response.data);
-      } else {
-        console.log('JWT token not found in local storage');
-      }
+      setCurrentUser(response.data.user);
     } catch (error) {
-      console.log('Error fetching user:', error);
+      console.log('error', error);
     }
   };
 
   useEffect(() => {
-    // Check if JWT token exists
-    const jwtToken = new URLSearchParams(window.location.search).get(
-      'jwtToken'
-    );
-    if (jwtToken) {
-      // Store JWT token in local storage or session storage
-      localStorage.setItem('jwtToken', jwtToken);
-      // Remove JWT token from URL
-      window.history.replaceState({}, document.title, '/');
-    }
-
-    // Fetch current user information if JWT token exists
-    if (!currentUser && jwtToken) {
+    if (token && !currentUser) {
       getUser();
     }
-  }, [currentUser]);
+  }, [token, currentUser]);
 
-  console.log(currentUser);
+  console.log('token', token);
+  console.log('currentUser', currentUser);
 
   return (
     <UserContext.Provider value={{ currentUser }}>

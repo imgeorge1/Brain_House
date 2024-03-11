@@ -34,18 +34,15 @@ authRoutes.get(
   async (req, res) => {
     try {
       const { firstName, lastName, email } = req.user;
-      console.log('req.uuuuuuuu', req.user);
-      console.log('req uuser firstaName', req.user.firstName);
+      console.log('req.user', req.user);
 
       // Create JWT token with user information
       const jwtToken = jwt.sign({ firstName, lastName, email }, jwtSecret, {
         expiresIn: '4h',
       });
-
-      // Redirect user with JWT token as URL parameter
-      res.redirect(
-        `${process.env.CLIENT_URL}/?message=Login%20successful&jwtToken=${jwtToken}`
-      );
+      console.log('jwtToken', jwtToken);
+      // Redirect user to client URL with JWT token as parameter
+      res.redirect(`${process.env.CLIENT_URL}/auth/success/${jwtToken}`);
     } catch (error) {
       console.log('Logging in error:', error);
       res.status(500).json({ message: 'Internal Server Error' });
