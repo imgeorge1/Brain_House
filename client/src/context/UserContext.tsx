@@ -20,8 +20,21 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const getUser = async () => {
     try {
-      const response = await API.get('/user');
-      setCurrentUser(response.data);
+      // Get JWT token from local storage
+      const jwtToken = localStorage.getItem('jwtToken');
+
+      if (jwtToken) {
+        // Include token in request headers
+        const response = await API.get('/user', {
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+          },
+        });
+
+        setCurrentUser(response.data);
+      } else {
+        console.log('JWT token not found in local storage');
+      }
     } catch (error) {
       console.log('Error fetching user:', error);
     }
