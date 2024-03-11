@@ -36,7 +36,7 @@ authRoutes.get(
       const { displayName, email } = req.user;
 
       // Create JWT token with user information
-      const jwtToken = jwt.sign({ id, displayName, email }, jwtSecret, {
+      const jwtToken = jwt.sign({ displayName, email }, jwtSecret, {
         expiresIn: '4h',
       });
 
