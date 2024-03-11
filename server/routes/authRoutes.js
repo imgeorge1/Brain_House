@@ -55,10 +55,10 @@ authRoutes.get(
 );
 
 // auth with facebook
-authRoutes.get(
-  '/auth/facebook',
-  facebookStrategy.authenticate('facebook', { scope: ['email'] })
-);
+// authRoutes.get(
+//   '/auth/facebook',
+//   facebookStrategy.authenticate('facebook', { scope: ['email'] })
+// );
 
 authRoutes.get(
   '/auth/facebook/callback',
