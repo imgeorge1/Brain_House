@@ -33,10 +33,10 @@ authRoutes.get(
   }),
   async (req, res) => {
     try {
-      const { id, displayName, email } = req.user;
+      const { id, firstName, lastName, email } = req.user;
 
       // Create JWT token with user information
-      const jwtToken = jwt.sign({ id, displayName, email }, jwtSecret, {
+      const jwtToken = jwt.sign({ id, firstName, lastName, email }, jwtSecret, {
         expiresIn: '4h',
       });
 
@@ -54,9 +54,9 @@ authRoutes.get(
 // Endpoint to check if user is logged in
 authRoutes.get('/user', (req, res) => {
   // Extract user information from JWT token
-  const { id, displayName, email } = req.user;
+  const { id, firstName, lastName, email } = req.user;
   console.log('reqqqqqqq user', req.user);
-  res.json({ id, displayName, email });
+  res.json({ id, firstName, lastName, email });
 });
 
 // auth with facebook
