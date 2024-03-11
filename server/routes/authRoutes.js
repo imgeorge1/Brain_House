@@ -54,7 +54,7 @@ authRoutes.get(
 // Endpoint to check if user is logged in
 authRoutes.get('/user', (req, res) => {
   // Extract user information from JWT token
-  const { id, firstName, lastName, email } = req.user;
+  const { firstName, lastName, email } = req.user;
   console.log('reqqqqqqq user', req.user);
   res.json({ id, firstName, lastName, email });
 });
