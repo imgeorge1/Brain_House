@@ -51,20 +51,29 @@ authRoutes.get(
 
 // Endpoint to check if user is logged in
 authRoutes.get('/user', (req, res) => {
-  console.log('req.user', req);
-
-  const { firstName, lastName, email } = req.user;
-  console.log('user json', req.user);
-  res.json({ firstName, lastName, email });
-
-  console.log('????userrr', req.user);
-  if (!req.user) {
+  // Extract the token from the Authorization header
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return res
       .status(401)
       .json({ success: false, message: 'User not authenticated' });
   }
 
-  // Extract user information from req.user
+  const token = authHeader.substring(7); // Remove 'Bearer ' from the beginning
+
+  try {
+    // Verify and decode the JWT token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    // Extract user information from the decoded token
+    const { firstName, lastName, email } = decoded;
+
+    // Send user information as a response
+    res.json({ firstName, lastName, email });
+  } catch (error) {
+    console.error('Error decoding token:', error);
+    return res.status(401).json({ success: false, message: 'Invalid token' });
+  }
 });
 
 // auth with facebook
