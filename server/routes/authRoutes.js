@@ -56,7 +56,7 @@ authRoutes.get('/user', (req, res) => {
   // Extract user information from JWT token
   const { firstName, lastName, email } = req.user;
   console.log('reqqqqqqq user', req.user);
-  res.json({ id, firstName, lastName, email });
+  res.json({ firstName, lastName, email });
 });
 
 // auth with facebook
