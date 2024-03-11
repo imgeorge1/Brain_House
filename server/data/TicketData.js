@@ -5073,6 +5073,13 @@ const largeTicketList = [
     correctAnswer: 2,
     quantityAnswer: 3,
   },
+  {
+    id: 908,
+    categoryID: 21,
+    image: "",
+    correctAnswer: 2,
+    quantityAnswer: 3,
+  },
   //
 ];
 
