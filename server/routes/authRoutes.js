@@ -55,6 +55,7 @@ authRoutes.get(
         displayName: res.req.user.displayName,
         profileId: res.req.user.id,
       };
+      console.log('res,req userererer', res.req.user);
       console.log('newUser', newUser);
       const existingUser = await User.findOne({
         where: { profileId: newUser.profileId },
