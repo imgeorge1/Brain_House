@@ -2,6 +2,7 @@ const express = require('express');
 const signup = require('../controllers/authController');
 const { lessons, lessonsGET } = require('../controllers/lessonController');
 const ticket = require('../controllers/ticketController');
+const User = require('../models/userSchema'); // Adjust the path as per your project structure
 
 const {
   auth,
@@ -25,20 +26,38 @@ const authRoutes = express.Router();
 // auth with google
 
 authRoutes.get('/login/success', (req, res) => {
-  try {
-    console.log('req   user', req.user);
-    if (req.user) {
-      // If user is authenticated, send the serialized user data
-      res.status(200).json({ message: 'user Login', user: req.user });
-    } else {
-      // If user is not authenticated, send an error message
-      res.status(400).json({ message: 'Not Authorized' });
+  async (req, res) => {
+    try {
+      const newUser = {
+        displayName: res.req.user.displayName,
+        profileId: res.req.user.id,
+      };
+      const existingUser = await User.findOne({
+        where: { profileId: newUser.profileId },
+      });
+
+      if (existingUser) {
+        const userId = existingUser.id;
+        newUser.id = userId;
+      } else if (!existingUser) {
+        const createdUser = await User.create(newUser);
+        const userId = createdUser.id;
+        newUser.id = userId;
+      }
+
+      const jwtToken = jwt.sign(newUser, jwtSecret, { expiresIn: '4h' });
+      res.cookie('jwtToken', jwtToken, {
+        httpOnly: false,
+        maxAge: 1000 * 60 * 60 * 4,
+      });
+      const encodedJwtToken = encodeURIComponent(jwtToken);
+      res.redirect(
+        `${process.env.CLIENT_URL}/?message=Login%20successful&jwtToken=${encodedJwtToken}`
+      );
+    } catch (error) {
+      console.log('logging in error: ', error);
     }
-  } catch (error) {
-    // Handle any errors that might occur
-    console.error('Error in login:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
-  }
+  };
 });
 
 authRoutes.get('/login/failed', (req, res) => {
