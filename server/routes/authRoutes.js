@@ -34,7 +34,7 @@ authRoutes.get(
   async (req, res) => {
     try {
       const { firstName, lastName, email } = req.user;
-
+      console.log('req.userr', req.user);
       // Create JWT token with user information
       const jwtToken = jwt.sign({ firstName, lastName, email }, jwtSecret, {
         expiresIn: '4h',
@@ -53,6 +53,8 @@ authRoutes.get(
 authRoutes.get('/user', (req, res) => {
   // Extract the token from the Authorization header
   const authHeader = req.headers.authorization;
+
+  console.log('authHeader', authHeader);
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return res
       .status(401)
@@ -60,14 +62,15 @@ authRoutes.get('/user', (req, res) => {
   }
 
   const token = authHeader.substring(7); // Remove 'Bearer ' from the beginning
-
+  console.log('token', token);
   try {
     // Verify and decode the JWT token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     // Extract user information from the decoded token
     const { firstName, lastName, email } = decoded;
-
+    console.log('decoded', decoded);
+    console.log('userrr', req.user);
     // Send user information as a response
     res.json({ firstName, lastName, email });
   } catch (error) {
