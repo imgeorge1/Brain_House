@@ -55,6 +55,8 @@ authRoutes.get(
 
 // Endpoint to check if user is logged in
 authRoutes.get('/user', (req, res) => {
+  console.log('req.user', req.user);
+
   const { firstName, lastName, email } = req.user;
   console.log('user json', req.user);
   res.json({ firstName, lastName, email });
