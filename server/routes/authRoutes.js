@@ -47,7 +47,9 @@ authRoutes.get(
   async (req, res) => {
     try {
       const { id, displayName, emails } = req.user;
-      const email = emails[0].value; // Assuming the first email is the primary one
+      console.log('req.user', req.user);
+
+      const email = profile.emails[0].value;
 
       const existingUser = await User.findOne({ email });
 
