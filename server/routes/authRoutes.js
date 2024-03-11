@@ -25,47 +25,14 @@ const authRoutes = express.Router();
 // Passport JS
 // auth with google
 
-authRoutes.get('/login/success', (req, res) => {
-  async (req, res) => {
-    try {
-      const newUser = {
-        displayName: res.req.user.displayName,
-        profileId: res.req.user.id,
-      };
-      const existingUser = await User.findOne({
-        where: { profileId: newUser.profileId },
-      });
+// authRoutes.get('/login/success', (req, res) => {});
 
-      if (existingUser) {
-        const userId = existingUser.id;
-        newUser.id = userId;
-      } else if (!existingUser) {
-        const createdUser = await User.create(newUser);
-        const userId = createdUser.id;
-        newUser.id = userId;
-      }
-
-      const jwtToken = jwt.sign(newUser, jwtSecret, { expiresIn: '4h' });
-      res.cookie('jwtToken', jwtToken, {
-        httpOnly: false,
-        maxAge: 1000 * 60 * 60 * 4,
-      });
-      const encodedJwtToken = encodeURIComponent(jwtToken);
-      res.redirect(
-        `${process.env.CLIENT_URL}/?message=Login%20successful&jwtToken=${encodedJwtToken}`
-      );
-    } catch (error) {
-      console.log('logging in error: ', error);
-    }
-  };
-});
-
-authRoutes.get('/login/failed', (req, res) => {
-  res.status(401).json({
-    success: false,
-    message: 'failure',
-  });
-});
+// authRoutes.get('/login/failed', (req, res) => {
+//   res.status(401).json({
+//     success: false,
+//     message: 'failure',
+//   });
+// });
 
 authRoutes.get('/logout', (req, res) => {
   req.logout();
@@ -80,9 +47,44 @@ authRoutes.get(
 authRoutes.get(
   '/auth/google/callback',
   googleStrategy.authenticate('google', {
-    successRedirect: process.env.CLIENT_URL,
     failureRedirect: '/login/failed',
-  })
+  }),
+  async (req, res) => {
+    try {
+      const newUser = {
+        displayName: res.req.user.displayName,
+        profileId: res.req.user.id,
+      };
+      console.log('newUser', newUser);
+      const existingUser = await User.findOne({
+        where: { profileId: newUser.profileId },
+      });
+      console.log('existingUser', existingUser);
+
+      if (existingUser) {
+        const userId = existingUser.id;
+        newUser.id = userId;
+      } else if (!existingUser) {
+        const createdUser = await User.create(newUser);
+        const userId = createdUser.id;
+        newUser.id = userId;
+      }
+
+      const jwtToken = jwt.sign(newUser, jwtSecret, { expiresIn: '4h' });
+      console.log('jwtToken', jwtToken);
+
+      res.cookie('jwtToken', jwtToken, {
+        httpOnly: false,
+        maxAge: 1000 * 60 * 60 * 4,
+      });
+      const encodedJwtToken = encodeURIComponent(jwtToken);
+      res.redirect(
+        `${process.env.CLIENT_URL}/?message=Login%20successful&jwtToken=${encodedJwtToken}`
+      );
+    } catch (error) {
+      console.log('logging in error: ', error);
+    }
+  }
 );
 
 // auth with facebook
