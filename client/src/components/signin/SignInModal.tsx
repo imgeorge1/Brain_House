@@ -20,17 +20,11 @@ function SignInModal() {
   };
 
   const googleAuth = () => {
-    window.open(
-      'https://brain-house-vkk7.onrender.com/auth/google/callback',
-      '_self'
-    );
+    window.open('https://brain-house-vkk7.onrender.com/auth/google', '_self');
   };
 
   const facebookAuth = () => {
-    window.open(
-      'https://brain-house-vkk7.onrender.com/auth/facebook/callback',
-      '_self'
-    );
+    window.open('https://brain-house-vkk7.onrender.com/auth/facebook', '_self');
   };
 
   return (
