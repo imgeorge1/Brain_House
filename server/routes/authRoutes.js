@@ -54,15 +54,20 @@ authRoutes.get(
 );
 
 // Endpoint to check if user is logged in
-authRoutes.get(
-  '/user',
-  googleStrategy.authenticate('jwt', { session: false }),
-  (req, res) => {
-    console.log('??? user ', req.user);
-    const { firstName, lastName, email } = req.user;
-    res.json({ firstName, lastName, email });
+authRoutes.get('/user', (req, res) => {
+  const { firstName, lastName, email } = req.user;
+  console.log('user json', req.user);
+  res.json({ firstName, lastName, email });
+
+  console.log('????userrr', req.user);
+  if (!req.user) {
+    return res
+      .status(401)
+      .json({ success: false, message: 'User not authenticated' });
   }
-);
+
+  // Extract user information from req.user
+});
 
 // auth with facebook
 authRoutes.get(
