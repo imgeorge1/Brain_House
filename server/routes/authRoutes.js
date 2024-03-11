@@ -35,6 +35,7 @@ authRoutes.get(
     try {
       const { displayName, email } = req.user;
       console.log('req.uuuuuuuu', req.user);
+      console.log('req uuser firstaName', req.user.displayName);
 
       // Create JWT token with user information
       const jwtToken = jwt.sign({ displayName, email }, jwtSecret, {
@@ -54,7 +55,14 @@ authRoutes.get(
 
 // Endpoint to check if user is logged in
 authRoutes.get('/user', (req, res) => {
-  // Extract user information from JWT token
+  // Check if req.user is defined
+  if (!req.user) {
+    return res
+      .status(401)
+      .json({ success: false, message: 'User not authenticated' });
+  }
+
+  // Extract user information from req.user
   const { firstName, lastName, email } = req.user;
   console.log('user json', req.user);
   res.json({ firstName, lastName, email });
