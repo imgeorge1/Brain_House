@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
-import PropTypes from 'prop-types'; // Import prop types
-import { useParams } from 'react-router-dom'; // Import useParams
+import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import API from '../utils/API';
 import { FullUser } from '../types/Types';
 
@@ -18,16 +18,17 @@ interface UserProviderProps {
 
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<FullUser | null>(null);
-  const { token } = useParams(); // Extract token from URL
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const token = queryParams.get('jwtToken');
 
   const getUser = async () => {
     try {
-      const response = await API.get<{ user: FullUser }>(
-        `/login/success/${token}`,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await API.get<{ user: FullUser }>(`/user`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       setCurrentUser(response.data.user);
     } catch (error) {
