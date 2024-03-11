@@ -1,7 +1,7 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
-import PropTypes from "prop-types"; // Import prop types
-import API from "../utils/API";
-import { FullUser } from "../types/Types";
+import React, { createContext, useState, useEffect, ReactNode } from 'react';
+import PropTypes from 'prop-types'; // Import prop types
+import API from '../utils/API';
+import { FullUser } from '../types/Types';
 
 interface UserContextType {
   currentUser: FullUser | null;
@@ -17,21 +17,27 @@ interface UserProviderProps {
 
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<FullUser | null>(null);
-  console.log("TCL: UserProvider -> currentUser", currentUser);
+  console.log('TCL: UserProvider -> currentUser', currentUser);
 
   const getUser = async () => {
     try {
-      console.log("i am in");
+      const token = localStorage.getItem('token'); // Assuming you have stored the token in localStorage
 
-      const response = await API.get<{ user: FullUser }>("/login/success", {
-        withCredentials: true,
+      if (!token) {
+        // Handle case when token is not available
+        console.log('Token not found.');
+        return;
+      }
+
+      const response = await API.get<{ user: FullUser }>('/login/success', {
+        headers: {
+          Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+        },
       });
-
-      console.log("res: ", response);
 
       setCurrentUser(response.data.user);
     } catch (error) {
-      console.log("error", error);
+      console.log('Error:', error);
     }
   };
 

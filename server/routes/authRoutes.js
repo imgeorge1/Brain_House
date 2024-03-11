@@ -25,20 +25,19 @@ const JWT_SECRET = 'your_jwt_secret_key'; // Replace with your own secret key
 // Passport JS
 // auth with google
 
-authRoutes.get('/login/success', (req, res) => {
+authRoutes.get('/login/success', authMiddleware, (req, res) => {
   try {
-    console.log('req   user', req.user);
-    if (req.user) {
+    const { user } = req; // Assuming the authenticated user is available in req object
+    if (user) {
       // If user is authenticated, create a JWT token
-      const token = jwt.sign({ userId: req.user.id }, JWT_SECRET, {
+      const token = jwt.sign({ userId: user.id }, JWT_SECRET, {
         expiresIn: '4h', // Token expires in 4 hours
       });
       console.log('token', token);
       // Set the JWT token as a cookie with maxAge 4 hours
       res.cookie('jwt', token, { maxAge: 4 * 60 * 60 * 1000, httpOnly: true });
-      // Redirect to client URL with the encoded JWT token as a query parameter
-      const encodedJwtToken = encodeURIComponent(token);
-      res.redirect(`${process.env.CLIENT_URL}?token=${encodedJwtToken}`);
+      // Send the user data along with the token
+      res.status(200).json({ user });
     } else {
       // If user is not authenticated, send an error message
       res.status(400).json({ message: 'Not Authorized' });
