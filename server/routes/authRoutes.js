@@ -26,20 +26,6 @@ const jwtSecret = process.env.JWT_SECRET;
 // Passport JS
 // auth with google
 
-// authRoutes.get('/login/success', (req, res) => {});
-
-// authRoutes.get('/login/failed', (req, res) => {
-//   res.status(401).json({
-//     success: false,
-//     message: 'failure',
-//   });
-// });
-
-authRoutes.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect(process.env.CLIENT_URL);
-});
-
 authRoutes.get(
   '/auth/google/callback',
   googleStrategy.authenticate('google', {
@@ -104,6 +90,29 @@ authRoutes.get(
     failureRedirect: '/login/failed',
   })
 );
+
+authRoutes.get('/login/success', (req, res) => {
+  if (req.user) {
+    res.status(200).json({
+      success: true,
+      message: 'successfull',
+      user: req.user,
+      //   cookies: req.cookies
+    });
+  }
+});
+
+authRoutes.get('/login/failed', (req, res) => {
+  res.status(401).json({
+    success: false,
+    message: 'failure',
+  });
+});
+
+authRoutes.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect(process.env.CLIENT_URL);
+});
 
 ////////////End Passport JS
 
