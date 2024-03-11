@@ -56,7 +56,7 @@ authRoutes.get(
 // Endpoint to check if user is logged in
 authRoutes.get(
   '/user',
-  passport.authenticate('jwt', { session: false }),
+  googleStrategy.authenticate('jwt', { session: false }),
   (req, res) => {
     console.log('??? user ', req.user);
     const { firstName, lastName, email } = req.user;
