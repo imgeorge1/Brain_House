@@ -27,10 +27,9 @@ const jwtSecret = process.env.JWT_SECRET;
 // auth with google
 
 authRoutes.get(
-  '/auth/facebook',
+  '/auth/google',
   googleStrategy.authenticate('google', { scope: ['profile', 'email'] })
 );
-
 authRoutes.get(
   '/auth/facebook',
   facebookStrategy.authenticate('facebook', { scope: ['email'] })
