@@ -54,19 +54,15 @@ authRoutes.get(
 );
 
 // Endpoint to check if user is logged in
-authRoutes.get('/user', (req, res) => {
-  // Check if req.user is defined
-  if (!req.user) {
-    return res
-      .status(401)
-      .json({ success: false, message: 'User not authenticated' });
+authRoutes.get(
+  '/user',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    console.log('??? user ', req.user);
+    const { firstName, lastName, email } = req.user;
+    res.json({ firstName, lastName, email });
   }
-
-  // Extract user information from req.user
-  const { firstName, lastName, email } = req.user;
-  console.log('user json', req.user);
-  res.json({ firstName, lastName, email });
-});
+);
 
 // auth with facebook
 authRoutes.get(
