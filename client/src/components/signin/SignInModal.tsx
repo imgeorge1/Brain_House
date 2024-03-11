@@ -27,7 +27,10 @@ function SignInModal() {
   };
 
   const facebookAuth = () => {
-    window.open('https://brain-house-vkk7.onrender.com/auth/facebook', '_self');
+    window.open(
+      'https://brain-house-vkk7.onrender.com/auth/facebook/callback',
+      '_self'
+    );
   };
 
   return (
