@@ -26,37 +26,38 @@ const jwtSecret = process.env.JWT_SECRET;
 // Passport JS
 // auth with google
 
-authRoutes.get(
-  '/auth/google',
-  googleStrategy.authenticate('google', { scope: ['profile', 'email'] })
-);
+// authRoutes.get(
+//   '/auth/google',
+//   googleStrategy.authenticate('google', { scope: ['profile', 'email'] })
+// );
+
 authRoutes.get(
   '/auth/facebook',
   facebookStrategy.authenticate('facebook', { scope: ['email'] })
 );
 
-authRoutes.get(
-  '/auth/google/callback',
-  googleStrategy.authenticate('google', {
-    failureRedirect: '/login/failed',
-  }),
-  async (req, res) => {
-    try {
-      const { firstName, lastName, email } = req.user;
-      console.log('req.userr', req.user);
-      // Create JWT token with user information
-      const jwtToken = jwt.sign({ firstName, lastName, email }, jwtSecret, {
-        expiresIn: '4h',
-      });
+// authRoutes.get(
+//   '/auth/google/callback',
+//   googleStrategy.authenticate('google', {
+//     failureRedirect: '/login/failed',
+//   }),
+//   async (req, res) => {
+//     try {
+//       const { firstName, lastName, email } = req.user;
+//       console.log('req.userr', req.user);
+//       // Create JWT token with user information
+//       const jwtToken = jwt.sign({ firstName, lastName, email }, jwtSecret, {
+//         expiresIn: '4h',
+//       });
 
-      // Redirect user to client URL with JWT token as parameter
-      res.redirect(`${process.env.CLIENT_URL}/?jwtToken=${jwtToken}`);
-    } catch (error) {
-      console.log('Logging in error:', error);
-      res.status(500).json({ message: 'Internal Server Error' });
-    }
-  }
-);
+//       // Redirect user to client URL with JWT token as parameter
+//       res.redirect(`${process.env.CLIENT_URL}/?jwtToken=${jwtToken}`);
+//     } catch (error) {
+//       console.log('Logging in error:', error);
+//       res.status(500).json({ message: 'Internal Server Error' });
+//     }
+//   }
+// );
 
 // auth with facebook
 
