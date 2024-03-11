@@ -25,6 +25,17 @@ const JWT_SECRET = 'your_jwt_secret_key'; // Replace with your own secret key
 // Passport JS
 // auth with google
 
+const authMiddleware = (req, res, next) => {
+  // Check if the user is authenticated
+  if (req.isAuthenticated()) {
+    // If authenticated, continue to the next middleware or route handler
+    return next();
+  }
+
+  // If not authenticated, respond with a 401 Unauthorized status
+  res.status(401).json({ message: 'Unauthorized' });
+};
+
 authRoutes.get('/login/success', authMiddleware, (req, res) => {
   try {
     const { user } = req; // Assuming the authenticated user is available in req object
