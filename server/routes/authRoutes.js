@@ -52,8 +52,10 @@ authRoutes.get(
   async (req, res) => {
     try {
       const newUser = {
-        displayName: res.req.user.displayName,
         profileId: res.req.user.id,
+        firstName: res.req.user.firstName,
+        lastName: res.req.user.lastName,
+        email: res.req.user.provider,
       };
       console.log('res,req userererer', res.req.user);
       console.log('newUser', newUser);
@@ -64,6 +66,7 @@ authRoutes.get(
 
       if (existingUser) {
         const userId = existingUser.id;
+        console.log('userID', userId);
         newUser.id = userId;
       } else if (!existingUser) {
         const createdUser = await User.create(newUser);
@@ -79,6 +82,7 @@ authRoutes.get(
         maxAge: 1000 * 60 * 60 * 4,
       });
       const encodedJwtToken = encodeURIComponent(jwtToken);
+      console.log('encodedJwtToken', encodedJwtToken);
       res.redirect(
         `${process.env.CLIENT_URL}/?message=Login%20successful&jwtToken=${encodedJwtToken}`
       );
