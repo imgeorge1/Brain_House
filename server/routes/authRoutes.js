@@ -40,53 +40,52 @@ authRoutes.get('/logout', (req, res) => {
 });
 
 authRoutes.get(
-  '/auth/google',
-  googleStrategy.authenticate('google', { scope: ['profile', 'email'] })
-);
-
-authRoutes.get(
   '/auth/google/callback',
   googleStrategy.authenticate('google', {
     failureRedirect: '/login/failed',
   }),
   async (req, res) => {
     try {
-      const newUser = {
-        profileId: res.req.user.id,
-        firstName: res.req.user.firstName,
-        lastName: res.req.user.lastName,
-        email: res.req.user.email,
-        provider: res.req.user.provider,
-      };
-      console.log('res,req userererer', res.req.user);
-      console.log('newUser', newUser);
+      const { id, displayName, emails } = req.user;
+      const email = emails[0].value; // Assuming the first email is the primary one
+
       const existingUser = await User.findOne({ email });
-      console.log('existingUser', existingUser);
 
       if (existingUser) {
-        const userId = existingUser.id;
-        console.log('userID', userId);
-        newUser.id = userId;
-      } else if (!existingUser) {
-        const createdUser = await User.create(newUser);
-        const userId = createdUser.id;
-        newUser.id = userId;
+        // User already exists, proceed with existing user
+        const jwtToken = jwt.sign({ userId: existingUser.id }, jwtSecret, {
+          expiresIn: '4h',
+        });
+        res.cookie('jwtToken', jwtToken, {
+          httpOnly: false,
+          maxAge: 1000 * 60 * 60 * 4,
+        });
+        const encodedJwtToken = encodeURIComponent(jwtToken);
+        res.redirect(
+          `${process.env.CLIENT_URL}/?message=Login%20successful&jwtToken=${encodedJwtToken}`
+        );
+      } else {
+        // Create new user
+        const newUser = await User.create({
+          profileId: id,
+          displayName,
+          email,
+        });
+        const jwtToken = jwt.sign({ userId: newUser.id }, jwtSecret, {
+          expiresIn: '4h',
+        });
+        res.cookie('jwtToken', jwtToken, {
+          httpOnly: false,
+          maxAge: 1000 * 60 * 60 * 4,
+        });
+        const encodedJwtToken = encodeURIComponent(jwtToken);
+        res.redirect(
+          `${process.env.CLIENT_URL}/?message=Login%20successful&jwtToken=${encodedJwtToken}`
+        );
       }
-
-      const jwtToken = jwt.sign(newUser, jwtSecret, { expiresIn: '4h' });
-      console.log('jwtToken', jwtToken);
-
-      res.cookie('jwtToken', jwtToken, {
-        httpOnly: false,
-        maxAge: 1000 * 60 * 60 * 4,
-      });
-      const encodedJwtToken = encodeURIComponent(jwtToken);
-      console.log('encodedJwtToken', encodedJwtToken);
-      res.redirect(
-        `${process.env.CLIENT_URL}/?message=Login%20successful&jwtToken=${encodedJwtToken}`
-      );
     } catch (error) {
-      console.log('logging in error: ', error);
+      console.log('Logging in error:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
     }
   }
 );
