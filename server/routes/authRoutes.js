@@ -20,35 +20,16 @@ const googleStrategy = require('../config/passport/google');
 const facebookStrategy = require('../config/passport/facebook');
 
 const authRoutes = express.Router();
-const JWT_SECRET = 'your_jwt_secret_key'; // Replace with your own secret key
 
 // Passport JS
 // auth with google
 
-const authMiddleware = (req, res, next) => {
-  // Check if the user is authenticated
-  if (req.isAuthenticated()) {
-    // If authenticated, continue to the next middleware or route handler
-    return next();
-  }
-
-  // If not authenticated, respond with a 401 Unauthorized status
-  res.status(401).json({ message: 'Unauthorized' });
-};
-
-authRoutes.get('/login/success', authMiddleware, (req, res) => {
+authRoutes.get('/login/success', (req, res) => {
   try {
-    const { user } = req; // Assuming the authenticated user is available in req object
-    if (user) {
-      // If user is authenticated, create a JWT token
-      const token = jwt.sign({ userId: user.id }, JWT_SECRET, {
-        expiresIn: '4h', // Token expires in 4 hours
-      });
-      console.log('token', token);
-      // Set the JWT token as a cookie with maxAge 4 hours
-      res.cookie('jwt', token, { maxAge: 4 * 60 * 60 * 1000, httpOnly: true });
-      // Send the user data along with the token
-      res.status(200).json({ user });
+    console.log('req   user', req.user);
+    if (req.user) {
+      // If user is authenticated, send the serialized user data
+      res.status(200).json({ message: 'user Login', user: req.user });
     } else {
       // If user is not authenticated, send an error message
       res.status(400).json({ message: 'Not Authorized' });
