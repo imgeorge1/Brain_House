@@ -33,12 +33,12 @@ authRoutes.get(
   }),
   async (req, res) => {
     try {
-      const { displayName, email } = req.user;
+      const { firstName, lastName, email } = req.user;
       console.log('req.uuuuuuuu', req.user);
       console.log('req uuser firstaName', req.user.firstName);
 
       // Create JWT token with user information
-      const jwtToken = jwt.sign({ displayName, email }, jwtSecret, {
+      const jwtToken = jwt.sign({ firstName, lastName, email }, jwtSecret, {
         expiresIn: '4h',
       });
 
