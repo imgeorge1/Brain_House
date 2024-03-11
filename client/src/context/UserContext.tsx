@@ -17,7 +17,9 @@ interface UserProviderProps {
 }
 
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<FullUser | null>(null);
+  const [currentUser, setCurrentUser] = useState<{ user: FullUser } | null>(
+    null
+  );
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const token = queryParams.get('jwtToken');
@@ -29,8 +31,8 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-
-      setCurrentUser(response.data.user);
+      console.log('response', response);
+      setCurrentUser(response.data);
     } catch (error) {
       console.log('error', error);
     }
