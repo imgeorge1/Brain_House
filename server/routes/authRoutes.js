@@ -20,6 +20,8 @@ const googleStrategy = require('../config/passport/google');
 const facebookStrategy = require('../config/passport/facebook');
 
 const authRoutes = express.Router();
+const JWT_SECRET = 'your_jwt_secret_key'; // Replace with your own secret key
+
 // Passport JS
 // auth with google
 
@@ -27,8 +29,15 @@ authRoutes.get('/login/success', (req, res) => {
   try {
     console.log('req   user', req.user);
     if (req.user) {
-      // If user is authenticated, send the serialized user data
-      res.status(200).json({ message: 'user Login', user: req.user });
+      // If user is authenticated, create a JWT token
+      const token = jwt.sign({ userId: req.user.id }, JWT_SECRET, {
+        expiresIn: '4h', // Token expires in 4 hours
+      });
+      // Set the JWT token as a cookie with maxAge 4 hours
+      res.cookie('jwt', token, { maxAge: 4 * 60 * 60 * 1000, httpOnly: true });
+      // Redirect to client URL with the encoded JWT token as a query parameter
+      const encodedJwtToken = encodeURIComponent(token);
+      res.redirect(`${process.env.CLIENT_URL}?token=${encodedJwtToken}`);
     } else {
       // If user is not authenticated, send an error message
       res.status(400).json({ message: 'Not Authorized' });
