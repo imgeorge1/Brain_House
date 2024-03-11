@@ -60,9 +60,7 @@ authRoutes.get(
       };
       console.log('res,req userererer', res.req.user);
       console.log('newUser', newUser);
-      const existingUser = await User.findOne({
-        where: { profileId: newUser.profileId },
-      });
+      const existingUser = await User.findOne({ email });
       console.log('existingUser', existingUser);
 
       if (existingUser) {
@@ -70,19 +68,6 @@ authRoutes.get(
         console.log('userID', userId);
         newUser.id = userId;
       } else if (!existingUser) {
-        // Check if the user with the same email exists
-        const existingEmailUser = await User.findOne({
-          where: { email: newUser.email },
-        });
-
-        if (existingEmailUser) {
-          // Handle case where email already exists
-          console.log('Email already exists in the database');
-          // You can choose to send an error response or take other actions
-          return res.status(400).json({ message: 'Email already exists' });
-        }
-
-        // If email does not exist, create a new user
         const createdUser = await User.create(newUser);
         const userId = createdUser.id;
         newUser.id = userId;
@@ -102,8 +87,6 @@ authRoutes.get(
       );
     } catch (error) {
       console.log('logging in error: ', error);
-      // Handle other errors if necessary
-      return res.status(500).json({ message: 'Internal Server Error' });
     }
   }
 );
