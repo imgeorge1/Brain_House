@@ -34,48 +34,30 @@ authRoutes.get(
   async (req, res) => {
     try {
       const { id, displayName, email } = req.user;
-      console.log('req.user', req.user);
 
-      const existingUser = await User.findOne({ email });
+      // Create JWT token with user information
+      const jwtToken = jwt.sign({ id, displayName, email }, jwtSecret, {
+        expiresIn: '4h',
+      });
 
-      if (existingUser) {
-        // User already exists, proceed with existing user
-        const jwtToken = jwt.sign({ userId: existingUser.id }, jwtSecret, {
-          expiresIn: '4h',
-        });
-        res.cookie('jwtToken', jwtToken, {
-          httpOnly: false,
-          maxAge: 1000 * 60 * 60 * 4,
-        });
-        const encodedJwtToken = encodeURIComponent(jwtToken);
-        res.redirect(
-          `${process.env.CLIENT_URL}/?message=Login%20successful&jwtToken=${encodedJwtToken}`
-        );
-      } else {
-        // Create new user
-        const newUser = await User.create({
-          profileId: id,
-          displayName,
-          email,
-        });
-        const jwtToken = jwt.sign({ userId: newUser.id }, jwtSecret, {
-          expiresIn: '4h',
-        });
-        res.cookie('jwtToken', jwtToken, {
-          httpOnly: false,
-          maxAge: 1000 * 60 * 60 * 4,
-        });
-        const encodedJwtToken = encodeURIComponent(jwtToken);
-        res.redirect(
-          `${process.env.CLIENT_URL}/?message=Login%20successful&jwtToken=${encodedJwtToken}`
-        );
-      }
+      // Redirect user with JWT token as URL parameter
+      res.redirect(
+        `${process.env.CLIENT_URL}/?message=Login%20successful&jwtToken=${jwtToken}`
+      );
     } catch (error) {
       console.log('Logging in error:', error);
       res.status(500).json({ message: 'Internal Server Error' });
     }
   }
 );
+
+// Endpoint to check if user is logged in
+authRoutes.get('/user', (req, res) => {
+  // Extract user information from JWT token
+  const { id, displayName, email } = req.user;
+  console.log('reqqqqqqq user', req.user);
+  res.json({ id, displayName, email });
+});
 
 // auth with facebook
 authRoutes.get(

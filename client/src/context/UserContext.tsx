@@ -16,30 +16,36 @@ interface UserProviderProps {
 }
 
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<FullUser | null>(null);
-  console.log('TCL: UserProvider -> currentUser', currentUser);
+  const [currentUser, setCurrentUser] = useState(null);
 
   const getUser = async () => {
     try {
-      console.log('i am in');
-
-      const response = await API.get<{ user: FullUser }>('/login/success', {
-        withCredentials: true,
-      });
-
-      console.log('res: ', response);
-
-      setCurrentUser(response.data.user);
+      const response = await API.get('/user');
+      setCurrentUser(response.data);
     } catch (error) {
-      console.log('error', error);
+      console.log('Error fetching user:', error);
     }
   };
 
   useEffect(() => {
-    if (!currentUser) {
+    // Check if JWT token exists
+    const jwtToken = new URLSearchParams(window.location.search).get(
+      'jwtToken'
+    );
+    if (jwtToken) {
+      // Store JWT token in local storage or session storage
+      localStorage.setItem('jwtToken', jwtToken);
+      // Remove JWT token from URL
+      window.history.replaceState({}, document.title, '/');
+    }
+
+    // Fetch current user information if JWT token exists
+    if (!currentUser && jwtToken) {
       getUser();
     }
   }, [currentUser]);
+
+  console.log(currentUser);
 
   return (
     <UserContext.Provider value={{ currentUser }}>
