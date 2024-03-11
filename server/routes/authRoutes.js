@@ -55,7 +55,8 @@ authRoutes.get(
         profileId: res.req.user.id,
         firstName: res.req.user.firstName,
         lastName: res.req.user.lastName,
-        email: res.req.user.provider,
+        email: res.req.user.email,
+        provider: res.req.user.provider,
       };
       console.log('res,req userererer', res.req.user);
       console.log('newUser', newUser);
