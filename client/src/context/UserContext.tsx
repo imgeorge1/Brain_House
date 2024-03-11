@@ -21,23 +21,17 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const getUser = async () => {
     try {
-      const token = localStorage.getItem('token'); // Assuming you have stored the token in localStorage
-
-      if (!token) {
-        // Handle case when token is not available
-        console.log('Token not found.');
-        return;
-      }
+      console.log('i am in');
 
       const response = await API.get<{ user: FullUser }>('/login/success', {
-        headers: {
-          Authorization: `Bearer ${token}`, // Include the token in the Authorization header
-        },
+        withCredentials: true,
       });
+
+      console.log('res: ', response);
 
       setCurrentUser(response.data.user);
     } catch (error) {
-      console.log('Error:', error);
+      console.log('error', error);
     }
   };
 
