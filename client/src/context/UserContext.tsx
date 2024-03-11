@@ -22,6 +22,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     try {
       // Get JWT token from local storage
       const jwtToken = localStorage.getItem('jwtToken');
+      console.log('jwtToken', jwtToken);
 
       if (jwtToken) {
         // Include token in request headers
@@ -30,7 +31,6 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
             Authorization: `Bearer ${jwtToken}`,
           },
         });
-
         setCurrentUser(response.data);
       } else {
         console.log('JWT token not found in local storage');
