@@ -22,6 +22,7 @@ const facebookStrategy = require('../config/passport/facebook');
 
 const authRoutes = express.Router();
 
+const jwtSecret = process.env.JWT_SECRET;
 // Passport JS
 // auth with google
 
