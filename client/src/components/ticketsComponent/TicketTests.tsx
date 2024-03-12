@@ -53,7 +53,7 @@ const TicketTests = ({ ticketData }: { ticketData: TicketsTypes[] }) => {
             className="flex flex-col bg-[#230751] items-center mt-16 rounded-lg"
             key={data.id}
           >
-            <div className="w-full h-full md:w-[690px] md:h-[680px] ">
+            <div className="w-full md:w-[690px] md:h-[680px]">
               <img
                 loading="lazy"
                 src={data.image}
@@ -87,7 +87,7 @@ const TicketTests = ({ ticketData }: { ticketData: TicketsTypes[] }) => {
             </div>
           </div>
         ))}
-      <div className=" mt-20">
+      <div className="mt-20">
         <Pagination
           totalTickets={ticketData.length}
           ticketsPerPage={ticketsPerPage}
