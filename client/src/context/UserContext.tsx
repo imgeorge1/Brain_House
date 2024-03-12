@@ -1,8 +1,8 @@
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
-import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
-import API from '../utils/API';
-import { FullUser } from '../types/Types';
+import React, { createContext, useState, useEffect, ReactNode } from "react";
+import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
+import API from "../utils/API";
+import { FullUser } from "../types/Types";
 
 interface UserContextType {
   currentUser: FullUser | null;
@@ -22,7 +22,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   );
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const token = queryParams.get('jwtToken');
+  const token = queryParams.get("jwtToken");
 
   const getUser = async () => {
     try {
@@ -31,10 +31,10 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log('response', response);
+      console.log("response", response);
       setCurrentUser(response.data);
     } catch (error) {
-      console.log('error', error);
+      console.log("error", error);
     }
   };
 
@@ -44,8 +44,8 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     }
   }, [token, currentUser]);
 
-  console.log('token', token);
-  console.log('currentUser', currentUser);
+  console.log("token", token);
+  console.log("currentUser", currentUser);
 
   return (
     <UserContext.Provider value={{ currentUser }}>
