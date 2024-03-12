@@ -1,7 +1,8 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
-import PropTypes from "prop-types"; // Import prop types
-import API from "../utils/API";
-import { FullUser } from "../types/Types";
+import React, { createContext, useState, useEffect, ReactNode } from 'react';
+import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
+import API from '../utils/API';
+import { FullUser } from '../types/Types';
 
 interface UserContextType {
   currentUser: FullUser | null;
@@ -16,30 +17,35 @@ interface UserProviderProps {
 }
 
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<FullUser | null>(null);
-  console.log("TCL: UserProvider -> currentUser", currentUser);
+  const [currentUser, setCurrentUser] = useState<{ user: FullUser } | null>(
+    null
+  );
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const token = queryParams.get('jwtToken');
 
   const getUser = async () => {
     try {
-      console.log("i am in");
-
-      const response = await API.get<{ user: FullUser }>("/login/success", {
-        withCredentials: true,
+      const response = await API.get<{ user: FullUser }>(`/user`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
-
-      console.log("res: ", response);
-
-      setCurrentUser(response.data.user);
+      console.log('response', response);
+      setCurrentUser(response.data);
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
     }
   };
 
   useEffect(() => {
-    if (!currentUser) {
+    if (token && !currentUser) {
       getUser();
     }
-  }, [currentUser]);
+  }, [token, currentUser]);
+
+  console.log('token', token);
+  console.log('currentUser', currentUser);
 
   return (
     <UserContext.Provider value={{ currentUser }}>
