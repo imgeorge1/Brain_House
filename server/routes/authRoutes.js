@@ -32,7 +32,7 @@ authRoutes.get(
 );
 authRoutes.get(
   "/auth/facebook",
-  facebookStrategy.authenticate("facebook", { scope: ["email"] })
+  facebookStrategy.authenticate("facebook", { scope: "email" })
 );
 
 authRoutes.get(
