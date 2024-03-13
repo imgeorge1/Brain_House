@@ -1,20 +1,20 @@
-require('dotenv').config();
-const DEV_MODE = process.env.NODE_ENV !== 'production';
+require("dotenv").config();
+const DEV_MODE = process.env.NODE_ENV !== "production";
 
 const login = async (req, res) => {
   try {
-    console.log('req   user', req.user);
+    console.log("req   user", req.user);
     if (req.user) {
       // If user is authenticated, send the serialized user data
-      res.status(200).json({ message: 'user Login', user: req.user });
+      res.status(200).json({ message: "user Login", user: req.user });
     } else {
       // If user is not authenticated, send an error message
-      res.status(400).json({ message: 'Not Authorized' });
+      res.status(400).json({ message: "Not Authorized" });
     }
   } catch (error) {
     // Handle any errors that might occur
-    console.error('Error in login:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    console.error("Error in login:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -25,7 +25,7 @@ const logout = (req, res, next) => {
     }
 
     res.redirect(
-      DEV_MODE ? 'https://brain-house.vercel.app/' : 'http://localhost:5173/'
+      DEV_MODE ? "https://brain-house.vercel.app/" : "http://localhost:5173/"
     );
   });
 };
