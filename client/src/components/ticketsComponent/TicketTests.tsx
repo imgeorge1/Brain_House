@@ -46,7 +46,7 @@ const TicketTests = ({ ticketData }: { ticketData: TicketsTypes[] }) => {
   const currentTicket = ticketData.slice(indexOfFirstTicket, indexOfLastTicket);
 
   return (
-    <section className="mx-auto w-full max-w-[690px]">
+    <section className="w-full max-w-[690px]">
       {currentTicket.length > 0 &&
         currentTicket.map((data) => (
           <div

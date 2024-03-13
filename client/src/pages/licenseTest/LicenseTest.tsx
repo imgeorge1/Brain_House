@@ -9,7 +9,7 @@ const LicenseTest = () => {
 
   return (
     <>
-      {!currentUser ? (
+      {currentUser ? (
         <Tickets />
       ) : (
         <h1 className="text-red-500 font-bold text-8xl ">ჩარიცხე თანხა!!!</h1>

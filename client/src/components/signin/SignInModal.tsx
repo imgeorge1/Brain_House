@@ -1,9 +1,9 @@
-import { useContext, useState } from 'react';
-import { Modal, Button } from 'react-bootstrap';
-import '../../index.css';
-import { Link } from 'react-router-dom';
-import { UserContext } from '../../context/UserContext';
-import google from '../../assets/google.png';
+import { useContext, useState } from "react";
+import { Modal, Button } from "react-bootstrap";
+import "../../index.css";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
+import google from "../../assets/google.png";
 
 function SignInModal() {
   const [show, setShow] = useState(false);
@@ -16,33 +16,35 @@ function SignInModal() {
   const handleShow = () => setShow(true);
 
   const logout = () => {
-    window.open('https://brain-house-vkk7.onrender.com/logout', '_self'); // https://brain-house.onrender.com/
+    window.open("https://brain-house-vkk7.onrender.com/logout", "_self");
+    localStorage.removeItem("token");
   };
 
   const googleAuth = () => {
-    window.open('https://brain-house-vkk7.onrender.com/auth/google', '_self');
+    window.open("https://brain-house-vkk7.onrender.com/auth/google", "_self");
   };
 
   const facebookAuth = () => {
-    window.open('https://brain-house-vkk7.onrender.com/auth/facebook', '_self');
+    window.open("https://brain-house-vkk7.onrender.com/auth/facebook", "_self");
   };
 
   return (
     <>
       {currentUser ? (
         <div className=" gap-4 flex justify-end p-2">
-          {currentUser && (
-            <Link
-              to="dashboard"
-              className="bg-green-500 p-2 rounded-2xl text-xl font-bold text-white"
-              style={{ textDecoration: 'none' }}
-            >
-              Dashboard
-            </Link>
-          )}
+          {currentUser &&
+            false && ( // temporarily
+              <Link
+                to="dashboard"
+                className="bg-green-500 p-2 rounded-2xl text-xl font-bold text-white"
+                style={{ textDecoration: "none" }}
+              >
+                Dashboard
+              </Link>
+            )}
 
           <h4 className="mt-2">
-            {currentUser.firstName + ' ' + currentUser.lastName}
+            {currentUser.firstName + " " + currentUser.lastName}
           </h4>
           <button
             className="buttonBorder px-6 py-2 rounded-3xl hover:bg-orange-500 text-xl text-white"

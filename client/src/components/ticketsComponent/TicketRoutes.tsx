@@ -36,7 +36,7 @@ const TicketRoutes = ({
   };
 
   return (
-    <section className="flex align-center">
+    <section className="flex align-center ">
       <div className="flex flex-col p-3">
         <div className="flex items-center gap-2">
           <h1 className="font-bold">კატეგორიები</h1>
