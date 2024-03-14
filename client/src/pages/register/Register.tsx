@@ -1,21 +1,16 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import API from "../../utils/API";
-// import { useContext } from "react";
-// import { UserContext } from "../../context/UserContext";
 import { FullUser } from "../../types/Types";
+
 function Register() {
   const {
     register,
     handleSubmit,
-    // reset,
     formState: { errors },
   } = useForm<FullUser>();
-  // const { currentUser } = useContext(UserContext);
 
   const onSubmit: SubmitHandler<FullUser> = async (body) => {
-    // in here we had options
     try {
-      // body.userId = currentUser;
       const url = "/signup";
       const res = await API.post(url, body);
       console.log("res: ", res);
@@ -25,33 +20,50 @@ function Register() {
   };
 
   return (
-    <div className="container w-full d-flex justify-content-center">
+    <div className="w-1/3 mx-auto my-16">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-50 p-2 d-flex flex-column align-items-center justify-content-center bg-white gap-4 mt-4 mb-4 
-        rounded-lg shadow-2xl"
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8"
         noValidate
       >
-        <h2 className="text-4xl font-bold mt-4">რეგისტრაცია</h2>
+        <h2 className="text-3xl font-bold mb-4">რეგისტრაცია</h2>
 
-        <div className="w-50 d-flex flex-col  form-floating">
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-base font-bold mb-2"
+            htmlFor="age"
+          >
+            ასაკი
+          </label>
           <input
             type="text"
-            className="form-control rounded-3"
+            id="age"
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+              errors.age ? "border-red-500" : ""
+            }`}
             placeholder="ასაკი"
             {...register("age", {
               required: "ასაკი აუცილებელია",
             })}
           />
           {errors.age && (
-            <div className="text-danger">{errors.age.message}</div>
+            <p className="text-red-500 text-xs italic">{errors.age.message}</p>
           )}
-          <label className="fw-light">ასაკი</label>
         </div>
-        <div className="w-50 d-flex flex-col  form-floating">
+
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-base font-bold mb-2"
+            htmlFor="city"
+          >
+            ქალაქი
+          </label>
           <input
             type="text"
-            className="form-control rounded-3"
+            id="city"
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+              errors.city ? "border-red-500" : ""
+            }`}
             placeholder="ქალაქი"
             {...register("city", {
               required: "ქალაქი აუცილებელია",
@@ -59,32 +71,43 @@ function Register() {
             })}
           />
           {errors.city && (
-            <div className="text-danger">{errors.city.message}</div>
+            <p className="text-red-500 text-xs italic">{errors.city.message}</p>
           )}
-          <label className="fw-light">ქალაქი </label>
         </div>
-        <div className="w-50 d-flex flex-col form-floating">
+
+        <div className="mb-6">
+          <label
+            className="block text-gray-700 text-base font-bold mb-2"
+            htmlFor="phone"
+          >
+            ტელეფონი ნომერი
+          </label>
           <input
             type="tel"
-            className="form-control rounded-3"
+            id="phone"
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+              errors.phone ? "border-red-500" : ""
+            }`}
             placeholder="ტელეფონი ნომერი"
             {...register("phone", {
               required: "ტელეფონი ნომერი აუცილებელია",
             })}
           />
-
           {errors.phone && (
-            <div className="text-danger">{errors.phone.message}</div>
+            <p className="text-red-500 text-xs italic">
+              {errors.phone.message}
+            </p>
           )}
-          <label className="fw-light">ტელეფონი ნომერი </label>
         </div>
 
-        <button
-          type="submit"
-          className="btn btn-primary w-50 rounded-md p-2 text-white fs-4 font-bold mb-4"
-        >
-          გაგზავნა
-        </button>
+        <div className="flex items-center justify-between">
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            გაგზავნა
+          </button>
+        </div>
       </form>
     </div>
   );

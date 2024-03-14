@@ -29,20 +29,17 @@ const Header = () => {
           className="flex bg-black bg-opacity-50 md:bg-transparent w-[60%] h-screen flex-col pl-5 lg:flex-row absolute top-0 pt-24
         right-0 bottom-0 z-10 gap-10 lg:h-full lg:p-0 lg:static lg:w-auto"
         >
-          <NavLink to="/" className="nav-link text-white fs-4 no-underline">
+          <NavLink to="/" className="nav-link text-white no-underline">
             მთავარი
           </NavLink>
 
           <NavLink
             to={`/tickets/${categoryId || 0}`}
-            className="nav-link text-white fs-4 "
+            className="nav-link text-white "
           >
             მართვის ბარათი
           </NavLink>
-          <NavLink
-            to="/courses"
-            className="nav-link text-white fs-4 no-underline"
-          >
+          <NavLink to="/courses" className="nav-link text-white no-underline">
             კურსები
           </NavLink>
         </div>
