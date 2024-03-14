@@ -31,8 +31,8 @@ function Pagination({
           onClick={() => handleClick(page)}
           className={
             page === currentPage
-              ? "btn btn-primary w-20"
-              : "btn btn-secondary w-20"
+              ? "w-20 py-2 bg-blue-500 text-white font-semibold rounded-lg"
+              : "w-20 py-2 bg-gray-500 rounded-lg"
           }
         >
           {page}
@@ -40,7 +40,7 @@ function Pagination({
       ));
     } else {
       const renderDots = (key: string) => (
-        <button key={key} className="btn btn-secondary w-20" disabled>
+        <button key={key} className="w-20 py-2 bg-gray-400 rounded-lg" disabled>
           ...
         </button>
       );
@@ -53,8 +53,8 @@ function Pagination({
               onClick={() => handleClick(page)}
               className={
                 page === currentPage
-                  ? "btn btn-primary w-20"
-                  : "btn btn-secondary w-20"
+                  ? "w-20 py-2 bg-blue-500 text-white font-semibold rounded-lg"
+                  : "w-20 py-2 bg-gray-500 rounded-lg"
               }
             >
               {page}
@@ -64,7 +64,7 @@ function Pagination({
           <button
             key="lastPage"
             onClick={() => handleClick(totalPages)}
-            className="btn btn-secondary w-20"
+            className="w-20 py-2 bg-gray-500 rounded-lg"
           >
             {totalPages}
           </button>,
@@ -74,7 +74,7 @@ function Pagination({
           <button
             key="firstPage"
             onClick={() => handleClick(1)}
-            className="btn btn-secondary w-20"
+            className="w-20 py-2 bg-gray-500 rounded-lg"
           >
             1
           </button>,
@@ -85,8 +85,8 @@ function Pagination({
               onClick={() => handleClick(page)}
               className={
                 page === currentPage
-                  ? "btn btn-primary w-20"
-                  : "btn btn-secondary w-20"
+                  ? "w-20 py-2 bg-blue-500 text-white font-semibold rounded-lg"
+                  : "w-20 py-2 bg-gray-500 rounded-lg"
               }
             >
               {page}
@@ -101,7 +101,7 @@ function Pagination({
           <button
             key="firstPage"
             onClick={() => handleClick(1)}
-            className="btn btn-secondary w-20"
+            className="w-20 py-2 bg-gray-500 rounded-lg"
           >
             1
           </button>,
@@ -112,8 +112,8 @@ function Pagination({
               onClick={() => handleClick(page)}
               className={
                 page === currentPage
-                  ? "btn btn-primary w-20"
-                  : "btn btn-secondary w-20"
+                  ? "w-20 py-2 bg-blue-500 text-white font-semibold rounded-lg"
+                  : "w-20 py-2 bg-gray-500 rounded-lg"
               }
             >
               {page}
@@ -123,7 +123,7 @@ function Pagination({
           <button
             key="lastPage"
             onClick={() => handleClick(totalPages)}
-            className="btn btn-secondary w-20"
+            className="w-20 py-2 bg-gray-500 rounded-lg"
           >
             {totalPages}
           </button>,
@@ -133,7 +133,7 @@ function Pagination({
   };
 
   return (
-    <div className="container flex flex-wrap md:flex-nowrap justify-center gap-[5px]">
+    <div className="flex flex-wrap md:flex-nowrap justify-center gap-[5px]">
       {renderPages()}
     </div>
   );

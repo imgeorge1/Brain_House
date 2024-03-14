@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
-import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
 import API from "../utils/API";
 import { User } from "../types/Types";
@@ -58,10 +57,6 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       {children}
     </UserContext.Provider>
   );
-};
-
-UserProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export { UserProvider, UserContext };

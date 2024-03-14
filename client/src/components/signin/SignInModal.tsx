@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import { Modal, Button } from "react-bootstrap";
 import "../../index.css";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import google from "../../assets/google.png";
+import facebook from "../../assets/facebook.png";
 
 function SignInModal() {
   const [show, setShow] = useState(false);
@@ -43,7 +43,7 @@ function SignInModal() {
               </Link>
             )}
 
-          <h4 className="mt-2">
+          <h4 className="mt-2 text-xl">
             {currentUser.firstName + " " + currentUser.lastName}
           </h4>
           <button
@@ -62,30 +62,41 @@ function SignInModal() {
         </button>
       )}
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton className="border-0"></Modal.Header>
-        <>
-          <Modal.Body className=" justify-content-center align-items-center text-center ">
-            <h6 className="font  fs-3 font-bold">შესვლა</h6>
+      {show && (
+        <div
+          className="absolute top-0 h-screen left-0 right-0 bottom-0 bg-black bg-opacity-50"
+          onClick={handleClose}
+        >
+          <>
+            <div className="mt-10 justify-content-center align-items-center text-center text-black">
+              <div className="space-y-2 bg-white inline-block p-6 rounded-lg text-2xl">
+                <h6 className="mb-4">შესვლა</h6>
+                <button
+                  className="flex gap-5 bg-white border-b-[1px] border-b-gray-400 pb-2"
+                  type="submit"
+                  onClick={googleAuth}
+                >
+                  <img src={google} alt="google" width={30} height={30} />
+                  <span>შესვლა GOOGLE ანგარიშით</span>
+                </button>
 
-            <Button
-              className="w-100 btn btn-light btn-outline-secondary d-flex align-items-center justify-content-center gap-4"
-              type="submit"
-              onClick={googleAuth}
-            >
-              <img src={google} alt="google" width={30} height={30} />
-              <span>შესვლა GOOGLE ანგარიშით</span>
-            </Button>
-            <Button
-              className="w-100 btn btn-light btn-outline-secondary d-flex align-items-center justify-content-center gap-4"
-              type="submit"
-              onClick={facebookAuth}
-            >
-              <span>შესვლა Facebook ანგარიშით</span>
-            </Button>
-          </Modal.Body>
+                <button
+                  className="flex gap-5 bg-white"
+                  type="submit"
+                  onClick={facebookAuth}
+                >
+                  <img
+                    src={facebook}
+                    alt="facebook logo"
+                    width={30}
+                    height={30}
+                  />
+                  <span>შესვლა Facebook ანგარიშით</span>
+                </button>
+              </div>
+            </div>
 
-          {/* <Modal.Footer className="pb-4">
+            {/* <Modal.Footer className="pb-4">
             <span className="mt-2 fs-5 text-secondary">
               არ ხართ დარეგისტრირებული?
             </span>
@@ -93,8 +104,9 @@ function SignInModal() {
               რეგისტრაცია
             </Link>
           </Modal.Footer> */}
-        </>
-      </Modal>
+          </>
+        </div>
+      )}
     </>
   );
 }

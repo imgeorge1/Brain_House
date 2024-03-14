@@ -39,7 +39,7 @@ const TicketRoutes = ({
     <section className="flex align-center ">
       <div className="flex flex-col p-3">
         <div className="flex items-center gap-2">
-          <h1 className="font-bold">კატეგორიები</h1>
+          <h1 className="font-bold text-3xl mb-4">კატეგორიები</h1>
           <button onClick={() => setShow(!show)}>
             {width < 1024 && (
               <img src={category} alt="category icon" width={22} height={22} />

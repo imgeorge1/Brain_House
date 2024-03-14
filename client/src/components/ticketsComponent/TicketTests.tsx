@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "../pagination/Pagination";
 import { ClickedAnswers, TicketsTypes } from "../../types/Types";
+import { useLocation } from "react-router-dom";
 // import { UserContext } from "../../context/UserContext";
 // import { useNavigate } from "react-router-dom";
 
 const TicketTests = ({ ticketData }: { ticketData: TicketsTypes[] }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [clickedAnswers, setClickedAnswers] = useState<ClickedAnswers>({});
+  const location = useLocation();
   // const { currentUser, userInfo } = useContext(UserContext);
   // const navigation = useNavigate();
 
@@ -15,6 +17,11 @@ const TicketTests = ({ ticketData }: { ticketData: TicketsTypes[] }) => {
   //     navigation("/licenseTests");
   //   }
   // }, [currentUser, navigation]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+    setClickedAnswers({});
+  }, [location.pathname]);
 
   const handleButtonClick = (dataId: number, selectedAnswer: number) => {
     if (clickedAnswers[dataId] !== undefined) {
@@ -73,7 +80,7 @@ const TicketTests = ({ ticketData }: { ticketData: TicketsTypes[] }) => {
                 (_, index) => index + 1
               ).map((item) => (
                 <button
-                  className={`p-4 text-2xl font-bold rounded-md ${
+                  className={`p-5 text-2xl font-bold rounded-md ${
                     clickedAnswers[data.id] !== undefined
                       ? ""
                       : "lg:hover:bg-blue-400"

@@ -1,8 +1,7 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import { SubmitHandler, useForm } from "react-hook-form";
 import API from "../../utils/API";
-import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+// import { useContext } from "react";
+// import { UserContext } from "../../context/UserContext";
 import { FullUser } from "../../types/Types";
 function Register() {
   const {
@@ -11,12 +10,12 @@ function Register() {
     // reset,
     formState: { errors },
   } = useForm<FullUser>();
-  const { currentUser } = useContext(UserContext);
+  // const { currentUser } = useContext(UserContext);
 
   const onSubmit: SubmitHandler<FullUser> = async (body) => {
     // in here we had options
     try {
-      body.userId = currentUser?._id;
+      // body.userId = currentUser;
       const url = "/signup";
       const res = await API.post(url, body);
       console.log("res: ", res);
