@@ -47,7 +47,7 @@ const TicketTests = ({ ticketData }: { ticketData: TicketsTypes[] }) => {
     return "bg-gray-400";
   };
 
-  const ticketsPerPage = 5;
+  const ticketsPerPage = 15;
   const indexOfLastTicket = currentPage * ticketsPerPage;
   const indexOfFirstTicket = indexOfLastTicket - ticketsPerPage;
   const currentTicket = ticketData.slice(indexOfFirstTicket, indexOfLastTicket);

@@ -10,7 +10,9 @@ const LicenseTest = () => {
       {currentUser ? (
         <Tickets />
       ) : (
-        <h1 className="text-red-500 font-bold text-8xl">ჩარიცხე თანხა!!!</h1>
+        <h1 className="text-center text-red-500 font-bold text-8xl my-[217.5px]">
+          ჩარიცხე თანხა!!!
+        </h1>
       )}
     </>
   );

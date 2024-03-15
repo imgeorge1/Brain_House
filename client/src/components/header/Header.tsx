@@ -15,7 +15,7 @@ const Header = () => {
   };
 
   return (
-    <header className="relative w-full background flex items-center justify-between px-2 py-4 md:px-12 text-white">
+    <header className="relative w-full background flex items-center justify-between px-2 py-7 md:px-12 text-white">
       <NavLink
         to="/"
         className="flex items-center gap-2 text-white no-underline"
