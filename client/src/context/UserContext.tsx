@@ -47,10 +47,10 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       }
     };
 
-    if (tokenFromLocalStorage && !currentUser) {
+    if (tokenFromLocalStorage) {
       getUser();
     }
-  }, [currentUser, queryParams]);
+  }, []);
 
   return (
     <UserContext.Provider value={{ currentUser }}>

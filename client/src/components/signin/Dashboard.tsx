@@ -1,23 +1,33 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { DashboardTypes } from "../../types/Types";
+import { useEffect } from "react";
 
 const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
-  const handleShow = () => setShow(true);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const logout = () => {
     window.open("https://brain-house-vkk7.onrender.com/logout", "_self");
     localStorage.removeItem("token");
   };
 
+  const handleShow = () => setShow(true);
+
   const checkAdmin =
     currentUser?.email === "beka.lomsadze.1@btu.edu.ge" ||
-    "chikviladze555@gmail.com";
+    currentUser?.email === "chikviladze555@gmail.com";
+
+  useEffect(() => {
+    if (location.pathname === "/dashboard" && !checkAdmin) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div>
       {currentUser ? (
         <div className=" gap-4 flex justify-end p-2">
-          {checkAdmin && ( // temporarily
+          {checkAdmin && (
             <Link
               to="dashboard"
               className="bg-green-500 p-2 rounded-2xl text-xl font-bold text-white"

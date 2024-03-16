@@ -35,6 +35,12 @@ const TicketRoutes = ({
     setCategoryName(category);
   };
 
+  // Condition to disable links
+  const isLinkDisabled = (item: { id: number }) => {
+    // Define your condition to disable links here
+    return item.id === 8; // Disable link for item with id 0
+  };
+
   return (
     <section className="flex align-center ">
       <div className="flex flex-col p-3">
@@ -53,14 +59,20 @@ const TicketRoutes = ({
                 onClick={() => handleChooseCategory(item.category)}
                 key={item.id}
               >
-                <Link
-                  className={`no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
-                    item.id === categoryId ? "bg-[#230751]" : "bg-[#663aac]"
-                  }`}
-                  to={`/tickets/${item.id}`}
-                >
-                  {item.id === 0 ? "" : item.id + "."} {item.category}{" "}
-                </Link>
+                {isLinkDisabled(item) ? (
+                  <span className="mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed">
+                    {item.id === 0 ? "" : item.id + "."} {item.category}{" "}
+                  </span>
+                ) : (
+                  <Link
+                    className={`no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
+                      item.id === categoryId ? "bg-[#230751]" : "bg-[#663aac]"
+                    }`}
+                    to={`/tickets/${item.id}`}
+                  >
+                    {item.id === 0 ? "" : item.id + "."} {item.category}{" "}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
