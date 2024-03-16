@@ -39,7 +39,7 @@ const Header = () => {
           >
             მართვის ბარათი
           </NavLink>
-          <NavLink to="/courses" className="nav-link text-white no-underline">
+          <NavLink to="/courses/1" className="nav-link text-white no-underline">
             კურსები
           </NavLink>
         </div>

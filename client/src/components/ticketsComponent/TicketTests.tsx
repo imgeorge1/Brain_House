@@ -2,25 +2,22 @@ import { useEffect, useState } from "react";
 import Pagination from "../pagination/Pagination";
 import { ClickedAnswers, TicketsTypes } from "../../types/Types";
 import { useLocation } from "react-router-dom";
-// import { UserContext } from "../../context/UserContext";
-// import { useNavigate } from "react-router-dom";
 
-const TicketTests = ({ ticketData }: { ticketData: TicketsTypes[] }) => {
+const TicketTests = ({
+  ticketData,
+  setCorrectAnswer,
+}: {
+  ticketData: TicketsTypes[];
+  setCorrectAnswer?: React.Dispatch<React.SetStateAction<number>>;
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [clickedAnswers, setClickedAnswers] = useState<ClickedAnswers>({});
   const location = useLocation();
-  // const { currentUser, userInfo } = useContext(UserContext);
-  // const navigation = useNavigate();
-
-  // useEffect(() => {
-  //   if (!userInfo || (currentUser && currentUser.isPaid === false)) {
-  //     navigation("/licenseTests");
-  //   }
-  // }, [currentUser, navigation]);
 
   useEffect(() => {
     setCurrentPage(1);
     setClickedAnswers({});
+    setCorrectAnswer && setCorrectAnswer(0);
   }, [location.pathname]);
 
   const handleButtonClick = (dataId: number, selectedAnswer: number) => {
@@ -32,6 +29,18 @@ const TicketTests = ({ ticketData }: { ticketData: TicketsTypes[] }) => {
       ...clickedAnswers,
       [dataId]: selectedAnswer,
     });
+
+    if (location.pathname.startsWith("/courses")) {
+      const correctAnswer = ticketData.find(
+        (item) => item.id === dataId
+      )?.correctAnswer;
+
+      if (correctAnswer !== undefined && selectedAnswer === correctAnswer) {
+        if (setCorrectAnswer) {
+          setCorrectAnswer((prevCorrectNumber) => prevCorrectNumber + 1);
+        }
+      }
+    }
   };
 
   const getAnswerClass = (dataId: number, answerIndex: number) => {
