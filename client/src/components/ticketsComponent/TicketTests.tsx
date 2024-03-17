@@ -83,7 +83,7 @@ const TicketTests = ({
           <motion.div
             initial={{ opacity: 0, x: 200 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.5 }}
+            transition={{ duration: 1, delay: 0.5 }}
             className="flex flex-col bg-[#230751] items-center mt-16 rounded-lg"
             key={data.id}
           >
