@@ -12,6 +12,7 @@ const TicketTests = ({
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [clickedAnswers, setClickedAnswers] = useState<ClickedAnswers>({});
+  const [completed, setCompleted] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -61,9 +62,22 @@ const TicketTests = ({
   const indexOfFirstTicket = indexOfLastTicket - ticketsPerPage;
   const currentTicket = ticketData.slice(indexOfFirstTicket, indexOfLastTicket);
 
+  const checkForVideo =
+    currentPage === 1 && location.pathname.startsWith("/courses");
+
   return (
     <section className="w-full max-w-[690px]">
-      {currentTicket.length > 0 &&
+      {checkForVideo && (
+        <img
+          src="https://github.com/lomsadze123/audiophile-ecommerce-website/blob/master/src/assets/home/mobile/image-earphones-yx1.jpg?raw=true"
+          alt="test"
+          width={300}
+          height={300}
+        />
+      )}
+
+      {completed || location.pathname.startsWith("/tickets") ? (
+        currentTicket.length > 0 &&
         currentTicket.map((data) => (
           <div
             className="flex flex-col bg-[#230751] items-center mt-16 rounded-lg"
@@ -102,15 +116,25 @@ const TicketTests = ({
               ))}
             </div>
           </div>
-        ))}
-      <div className="mt-20">
-        <Pagination
-          totalTickets={ticketData.length}
-          ticketsPerPage={ticketsPerPage}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-        />
-      </div>
+        ))
+      ) : (
+        <button
+          className="bg-black text-white mt-2 p-2"
+          onClick={() => setCompleted(true)}
+        >
+          COMPLETED
+        </button>
+      )}
+      {(completed || location.pathname.startsWith("/tickets")) && (
+        <div className="mt-20">
+          <Pagination
+            totalTickets={ticketData.length}
+            ticketsPerPage={ticketsPerPage}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
+        </div>
+      )}
     </section>
   );
 };
