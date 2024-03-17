@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Pagination from "../pagination/Pagination";
 import { ClickedAnswers, TicketsTypes } from "../../types/Types";
 import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const TicketTests = ({
   ticketData,
@@ -79,7 +80,10 @@ const TicketTests = ({
       {completed || location.pathname.startsWith("/tickets") ? (
         currentTicket.length > 0 &&
         currentTicket.map((data) => (
-          <div
+          <motion.div
+            initial={{ opacity: 0, x: 200 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.5 }}
             className="flex flex-col bg-[#230751] items-center mt-16 rounded-lg"
             key={data.id}
           >
@@ -115,7 +119,7 @@ const TicketTests = ({
                 </button>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))
       ) : (
         <button

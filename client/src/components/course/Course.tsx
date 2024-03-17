@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import { TicketsTypes } from "../../types/Types";
 import category from "../../assets/category.png";
 import useWidth from "../../hooks/useWidth";
+import { motion } from "framer-motion";
 
 const Course = ({
   setTicketData,
@@ -41,18 +42,26 @@ const Course = ({
   return (
     <section className="flex align-center ">
       <div className="flex flex-col p-3">
-        <div className="flex items-center gap-2">
+        <motion.div
+          initial={{ opacity: 0, x: -200 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex items-center gap-2"
+        >
           <h1 className="font-bold text-3xl mb-4">კატეგორიები</h1>
           <button onClick={() => setShow(!show)}>
             {width < 1024 && (
               <img src={category} alt="category icon" width={22} height={22} />
             )}
           </button>
-        </div>
+        </motion.div>
         {(show || width >= 1024) && (
           <ul className="pl-0 w-full max-w-[690px]">
             {categoryData.map((item) => (
-              <li
+              <motion.li
+                initial={{ opacity: 0, x: -200 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 * item.id }}
                 onClick={() => handleChooseCategory(item.category)}
                 key={item.id}
               >
@@ -70,7 +79,7 @@ const Course = ({
                     {item.id === 0 ? "" : item.id + "."} {item.category}{" "}
                   </Link>
                 )}
-              </li>
+              </motion.li>
             ))}
           </ul>
         )}
