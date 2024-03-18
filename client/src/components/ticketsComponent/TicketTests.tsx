@@ -1,20 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "../pagination/Pagination";
 import { ClickedAnswers, TicketsTypes } from "../../types/Types";
-// import { UserContext } from "../../context/UserContext";
-// import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
-const TicketTests = ({ ticketData }: { ticketData: TicketsTypes[] }) => {
+const TicketTests = ({
+  ticketData,
+  setCorrectAnswer,
+}: {
+  ticketData: TicketsTypes[];
+  setCorrectAnswer?: React.Dispatch<React.SetStateAction<number>>;
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [clickedAnswers, setClickedAnswers] = useState<ClickedAnswers>({});
-  // const { currentUser, userInfo } = useContext(UserContext);
-  // const navigation = useNavigate();
+  const [completed, setCompleted] = useState(false);
+  const location = useLocation();
 
-  // useEffect(() => {
-  //   if (!userInfo || (currentUser && currentUser.isPaid === false)) {
-  //     navigation("/licenseTests");
-  //   }
-  // }, [currentUser, navigation]);
+  useEffect(() => {
+    setCurrentPage(1);
+    setClickedAnswers({});
+    setCorrectAnswer && setCorrectAnswer(0);
+  }, [location.pathname]);
 
   const handleButtonClick = (dataId: number, selectedAnswer: number) => {
     if (clickedAnswers[dataId] !== undefined) {
@@ -25,6 +31,18 @@ const TicketTests = ({ ticketData }: { ticketData: TicketsTypes[] }) => {
       ...clickedAnswers,
       [dataId]: selectedAnswer,
     });
+
+    if (location.pathname.startsWith("/courses")) {
+      const correctAnswer = ticketData.find(
+        (item) => item.id === dataId
+      )?.correctAnswer;
+
+      if (correctAnswer !== undefined && selectedAnswer === correctAnswer) {
+        if (setCorrectAnswer) {
+          setCorrectAnswer((prevCorrectNumber) => prevCorrectNumber + 1);
+        }
+      }
+    }
   };
 
   const getAnswerClass = (dataId: number, answerIndex: number) => {
@@ -40,16 +58,32 @@ const TicketTests = ({ ticketData }: { ticketData: TicketsTypes[] }) => {
     return "bg-gray-400";
   };
 
-  const ticketsPerPage = 5;
+  const ticketsPerPage = 15;
   const indexOfLastTicket = currentPage * ticketsPerPage;
   const indexOfFirstTicket = indexOfLastTicket - ticketsPerPage;
   const currentTicket = ticketData.slice(indexOfFirstTicket, indexOfLastTicket);
 
+  const checkForVideo =
+    currentPage === 1 && location.pathname.startsWith("/courses");
+
   return (
-    <section className="mx-auto w-full max-w-[690px]">
-      {currentTicket.length > 0 &&
+    <section className="w-full max-w-[690px]">
+      {checkForVideo && (
+        <img
+          src="https://github.com/lomsadze123/audiophile-ecommerce-website/blob/master/src/assets/home/mobile/image-earphones-yx1.jpg?raw=true"
+          alt="test"
+          width={300}
+          height={300}
+        />
+      )}
+
+      {completed || location.pathname.startsWith("/tickets") ? (
+        currentTicket.length > 0 &&
         currentTicket.map((data) => (
-          <div
+          <motion.div
+            initial={{ opacity: 0, x: 200 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
             className="flex flex-col bg-[#230751] items-center mt-16 rounded-lg"
             key={data.id}
           >
@@ -73,7 +107,7 @@ const TicketTests = ({ ticketData }: { ticketData: TicketsTypes[] }) => {
                 (_, index) => index + 1
               ).map((item) => (
                 <button
-                  className={`p-4 text-2xl font-bold rounded-md ${
+                  className={`p-5 text-2xl font-bold rounded-md ${
                     clickedAnswers[data.id] !== undefined
                       ? ""
                       : "lg:hover:bg-blue-400"
@@ -85,16 +119,26 @@ const TicketTests = ({ ticketData }: { ticketData: TicketsTypes[] }) => {
                 </button>
               ))}
             </div>
-          </div>
-        ))}
-      <div className="mt-20">
-        <Pagination
-          totalTickets={ticketData.length}
-          ticketsPerPage={ticketsPerPage}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-        />
-      </div>
+          </motion.div>
+        ))
+      ) : (
+        <button
+          className="bg-black text-white mt-2 p-2"
+          onClick={() => setCompleted(true)}
+        >
+          COMPLETED
+        </button>
+      )}
+      {(completed || location.pathname.startsWith("/tickets")) && (
+        <div className="mt-20">
+          <Pagination
+            totalTickets={ticketData.length}
+            ticketsPerPage={ticketsPerPage}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
+        </div>
+      )}
     </section>
   );
 };

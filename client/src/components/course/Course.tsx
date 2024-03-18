@@ -8,10 +8,12 @@ import category from "../../assets/category.png";
 import useWidth from "../../hooks/useWidth";
 import { motion } from "framer-motion";
 
-const TicketRoutes = ({
+const Course = ({
   setTicketData,
+  disabled,
 }: {
   setTicketData: React.Dispatch<React.SetStateAction<TicketsTypes[]>>;
+  disabled: number[];
 }) => {
   const [show, setShow] = useState(false);
   const [categoryName, setCategoryName] = useState("ყველა");
@@ -19,6 +21,7 @@ const TicketRoutes = ({
   const location = useLocation();
 
   const categoryId = parseInt(location.pathname.split("/")[2]);
+
   useEffect(() => {
     const getCategories = async (categoryId: number) => {
       try {
@@ -62,14 +65,20 @@ const TicketRoutes = ({
                 onClick={() => handleChooseCategory(item.category)}
                 key={item.id}
               >
-                <Link
-                  className={`no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
-                    item.id === categoryId ? "bg-[#230751]" : "bg-[#663aac]"
-                  }`}
-                  to={`/tickets/${item.id}`}
-                >
-                  {item.id === 0 ? "" : item.id + "."} {item.category}{" "}
-                </Link>
+                {!disabled.includes(item.id) ? (
+                  <span className="mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed">
+                    {item.id === 0 ? "" : item.id + "."} {item.category}{" "}
+                  </span>
+                ) : (
+                  <Link
+                    className={`no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
+                      item.id === categoryId ? "bg-[#230751]" : "bg-[#663aac]"
+                    }`}
+                    to={`/courses/${item.id}`}
+                  >
+                    {item.id === 0 ? "" : item.id + "."} {item.category}{" "}
+                  </Link>
+                )}
               </motion.li>
             ))}
           </ul>
@@ -82,4 +91,4 @@ const TicketRoutes = ({
   );
 };
 
-export default TicketRoutes;
+export default Course;

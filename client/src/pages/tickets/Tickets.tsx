@@ -7,7 +7,7 @@ const Tickets = () => {
   const [ticketData, setTicketData] = useState<TicketsTypes[]>([]);
 
   return (
-    <main className="flex flex-col lg:flex-row">
+    <main className="flex flex-col lg:flex-row items-center lg:items-start justify-evenly">
       <TicketRoutes setTicketData={setTicketData} />
       <TicketTests ticketData={ticketData} />
     </main>

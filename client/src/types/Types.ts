@@ -34,3 +34,8 @@ export interface TicketsTypes {
 export interface ClickedAnswers {
   [key: number]: number;
 }
+
+export interface DashboardTypes {
+  currentUser: User | null;
+  setShow: React.Dispatch<React.SetStateAction<boolean>>;
+}
