@@ -1,16 +1,14 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-// Pass session module to connect-mongo
-const largeTicketList = require('./data/TicketData.js');
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
 
-const cookieParser = require('cookie-parser');
-const session = require('cookie-session');
-const MongoStore = require('connect-mongo');
-const passport = require('passport');
-const CryptoJS = require('crypto-js');
-const mongoConnection = require('./db/mongoConnection');
-const router = require('./routes/main');
+const cookieParser = require("cookie-parser");
+const session = require("cookie-session");
+const MongoStore = require("connect-mongo");
+const passport = require("passport");
+const CryptoJS = require("crypto-js");
+const mongoConnection = require("./db/mongoConnection");
+const router = require("./routes/main");
 
 const app = express();
 
@@ -21,20 +19,20 @@ const generateSecretKey = () => {
 
 const secretKey = generateSecretKey();
 
-const DEV_MODE = process.env.NODE_ENV === 'production';
+const DEV_MODE = process.env.NODE_ENV === "production";
 
 app.use(
   cors({
     origin: DEV_MODE
-      ? 'http://localhost:5173'
-      : 'https://brain-house.vercel.app',
+      ? "http://localhost:5173"
+      : "https://brain-house.vercel.app",
     credentials: true,
   })
 );
 app.use(express.json());
 app.use(cookieParser());
 
-mongoConnection(largeTicketList);
+mongoConnection();
 
 app.use(
   session({
@@ -53,7 +51,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use('/', router);
+app.use("/", router);
 
 const PORT = process.env.PORT || 3001;
 
@@ -61,6 +59,6 @@ app
   .listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
   })
-  .on('error', (err) => {
-    console.error('Error starting server:', err);
+  .on("error", (err) => {
+    console.error("Error starting server:", err);
   });
