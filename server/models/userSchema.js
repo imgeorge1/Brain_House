@@ -24,6 +24,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  completed: {
+    type: Number,
+    default: 1,
+  },
 });
 
 userSchema.plugin(uniqueValidator);
