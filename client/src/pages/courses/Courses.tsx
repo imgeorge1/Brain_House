@@ -10,11 +10,13 @@ function Courses() {
   const location = useLocation();
   const navigate = useNavigate();
   // console.log(correctAnswer);
-  const disabled = [1];
+  let disabled = 1;
 
   if (correctAnswer > ticketData.length * 0.1) {
-    disabled.push(disabled[disabled.length - 1] + 1);
+    disabled++;
   }
+
+  const disabledArray = Array.from(Array(disabled), (_, index) => index + 1);
 
   useEffect(() => {
     if (location.pathname.startsWith("/courses/")) {
@@ -24,7 +26,7 @@ function Courses() {
 
   return (
     <main className="flex flex-col lg:flex-row items-center lg:items-start justify-evenly">
-      <Course setTicketData={setTicketData} disabled={disabled} />
+      <Course setTicketData={setTicketData} disabled={disabledArray} />
       <TicketTests
         ticketData={ticketData}
         setCorrectAnswer={setCorrectAnswer}
