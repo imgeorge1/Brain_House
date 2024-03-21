@@ -24,10 +24,10 @@ const Header = () => {
       >
         <NavLink
           to="/"
-          className="flex items-center gap-2 text-white no-underline"
+          className="logo flex items-center gap-2 text-white no-underline"
         >
           <img src={BrainHouseLogo} alt="logo" width={50} height={50} />
-          <h5 className="text-2xl font-bold my-auto">Brain House</h5>
+          <h5 className="font-bold my-auto">Brain House</h5>
         </NavLink>
       </motion.div>
 
@@ -71,7 +71,7 @@ const Header = () => {
         ) : (
           <h1
             onClick={toggleMenu}
-            className="z-50 mt-[-70px] ml-[-100px] text-3xl absolute right-1"
+            className="z-50 mt-[-60px] ml-[-100px] text-3xl absolute right-1"
           >
             x
           </h1>
@@ -82,7 +82,7 @@ const Header = () => {
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="z-20"
+          className="z-20 bigparent justify-center flex"
         >
           <SignInModal />
         </motion.div>

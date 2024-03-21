@@ -16,19 +16,19 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
   const checkAdmin =
     currentUser?.email === "beka.lomsadze.1@btu.edu.ge" ||
     currentUser?.email === "chikviladze555@gmail.com" ||
-    // currentUser?.email === "ubitoz133@gmail.com";
+    currentUser?.email === "ubitoz133@gmail.com";
 
-    useEffect(() => {
-      if (location.pathname === "/dashboard" && !checkAdmin) {
-        navigate("/");
-      }
-    }, []);
+  useEffect(() => {
+    if (location.pathname === "/dashboard" && !checkAdmin) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div>
       {currentUser ? (
         <div className="px-6 gap-2 justify-end p-2 sign-in-parent">
-          {/* {checkAdmin && (
+          {checkAdmin && (
             <Link
               to="dashboard"
               className="ctrlbtn bg-green-500 p-2 rounded-2xl text-xl font-bold text-white"
@@ -36,7 +36,7 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
             >
               Dashboard
             </Link>
-          )} */}
+          )}
 
           <h4 className="ctrlbtn mt-2 text-xl">
             {currentUser.firstName + " " + (currentUser.lastName || "")}
@@ -50,7 +50,7 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
         </div>
       ) : (
         <button
-          className="ctrlbtn buttonBorder px-6 py-2 rounded-3xl hover:bg-orange-500 text-xl text-white"
+          className="sign-out ctrlbtn buttonBorder px-6 py-2 rounded-3xl hover:bg-orange-500 text-xl text-white"
           onClick={handleShow}
         >
           შესვლა
