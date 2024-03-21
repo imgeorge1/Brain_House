@@ -42,12 +42,16 @@ authRoutes.get(
   }),
   async (req, res) => {
     try {
-      const { firstName, lastName, email } = req.user;
+      const { firstName, lastName, email, provider, completed } = req.user;
       console.log('req.userr', req.user);
       // Create JWT token with user information
-      const jwtToken = jwt.sign({ firstName, lastName, email }, jwtSecret, {
-        expiresIn: '4h',
-      });
+      const jwtToken = jwt.sign(
+        { firstName, lastName, email, provider, completed },
+        jwtSecret,
+        {
+          expiresIn: '4h',
+        }
+      );
 
       // Redirect user to client URL with JWT token as parameter
       res.redirect(`${process.env.CLIENT_URL}/?jwtToken=${jwtToken}`);
@@ -68,12 +72,16 @@ authRoutes.get(
   }),
   async (req, res) => {
     try {
-      const { firstName, lastName, email } = req.user;
+      const { firstName, lastName, email, provider, completed } = req.user;
       console.log('req. facebook userr', req.user);
       // Create JWT token with user information
-      const jwtToken = jwt.sign({ firstName, lastName, email }, jwtSecret, {
-        expiresIn: '4h',
-      });
+      const jwtToken = jwt.sign(
+        { firstName, lastName, email, provider, completed },
+        jwtSecret,
+        {
+          expiresIn: '4h',
+        }
+      );
 
       // Redirect user to client URL with JWT token as parameter
       res.redirect(`${process.env.CLIENT_URL}/?jwtToken=${jwtToken}`);
@@ -96,7 +104,6 @@ authRoutes.get('/user', (req, res) => {
   }
 
   const token = authHeader.substring(7); // Remove 'Bearer ' from the beginning
-  console.log('token', token);
   try {
     // Verify and decode the JWT token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
