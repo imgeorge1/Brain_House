@@ -16,33 +16,33 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
   const checkAdmin =
     currentUser?.email === "beka.lomsadze.1@btu.edu.ge" ||
     currentUser?.email === "chikviladze555@gmail.com" ||
-    currentUser?.email === "ubitoz133@gmail.com";
+    // currentUser?.email === "ubitoz133@gmail.com";
 
-  useEffect(() => {
-    if (location.pathname === "/dashboard" && !checkAdmin) {
-      navigate("/");
-    }
-  }, []);
+    useEffect(() => {
+      if (location.pathname === "/dashboard" && !checkAdmin) {
+        navigate("/");
+      }
+    }, []);
 
   return (
     <div>
       {currentUser ? (
-        <div className=" gap-4 flex justify-end p-2">
-          {checkAdmin && (
+        <div className="px-6 gap-2 justify-end p-2 sign-in-parent">
+          {/* {checkAdmin && (
             <Link
               to="dashboard"
-              className="bg-green-500 p-2 rounded-2xl text-xl font-bold text-white"
+              className="ctrlbtn bg-green-500 p-2 rounded-2xl text-xl font-bold text-white"
               style={{ textDecoration: "none" }}
             >
               Dashboard
             </Link>
-          )}
+          )} */}
 
-          <h4 className="mt-2 text-xl">
-            {currentUser.firstName + " " + currentUser.lastName}
+          <h4 className="ctrlbtn mt-2 text-xl">
+            {currentUser.firstName + " " + (currentUser.lastName || "")}
           </h4>
           <button
-            className="buttonBorder px-6 py-2 rounded-3xl hover:bg-orange-500 text-xl text-white"
+            className="ctrlbtn buttonBorder px-6 py-2 rounded-3xl hover:bg-orange-500 text-xl text-white"
             onClick={logout}
           >
             გამოსვლა
@@ -50,7 +50,7 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
         </div>
       ) : (
         <button
-          className="buttonBorder px-6 py-2 rounded-3xl hover:bg-orange-500 text-xl text-white"
+          className="ctrlbtn buttonBorder px-6 py-2 rounded-3xl hover:bg-orange-500 text-xl text-white"
           onClick={handleShow}
         >
           შესვლა

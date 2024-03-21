@@ -3,7 +3,10 @@
 @tailwind utilities;
 
 :root{
-  --blue: #272559;
+  --l-purple: #2D2862; 
+  --purple: #272559;
+  --orange: #fe6d46;
+  --yellow: #FDE047;
 }
 
 * {
@@ -30,15 +33,15 @@ code {
 }
 
 .background {
-  background-color: #272559;
+  background-color: var(--l-purple);
 }
 
 .active-link {
-  border-bottom: 2px solid #fe6d46;
+  border-bottom: 2px solid var(--orange);
 }
 
 .buttonBorder {
-  border: 2px solid #fe6d46;
+  border: 2px solid var(--orange);
 }
 
 /* Swiper */
@@ -89,10 +92,123 @@ code {
 .nav-link.active:after {
   width: 100%;
   left: 0;
-  background: #fe6d46;
+  background: var(--orange);
 }
 
 .slider-button:hover{
   transform: translateY(-5px);
   transition-duration: 0.3s;
+}
+
+.sign-in-parent{
+  display: grid;
+  grid: auto/auto auto auto;
+  grid-gap: 10px;
+}
+
+@media (min-width: 670px) and (max-width: 768px){
+  .sign-in-parent{
+    position: absolute;
+    grid: auto/auto auto auto;
+    grid-gap: 10px;
+    right: 0;
+    top: 0;
+    text-align: center;
+  }
+}
+@media (min-width: 590px) and (max-width: 670px){
+  .sign-in-parent{
+    position: absolute;
+    grid: auto/auto auto auto;
+    grid-gap: 10px;
+    right: 0;
+    top: 0;
+    text-align: center;
+  }
+  .nav-btn{
+    margin-top: 0px;
+  }
+  .ctrlbtn{
+    font-size: 17px;
+  }
+}
+@media (min-width: 530px) and (max-width: 590px){
+  .sign-in-parent{
+    position: absolute;
+    grid: auto/auto auto auto;
+    grid-gap: 10px;
+    right: 0;
+    top: 0;
+    text-align: center;
+  }
+  .nav-btn{
+    margin-top: 0px;
+  }
+  .ctrlbtn{
+    font-size: 15px;
+  }
+}
+@media (min-width: 480px) and (max-width: 530px){
+  .sign-in-parent{
+    position: absolute;
+    grid: auto/auto auto auto;
+    grid-gap: 10px;
+    right: 0;
+    top: 0;
+    text-align: center;
+  }
+  .nav-btn{
+    margin-top: 0px;
+  }
+  .ctrlbtn{
+    font-size: 15px;
+  }
+}
+@media (min-width: 400px) and (max-width: 480px){
+  .sign-in-parent{
+    position: absolute;
+    grid: auto/auto auto auto;
+    grid-gap: 10px;
+    right: 0;
+    top: 0;
+    text-align: center;
+  }
+  .nav-btn{
+    margin-top: 0px;
+  }
+  .ctrlbtn{
+    font-size: 14px;
+  }
+}
+@media (min-width: 350px) and (max-width: 400px){
+  .sign-in-parent{
+    position: absolute;
+    grid: auto/auto;
+    grid-gap: 10px;
+    right: 0;
+    top: 0;
+    text-align: center;
+  }
+  .nav-btn{
+    margin-top: 20px;
+  }
+  .ctrlbtn{
+    font-size: 14px;
+  }
+}
+@media (min-width: 320px) and (max-width: 350px){
+  .sign-in-parent{
+    position: absolute;
+    grid: auto/auto;
+    grid-gap: 10px;
+    right: 0;
+    top: 0;
+    text-align: center;
+  }
+  .nav-btn{
+    margin-top: 20px;
+  }
+  .ctrlbtn{
+    font-size: 12px;
+  }
 }
