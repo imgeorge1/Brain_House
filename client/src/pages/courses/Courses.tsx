@@ -16,8 +16,6 @@ function Courses() {
     currentUser ? currentUser.completed : 1
   );
 
-  console.log("curnetuser", currentUser?.completed);
-
   const getUser = async () => {
     const res = await API.get("/user", {
       headers: {
