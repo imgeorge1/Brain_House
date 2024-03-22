@@ -7,10 +7,10 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://brain-house-vkk7.onrender.com/auth/google/callback",
+      callbackURL: "http://localhost:3001/auth/google/callback", // https://brain-house-vkk7.onrender.com/auth/google/callback
       scope: ["email", "profile"],
     },
-    async function (accessToken, refreshToken, profile, cb) {
+    async (accessToken, refreshToken, profile, cb) => {
       try {
         if (!profile.emails || profile.emails.length === 0) {
           return cb(new Error("Email not provided in the profile"), null);
@@ -27,6 +27,7 @@ passport.use(
             lastName: profile.name.familyName,
             email: email,
             provider: "google", // Set the provider property
+            completed: 1,
           });
           console.log("if Google user does not exist", user);
         }
