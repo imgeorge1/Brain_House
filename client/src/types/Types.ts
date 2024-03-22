@@ -11,6 +11,7 @@ export interface User {
   firstName: string;
   lastName: string;
   email: string;
+  completed: number;
   // Add other fields as needed
 }
 

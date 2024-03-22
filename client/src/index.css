@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+  --blue: #272559;
+}
+
 * {
   padding: 0;
   margin: 0%;
@@ -86,4 +90,9 @@ code {
   width: 100%;
   left: 0;
   background: #fe6d46;
+}
+
+.slider-button:hover{
+  transform: translateY(-5px);
+  transition-duration: 0.3s;
 }

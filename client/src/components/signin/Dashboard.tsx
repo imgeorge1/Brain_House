@@ -15,7 +15,8 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
 
   const checkAdmin =
     currentUser?.email === "beka.lomsadze.1@btu.edu.ge" ||
-    currentUser?.email === "chikviladze555@gmail.com";
+    currentUser?.email === "chikviladze555@gmail.com" ||
+    currentUser?.email === "ubitoz133@gmail.com";
 
   useEffect(() => {
     if (location.pathname === "/dashboard" && !checkAdmin) {

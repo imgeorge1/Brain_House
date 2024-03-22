@@ -18,11 +18,11 @@ function Slider() {
             filter: "blur(5px) brightness(62.5%)",
           }}
         ></div>
-        <div className="absolute inset-0 flex items-center justify-center right-1/2">
-          <div className=" flex flex-col gap-4 items-start ">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className=" flex flex-col gap-4 items-center ">
             <h2 className="text-8xl font-bold text-[#272559]">კურსები</h2>
             <p className="text-2xl text-yellow-300 mt-2">ონლაინ კურსები</p>
-            <button className="flex items-center justify-between w-60 px-7 py-3 rounded-2xl bg-blue-700 text-2xl text-white">
+            <button className="flex items-center justify-between w-60 px-7 py-3 rounded-2xl bg-blue-700 text-2xl text-white slider-button">
               გაიგეთ მეტი
               <FaArrowRight />
             </button>
@@ -61,7 +61,7 @@ function Slider() {
             <p className="text-2xl text-yellow-300 mt-2">
               შეეგიძლიათ გაიაროთ რეგისტრაცია ახლა უკვე ჩვენი საიტიდან!
             </p>
-            <button className="flex items-center justify-between w-60 px-7 py-3 rounded-2xl bg-blue-700 text-2xl text-white ">
+            <button className="flex items-center justify-between w-60 px-7 py-3 rounded-2xl bg-blue-700 text-2xl text-white slider-button">
               რეგისტრაცია
               <FaPenToSquare />
             </button>
