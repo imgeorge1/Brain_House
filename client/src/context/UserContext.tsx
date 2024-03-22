@@ -42,6 +42,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         if (response.data) {
           setCurrentUser(response.data);
         }
+
       }
     } catch (error) {
       console.log('error', error);
@@ -53,6 +54,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       getUser();
     }
   }, [currentUser?.completed]);
+
 
   return (
     <UserContext.Provider value={{ currentUser, getUser }}>
