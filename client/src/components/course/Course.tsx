@@ -10,10 +10,10 @@ import { motion } from "framer-motion";
 
 const Course = ({
   setTicketData,
-  disabled,
+  completed,
 }: {
   setTicketData: React.Dispatch<React.SetStateAction<TicketsTypes[]>>;
-  disabled: number[];
+  completed: number[];
 }) => {
   const [show, setShow] = useState(false);
   const [categoryName, setCategoryName] = useState("ყველა");
@@ -65,7 +65,7 @@ const Course = ({
                 onClick={() => handleChooseCategory(item.category)}
                 key={item.id}
               >
-                {!disabled.includes(item.id) ? (
+                {!completed.includes(item.id) ? (
                   <span className="mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed">
                     {item.id === 0 ? "" : item.id + "."} {item.category}{" "}
                   </span>
