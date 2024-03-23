@@ -63,7 +63,7 @@ const oauth2Client = new google.auth.OAuth2(
 
 app.get("/auth/tokens", (req, res) => {
   const tokens =
-    "ya29.a0Ad52N394aGTvsS94eoTJtnHwx61rc07Zt3Sluwm8khja8VCS4ak1hHxtXa05Ouj5FU00BuWyKXxofUnp788vB42X8FYINO3YjLG7s3fm4haZs7QijyhgmaEz8V2osPHydAZjWrdEf7_yKQaeaiLPiDWOukAqPIIJOqtcaCgYKAZ0SARESFQHGX2MimhrikuqKwu-CFWfg01LKwQ0171";
+    "ya29.a0Ad52N38B-Tnyq4aTT-FklL9CC1jfiShOlMSEy2UwXWXBbDQo1rMOQnm8F-fwoYGtqdru1dMpbdupoJvRKgpOCq4vxLjJ2ZU1lJE26gD3dgdmzvL2AZFMRQPAdWsLQ9wTPvOpi93NAMeEq1nkZjpgI6v3pIC2HV-pgLP9aCgYKAScSARESFQHGX2MiVbar6uamzErtprFkvkaZSA0171";
   res.json({ tokens });
 });
 
@@ -72,7 +72,6 @@ app.get("/auth/url", (req, res) => {
     access_type: "offline",
     scope: ["https://www.googleapis.com/auth/drive.readonly"],
   });
-  console.log("auth", authUrl);
   res.json({ authUrl });
 });
 
