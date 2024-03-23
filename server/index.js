@@ -55,13 +55,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use("/", router);
 
-const CLIENT_ID =
-  "850651389848-s6ih35k93a4qfvm8bu863compchtcvdq.apps.googleusercontent.com";
-const CLIENT_SECRET = "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";
+const CLIENT_ID = "";
+const CLIENT_SECRET = "";
 const REDIRECT_URI = "https://developers.google.com/oauthplayground";
 
-const REFRESH_TOKEN =
-  "1//04PU7M0Kv7dymCgYIARAAGAQSNwF-L9IruSPMEqK7kqSX2OnKYxelJyJw2c-TILG45lmJtBWAG2TfvpCHUq4zNVl3OpR48V_xikY";
+const REFRESH_TOKEN = "";
 
 // const access_token ="ya29.a0Ad52N39yry_HwZXTWsWC6ckyRjBJIHmPjs7REpAapCmCEimm3O5kSGet2kk8Xg1sJtLDLRVddxPcHaeBdGvUlMjIUCoUFulORQxdXFWQwTMPNKpXVZwWCW1H4Qr8M-YboFBCHHfbAYRoCsiferj3UxK-Ypuay4JDid4aaCgYKAcUSARESFQHGX2MiIykWXW4grvt9fBY6Uq5yQA0171"
 
