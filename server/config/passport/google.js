@@ -5,10 +5,15 @@ const User = require("../../models/userSchema");
 passport.use(
   new GoogleStrategy(
     {
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      clientID:
+        "945913383511-forclflr8ehf5868ij9hvi1n226ripkl.apps.googleusercontent.com",
+      clientSecret: "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",
       callbackURL: "http://localhost:3001/auth/google/callback", // https://brain-house-vkk7.onrender.com/auth/google/callback
-      scope: ["email", "profile"],
+      scope: [
+        "email",
+        "profile",
+        "https://www.googleapis.com/auth/drive.readonly",
+      ],
     },
     async (accessToken, refreshToken, profile, cb) => {
       try {

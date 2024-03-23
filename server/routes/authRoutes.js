@@ -31,7 +31,13 @@ const jwtSecret = process.env.JWT_SECRET;
 
 authRoutes.get(
   "/auth/google",
-  googleStrategy.authenticate("google", { scope: ["profile", "email"] })
+  googleStrategy.authenticate("google", {
+    scope: [
+      "profile",
+      "email",
+      "https://www.googleapis.com/auth/drive.readonly",
+    ],
+  })
 );
 authRoutes.get(
   "/auth/facebook",
