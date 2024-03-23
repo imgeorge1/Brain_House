@@ -55,18 +55,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use("/", router);
 
-const CLIENT_ID = "";
-const CLIENT_SECRET = "";
+const clientId = process.env.DRIVE_CLIENT_ID;
+const clientSecret = process.env.DRIVE_CLIENT_SECRET;
 const REDIRECT_URI = "https://developers.google.com/oauthplayground";
 
-const REFRESH_TOKEN = "";
+const refreshToken = process.env.DRIVE_REFRESH_TOKEN;
 
 // const access_token ="ya29.a0Ad52N39yry_HwZXTWsWC6ckyRjBJIHmPjs7REpAapCmCEimm3O5kSGet2kk8Xg1sJtLDLRVddxPcHaeBdGvUlMjIUCoUFulORQxdXFWQwTMPNKpXVZwWCW1H4Qr8M-YboFBCHHfbAYRoCsiferj3UxK-Ypuay4JDid4aaCgYKAcUSARESFQHGX2MiIykWXW4grvt9fBY6Uq5yQA0171"
 
 const oauth2Client = new google.auth.OAuth2(
-  CLIENT_ID,
-  CLIENT_SECRET,
-  REDIRECT_URI
+  clientId,
+  clientSecret,
+  refreshToken
 );
 
 oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
