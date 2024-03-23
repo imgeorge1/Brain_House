@@ -14,11 +14,11 @@ function SignInModal() {
   };
 
   const googleAuth = () => {
-    window.open("http://localhost:3001/auth/google", "_self"); // https://brain-house-vkk7.onrender.com
+    window.open("https://brain-house-vkk7.onrender.com/auth/google", "_self");
   };
 
   const facebookAuth = () => {
-    window.open("http://localhost:3001/auth/facebook", "_self");
+    window.open("https://brain-house-vkk7.onrender.com/auth/facebook", "_self");
   };
 
   return (

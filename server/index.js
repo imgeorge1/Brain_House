@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-
+const { google } = require("googleapis");
 const cookieParser = require("cookie-parser");
 const session = require("cookie-session");
 const MongoStore = require("connect-mongo");
@@ -9,6 +9,8 @@ const passport = require("passport");
 const CryptoJS = require("crypto-js");
 const mongoConnection = require("./db/mongoConnection");
 const router = require("./routes/main");
+const fs = require("fs");
+const path = require("path");
 
 const app = express();
 
@@ -53,63 +55,121 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use("/", router);
 
-const { google } = require("googleapis");
+const CLIENT_ID =
+  "850651389848-s6ih35k93a4qfvm8bu863compchtcvdq.apps.googleusercontent.com";
+const CLIENT_SECRET = "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";
+const REDIRECT_URI = "https://developers.google.com/oauthplayground";
+
+const REFRESH_TOKEN =
+  "1//04PU7M0Kv7dymCgYIARAAGAQSNwF-L9IruSPMEqK7kqSX2OnKYxelJyJw2c-TILG45lmJtBWAG2TfvpCHUq4zNVl3OpR48V_xikY";
+
+// const access_token ="ya29.a0Ad52N39yry_HwZXTWsWC6ckyRjBJIHmPjs7REpAapCmCEimm3O5kSGet2kk8Xg1sJtLDLRVddxPcHaeBdGvUlMjIUCoUFulORQxdXFWQwTMPNKpXVZwWCW1H4Qr8M-YboFBCHHfbAYRoCsiferj3UxK-Ypuay4JDid4aaCgYKAcUSARESFQHGX2MiIykWXW4grvt9fBY6Uq5yQA0171"
 
 const oauth2Client = new google.auth.OAuth2(
-  "945913383511-forclflr8ehf5868ij9hvi1n226ripkl.apps.googleusercontent.com",
-  "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",
-  "http://localhost:3001/auth/google/callback"
+  CLIENT_ID,
+  CLIENT_SECRET,
+  REDIRECT_URI
 );
 
-app.get("/auth/tokens", (req, res) => {
-  const tokens =
-    "ya29.a0Ad52N38B-Tnyq4aTT-FklL9CC1jfiShOlMSEy2UwXWXBbDQo1rMOQnm8F-fwoYGtqdru1dMpbdupoJvRKgpOCq4vxLjJ2ZU1lJE26gD3dgdmzvL2AZFMRQPAdWsLQ9wTPvOpi93NAMeEq1nkZjpgI6v3pIC2HV-pgLP9aCgYKAScSARESFQHGX2MiVbar6uamzErtprFkvkaZSA0171";
-  res.json({ tokens });
+oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+
+const drive = google.drive({
+  version: "v3",
+  auth: oauth2Client,
 });
 
-app.get("/auth/url", (req, res) => {
-  const authUrl = oauth2Client.generateAuthUrl({
-    access_type: "offline",
-    scope: ["https://www.googleapis.com/auth/drive.readonly"],
-  });
-  res.json({ authUrl });
-});
+const filePath = path.join(__dirname, "video1.mp4");
 
-app.get("/auth/callback", async (req, res) => {
-  const { code } = req.query;
+// UPload Video
+
+async function uploadVideo() {
   try {
-    const { tokens } = oauth2Client.getToken(code);
-    res.json({ tokens });
+    const response = await drive.files.create({
+      requestBody: {
+        name: "video1.mp4",
+        mimeType: "video/mp4",
+      },
+      media: {
+        mimeType: "video/mp4",
+        body: fs.createReadStream(filePath),
+      },
+    });
+    console.log(response.data);
   } catch (error) {
-    console.error("Error exchanging authorization code for tokens:", error);
-    res.status(500).json({ error: "Internal server error" });
+    console.log(error.message);
   }
-});
+}
 
-app.post("/api/video", async (req, res) => {
+uploadVideo();
+
+// Generate Public URL
+
+app.get("/api/public-url", async (req, res) => {
   try {
-    const { tokens, fileId } = req.body;
-
-    // Set credentials on OAuth2 client
-    oauth2Client.setCredentials(tokens);
-
-    // Create drive instance with authenticated client
-    const drive = google.drive({ version: "v3", auth: oauth2Client });
-
-    // Retrieve file metadata
-    const response = await drive.files.get({
+    const fileId = "17CeMcHqBomUTp8XAH1TsA-nTOEN1Rr0q"; // Replace with your file ID
+    const result = await drive.files.get({
       fileId: fileId,
       fields: "webViewLink",
     });
-
-    // Extract and send video URL
-    const videoUrl = response.data.webViewLink.replace("/view", "/preview");
-    res.json({ videoUrl });
+    const webViewLink = result.data.webViewLink;
+    res.json({ webViewLink });
   } catch (error) {
-    console.error("Error fetching video URL:", error);
+    console.log(error.message);
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+// https://drive.google.com/file/d/1pB7x-Qf82F8kym8w6wu1PVHOHiIrIoOn/view?usp=drive_link
+
+// app.get("/auth/tokens", (req, res) => {
+//   const tokens =
+//     "ya29.a0Ad52N38B-Tnyq4aTT-FklL9CC1jfiShOlMSEy2UwXWXBbDQo1rMOQnm8F-fwoYGtqdru1dMpbdupoJvRKgpOCq4vxLjJ2ZU1lJE26gD3dgdmzvL2AZFMRQPAdWsLQ9wTPvOpi93NAMeEq1nkZjpgI6v3pIC2HV-pgLP9aCgYKAScSARESFQHGX2MiVbar6uamzErtprFkvkaZSA0171";
+//   res.json({ tokens });
+// });
+
+// app.get("/auth/url", (req, res) => {
+//   const authUrl = oauth2Client.generateAuthUrl({
+//     access_type: "offline",
+//     scope: ["https://www.googleapis.com/auth/drive.readonly"],
+//   });
+//   res.json({ authUrl });
+// });
+
+// app.get("/auth/callback", async (req, res) => {
+//   const { code } = req.query;
+//   try {
+//     const { tokens } = oauth2Client.getToken(code);
+//     res.json({ tokens });
+//   } catch (error) {
+//     console.error("Error exchanging authorization code for tokens:", error);
+//     res.status(500).json({ error: "Internal server error" });
+//   }
+// });
+
+// app.post("/api/video", async (req, res) => {
+//   try {
+//     const { tokens, fileId } = req.body;
+
+//     // Set credentials on OAuth2 client
+//     oauth2Client.setCredentials(tokens);
+
+//     // Create drive instance with authenticated client
+//     const drive = google.drive({ version: "v3", auth: oauth2Client });
+
+//     // Retrieve file metadata
+//     const response = await drive.files.get({
+//       fileId: fileId,
+//       fields: "webViewLink",
+//     });
+
+//     // Extract and send video URL
+//     const videoUrl = response.data.webViewLink.replace("/view", "/preview");
+//     res.json({ videoUrl });
+//   } catch (error) {
+//     console.error("Error fetching video URL:", error);
+//     res.status(500).json({ error: "Internal server error" });
+//   }
+// });
 
 const PORT = process.env.PORT || 3001;
 
