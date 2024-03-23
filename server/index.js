@@ -82,25 +82,25 @@ const filePath = path.join(__dirname, "video1.mp4");
 
 // UPload Video
 
-async function uploadVideo() {
-  try {
-    const response = await drive.files.create({
-      requestBody: {
-        name: "video1.mp4",
-        mimeType: "video/mp4",
-      },
-      media: {
-        mimeType: "video/mp4",
-        body: fs.createReadStream(filePath),
-      },
-    });
-    console.log(response.data);
-  } catch (error) {
-    console.log(error.message);
-  }
-}
+// async function uploadVideo() {
+//   try {
+//     const response = await drive.files.create({
+//       requestBody: {
+//         name: "video1.mp4",
+//         mimeType: "video/mp4",
+//       },
+//       media: {
+//         mimeType: "video/mp4",
+//         body: fs.createReadStream(filePath),
+//       },
+//     });
+//     console.log(response.data);
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// }
 
-uploadVideo();
+// uploadVideo();
 
 // Generate Public URL
 
