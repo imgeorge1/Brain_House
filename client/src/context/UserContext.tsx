@@ -5,12 +5,12 @@ import { User } from "../types/Types";
 
 interface UserContextType {
   currentUser: User | null;
-  getUser: () => Promise<void>;
+  booleanPaid: boolean;
 }
 
 const UserContext = createContext<UserContextType>({
   currentUser: null,
-  getUser: async () => {},
+  booleanPaid: false,
 });
 
 interface UserProviderProps {
@@ -41,6 +41,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         console.log("response", response);
         if (response.data) {
           setCurrentUser(response.data);
+          localStorage.setItem("paid", response.data.isPaid.toString());
         }
       }
     } catch (error) {
@@ -48,14 +49,27 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     }
   };
 
+  const booleanPaid = localStorage.getItem("paid") === "true";
+
   useEffect(() => {
+    if (
+      location.pathname.startsWith("/courses/") &&
+      location.pathname !== "/courses/1"
+    ) {
+      window.location.href = "/courses/1"; // Redirect to /courses/1
+    }
+
+    if (location.pathname.startsWith("/courses/") && !booleanPaid) {
+      window.location.href = "/";
+    }
+
     if (tokenFromLocalStorage) {
       getUser();
     }
-  }, [currentUser?.completed]);
+  }, []); // Run this effect only once on initial render
 
   return (
-    <UserContext.Provider value={{ currentUser, getUser }}>
+    <UserContext.Provider value={{ currentUser, booleanPaid }}>
       {children}
     </UserContext.Provider>
   );

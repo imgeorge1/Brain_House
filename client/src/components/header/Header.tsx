@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import BrainHouseLogo from "../../assets/newbrainhouselogo.png";
 import SignInModal from "../signin/SignInModal";
 import useWidth from "../../hooks/useWidth";
 import { motion } from "framer-motion";
+import { UserContext } from "../../context/UserContext";
 
 const Header = () => {
   const location = useLocation();
   const categoryId = parseInt(location.pathname.split("/")[2]);
   const width = useWidth();
   const [hide, setHide] = useState(true);
+  const { booleanPaid } = useContext(UserContext);
 
   const toggleMenu = () => {
     setHide(!hide);
@@ -49,9 +51,14 @@ const Header = () => {
           >
             მართვის ბარათი
           </NavLink>
-          <NavLink to="/courses/1" className="nav-link text-white no-underline">
-            კურსები
-          </NavLink>
+          {booleanPaid && (
+            <NavLink
+              to="/courses/1"
+              className="nav-link text-white no-underline"
+            >
+              კურსები
+            </NavLink>
+          )}
         </motion.nav>
       )}
 

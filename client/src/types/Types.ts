@@ -12,6 +12,7 @@ export interface User {
   lastName: string;
   email: string;
   completed: number;
+  isPaid: boolean;
   // Add other fields as needed
 }
 

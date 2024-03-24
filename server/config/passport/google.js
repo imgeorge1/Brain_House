@@ -5,9 +5,8 @@ const User = require("../../models/userSchema");
 passport.use(
   new GoogleStrategy(
     {
-      clientID:
-        "945913383511-forclflr8ehf5868ij9hvi1n226ripkl.apps.googleusercontent.com",
-      clientSecret: "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",
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "http://localhost:3001/auth/google/callback", // https://brain-house-vkk7.onrender.com/auth/google/callback
       scope: [
         "email",
@@ -33,6 +32,7 @@ passport.use(
             email: email,
             provider: "google", // Set the provider property
             completed: 1,
+            isPaid: false,
           });
           console.log("if Google user does not exist", user);
         }

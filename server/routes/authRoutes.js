@@ -21,6 +21,7 @@ const googleStrategy = require("../config/passport/google");
 const facebookStrategy = require("../config/passport/facebook");
 
 const allowedNextCategory = require("../controllers/permissionController");
+const User = require("../models/userSchema");
 
 const authRoutes = express.Router();
 
@@ -50,11 +51,11 @@ authRoutes.get(
   }),
   async (req, res) => {
     try {
-      const { firstName, lastName, email, completed } = req.user;
+      const { firstName, lastName, email, completed, isPaid } = req.user;
       console.log("req.userr", req.user);
       // Create JWT token with user information
       const jwtToken = jwt.sign(
-        { firstName, lastName, email, completed },
+        { firstName, lastName, email, completed, isPaid },
         jwtSecret,
         {
           expiresIn: "4h",
@@ -80,12 +81,13 @@ authRoutes.get(
   }),
   async (req, res) => {
     try {
-      const { firstName, lastName, email, provider, completed } = req.user;
+      const { firstName, lastName, email, provider, completed, isPaid } =
+        req.user;
       console.log("req. facebook userr", req.user);
 
       // Create JWT token with user information
       const jwtToken = jwt.sign(
-        { firstName, lastName, email, provider, completed },
+        { firstName, lastName, email, provider, completed, isPaid },
         jwtSecret,
         {
           expiresIn: "4h",
@@ -122,9 +124,11 @@ const authenticateUser = (req, res, next) => {
   }
 };
 
-authRoutes.get("/user", authenticateUser, (req, res) => {
-  const { firstName, lastName, email, completed } = req.user;
-  res.json({ firstName, lastName, email, completed });
+authRoutes.get("/user", authenticateUser, async (req, res) => {
+  const user = await User.findOne({ email: req.user.email });
+  const { firstName, lastName, email, completed, isPaid } = user;
+  console.log("USER:", user);
+  res.json({ firstName, lastName, email, completed, isPaid });
 });
 
 authRoutes.put("/user", authenticateUser, allowedNextCategory);
