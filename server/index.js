@@ -116,6 +116,7 @@ app.get("/api/public-url", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+console.log("Hello");
 
 // https://drive.google.com/file/d/1pB7x-Qf82F8kym8w6wu1PVHOHiIrIoOn/view?usp=drive_link
 
