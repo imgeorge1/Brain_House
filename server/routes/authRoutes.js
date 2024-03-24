@@ -20,6 +20,9 @@ const {
 const googleStrategy = require("../config/passport/google");
 const facebookStrategy = require("../config/passport/facebook");
 
+const allowedNextCategory = require("../controllers/permissionController");
+const User = require("../models/userSchema");
+
 const authRoutes = express.Router();
 
 const jwtSecret = process.env.JWT_SECRET;
@@ -28,7 +31,13 @@ const jwtSecret = process.env.JWT_SECRET;
 
 authRoutes.get(
   "/auth/google",
-  googleStrategy.authenticate("google", { scope: ["profile", "email"] })
+  googleStrategy.authenticate("google", {
+    scope: [
+      "profile",
+      "email",
+      "https://www.googleapis.com/auth/drive.readonly",
+    ],
+  })
 );
 authRoutes.get(
   "/auth/facebook",
@@ -42,12 +51,16 @@ authRoutes.get(
   }),
   async (req, res) => {
     try {
-      const { firstName, lastName, email } = req.user;
+      const { firstName, lastName, email, completed, isPaid } = req.user;
       console.log("req.userr", req.user);
       // Create JWT token with user information
-      const jwtToken = jwt.sign({ firstName, lastName, email }, jwtSecret, {
-        expiresIn: "4h",
-      });
+      const jwtToken = jwt.sign(
+        { firstName, lastName, email, completed, isPaid },
+        jwtSecret,
+        {
+          expiresIn: "4h",
+        }
+      );
 
       // Redirect user to client URL with JWT token as parameter
       res.redirect(`${process.env.CLIENT_URL}/?jwtToken=${jwtToken}`);
@@ -68,12 +81,18 @@ authRoutes.get(
   }),
   async (req, res) => {
     try {
-      const { firstName, lastName, email } = req.user;
+      const { firstName, lastName, email, provider, completed, isPaid } =
+        req.user;
       console.log("req. facebook userr", req.user);
+
       // Create JWT token with user information
-      const jwtToken = jwt.sign({ firstName, lastName, email }, jwtSecret, {
-        expiresIn: "4h",
-      });
+      const jwtToken = jwt.sign(
+        { firstName, lastName, email, provider, completed, isPaid },
+        jwtSecret,
+        {
+          expiresIn: "4h",
+        }
+      );
 
       // Redirect user to client URL with JWT token as parameter
       res.redirect(`${process.env.CLIENT_URL}/?jwtToken=${jwtToken}`);
@@ -84,47 +103,49 @@ authRoutes.get(
   }
 );
 
-authRoutes.get("/user", (req, res) => {
-  // Extract the token from the Authorization header
-  const authHeader = req.headers.authorization;
-
-  console.log("authHeader", authHeader);
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res
-      .status(401)
-      .json({ success: false, message: "User not authenticated" });
-  }
-
-  const token = authHeader.substring(7); // Remove 'Bearer ' from the beginning
-  console.log("token", token);
+const authenticateUser = (req, res, next) => {
   try {
-    // Verify and decode the JWT token
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res
+        .status(401)
+        .json({ success: false, message: "User not authenticated" });
+    }
+
+    const token = authHeader.substring(7); // Remove 'Bearer ' from the beginning
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Extract user information from the decoded token
-    const { firstName, lastName, email } = decoded;
-    console.log("decoded", decoded);
-    console.log("userrr", req.user);
-    // Send user information as a response
-    res.json({ firstName, lastName, email });
+    // Attach user information to request object for further use
+    req.user = decoded;
+    next();
   } catch (error) {
-    console.error("Error decoding token:", error);
     return res.status(401).json({ success: false, message: "Invalid token" });
   }
+};
+
+authRoutes.get("/user", authenticateUser, async (req, res) => {
+  const user = await User.findOne({ email: req.user.email });
+  const { firstName, lastName, email, completed, isPaid } = user;
+  console.log("USER:", user);
+  res.json({ firstName, lastName, email, completed, isPaid });
 });
+
+authRoutes.put("/user", authenticateUser, allowedNextCategory);
+
 // Endpoint to check if user is logged in
 
-authRoutes.get("/login/success", (req, res) => {
-  if (req.user) {
-    console.log("successUser", req.user);
-    res.status(200).json({
-      success: true,
-      message: "successfull",
-      user: req.user,
-      //   cookies: req.cookies
-    });
-  }
-});
+// authRoutes.get("/login/success", (req, res) => {
+//   if (req.user) {
+//     console.log("successUser", req.user);
+//     res.status(200).json({
+//       success: true,
+//       message: "successfull",
+//       user: req.user,
+//       //   cookies: req.cookies
+//     });
+//   }
+// });
 
 authRoutes.get("/login/failed", (req, res) => {
   res.status(401).json({

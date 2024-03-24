@@ -7,8 +7,7 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL:
-        "https://brain-house-vkk7.onrender.com/auth/facebook/callback",
+      callbackURL: "http://localhost:3001/auth/facebook/callback", // https://brain-house-vkk7.onrender.com/auth/facebook/callback
       profileFields: ["id", "emails", "name"],
     },
     async function (accessToken, refreshToken, profile, cb) {

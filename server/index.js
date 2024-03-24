@@ -53,6 +53,64 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use("/", router);
 
+const { google } = require("googleapis");
+
+const oauth2Client = new google.auth.OAuth2(
+  "945913383511-forclflr8ehf5868ij9hvi1n226ripkl.apps.googleusercontent.com",
+  "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",
+  "http://localhost:3001/auth/google/callback"
+);
+
+app.get("/auth/tokens", (req, res) => {
+  const tokens =
+    "ya29.a0Ad52N38B-Tnyq4aTT-FklL9CC1jfiShOlMSEy2UwXWXBbDQo1rMOQnm8F-fwoYGtqdru1dMpbdupoJvRKgpOCq4vxLjJ2ZU1lJE26gD3dgdmzvL2AZFMRQPAdWsLQ9wTPvOpi93NAMeEq1nkZjpgI6v3pIC2HV-pgLP9aCgYKAScSARESFQHGX2MiVbar6uamzErtprFkvkaZSA0171";
+  res.json({ tokens });
+});
+
+app.get("/auth/url", (req, res) => {
+  const authUrl = oauth2Client.generateAuthUrl({
+    access_type: "offline",
+    scope: ["https://www.googleapis.com/auth/drive.readonly"],
+  });
+  res.json({ authUrl });
+});
+
+app.get("/auth/callback", async (req, res) => {
+  const { code } = req.query;
+  try {
+    const { tokens } = oauth2Client.getToken(code);
+    res.json({ tokens });
+  } catch (error) {
+    console.error("Error exchanging authorization code for tokens:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.post("/api/video", async (req, res) => {
+  try {
+    const { tokens, fileId } = req.body;
+
+    // Set credentials on OAuth2 client
+    oauth2Client.setCredentials(tokens);
+
+    // Create drive instance with authenticated client
+    const drive = google.drive({ version: "v3", auth: oauth2Client });
+
+    // Retrieve file metadata
+    const response = await drive.files.get({
+      fileId: fileId,
+      fields: "webViewLink",
+    });
+
+    // Extract and send video URL
+    const videoUrl = response.data.webViewLink.replace("/view", "/preview");
+    res.json({ videoUrl });
+  } catch (error) {
+    console.error("Error fetching video URL:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 const PORT = process.env.PORT || 3001;
 
 app

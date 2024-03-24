@@ -9,6 +9,7 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
   const logout = () => {
     window.open("https://brain-house-vkk7.onrender.com/logout", "_self");
     localStorage.removeItem("token");
+    localStorage.removeItem("paid");
   };
 
   const handleShow = () => setShow(true);
