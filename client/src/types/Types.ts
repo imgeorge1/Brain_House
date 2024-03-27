@@ -41,3 +41,7 @@ export interface DashboardTypes {
   currentUser: User | null;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+export interface CheckboxState {
+  [id: number]: boolean;
+}

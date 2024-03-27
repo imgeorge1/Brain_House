@@ -54,12 +54,15 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   useEffect(() => {
     if (
       location.pathname.startsWith("/courses/") &&
-      location.pathname !== "/courses/1"
+      location.pathname !== "/courses/21"
     ) {
-      window.location.href = "/courses/1"; // Redirect to /courses/1
+      window.location.href = "/courses/21"; // Redirect to /courses/1
     }
 
-    if (location.pathname.startsWith("/courses/") && !booleanPaid) {
+    if (
+      (location.pathname.startsWith("/courses/") && !booleanPaid) ||
+      (!tokenFromLocalStorage && location.pathname.startsWith("/courses/"))
+    ) {
       window.location.href = "/";
     }
 

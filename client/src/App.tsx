@@ -7,6 +7,7 @@ import Register from "./pages/register/Register";
 import Dashboard from "./pages/dashboard/Dashboard";
 import NotFound from "./pages/error/NotFound";
 import Tickets from "./pages/tickets/Tickets";
+import Exams from "./pages/exams/Exams";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/tickets/:id" element={<Tickets />} />
         <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/exams" element={<Exams />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

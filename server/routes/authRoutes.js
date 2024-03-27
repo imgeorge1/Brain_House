@@ -19,9 +19,11 @@ const {
 } = require("../controllers/showUsers");
 const googleStrategy = require("../config/passport/google");
 const facebookStrategy = require("../config/passport/facebook");
+const { google } = require("googleapis");
 
 const allowedNextCategory = require("../controllers/permissionController");
 const User = require("../models/userSchema");
+const Ticket = require("../models/ticketSchema");
 
 const authRoutes = express.Router();
 
@@ -171,5 +173,17 @@ authRoutes.get("/users/:userId", getUserById);
 authRoutes.put("/users/:userId", updateUserPaidStatus);
 
 authRoutes.get("/tickets/:id", ticket);
+authRoutes.post("/tickets", async (req, res) => {
+  try {
+    const selectedIds = req.body.data;
+    const tickets = await Ticket.aggregate([
+      { $match: { categoryID: { $in: selectedIds } } }, // Match documents based on the array of IDs
+      { $sample: { size: 30 } }, // Randomly select documents
+    ]);
+    res.status(200).send(tickets);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 module.exports = authRoutes;

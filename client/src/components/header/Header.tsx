@@ -11,7 +11,7 @@ const Header = () => {
   const categoryId = parseInt(location.pathname.split("/")[2]);
   const width = useWidth();
   const [hide, setHide] = useState(true);
-  const { booleanPaid } = useContext(UserContext);
+  const { booleanPaid, currentUser } = useContext(UserContext);
 
   const toggleMenu = () => {
     setHide(!hide);
@@ -51,9 +51,9 @@ const Header = () => {
           >
             მართვის ბარათი
           </NavLink>
-          {booleanPaid && (
+          {booleanPaid && currentUser && (
             <NavLink
-              to="/courses/1"
+              to="/courses/21"
               className="nav-link text-white no-underline"
             >
               კურსები
