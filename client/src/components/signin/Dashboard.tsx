@@ -51,7 +51,7 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
         </div>
       ) : (
         <button
-          className="sign-out ctrlbtn buttonBorder px-6 py-2 rounded-3xl hover:bg-orange-500 text-xl text-white"
+          className="sign-out ctrlbtn buttonBorder px-6 py-2 w-full rounded-3xl hover:bg-orange-500 text-xl text-white"
           onClick={handleShow}
         >
           შესვლა

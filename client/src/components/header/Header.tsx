@@ -57,7 +57,7 @@ const Header = () => {
           {booleanPaid && (
             <NavLink
               to="/courses/1"
-              className="nav-link text-white no-underline"
+              className="nav-link text-white no-underline text-center"
             >
               კურსები
             </NavLink>

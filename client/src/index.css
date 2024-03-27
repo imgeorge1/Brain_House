@@ -118,7 +118,7 @@ code {
 
 @media (max-width: 768px){
   .bigparent{
-    width: 56%;
+    width: 55%;
     height: 23px;
   }
   .sign-in-parent{
@@ -138,6 +138,10 @@ code {
   .nav-btn{
     margin-top: 80px;
   }
+
+
+
+  
 }
 
 
