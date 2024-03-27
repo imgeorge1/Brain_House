@@ -1,40 +1,18 @@
-import { useEffect, useState } from "react";
-import categoryData from "../../data/categoryData";
 import { Link } from "react-router-dom";
-import API from "../../utils/API";
-import { useLocation } from "react-router-dom";
-import { TicketsTypes } from "../../types/Types";
 import category from "../../assets/category.png";
-import useWidth from "../../hooks/useWidth";
 import { motion } from "framer-motion";
+import useTicketRoutes from "../../hooks/useTicketRoutes/useTicketRoutes";
 
-const TicketRoutes = ({
-  setTicketData,
-}: {
-  setTicketData: React.Dispatch<React.SetStateAction<TicketsTypes[]>>;
-}) => {
-  const [show, setShow] = useState(false);
-  const [categoryName, setCategoryName] = useState("ყველა");
-  const width = useWidth();
-  const location = useLocation();
-
-  const categoryId = parseInt(location.pathname.split("/")[2]);
-  useEffect(() => {
-    const getCategories = async (categoryId: number) => {
-      try {
-        const response = await API.get(`/tickets/${categoryId}`);
-        setTicketData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getCategories(categoryId);
-  }, [categoryId, setTicketData]);
-
-  const handleChooseCategory = (category: string) => {
-    setShow(!show);
-    setCategoryName(category);
-  };
+const TicketRoutes = () => {
+  const {
+    show,
+    setShow,
+    categoryName,
+    width,
+    categoryId,
+    handleChooseCategory,
+    categoryData,
+  } = useTicketRoutes();
 
   return (
     <section className="flex align-center ">

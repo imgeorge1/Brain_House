@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import categoryData from "../../data/categoryData";
+import categoryData2 from "../../data/categoryData2";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import { useLocation } from "react-router-dom";
@@ -57,20 +57,21 @@ const Course = ({
         </motion.div>
         {(show || width >= 1024) && (
           <ul className="pl-0 w-full max-w-[690px]">
-            {categoryData.map((item) => (
+            {categoryData2.map((item) => (
               <motion.li
                 initial={{ opacity: 0, x: -200 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 * item.id }}
+                transition={{ duration: 0.8, delay: 0.1 * item.index }}
                 onClick={() => handleChooseCategory(item.category)}
                 key={item.id}
               >
-                {!completed.includes(item.id) ? (
+                {!completed.includes(item.index) ? (
                   <span className="mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed">
                     {item.id === 0 ? "" : item.id + "."} {item.category}{" "}
                   </span>
                 ) : (
                   <Link
+                    state={item.index}
                     className={`no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
                       item.id === categoryId ? "bg-[#230751]" : "bg-[#663aac]"
                     }`}

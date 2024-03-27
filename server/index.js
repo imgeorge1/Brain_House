@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const { google } = require("googleapis");
+
 const cookieParser = require("cookie-parser");
 const session = require("cookie-session");
 const MongoStore = require("connect-mongo");
@@ -9,8 +9,6 @@ const passport = require("passport");
 const CryptoJS = require("crypto-js");
 const mongoConnection = require("./db/mongoConnection");
 const router = require("./routes/main");
-const fs = require("fs");
-const path = require("path");
 
 const app = express();
 
@@ -55,63 +53,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use("/", router);
 
-const clientId = process.env.DRIVE_CLIENT_ID;
-const clientSecret = process.env.DRIVE_CLIENT_SECRET;
-const REDIRECT_URI = "https://developers.google.com/oauthplayground";
-
-const refreshToken = process.env.DRIVE_REFRESH_TOKEN;
-
-// const access_token ="ya29.a0Ad52N39yry_HwZXTWsWC6ckyRjBJIHmPjs7REpAapCmCEimm3O5kSGet2kk8Xg1sJtLDLRVddxPcHaeBdGvUlMjIUCoUFulORQxdXFWQwTMPNKpXVZwWCW1H4Qr8M-YboFBCHHfbAYRoCsiferj3UxK-Ypuay4JDid4aaCgYKAcUSARESFQHGX2MiIykWXW4grvt9fBY6Uq5yQA0171"
+const { google } = require("googleapis");
 
 const oauth2Client = new google.auth.OAuth2(
-  clientId,
-  clientSecret,
-  refreshToken
+  "945913383511-forclflr8ehf5868ij9hvi1n226ripkl.apps.googleusercontent.com",
+  "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",
+  "http://localhost:3001/auth/google/callback"
 );
-
-oauth2Client.setCredentials({ refresh_token: refreshToken });
-
-const drive = google.drive({
-  version: "v3",
-  auth: oauth2Client,
-});
-
-const filePath = path.join(__dirname, "video1.mp4");
-
-// Function to get video URLs from a specific folder
-const getVideoUrlsFromFolder = async (folderId) => {
-  try {
-    // List files in the folder
-    const response = await drive.files.list({
-      q: `'${folderId}' in parents and mimeType='video/mp4'`,
-      fields: "files(id, webViewLink)",
-    });
-
-    // Extract video URLs
-    const videoUrls = response.data.files.map((file) => file.webViewLink);
-
-    return videoUrls;
-  } catch (error) {
-    console.error("Error fetching video URLs:", error);
-    throw error;
-  }
-};
-
-// Generate Public URL
-
-app.get("/api/videos", async (req, res) => {
-  try {
-    const folderId = "1Yha-KQqJRtyE4AhvpWyehx-YjGjzQgsz"; // Replace with your folder ID
-    const videoUrls = await getVideoUrlsFromFolder(folderId);
-    console.log("Video URLs:", videoUrls);
-    res.json({ videoUrls });
-  } catch (error) {
-    console.error("Error fetching video URLs:", error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-
-// https://drive.google.com/file/d/1pB7x-Qf82F8kym8w6wu1PVHOHiIrIoOn/view?usp=drive_link
 
 // app.get("/auth/tokens", (req, res) => {
 //   const tokens =
@@ -127,41 +75,43 @@ app.get("/api/videos", async (req, res) => {
 //   res.json({ authUrl });
 // });
 
-// app.get("/auth/callback", async (req, res) => {
-//   const { code } = req.query;
-//   try {
-//     const { tokens } = oauth2Client.getToken(code);
-//     res.json({ tokens });
-//   } catch (error) {
-//     console.error("Error exchanging authorization code for tokens:", error);
-//     res.status(500).json({ error: "Internal server error" });
-//   }
-// });
+app.get("/auth/google/callback", async (req, res) => {
+  console.log("Request Query:", req.query);
+  const { code } = req.query;
+  try {
+    const { tokens } = oauth2Client.getToken(code);
+    req.session.tokens = tokens; // Store tokens in session
+    res.redirect("/"); // Redirect user to homepage
+  } catch (error) {
+    console.error("Error exchanging authorization code for tokens:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
-// app.post("/api/video", async (req, res) => {
-//   try {
-//     const { tokens, fileId } = req.body;
+const drive = google.drive({
+  version: "v3",
+  auth: "AIzaSyBEvIxUMb8JXTCJM9OLhR45ECZ_62STPvc",
+});
 
-//     // Set credentials on OAuth2 client
-//     oauth2Client.setCredentials(tokens);
+app.get("/api/video", async (req, res) => {
+  try {
+    fileId = "11zT9wAOgBDCyMtLOQGW9exrfug0GLMTS";
 
-//     // Create drive instance with authenticated client
-//     const drive = google.drive({ version: "v3", auth: oauth2Client });
+    console.log("TOK", req.session.token);
+    // Retrieve file metadata
+    const response = await drive.files.get({
+      fileId: fileId,
+      fields: "webViewLink",
+    });
 
-//     // Retrieve file metadata
-//     const response = await drive.files.get({
-//       fileId: fileId,
-//       fields: "webViewLink",
-//     });
-
-//     // Extract and send video URL
-//     const videoUrl = response.data.webViewLink.replace("/view", "/preview");
-//     res.json({ videoUrl });
-//   } catch (error) {
-//     console.error("Error fetching video URL:", error);
-//     res.status(500).json({ error: "Internal server error" });
-//   }
-// });
+    // Extract and send video URL
+    const videoUrl = response.data.webViewLink.replace("/view", "/preview");
+    res.json({ videoUrl });
+  } catch (error) {
+    console.error("Error fetching video URL:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 const PORT = process.env.PORT || 3001;
 
