@@ -4,30 +4,31 @@ import axios from "axios";
 const SERVER_URL = "http://localhost:3001"; // Replace with your server URL
 
 const Temp = () => {
-  const [webViewLink, setWebViewLink] = useState(null);
+  const [videoLinks, setVideoLinks] = useState([]);
 
-  // Function to fetch the webViewLink from the server
-  const fetchWebViewLink = async () => {
+  // Function to fetch video links from the server
+  const fetchVideoLinks = async () => {
     try {
-      const response = await axios.get(`${SERVER_URL}/api/public-url`);
-      setWebViewLink(response.data.webViewLink);
-      console.log("webViewLink", response.data.webViewLink);
+      const response = await axios.get(`${SERVER_URL}/api/videos`);
+      setVideoLinks(response.data.videoUrls);
+      console.log("Video links", response.data.videoUrls);
     } catch (error) {
-      console.error("Error fetching webViewLink:", error);
+      console.error("Error fetching video links:", error);
     }
   };
-  // https://drive.google.com/file/d/1JvCvWK8g68KGrEzYJiHhmVBRodWnu9IX/view?usp=drive_link
 
   useEffect(() => {
-    fetchWebViewLink();
+    fetchVideoLinks();
   }, []);
 
   return (
     <div>
-      {webViewLink ? (
-        <a href={webViewLink} target="_blank" rel="noopener noreferrer">
-          View File
-        </a>
+      {videoLinks.length > 0 ? (
+        videoLinks.map((videoLink, index) => (
+          <div key={index}>
+            <iframe src={videoLink} width="640" height="480"></iframe>
+          </div>
+        ))
       ) : (
         <p>Loading...</p>
       )}

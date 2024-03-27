@@ -69,7 +69,7 @@ const oauth2Client = new google.auth.OAuth2(
   refreshToken
 );
 
-oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+oauth2Client.setCredentials({ refresh_token: refreshToken });
 
 const drive = google.drive({
   version: "v3",
@@ -78,41 +78,35 @@ const drive = google.drive({
 
 const filePath = path.join(__dirname, "video1.mp4");
 
-// UPload Video
+// Function to get video URLs from a specific folder
+const getVideoUrlsFromFolder = async (folderId) => {
+  try {
+    // List files in the folder
+    const response = await drive.files.list({
+      q: `'${folderId}' in parents and mimeType='video/mp4'`,
+      fields: "files(id, webViewLink)",
+    });
 
-// async function uploadVideo() {
-//   try {
-//     const response = await drive.files.create({
-//       requestBody: {
-//         name: "video1.mp4",
-//         mimeType: "video/mp4",
-//       },
-//       media: {
-//         mimeType: "video/mp4",
-//         body: fs.createReadStream(filePath),
-//       },
-//     });
-//     console.log(response.data);
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// }
+    // Extract video URLs
+    const videoUrls = response.data.files.map((file) => file.webViewLink);
 
-// uploadVideo();
+    return videoUrls;
+  } catch (error) {
+    console.error("Error fetching video URLs:", error);
+    throw error;
+  }
+};
 
 // Generate Public URL
 
-app.get("/api/public-url", async (req, res) => {
+app.get("/api/videos", async (req, res) => {
   try {
-    const fileId = "17CeMcHqBomUTp8XAH1TsA-nTOEN1Rr0q"; // Replace with your file ID
-    const result = await drive.files.get({
-      fileId: fileId,
-      fields: "webViewLink",
-    });
-    const webViewLink = result.data.webViewLink;
-    res.json({ webViewLink });
+    const folderId = "1Yha-KQqJRtyE4AhvpWyehx-YjGjzQgsz"; // Replace with your folder ID
+    const videoUrls = await getVideoUrlsFromFolder(folderId);
+    console.log("Video URLs:", videoUrls);
+    res.json({ videoUrls });
   } catch (error) {
-    console.log(error.message);
+    console.error("Error fetching video URLs:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
