@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { ClickedAnswers } from "../../types/Types";
 import { useLocation } from "react-router-dom";
-import useTicketRoutes from "../useTicketRoutes/useTicketRoutes";
+import { UserContext } from "../../context/UserContext";
 
 const useTicketHandler = (
   setCorrectAnswer?: React.Dispatch<React.SetStateAction<number>>
 ) => {
-  const { ticketData } = useTicketRoutes();
+  const { ticketData } = useContext(UserContext);
   const [clickedAnswers, setClickedAnswers] = useState<ClickedAnswers>({});
   const [currentPage, setCurrentPage] = useState(1);
   const [completed, setCompleted] = useState(false);
@@ -68,7 +68,6 @@ const useTicketHandler = (
     getAnswerClass,
     setCompleted,
     setCurrentPage,
-    ticketData,
   };
 };
 

@@ -1,6 +1,8 @@
 import Ticket from "./Ticket";
 import useTicketHandler from "../../hooks/useTicketHandler/useTicketHandler";
 import Pagination from "../pagination/Pagination";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 const TicketTests = ({
   setCorrectAnswer,
@@ -16,8 +18,8 @@ const TicketTests = ({
     getAnswerClass,
     setCompleted,
     setCurrentPage,
-    ticketData,
   } = useTicketHandler(setCorrectAnswer);
+  const { ticketData } = useContext(UserContext);
 
   const checkForVideo =
     currentPage === 1 && location.pathname.startsWith("/courses");

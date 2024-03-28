@@ -97,7 +97,6 @@ app.get("/api/video", async (req, res) => {
   try {
     fileId = "11zT9wAOgBDCyMtLOQGW9exrfug0GLMTS";
 
-    console.log("TOK", req.session.token);
     // Retrieve file metadata
     const response = await drive.files.get({
       fileId: fileId,

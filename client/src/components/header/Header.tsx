@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import BrainHouseLogo from "../../assets/newbrainhouselogo.png";
 import SignInModal from "../signin/SignInModal";
-import useWidth from "../../hooks/useWidth";
+import useWidth from "../../hooks/useWidth/useWidth";
 import { motion } from "framer-motion";
 import { UserContext } from "../../context/UserContext";
 
@@ -57,6 +57,11 @@ const Header = () => {
               className="nav-link text-white no-underline"
             >
               კურსები
+            </NavLink>
+          )}
+          {booleanPaid && currentUser && (
+            <NavLink to="/exams" className="nav-link text-white no-underline">
+              გამოცდა
             </NavLink>
           )}
         </motion.nav>

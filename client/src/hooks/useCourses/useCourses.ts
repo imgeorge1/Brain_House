@@ -2,10 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import API from "../../utils/API";
 import { UserContext } from "../../context/UserContext";
-import useTicketRoutes from "../useTicketRoutes/useTicketRoutes";
 
 const useCourses = () => {
-  const { setTicketData, ticketData } = useTicketRoutes();
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const location = useLocation();
   const { currentUser } = useContext(UserContext);
@@ -57,8 +55,6 @@ const useCourses = () => {
   const completedArray = Array.from(Array(completed), (_, index) => index + 1);
 
   return {
-    ticketData,
-    setTicketData,
     correctAnswer,
     setCorrectAnswer,
     completed,

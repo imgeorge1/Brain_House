@@ -1,20 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import categoryData2 from "../../data/categoryData2";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import { useLocation } from "react-router-dom";
-import { TicketsTypes } from "../../types/Types";
 import category from "../../assets/category.png";
-import useWidth from "../../hooks/useWidth";
+import useWidth from "../../hooks/useWidth/useWidth";
 import { motion } from "framer-motion";
+import { UserContext } from "../../context/UserContext";
 
-const Course = ({
-  setTicketData,
-  completed,
-}: {
-  setTicketData: React.Dispatch<React.SetStateAction<TicketsTypes[]>>;
-  completed: number[];
-}) => {
+const Course = ({ completed }: { completed: number[] }) => {
+  const { setTicketData } = useContext(UserContext);
   const [show, setShow] = useState(false);
   const [categoryName, setCategoryName] = useState("ყველა");
   const width = useWidth();
@@ -26,12 +21,17 @@ const Course = ({
     const getCategories = async (categoryId: number) => {
       try {
         const response = await API.get(`/tickets/${categoryId}`);
-        setTicketData(response.data);
+        setTicketData && setTicketData(response.data);
       } catch (error) {
         console.error(error);
       }
     };
-    getCategories(categoryId);
+    if (
+      location.pathname.startsWith("/courses/") ||
+      location.pathname.startsWith("/tickets/")
+    ) {
+      getCategories(categoryId);
+    }
   }, [categoryId, setTicketData]);
 
   const handleChooseCategory = (category: string) => {

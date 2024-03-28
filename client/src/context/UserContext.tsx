@@ -1,16 +1,22 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import API from "../utils/API";
-import { User } from "../types/Types";
+import { TicketsTypes, User } from "../types/Types";
 
 interface UserContextType {
   currentUser: User | null;
   booleanPaid: boolean;
+  setTicketData:
+    | React.Dispatch<React.SetStateAction<TicketsTypes[]>>
+    | undefined; // Define setTicketData
+  ticketData: TicketsTypes[];
 }
 
 const UserContext = createContext<UserContextType>({
   currentUser: null,
   booleanPaid: false,
+  setTicketData: undefined,
+  ticketData: [],
 });
 
 interface UserProviderProps {
@@ -21,6 +27,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
+  const [ticketData, setTicketData] = useState<TicketsTypes[]>([]);
 
   const token = queryParams.get("jwtToken");
 
@@ -71,8 +78,21 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     }
   }, []); // Run this effect only once on initial render
 
+  console.log(ticketData);
+
+  useEffect(() => {
+    setTicketData([]);
+  }, [location.pathname]);
+
   return (
-    <UserContext.Provider value={{ currentUser, booleanPaid }}>
+    <UserContext.Provider
+      value={{
+        currentUser,
+        booleanPaid,
+        setTicketData,
+        ticketData,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
