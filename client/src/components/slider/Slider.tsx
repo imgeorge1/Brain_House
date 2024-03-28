@@ -11,18 +11,18 @@ import { Navigation } from "swiper/modules";
 function Slider() {
   return (
     <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-      <SwiperSlide className="border-3 border-yellow-500">
+      <SwiperSlide className="border-3 border-[#FDE047]">
         <div
           className="bg-cover bg-center bg-about bg-no-repeat h-screen border-5 border-black w-full"
           style={{
-            filter: "blur(5px) brightness(62.5%)",
+            filter: "blur(6px) brightness(60%)",
           }}
         ></div>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className=" flex flex-col gap-4 items-center ">
-            <h2 className="text-8xl font-bold text-[#272559]">კურსები</h2>
-            <p className="text-2xl text-yellow-300 mt-2">ონლაინ კურსები</p>
-            <button className="flex items-center justify-between w-60 px-7 py-3 rounded-2xl bg-blue-700 text-2xl text-white slider-button">
+            <h2 className="text-8xl font-bold text-[#2D2862]">კურსები</h2>
+            <p className="text-2xl text-[#FDE047] mt-2">ონლაინ კურსები</p>
+            <button className="flex items-center justify-between w-60 px-7 py-3 rounded-2xl bg-[#2D2862] text-2xl text-white slider-button">
               გაიგეთ მეტი
               <FaArrowRight />
             </button>
@@ -35,13 +35,13 @@ function Slider() {
         <div
           className="bg-cover bg-center bg-aboutus bg-no-repeat h-screen w-full"
           style={{
-            filter: "blur(5px) brightness(62.5%)",
+            filter: "blur(6px) brightness(60%)",
           }}
         ></div>
         <div className="absolute inset-0 flex items-center justify-center ">
           <div className=" flex flex-col gap-5 items-center">
-            <h2 className="text-7xl font-bold text-[#272559]">რატომ ჩვენ ?</h2>
-            <p className="text-2xl text-yellow-300 mt-2">
+            <h2 className="text-7xl font-bold text-[#2D2862]">რატომ ჩვენ ?</h2>
+            <p className="text-2xl text-[#FDE047] mt-2">
               ჩვენ ვასწავლით ონლაინ, უმარტივესი მეთოდებით
             </p>
           </div>
@@ -52,16 +52,16 @@ function Slider() {
         <div
           className="bg-cover bg-center bg-contact bg-no-repeat h-screen w-full"
           style={{
-            filter: "blur(5px) brightness(62.5%)",
+            filter: "blur(6px) brightness(60%)",
           }}
         ></div>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className=" flex flex-col gap-5 items-center">
-            <h2 className="text-8xl font-bold text-[#272559]">რეგისტრაცია</h2>
-            <p className="text-2xl text-yellow-300 mt-2">
+            <h2 className="text-8xl font-bold text-[#2D2862]">რეგისტრაცია</h2>
+            <p className="text-2xl text-[#FDE047] mt-2">
               შეეგიძლიათ გაიაროთ რეგისტრაცია ახლა უკვე ჩვენი საიტიდან!
             </p>
-            <button className="flex items-center justify-between w-60 px-7 py-3 rounded-2xl bg-blue-700 text-2xl text-white slider-button">
+            <button className="flex items-center justify-between w-60 px-7 py-3 rounded-2xl bg-[#2D2862] text-2xl text-white slider-button">
               რეგისტრაცია
               <FaPenToSquare />
             </button>

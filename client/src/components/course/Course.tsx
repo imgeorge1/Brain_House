@@ -66,13 +66,13 @@ const Course = ({ completed }: { completed: number[] }) => {
                 key={item.id}
               >
                 {!completed.includes(item.index) ? (
-                  <span className="mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed">
+                  <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed">
                     {item.id === 0 ? "" : item.id + "."} {item.category}{" "}
                   </span>
                 ) : (
                   <Link
                     state={item.index}
-                    className={`no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
+                    className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
                       item.id === categoryId ? "bg-[#230751]" : "bg-[#663aac]"
                     }`}
                     to={`/courses/${item.id}`}
