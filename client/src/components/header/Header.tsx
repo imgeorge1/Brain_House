@@ -63,7 +63,10 @@ const Header = () => {
             </NavLink>
           )}
           {booleanPaid && currentUser && (
-            <NavLink to="/exams" className="nav-link text-white no-underline">
+            <NavLink
+              to="/exams"
+              className="nav-link text-white no-underline text-center"
+            >
               გამოცდა
             </NavLink>
           )}

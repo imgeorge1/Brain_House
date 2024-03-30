@@ -46,17 +46,20 @@ const Exam = () => {
 
   return (
     <div>
-      <button onClick={toggleAll}>ყველა</button>
-      <ul className="grid grid-cols-2 gap-x-8 gap-y-6 m-4 p-4 max-w-[700px]">
+      <button
+        onClick={toggleAll}
+        className="ctrlbtn buttonBorder mt-6 ml-6 px-6 py-2 rounded-3xl duration-200 hover:bg-orange-500 text-xl text-black"
+      >
+        ყველა
+      </button>
+      <ul className="exam-list grid lg:grid-cols-3 md:grid-cols-2 gap-x-20 gap-y-6 m-4 p-4 max-w-full bg-[#2D2862] text-white rounded">
         {categoryData2.map((data) => (
           <li key={data.id} className="flex items-center justify-between">
-            <label
-              className="text-ellipsis whitespace-nowrap overflow-hidden"
-              htmlFor={data.category}
-            >
+            <label className="text-ellipsis   min-w-8" htmlFor={data.category}>
               {data.category}
             </label>
             <input
+              className="cursor-pointer"
               type="checkbox"
               id={data.category}
               checked={!!checkboxes[data.id]}
@@ -65,7 +68,12 @@ const Exam = () => {
           </li>
         ))}
       </ul>
-      <button onClick={handleFilteredCategory}>fetch filtered category</button>
+      <button
+        onClick={handleFilteredCategory}
+        className="ctrlbtn buttonBorder mბ-6 ml-6 px-6 py-2 rounded-3xl duration-200 hover:bg-orange-500 text-xl text-black"
+      >
+        გამოცდის დაწყება
+      </button>
     </div>
   );
 };
