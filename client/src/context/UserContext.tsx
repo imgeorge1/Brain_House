@@ -78,8 +78,6 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     }
   }, []); // Run this effect only once on initial render
 
-  console.log(ticketData);
-
   useEffect(() => {
     setTicketData([]);
   }, [location.pathname]);

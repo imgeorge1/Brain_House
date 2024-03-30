@@ -1,55 +1,42 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const SERVER_URL = "http://localhost:3001"; // Replace with your server URL
+const SERVER_URL = "http://localhost:3001";
 
 const Temp = () => {
-  const [tokens, setTokens] = useState(null);
-  const [video, setVideo] = useState();
+  const [videoUrls, setVideoUrls] = useState([]);
 
   useEffect(() => {
-    // Function to fetch tokens from the server
-    const fetchTokens = async () => {
+    const fetchVideoUrls = async () => {
       try {
-        const response = await axios.get(`${SERVER_URL}/auth/tokens`);
-        setTokens(response.data.tokens);
-      } catch (error) {
-        console.error("Error fetching tokens:", error);
-      }
-    };
-    const fetchVideoUrl = async () => {
-      try {
-        // const fileId =
-        //   "https://drive.google.com/drive/folders/1Yha-KQqJRtyE4AhvpWyehx-YjGjzQgsz?usp=drive_link"; // Replace with the actual file ID
         const response = await axios.get(`${SERVER_URL}/api/video`);
-        const videoUrl = response.data.videoUrl;
-        // console.log("Video URL:", videoUrl);
-        setVideo(videoUrl);
-        // Now you can use the video URL as needed
+        setVideoUrls(response.data.videoUrls);
       } catch (error) {
-        console.error("Error fetching video URL:", error);
+        console.error("Error fetching video URLs:", error);
       }
     };
 
-    fetchVideoUrl();
-
-    // fetchTokens();
+    fetchVideoUrls();
   }, []);
 
-  // Function to fetch video URL
-
-  // Function to initiate authentication process
-  const redirectToAuthScreen = () => {
-    window.location.href = `${SERVER_URL}/auth/url`;
-  };
-
-  console.log(video);
+  function sanitizeUrl(url: any) {
+    return url.replaceAll("&amp;", "&");
+  }
 
   return (
-    <div>
-      {/* <button onClick={redirectToAuthScreen}>Fetch Video</button>
-      <button onClick={fetchVideoUrl}>Fetch Video URL</button> */}
-      <iframe src={video} width="640" height="480" allow="autoplay"></iframe>
+    <div className="border border-red-400 flex flex-col justify-center items-center gap-7">
+      <h2>Videos in the Folder:</h2>
+      {videoUrls.map((url, index) => (
+        <iframe
+          key={index}
+          title={`Video ${index + 1}`}
+          src={sanitizeUrl(url)}
+          width="50%"
+          height="400px"
+          style={{ marginBottom: "20px" }}
+          sandbox="allow-same-origin allow-scripts"
+        />
+      ))}
     </div>
   );
 };

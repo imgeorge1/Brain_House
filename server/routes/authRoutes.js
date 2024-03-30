@@ -2,6 +2,7 @@ const express = require("express");
 const signup = require("../controllers/authController");
 const { lessons, lessonsGET } = require("../controllers/lessonController");
 const ticket = require("../controllers/ticketController");
+
 const jwt = require("jsonwebtoken");
 // const User = require('../models/userSchema'); // Adjust the path as per your project structure
 // const {
