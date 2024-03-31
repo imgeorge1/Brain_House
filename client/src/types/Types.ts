@@ -12,6 +12,7 @@ export interface User {
   lastName: string;
   email: string;
   completed: number;
+  isPaid: boolean;
   // Add other fields as needed
 }
 
@@ -39,4 +40,17 @@ export interface ClickedAnswers {
 export interface DashboardTypes {
   currentUser: User | null;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface CheckboxState {
+  [id: number]: boolean;
+}
+
+export interface Images {
+  image: string;
+  id: number;
+}
+
+export interface SignCache {
+  [key: number]: Images[];
 }

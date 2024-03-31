@@ -28,6 +28,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 1,
   },
+  isPaid: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 userSchema.plugin(uniqueValidator);

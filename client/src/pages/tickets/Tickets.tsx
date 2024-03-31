@@ -1,15 +1,13 @@
-import { useState } from "react";
 import TicketRoutes from "../../components/ticketsComponent/TicketRoutes";
 import TicketTests from "../../components/ticketsComponent/TicketTests";
-import { TicketsTypes } from "../../types/Types";
 
 const Tickets = () => {
-  const [ticketData, setTicketData] = useState<TicketsTypes[]>([]);
+  // const [ticketData, setTicketData] = useState<TicketsTypes[]>([]);
 
   return (
     <main className="flex flex-col lg:flex-row items-center lg:items-start justify-evenly">
-      <TicketRoutes setTicketData={setTicketData} />
-      <TicketTests ticketData={ticketData} />
+      <TicketRoutes />
+      <TicketTests />
     </main>
   );
 };

@@ -1,22 +1,24 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import BrainHouseLogo from "../../assets/newbrainhouselogo.png";
 import SignInModal from "../signin/SignInModal";
-import useWidth from "../../hooks/useWidth";
+import useWidth from "../../hooks/useWidth/useWidth";
 import { motion } from "framer-motion";
+import { UserContext } from "../../context/UserContext";
 
 const Header = () => {
   const location = useLocation();
   const categoryId = parseInt(location.pathname.split("/")[2]);
   const width = useWidth();
   const [hide, setHide] = useState(true);
+  const { booleanPaid, currentUser } = useContext(UserContext);
 
   const toggleMenu = () => {
     setHide(!hide);
   };
 
   return (
-    <header className="relative w-full background flex items-center justify-between px-2 py-7 md:px-12 text-white">
+    <header className="fixed z-50 top-0 w-full background flex items-center justify-between px-2 py-7 md:px-12 text-white">
       <motion.div
         initial={{ opacity: 0, x: -200 }}
         animate={{ opacity: 1, x: 0 }}
@@ -24,10 +26,10 @@ const Header = () => {
       >
         <NavLink
           to="/"
-          className="flex items-center gap-2 text-white no-underline"
+          className="logo flex items-center gap-2 text-white no-underline"
         >
           <img src={BrainHouseLogo} alt="logo" width={50} height={50} />
-          <h5 className="text-2xl font-bold my-auto">Brain House</h5>
+          <h5 className="font-bold my-auto">Brain House</h5>
         </NavLink>
       </motion.div>
 
@@ -36,22 +38,38 @@ const Header = () => {
           initial={{ opacity: 0, y: -200 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex bg-black bg-opacity-50 md:bg-transparent w-[60%] h-screen flex-col pl-5 lg:flex-row absolute top-0 pt-24
+          className="flex lg:bg-transparent bg-opacity-50 bg-black md:bg-black md:bg-opacity-50 w-[55%] h-screen flex-col pl-0 lg:flex-row absolute top-0 pt-24
         right-0 bottom-0 z-10 gap-10 lg:h-full lg:p-0 lg:static lg:w-auto"
         >
-          <NavLink to="/" className="nav-link text-white no-underline">
+          <NavLink
+            to="/"
+            className="nav-btn nav-link text-white no-underline text-center"
+          >
             მთავარი
           </NavLink>
 
           <NavLink
             to={`/tickets/${categoryId || 0}`}
-            className="nav-link text-white "
+            className="nav-link text-white text-center"
           >
             მართვის ბარათი
           </NavLink>
-          <NavLink to="/courses/1" className="nav-link text-white no-underline">
-            კურსები
-          </NavLink>
+          {booleanPaid && currentUser && (
+            <NavLink
+              to="/courses/21"
+              className="nav-link text-white no-underline text-center"
+            >
+              კურსები
+            </NavLink>
+          )}
+          {booleanPaid && currentUser && (
+            <NavLink
+              to="/exams"
+              className="nav-link text-white no-underline text-center"
+            >
+              გამოცდა
+            </NavLink>
+          )}
         </motion.nav>
       )}
 
@@ -65,9 +83,9 @@ const Header = () => {
         ) : (
           <h1
             onClick={toggleMenu}
-            className="z-20 mt-[-70px] ml-[-100px] text-3xl"
+            className="z-50 mt-[-60px] ml-[-100px] text-3xl absolute right-1"
           >
-            X
+            x
           </h1>
         ))}
 
@@ -76,7 +94,7 @@ const Header = () => {
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="z-20"
+          className="z-20 bigparent justify-center flex"
         >
           <SignInModal />
         </motion.div>
