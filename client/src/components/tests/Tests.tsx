@@ -9,7 +9,7 @@ const Tests = () => {
   const { ticketData } = useContext(UserContext);
 
   return (
-    <div>
+    <div className="mt-28">
       {ticketData.map((data) => (
         <Ticket
           key={data.id}

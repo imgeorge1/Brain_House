@@ -18,7 +18,7 @@ const Header = () => {
   };
 
   return (
-    <header className="relative w-full background flex items-center justify-between px-2 py-7 md:px-12 text-white">
+    <header className="fixed z-50 top-0 w-full background flex items-center justify-between px-2 py-7 md:px-12 text-white">
       <motion.div
         initial={{ opacity: 0, x: -200 }}
         animate={{ opacity: 1, x: 0 }}
@@ -63,7 +63,10 @@ const Header = () => {
             </NavLink>
           )}
           {booleanPaid && currentUser && (
-            <NavLink to="/exams" className="nav-link text-white no-underline">
+            <NavLink
+              to="/exams"
+              className="nav-link text-white no-underline text-center"
+            >
               გამოცდა
             </NavLink>
           )}

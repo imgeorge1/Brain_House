@@ -10,7 +10,7 @@ import { Navigation } from "swiper/modules";
 
 function Slider() {
   return (
-    <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+    <Swiper navigation={true} modules={[Navigation]} className="mySwiper mt-20">
       <SwiperSlide className="border-3 border-[#FDE047]">
         <div
           className="bg-cover bg-center bg-about bg-no-repeat h-screen border-5 border-black w-full"
