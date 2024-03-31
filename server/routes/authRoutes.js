@@ -25,6 +25,7 @@ const { google } = require("googleapis");
 const allowedNextCategory = require("../controllers/permissionController");
 const User = require("../models/userSchema");
 const Ticket = require("../models/ticketSchema");
+const signs = require("../controllers/sign/signController");
 
 const authRoutes = express.Router();
 
@@ -186,5 +187,7 @@ authRoutes.post("/tickets", async (req, res) => {
     console.log(error);
   }
 });
+
+authRoutes.get("/signs/:id", signs);
 
 module.exports = authRoutes;

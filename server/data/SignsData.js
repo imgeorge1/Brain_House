@@ -331,7 +331,7 @@ const signsDataList = [
     id: 19,
     image: "https://tinyurl.com/ydpna4h4",
   },
-{
+  {
     signID: 3,
     id: 20,
     image: "https://tinyurl.com/42tcm2by",
@@ -668,7 +668,7 @@ const signsDataList = [
     id: 34,
     image: "https://tinyurl.com/eum4cwr5",
   },
-   {
+  {
     signID: 5,
     id: 35,
     image: "https://tinyurl.com/2zrvf22h",
@@ -960,4 +960,6 @@ const signsDataList = [
     id: 27,
     image: "https://tinyurl.com/r496tt8m",
   },
-]
+];
+
+module.exports = signsDataList;
