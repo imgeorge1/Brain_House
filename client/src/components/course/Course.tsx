@@ -40,7 +40,7 @@ const Course = ({ completed }: { completed: number[] }) => {
   };
 
   return (
-    <section className="flex align-center ">
+    <section className="flex align-center mt-32">
       <div className="flex flex-col p-3">
         <motion.div
           initial={{ opacity: 0, x: -200 }}
@@ -48,7 +48,7 @@ const Course = ({ completed }: { completed: number[] }) => {
           transition={{ duration: 0.8 }}
           className="flex items-center gap-2"
         >
-          <h1 className="font-bold text-3xl mb-4">კატეგორიები</h1>
+          <h1 className="font-bold text-3xl mb-4 ">კატეგორიები</h1>
           <button onClick={() => setShow(!show)}>
             {width < 1024 && (
               <img src={category} alt="category icon" width={22} height={22} />

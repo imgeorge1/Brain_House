@@ -25,7 +25,7 @@ const TicketTests = ({
     currentPage === 1 && location.pathname.startsWith("/courses");
 
   return (
-    <section className="w-full max-w-[690px]">
+    <section className="w-full max-w-[690px] mt-40">
       {checkForVideo && (
         <img
           src="https://github.com/lomsadze123/audiophile-ecommerce-website/blob/master/src/assets/home/mobile/image-earphones-yx1.jpg?raw=true"

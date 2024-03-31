@@ -41,7 +41,6 @@ code {
 .active-link {
   border-bottom: 2px solid var(--orange);
 }
-
 .buttonBorder {
   border: 2px solid var(--orange);
 }
