@@ -12,7 +12,7 @@ const Exam = () => {
   useEffect(() => {
     const initialState: CheckboxState = {};
     categoryData2.forEach((data) => {
-      initialState[data.id] = false;
+      initialState[data.id] = true;
     });
     setCheckboxes(initialState);
   }, []);
@@ -40,7 +40,6 @@ const Exam = () => {
       .filter(([_, value]) => value === true)
       .map(([key]) => parseInt(key));
     const res = await API.post("/tickets", { data: trueIndexes });
-    console.log(trueIndexes);
     setTicketData && setTicketData(res.data);
   };
 
