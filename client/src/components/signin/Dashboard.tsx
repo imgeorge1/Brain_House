@@ -43,7 +43,7 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
             {currentUser.firstName + " " + (currentUser.lastName || "")}
           </h4>
           <button
-            className="ctrlbtn buttonBorder px-6 py-2 rounded-3xl duration-200 hover:bg-orange-500 text-xl text-white"
+            className="sign-out ctrlbtn buttonBorder px-6 py-2 rounded-3xl duration-200 hover:bg-orange-500 text-xl text-white"
             onClick={logout}
           >
             გამოსვლა
