@@ -1,6 +1,8 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import API from "../../utils/API";
 import { FullUser } from "../../types/Types";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 function Register() {
   const {
@@ -8,11 +10,14 @@ function Register() {
     handleSubmit,
     formState: { errors },
   } = useForm<FullUser>();
+  const { currentUser } = useContext(UserContext);
 
   const onSubmit: SubmitHandler<FullUser> = async (body) => {
     try {
       const url = "/signup";
-      const res = await API.post(url, body);
+      const email = currentUser?.email;
+      const bodyWithEmail = { ...body, email };
+      const res = await API.post(url, bodyWithEmail);
       console.log("res: ", res);
     } catch (error) {
       console.log(error);

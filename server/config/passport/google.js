@@ -8,11 +8,7 @@ passport.use(
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "http://localhost:3001/auth/google/callback", // https://brain-house-vkk7.onrender.com/auth/google/callback
-      scope: [
-        "email",
-        "profile",
-        "https://www.googleapis.com/auth/drive.readonly",
-      ],
+      scope: ["email", "profile"],
     },
     async (accessToken, refreshToken, profile, cb) => {
       try {

@@ -54,3 +54,10 @@ export interface Images {
 export interface SignCache {
   [key: number]: Images[];
 }
+
+export interface TicketTypes {
+  data: TicketsTypes;
+  clickedAnswers: ClickedAnswers;
+  handleButtonClick: (dataId: number, selectedAnswer: number) => void;
+  getAnswerClass: (dataId: number, answerIndex: number) => string;
+}

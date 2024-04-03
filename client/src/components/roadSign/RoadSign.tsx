@@ -1,36 +1,9 @@
-import { useEffect, useState } from "react";
-import roadSignsData from "../../data/roadSignsData";
-import API from "../../utils/API";
 import SignImages from "./SignImages";
-import { Images, SignCache } from "../../types/Types";
+import useRoadSign from "../../hooks/useRoadSign/useRoadSign";
+import roadSignsData from "../../data/roadSignsData";
 
 const RoadSign = () => {
-  const [signId, setSignIn] = useState(1);
-  const [signImages, setSignImages] = useState<Images[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [cache, setCache] = useState<SignCache>({});
-
-  useEffect(() => {
-    const fetchSigns = async () => {
-      setLoading(true);
-      try {
-        if (cache[signId]) {
-          // If data is cached, set it from cache
-          setSignImages(cache[signId]);
-        } else {
-          // If data is not cached, fetch from API
-          const res = await API.get(`/signs/${signId}`);
-          setSignImages(res.data);
-          // Update cache
-          setCache({ ...cache, [signId]: res.data });
-        }
-      } catch (error) {
-        console.log(error);
-      }
-      setLoading(false);
-    };
-    fetchSigns();
-  }, [signId, cache]);
+  const { signImages, loading, setSignIn } = useRoadSign();
 
   return (
     <div className="min-h-[800px]">

@@ -20,12 +20,12 @@ const {
 } = require("../controllers/showUsers");
 const googleStrategy = require("../config/passport/google");
 const facebookStrategy = require("../config/passport/facebook");
-const { google } = require("googleapis");
 
 const allowedNextCategory = require("../controllers/permissionController");
 const User = require("../models/userSchema");
 const Ticket = require("../models/ticketSchema");
 const signs = require("../controllers/sign/signController");
+const additionUserInfoMiddleware = require("../middlewares/additionUserInfoMiddleware");
 
 const authRoutes = express.Router();
 
@@ -36,11 +36,7 @@ const jwtSecret = process.env.JWT_SECRET;
 authRoutes.get(
   "/auth/google",
   googleStrategy.authenticate("google", {
-    scope: [
-      "profile",
-      "email",
-      "https://www.googleapis.com/auth/drive.readonly",
-    ],
+    scope: ["profile", "email"],
   })
 );
 authRoutes.get(
@@ -53,30 +49,10 @@ authRoutes.get(
   googleStrategy.authenticate("google", {
     failureRedirect: "/login/failed",
   }),
-  async (req, res) => {
-    try {
-      const { firstName, lastName, email, completed, isPaid } = req.user;
-      console.log("req.userr", req.user);
-      // Create JWT token with user information
-      const jwtToken = jwt.sign(
-        { firstName, lastName, email, completed, isPaid },
-        jwtSecret,
-        {
-          expiresIn: "4h",
-        }
-      );
-
-      // Redirect user to client URL with JWT token as parameter
-      res.redirect(`${process.env.CLIENT_URL}/?jwtToken=${jwtToken}`);
-    } catch (error) {
-      console.log("Logging in error:", error);
-      res.status(500).json({ message: "Internal Server Error" });
-    }
-  }
+  additionUserInfoMiddleware
 );
 
 // auth with facebook
-
 authRoutes.get(
   "/auth/facebook/callback",
   facebookStrategy.authenticate("facebook", {
@@ -136,20 +112,6 @@ authRoutes.get("/user", authenticateUser, async (req, res) => {
 });
 
 authRoutes.put("/user", authenticateUser, allowedNextCategory);
-
-// Endpoint to check if user is logged in
-
-// authRoutes.get("/login/success", (req, res) => {
-//   if (req.user) {
-//     console.log("successUser", req.user);
-//     res.status(200).json({
-//       success: true,
-//       message: "successfull",
-//       user: req.user,
-//       //   cookies: req.cookies
-//     });
-//   }
-// });
 
 authRoutes.get("/login/failed", (req, res) => {
   res.status(401).json({

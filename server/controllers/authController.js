@@ -1,19 +1,12 @@
-const User = require("../models/userSchema");
 // const sendConfirmationEmail = require("../services/emailService");
 const AdditionUserInfo = require("../models/AdditionUserInfoSchema");
 
 const signup = async (req, res) => {
   try {
-    const { userId, age, city, phone } = req.body;
-    const foundUsers = await User.findOne({ _id: userId });
-
-    if (foundUsers) {
-      await AdditionUserInfo.deleteOne({ userId: userId });
-      console.log("Existing user deleted");
-    }
+    const { email, age, city, phone } = req.body;
 
     const newUser = new AdditionUserInfo({
-      userId,
+      email,
       age,
       city,
       phone,

@@ -1,25 +1,12 @@
-import { useContext, useState } from "react";
 import "../../index.css";
-import { UserContext } from "../../context/UserContext";
 import google from "../../assets/google.png";
 import facebook from "../../assets/facebook.png";
 import Dashboard from "./Dashboard";
+import useSignInModal from "../../hooks/useSignInModal/useSignInModal";
 
 function SignInModal() {
-  const [show, setShow] = useState(false);
-  const { currentUser } = useContext(UserContext);
-
-  const handleClose = () => {
-    setShow(false);
-  };
-
-  const googleAuth = () => {
-    window.open("https://brain-house-vkk7.onrender.com/auth/google", "_self");
-  };
-
-  const facebookAuth = () => {
-    window.open("https://brain-house-vkk7.onrender.com/auth/facebook", "_self");
-  };
+  const { show, setShow, currentUser, handleClose, googleAuth, facebookAuth } =
+    useSignInModal();
 
   return (
     <>
