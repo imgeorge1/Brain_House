@@ -1,0 +1,26 @@
+const Ticket = require("../../models/ticketSchema");
+
+const ticketTest = async (req, res) => {
+  try {
+    // Extracting data from the request body
+    const { data: selectedIds } = req.body;
+
+    // Perform aggregation query to get tickets
+    const tickets = await Ticket.aggregate([
+      // Match documents based on the array of IDs
+      { $match: { categoryID: { $in: selectedIds } } },
+      // Randomly select documents
+      { $sample: { size: 30 } },
+    ]);
+
+    // Send response with HTTP status 200 and the retrieved tickets
+    res.status(200).json(tickets);
+  } catch (error) {
+    // Log any errors that occur
+    console.error("Error fetching tickets:", error);
+    // Send an appropriate error response
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+module.exports = ticketTest;

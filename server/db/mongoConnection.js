@@ -1,19 +1,25 @@
-require("dotenv").config();
 const mongoose = require("mongoose");
 
-const MONGODB_URL =
-  "mongodb+srv://brainhousework:KKmSI8XGVsCvOpRG@brainhouse.vzzz3.mongodb.net/";
+const MONGODB_URL = process.env.MONGODB_URL;
 
 const mongoConnection = async () => {
   try {
-    const connection = mongoose.connect(MONGODB_URL, {
+    // Establish MongoDB connection
+    mongoose.connect(MONGODB_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
+
+    // Log success message
     console.log("Connected to MongoDB");
-    return connection;
+
+    // Return the connection object
+    return mongoose.connection;
   } catch (error) {
+    // Log error message
     console.error("Error connecting to MongoDB:", error);
+
+    // Throw an error to handle it at a higher level
     throw new Error("MongoDB connection failed");
   }
 };

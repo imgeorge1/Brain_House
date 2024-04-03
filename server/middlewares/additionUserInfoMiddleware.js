@@ -5,7 +5,7 @@ const jwtSecret = process.env.JWT_SECRET;
 const additionUserInfoMiddleware = async (req, res, next) => {
   try {
     const { firstName, lastName, email, completed, isPaid } = req.user;
-    console.log("req.userr", req.user);
+    console.log("Signed in user", { email, completed, isPaid });
     // Create JWT token with user information
     const jwtToken = jwt.sign(
       { firstName, lastName, email, completed, isPaid },

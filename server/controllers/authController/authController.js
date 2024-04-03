@@ -1,5 +1,5 @@
 // const sendConfirmationEmail = require("../services/emailService");
-const AdditionUserInfo = require("../models/AdditionUserInfoSchema");
+const AdditionUserInfo = require("../../models/AdditionUserInfoSchema");
 
 const signup = async (req, res) => {
   try {
@@ -16,7 +16,7 @@ const signup = async (req, res) => {
 
     // await sendConfirmationEmail(newUser);
 
-    console.log("New AdditionUserInfo saved: ", newUser);
+    console.log("New AdditionUserInfo saved: ", { email, age, city, phone });
   } catch (error) {
     console.error("Error in signup:", error.message);
     res

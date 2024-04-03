@@ -1,11 +1,11 @@
-const User = require("../models/userSchema");
+const User = require("../../models/userSchema");
 
 const allowedNextCategory = async (req, res) => {
   try {
     const { completed, email } = req.body;
     const user = await User.findOne({ email: email });
     user.completed = completed;
-    console.log("allow user", user);
+    console.log("allow user", { email: email, completed: completed });
 
     await user.save();
 

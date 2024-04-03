@@ -25,7 +25,7 @@ function Register() {
   };
 
   return (
-    <div className="w-1/3 mx-auto my-16">
+    <div className="w-1/3 mx-auto mb-24 mt-40">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8"
