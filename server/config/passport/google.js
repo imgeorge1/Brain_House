@@ -7,24 +7,23 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:3001/auth/google/callback", // https://brain-house-vkk7.onrender.com/auth/google/callback
-      scope: [
-        "email",
-        "profile",
-        "https://www.googleapis.com/auth/drive.readonly",
-      ],
+      callbackURL:
+        process.env.GOOGLE_CALLBACK_URL ||
+        "http://localhost:3001/auth/google/callback", // https://brain-house-vkk7.onrender.com/auth/google/callback
+      scope: ["email", "profile"],
     },
     async (accessToken, refreshToken, profile, cb) => {
       try {
         if (!profile.emails || profile.emails.length === 0) {
+          const error = new Error("Email not provided in the profile");
+          console.error("Google OAuth Error:", error.message);
           return cb(new Error("Email not provided in the profile"), null);
         }
 
         const email = profile.emails[0].value;
 
         let user = await User.findOne({ email });
-        console.log("google profile", profile);
-        console.log("if google user exists", user);
+
         if (!user) {
           user = await User.create({
             firstName: profile.name.givenName,
@@ -34,10 +33,12 @@ passport.use(
             completed: 1,
             isPaid: false,
           });
-          console.log("if Google user does not exist", user);
+
+          console.log("New user created:", user.email);
         }
         return cb(null, user);
       } catch (error) {
+        console.error("Google OAuth Error:", error.message);
         return cb(error, null);
       }
     }
@@ -45,16 +46,12 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
-  console.log("serialized google user", user);
-
   done(null, user.id);
 });
 
 passport.deserializeUser(async function (id, done) {
   try {
     const user = await User.findById(id);
-    console.log("deserialized google user", user);
-
     done(null, user);
   } catch (error) {
     done(error, null);

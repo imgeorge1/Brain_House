@@ -1,4 +1,4 @@
-const Ticket = require("../models/ticketSchema");
+const Ticket = require("../../models/ticketSchema");
 
 const ticket = async (req, res) => {
   try {

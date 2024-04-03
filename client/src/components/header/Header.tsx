@@ -38,8 +38,8 @@ const Header = () => {
           initial={{ opacity: 0, y: -200 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex lg:bg-transparent bg-opacity-50 bg-black md:bg-black md:bg-opacity-50 w-[55%] h-screen flex-col pl-0 lg:flex-row absolute top-0 pt-24
-        right-0 bottom-0 z-10 gap-10 lg:h-full lg:p-0 lg:static lg:w-auto"
+          className="flex lg:bg-transparent bg-opacity-50 bg-black md:bg-black md:bg-opacity-50 w-[55%] h-screen flex-col lg:flex-row absolute top-0
+        right-0 bottom-0 z-10 gap-6 lg:h-full lg:p-0 lg:static lg:w-auto"
         >
           <NavLink
             to="/"

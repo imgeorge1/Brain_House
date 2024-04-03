@@ -1,43 +1,14 @@
-import { useContext, useEffect, useState } from "react";
 import categoryData2 from "../../data/categoryData2";
 import { Link } from "react-router-dom";
-import API from "../../utils/API";
-import { useLocation } from "react-router-dom";
 import category from "../../assets/category.png";
 import useWidth from "../../hooks/useWidth/useWidth";
 import { motion } from "framer-motion";
-import { UserContext } from "../../context/UserContext";
+import useCategoryData from "../../hooks/useCategoryData/useCategoryData";
 
 const Course = ({ completed }: { completed: number[] }) => {
-  const { setTicketData } = useContext(UserContext);
-  const [show, setShow] = useState(false);
-  const [categoryName, setCategoryName] = useState("ყველა");
+  const { show, setShow, categoryName, categoryId, handleChooseCategory } =
+    useCategoryData();
   const width = useWidth();
-  const location = useLocation();
-
-  const categoryId = parseInt(location.pathname.split("/")[2]);
-
-  useEffect(() => {
-    const getCategories = async (categoryId: number) => {
-      try {
-        const response = await API.get(`/tickets/${categoryId}`);
-        setTicketData && setTicketData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    if (
-      location.pathname.startsWith("/courses/") ||
-      location.pathname.startsWith("/tickets/")
-    ) {
-      getCategories(categoryId);
-    }
-  }, [categoryId, setTicketData]);
-
-  const handleChooseCategory = (category: string) => {
-    setShow(!show);
-    setCategoryName(category);
-  };
 
   return (
     <section className="flex align-center mt-32">

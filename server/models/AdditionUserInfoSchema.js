@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
 const AdditionUserInfoSchema = new mongoose.Schema({
-  userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
+  email: {
+    type: String,
+    required: true,
+  },
   age: {
     type: Number,
   },
@@ -11,10 +13,6 @@ const AdditionUserInfoSchema = new mongoose.Schema({
   },
   phone: {
     type: Number,
-  },
-  isPaid: {
-    type: Boolean,
-    default: false,
   },
 });
 

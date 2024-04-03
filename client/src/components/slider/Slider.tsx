@@ -1,11 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FaArrowRight } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "../../index.css";
-
 import { Navigation } from "swiper/modules";
 
 function Slider() {

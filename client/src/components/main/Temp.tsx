@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const SERVER_URL = "http://localhost:3001";
@@ -19,10 +19,6 @@ const Temp = () => {
     fetchVideoUrls();
   }, []);
 
-  function sanitizeUrl(url: any) {
-    return url.replaceAll("&amp;", "&");
-  }
-
   return (
     <div className="border border-red-400 flex flex-col justify-center items-center gap-7">
       <h2>Videos in the Folder:</h2>
@@ -30,7 +26,7 @@ const Temp = () => {
         <iframe
           key={index}
           title={`Video ${index + 1}`}
-          src={sanitizeUrl(url)}
+          src={url}
           width="50%"
           height="400px"
           style={{ marginBottom: "20px" }}

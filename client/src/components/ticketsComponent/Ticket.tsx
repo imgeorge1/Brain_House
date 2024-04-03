@@ -1,17 +1,12 @@
 import { motion } from "framer-motion";
-import { ClickedAnswers, TicketsTypes } from "../../types/Types";
+import { TicketTypes } from "../../types/Types";
 
 const Ticket = ({
   data,
   clickedAnswers,
   handleButtonClick,
   getAnswerClass,
-}: {
-  data: TicketsTypes;
-  clickedAnswers: ClickedAnswers;
-  handleButtonClick: (dataId: number, selectedAnswer: number) => void;
-  getAnswerClass: (dataId: number, answerIndex: number) => string;
-}) => {
+}: TicketTypes) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: 200 }}
