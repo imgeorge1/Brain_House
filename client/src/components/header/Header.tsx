@@ -77,9 +77,9 @@ const Header = () => {
         {width < 1024 &&
           (hide ? (
             <button onClick={toggleMenu} className="space-y-1">
-              <div className="w-[35px] h-[5px] bg-black"></div>
-              <div className="w-[35px] h-[5px] bg-black"></div>
-              <div className="w-[35px] h-[5px] bg-black"></div>
+              <div className="w-[35px] h-[5px] bg-orange-500 rounded-3xl"></div>
+              <div className="w-[35px] h-[5px] bg-orange-500 rounded-3xl"></div>
+              <div className="w-[35px] h-[5px] bg-orange-500 rounded-3xl"></div>
             </button>
           ) : (
             <h1
