@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import useTicketHandler from "../../hooks/useTicketHandler/useTicketHandler";
 import Ticket from "../ticketsComponent/Ticket";
-import { UserContext } from "../../context/UserContext";
+import { useUserContext } from "../../context/UserContext";
 
 const Tests = () => {
   const { clickedAnswers, handleButtonClick, getAnswerClass } =
     useTicketHandler();
-  const { ticketData } = useContext(UserContext);
+  const { ticketData } = useUserContext();
 
   return (
     <div className="mt-28">

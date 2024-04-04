@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
-import { UserContext } from "../../context/UserContext";
+import { useState } from "react";
+import { useUserContext } from "../../context/UserContext";
 
 const useSignInModal = () => {
   const [show, setShow] = useState(false);
-  const { currentUser } = useContext(UserContext);
+  const { currentUser } = useUserContext();
 
   const handleClose = () => {
     setShow(false);

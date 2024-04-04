@@ -1,12 +1,12 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { ClickedAnswers } from "../../types/Types";
 import { useLocation } from "react-router-dom";
-import { UserContext } from "../../context/UserContext";
+import { useUserContext } from "../../context/UserContext";
 
 const useTicketHandler = (
   setCorrectAnswer?: React.Dispatch<React.SetStateAction<number>>
 ) => {
-  const { ticketData } = useContext(UserContext);
+  const { ticketData } = useUserContext();
   const [clickedAnswers, setClickedAnswers] = useState<ClickedAnswers>({});
   const [currentPage, setCurrentPage] = useState(1);
   const [completed, setCompleted] = useState(false);

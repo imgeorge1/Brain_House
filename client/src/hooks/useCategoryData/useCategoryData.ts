@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../context/UserContext";
+import { useEffect, useState } from "react";
+import { useUserContext } from "../../context/UserContext";
 import { useLocation } from "react-router-dom";
 import API from "../../utils/API";
 
 const useCategoryData = () => {
-  const { setTicketData } = useContext(UserContext);
+  const { setTicketData } = useUserContext();
   const [show, setShow] = useState(false);
   const [categoryName, setCategoryName] = useState("ყველა");
   const location = useLocation();
@@ -15,7 +15,7 @@ const useCategoryData = () => {
     const getCategories = async (categoryId: number) => {
       try {
         const response = await API.get(`/tickets/${categoryId}`);
-        setTicketData && setTicketData(response.data);
+        setTicketData(response.data);
       } catch (error) {
         console.error(error);
       }
