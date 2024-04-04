@@ -1,12 +1,12 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import categoryData2 from "../../data/categoryData2";
 import { CheckboxState } from "../../types/Types";
 import API from "../../utils/API";
-import { UserContext } from "../../context/UserContext";
+import { useUserContext } from "../../context/UserContext";
 
 const useExam = () => {
   const [checkboxes, setCheckboxes] = useState<CheckboxState>({});
-  const { setTicketData } = useContext(UserContext);
+  const { setTicketData } = useUserContext();
 
   // Initialize checkboxes state
   useEffect(() => {
@@ -40,7 +40,7 @@ const useExam = () => {
       .filter(([_, value]) => value === true)
       .map(([key]) => parseInt(key));
     const res = await API.post("/tickets", { data: trueIndexes });
-    setTicketData && setTicketData(res.data);
+    setTicketData(res.data);
   };
 
   return {

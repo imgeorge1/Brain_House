@@ -1,4 +1,10 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  ReactNode,
+  useContext,
+} from "react";
 import { useLocation } from "react-router-dom";
 import API from "../utils/API";
 import { TicketsTypes, User } from "../types/Types";
@@ -6,16 +12,14 @@ import { TicketsTypes, User } from "../types/Types";
 interface UserContextType {
   currentUser: User | null;
   booleanPaid: boolean;
-  setTicketData:
-    | React.Dispatch<React.SetStateAction<TicketsTypes[]>>
-    | undefined; // Define setTicketData
+  setTicketData: React.Dispatch<React.SetStateAction<TicketsTypes[]>>;
   ticketData: TicketsTypes[];
 }
 
 const UserContext = createContext<UserContextType>({
   currentUser: null,
   booleanPaid: false,
-  setTicketData: undefined,
+  setTicketData: () => {},
   ticketData: [],
 });
 
@@ -66,10 +70,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       window.location.href = "/courses/21"; // Redirect to /courses/1
     }
 
-    if (
-      (location.pathname.startsWith("/courses/") && !booleanPaid) ||
-      (!tokenFromLocalStorage && location.pathname.startsWith("/courses/"))
-    ) {
+    if (location.pathname.startsWith("/courses/") && !tokenFromLocalStorage) {
       window.location.href = "/";
     }
 
@@ -96,4 +97,6 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   );
 };
 
-export { UserProvider, UserContext };
+const useUserContext = () => useContext(UserContext);
+
+export { UserProvider, useUserContext };

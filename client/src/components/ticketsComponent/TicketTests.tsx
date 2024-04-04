@@ -1,8 +1,8 @@
 import Ticket from "./Ticket";
 import useTicketHandler from "../../hooks/useTicketHandler/useTicketHandler";
 import Pagination from "../pagination/Pagination";
-import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import { useUserContext } from "../../context/UserContext";
+import { TicketsTypes } from "../../types/Types";
 
 const TicketTests = ({
   setCorrectAnswer,
@@ -19,7 +19,7 @@ const TicketTests = ({
     setCompleted,
     setCurrentPage,
   } = useTicketHandler(setCorrectAnswer);
-  const { ticketData } = useContext(UserContext);
+  const { ticketData } = useUserContext();
 
   const checkForVideo =
     currentPage === 1 && location.pathname.startsWith("/courses");
@@ -37,7 +37,7 @@ const TicketTests = ({
 
       {completed || location.pathname.startsWith("/tickets") ? (
         currentTicket.length > 0 &&
-        currentTicket.map((data) => (
+        currentTicket.map((data: TicketsTypes) => (
           <Ticket
             key={data.id}
             data={data}
