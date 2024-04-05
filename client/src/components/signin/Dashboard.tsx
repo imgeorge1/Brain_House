@@ -11,7 +11,7 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
   return (
     <div>
       {currentUser ? (
-        <div className="px-6 gap-2 justify-end p-2 sign-in-parent">
+        <div className="px-1 gap-2 justify-end sign-in-parent">
           {checkAdmin && (
             <Link
               to="dashboard"
@@ -22,7 +22,7 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
             </Link>
           )}
 
-          <h4 className="ctrlbtn mt-2 text-xl">
+          <h4 className="ctrlbtn mt-auto mb-auto users-name">
             {currentUser.firstName + " " + (currentUser.lastName || "")}
           </h4>
           <button

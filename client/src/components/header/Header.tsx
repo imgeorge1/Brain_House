@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     !location.pathname.startsWith("/register") && (
-      <header className="fixed z-50 top-0 w-full background flex items-center justify-between px-2 py-7 md:px-12 text-white">
+      <header className="fixed z-50 top-0 w-full background flex items-center justify-between px-2 py-7 md:py-7 lg:py-4  md:px-10 text-white">
         <motion.div
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0 }}
@@ -29,7 +29,7 @@ const Header = () => {
             to="/"
             className="logo flex items-center gap-2 text-white no-underline"
           >
-            <img src={BrainHouseLogo} alt="logo" width={50} height={50} />
+            <img src={BrainHouseLogo} alt="logo" width={40} height={40} />
             <h5 className="font-bold my-auto">Brain House</h5>
           </NavLink>
         </motion.div>
