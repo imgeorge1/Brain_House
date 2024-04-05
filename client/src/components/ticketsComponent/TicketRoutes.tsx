@@ -21,7 +21,7 @@ const TicketRoutes = () => {
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 "
         >
           <h1 className="font-bold text-3xl mb-4 mt-40">კატეგორიები</h1>
           <button onClick={() => setShow(!show)}>
@@ -31,7 +31,7 @@ const TicketRoutes = () => {
           </button>
         </motion.div>
         {(show || width >= 1024) && (
-          <ul className="pl-0 w-full max-w-[690px]">
+          <ul className="pl-0 w-full max-w-[690px] border-4 border-gray-900">
             {categoryData.map((item) => (
               <motion.li
                 initial={{ opacity: 0, x: -200 }}
