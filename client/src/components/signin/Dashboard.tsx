@@ -1,49 +1,32 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { DashboardTypes } from "../../types/Types";
-import { useEffect } from "react";
+import useDashboard from "../../hooks/useDashboard/useDashboard";
 
 const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const logout = () => {
-    window.open("https://brain-house-vkk7.onrender.com/logout", "_self");
-    localStorage.removeItem("token");
-    localStorage.removeItem("paid");
-  };
-
-  const handleShow = () => setShow(true);
-
-  const checkAdmin =
-    currentUser?.email === "beka.lomsadze.1@btu.edu.ge" ||
-    currentUser?.email === "chikviladze555@gmail.com" ||
-    currentUser?.email === "ubitoz133@gmail.com";
-
-  useEffect(() => {
-    if (location.pathname === "/dashboard" && !checkAdmin) {
-      navigate("/");
-    }
-  }, []);
+  const { logout, handleShow, checkAdmin } = useDashboard({
+    currentUser,
+    setShow,
+  });
 
   return (
     <div>
       {currentUser ? (
-        <div className=" gap-4 flex justify-end p-2">
+        <div className="px-1 gap-2 justify-end sign-in-parent">
           {checkAdmin && (
             <Link
               to="dashboard"
-              className="bg-green-500 p-2 rounded-2xl text-xl font-bold text-white"
+              className="ctrlbtn bg-green-500 p-2 rounded-2xl text-xl font-bold text-white"
               style={{ textDecoration: "none" }}
             >
               Dashboard
             </Link>
           )}
 
-          <h4 className="mt-2 text-xl">
-            {currentUser.firstName + " " + currentUser.lastName}
+          <h4 className="ctrlbtn mt-auto mb-auto users-name">
+            {currentUser.firstName + " " + (currentUser.lastName || "")}
           </h4>
           <button
-            className="buttonBorder px-6 py-2 rounded-3xl hover:bg-orange-500 text-xl text-white"
+            className="sign-out ctrlbtn buttonBorder px-6 py-2 rounded-3xl duration-200 hover:bg-orange-500 text-xl text-white"
             onClick={logout}
           >
             გამოსვლა
@@ -51,7 +34,7 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
         </div>
       ) : (
         <button
-          className="buttonBorder px-6 py-2 rounded-3xl hover:bg-orange-500 text-xl text-white"
+          className="sign-out ctrlbtn buttonBorder px-6 py-2 w-full rounded-3xl duration-200 hover:bg-orange-500 text-xl text-white"
           onClick={handleShow}
         >
           შესვლა

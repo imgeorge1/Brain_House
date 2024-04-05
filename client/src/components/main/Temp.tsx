@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const SERVER_URL = "http://localhost:3001";
@@ -30,7 +30,8 @@ const Temp = () => {
           width="50%"
           height="400px"
           style={{ marginBottom: "20px" }}
-          sandbox="allow-same-origin allow-scripts allow-popups"
+          sandbox="allow-same-origin allow-scripts"
+          allowFullScreen
         />
       ))}
     </div>

@@ -1,30 +1,25 @@
 import { motion } from "framer-motion";
-import { ClickedAnswers, TicketsTypes } from "../../types/Types";
+import { TicketTypes } from "../../types/Types";
 
 const Ticket = ({
   data,
   clickedAnswers,
   handleButtonClick,
   getAnswerClass,
-}: {
-  data: TicketsTypes;
-  clickedAnswers: ClickedAnswers;
-  handleButtonClick: (dataId: number, selectedAnswer: number) => void;
-  getAnswerClass: (dataId: number, answerIndex: number) => string;
-}) => {
+}: TicketTypes) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: 200 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 1, delay: 0.5 }}
-      className="flex flex-col bg-[#230751] items-center mt-16 rounded-lg"
+      className="flex flex-col bg-[#230751] items-center mt-16 rounded-lg w-full"
       key={data.id}
     >
       <div className="w-full md:w-[690px] md:h-[680px]">
         <img
           loading="lazy"
           src={data.image}
-          alt="drive ticket image"
+          alt={`drive ticket image ${data.id}`}
           className="w-full h-full rounded-lg"
           onError={(e) => {
             const target = e.target as HTMLImageElement;

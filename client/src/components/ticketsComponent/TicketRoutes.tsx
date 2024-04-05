@@ -23,7 +23,7 @@ const TicketRoutes = () => {
           transition={{ duration: 0.8 }}
           className="flex items-center gap-2"
         >
-          <h1 className="font-bold text-3xl mb-4">კატეგორიები</h1>
+          <h1 className="font-bold text-3xl mb-4 mt-40">კატეგორიები</h1>
           <button onClick={() => setShow(!show)}>
             {width < 1024 && (
               <img src={category} alt="category icon" width={22} height={22} />
@@ -41,7 +41,7 @@ const TicketRoutes = () => {
                 key={item.id}
               >
                 <Link
-                  className={`no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
+                  className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
                     item.id === categoryId ? "bg-[#230751]" : "bg-[#663aac]"
                   }`}
                   to={`/tickets/${item.id}`}

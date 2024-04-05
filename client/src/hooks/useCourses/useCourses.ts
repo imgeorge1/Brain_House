@@ -1,17 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import API from "../../utils/API";
-import { UserContext } from "../../context/UserContext";
-import useTicketRoutes from "../useTicketRoutes/useTicketRoutes";
+import { useUserContext } from "../../context/UserContext";
 
 const useCourses = () => {
-  const { setTicketData, ticketData } = useTicketRoutes();
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const location = useLocation();
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, booleanPaid } = useUserContext();
   const [completed, setCompleted] = useState<number>(() => {
     const localCompleted = localStorage.getItem("completed");
-    return localCompleted
+    return localCompleted && booleanPaid
       ? parseInt(localCompleted)
       : currentUser?.completed || 1;
   });
@@ -25,7 +23,7 @@ const useCourses = () => {
   const changeCategory = categoryIndex === categoryId;
 
   useEffect(() => {
-    if (correctAnswer > 2 && changeCategory) {
+    if (correctAnswer > 2 && changeCategory && booleanPaid) {
       setCompleted((prevCompleted) => prevCompleted + 1);
     }
   }, [correctAnswer]);
@@ -47,7 +45,7 @@ const useCourses = () => {
       }
     };
 
-    if (correctAnswer > 2 && changeCategory) {
+    if (correctAnswer > 2 && changeCategory && booleanPaid) {
       allowNextCategory();
       setCategoryId(completed);
       localStorage.setItem("completed", completed.toString());
@@ -57,8 +55,6 @@ const useCourses = () => {
   const completedArray = Array.from(Array(completed), (_, index) => index + 1);
 
   return {
-    ticketData,
-    setTicketData,
     correctAnswer,
     setCorrectAnswer,
     completed,

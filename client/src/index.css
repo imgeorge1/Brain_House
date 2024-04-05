@@ -3,12 +3,15 @@
 @tailwind utilities;
 
 :root{
-  --blue: #272559;
+  --l-purple: #2D2862; 
+  --purple: #272559;
+  --orange: #fe6d46;
+  --yellow: #FDE047;
 }
 
 * {
   padding: 0;
-  margin: 0%;
+  margin: 0;
   box-sizing: border-box;
   font-family: sans-serif;
   scroll-behavior: smooth;
@@ -30,15 +33,14 @@ code {
 }
 
 .background {
-  background-color: #272559;
+  background-color: var(--l-purple);
 }
 
 .active-link {
-  border-bottom: 2px solid #fe6d46;
+  border-bottom: 2px solid var(--orange);
 }
-
 .buttonBorder {
-  border: 2px solid #fe6d46;
+  border: 2px solid var(--orange);
 }
 
 /* Swiper */
@@ -65,13 +67,6 @@ code {
   object-fit: cover;
 }
 
-.nav-link {
-  display: inline-block;
-  position: relative;
-  text-decoration: none;
-  font-size: 24px;
-}
-
 .nav-link:after {
   background: none repeat scroll 0 0 transparent;
   bottom: 0;
@@ -89,10 +84,259 @@ code {
 .nav-link.active:after {
   width: 100%;
   left: 0;
-  background: #fe6d46;
+  background: var(--orange);
 }
 
 .slider-button:hover{
   transform: translateY(-5px);
   transition-duration: 0.3s;
 }
+
+.sign-in-parent{
+  display: flex;
+  text-align: center;
+}
+.sign-image:hover{
+  transition-duration: 300ms;
+  transform: translateY(-15px);
+  box-shadow: 0px 2px 30px #000000;
+}
+
+.errorpage-oops{
+  color: var(--purple);
+}
+.errorpage-404{
+  margin-top: -25px;
+  color: var(--purple);
+}
+.errorpage-text{
+  color: black;
+}
+.errorpage-link{
+  color: var(--l-purple);
+}
+/* header */
+.logo{
+  font-size: 20px;
+}
+.nav-link {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  font-size: 20px;
+}
+.users-name{
+  font-size: 20px;
+}
+
+
+@media (max-width: 1170px){
+  .nav-link{
+    font-size: 18px;
+  }
+  .logo{
+    font-size: 18px;
+  }
+  .sign-out{
+    font-size: 18px;
+  }
+  .users-name{
+    font-size: 18px;
+  }
+}
+@media (max-width: 1100px){
+  .nav-link{
+    font-size: 16px;
+  }
+  .logo{
+    font-size: 16px;
+  }
+  .sign-out{
+    font-size: 16px;
+  }
+  .users-name{
+    font-size: 16px;
+  }
+}
+@media (max-width: 1023px){
+  .bigparent{
+    width: 51%;
+  }
+  .logo{
+    font-size: 17px;
+    position: relative;
+  }
+  .nav-link{
+    font-size: 18px;
+  }
+  .nav-btn{
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 768px){
+  .bigparent{
+    width: 55%;
+    height: 23px;
+  }
+  .sign-in-parent{
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    font-size: 24px;
+    display:flex;
+    flex-direction: column-reverse;
+  }
+  .logo{
+    top: 1rem;
+    margin-left: 1rem;
+    position: fixed;
+  }
+  .nav-btn{
+    margin-top: 175px;
+  }
+
+
+  .exam-list{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+}
+
+
+
+/* 
+@media (max-width: 670px){
+  .sign-in-parent{
+    position: absolute;
+    grid: auto/auto auto auto;
+    grid-gap: 10px;
+    right: 0;
+    top: 0;
+    text-align: center;
+  }
+  .nav-btn{
+    margin-top: 0px;
+  }
+  .ctrlbtn{
+    font-size: 17px;
+  }
+  .sign-out{
+    margin-right: 1rem;
+  }
+  .logo{
+    margin-left: 1rem;
+  }
+} 
+@media (min-width: 530px) and (max-width: 590px){
+  .sign-in-parent{
+    position: absolute;
+    grid: auto/auto auto auto;
+    grid-gap: 10px;
+    right: 0;
+    top: 0;
+    text-align: center;
+  }
+  .nav-btn{
+    margin-top: 0px;
+  }
+  .ctrlbtn{
+    font-size: 15px;
+  }
+  .sign-out{
+    margin-right: 1rem;
+  }
+  .logo{
+    margin-left: 1rem;
+  }
+}
+@media (min-width: 480px) and (max-width: 530px){
+  .sign-in-parent{
+    position: absolute;
+    grid: auto/auto auto auto;
+    grid-gap: 10px;
+    right: 0;
+    top: 0;
+    text-align: center;
+  }
+  .nav-btn{
+    margin-top: 0px;
+  }
+  .ctrlbtn{
+    font-size: 15px;
+  }
+  .sign-out{
+    margin-right: 1rem;
+  }
+  .logo{
+    margin-left: 1rem;
+  }
+}
+@media (min-width: 400px) and (max-width: 480px){
+  .sign-in-parent{
+    position: absolute;
+    grid: auto/auto auto auto;
+    grid-gap: 10px;
+    right: 0;
+    top: 0;
+    text-align: center;
+  }
+  .nav-btn{
+    margin-top: 0px;
+  }
+  .ctrlbtn{
+    font-size: 14px;
+  }
+  .sign-out{
+    margin-right: 1rem;
+  }
+  .logo{
+    margin-left: 1rem;
+  }
+}
+@media (min-width: 350px) and (max-width: 400px){
+  .sign-in-parent{
+    position: absolute;
+    grid: auto/auto;
+    grid-gap: 10px;
+    right: 0;
+    top: 0;
+    text-align: center;
+  }
+  .nav-btn{
+    margin-top: 20px;
+  }
+  .ctrlbtn{
+    font-size: 14px;
+  }
+  .sign-out{
+    margin-right: 1rem;
+  }
+  .logo{
+    margin-left: 1rem;
+    font-size: 20px;
+  }
+}
+@media (min-width: 320px) and (max-width: 350px){
+  .sign-in-parent{
+    position: absolute;
+    grid: auto/auto;
+    grid-gap: 10px;
+    right: 0;
+    top: 0;
+    text-align: center;
+  }
+  .nav-btn{
+    margin-top: 20px;
+  }
+  .ctrlbtn{
+    font-size: 12px;
+  }
+  .sign-out{
+    margin-right: 1rem;
+  }
+  .logo{
+    margin-left: 1rem;
+    font-size: 20px;
+  }
+} */

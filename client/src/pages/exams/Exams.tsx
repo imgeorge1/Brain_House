@@ -1,15 +1,14 @@
 import { useState } from "react";
 import Exam from "../../components/exam/Exam";
 import Tests from "../../components/tests/Tests";
-import { TicketsTypes } from "../../types/Types";
 
 const Exams = () => {
-  const [data, setData] = useState<TicketsTypes[]>([]);
+  const [start, setStart] = useState(true);
 
   return (
     <div>
-      <Exam setData={setData} />
-      <Tests data={data} />
+      {start && <Exam setStart={setStart} />}
+      <Tests setStart={setStart} />
     </div>
   );
 };

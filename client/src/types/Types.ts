@@ -45,3 +45,19 @@ export interface DashboardTypes {
 export interface CheckboxState {
   [id: number]: boolean;
 }
+
+export interface Images {
+  image: string;
+  id: number;
+}
+
+export interface SignCache {
+  [key: number]: Images[];
+}
+
+export interface TicketTypes {
+  data: TicketsTypes;
+  clickedAnswers: ClickedAnswers;
+  handleButtonClick: (dataId: number, selectedAnswer: number) => void;
+  getAnswerClass: (dataId: number, answerIndex: number) => string;
+}

@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import categoryData from "../../data/categoryData";
 import { useLocation } from "react-router-dom";
 import API from "../../utils/API";
-import { TicketsTypes } from "../../types/Types";
-import useWidth from "../../hooks/useWidth";
+import useWidth from "../useWidth/useWidth";
+import { useUserContext } from "../../context/UserContext";
 
 const useTicketRoutes = () => {
-  const [ticketData, setTicketData] = useState<TicketsTypes[]>([]);
+  const { setTicketData } = useUserContext();
   const [show, setShow] = useState(false);
   const [categoryName, setCategoryName] = useState("ყველა");
   const width = useWidth();
@@ -22,7 +22,12 @@ const useTicketRoutes = () => {
         console.error(error);
       }
     };
-    getCategories(categoryId);
+    if (
+      location.pathname.startsWith("/tickets/") ||
+      location.pathname.startsWith("/courses/")
+    ) {
+      getCategories(categoryId);
+    }
   }, [categoryId, setTicketData]);
 
   const handleChooseCategory = (category: string) => {
@@ -38,8 +43,6 @@ const useTicketRoutes = () => {
     categoryId,
     handleChooseCategory,
     categoryData,
-    setTicketData,
-    ticketData,
   };
 };
 

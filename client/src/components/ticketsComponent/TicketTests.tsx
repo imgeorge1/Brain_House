@@ -1,6 +1,8 @@
 import Ticket from "./Ticket";
 import useTicketHandler from "../../hooks/useTicketHandler/useTicketHandler";
 import Pagination from "../pagination/Pagination";
+import { useUserContext } from "../../context/UserContext";
+import { TicketsTypes } from "../../types/Types";
 
 const TicketTests = ({
   setCorrectAnswer,
@@ -16,14 +18,14 @@ const TicketTests = ({
     getAnswerClass,
     setCompleted,
     setCurrentPage,
-    ticketData,
   } = useTicketHandler(setCorrectAnswer);
+  const { ticketData } = useUserContext();
 
   const checkForVideo =
     currentPage === 1 && location.pathname.startsWith("/courses");
 
   return (
-    <section className="w-full max-w-[690px]">
+    <section className="w-full max-w-[690px] mt-40">
       {checkForVideo && (
         <img
           src="https://github.com/lomsadze123/audiophile-ecommerce-website/blob/master/src/assets/home/mobile/image-earphones-yx1.jpg?raw=true"
@@ -35,7 +37,7 @@ const TicketTests = ({
 
       {completed || location.pathname.startsWith("/tickets") ? (
         currentTicket.length > 0 &&
-        currentTicket.map((data) => (
+        currentTicket.map((data: TicketsTypes) => (
           <Ticket
             key={data.id}
             data={data}
