@@ -6,14 +6,20 @@ const categoryData = [
   {
     id: 1,
     category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
+    videoURL:
+      "https://drive.google.com/file/d/1z1Z1ABJrhkeYEyAOY2O1QINDmX_lekx0/preview",
   },
   {
     id: 2,
     category: "უწესივრობა და მართვის პირობები",
+    videoURL:
+      "https://drive.google.com/file/d/18RZKvWRRxMjfeA2GFFUlr6zlR8JvWwOu/preview",
   },
   {
     id: 3,
     category: "მაფრთხილებელი ნიშნები",
+    videoURL:
+      "https://drive.google.com/file/d/17d30EUjBA3T-BT5M7kPH_pq2EW76phGh/preview",
   },
   {
     id: 4,

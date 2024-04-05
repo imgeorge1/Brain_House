@@ -14,7 +14,6 @@ const generatePublicUrl = async () => {
       const fileId = file.id;
       return `https://drive.google.com/file/d/${fileId}/preview`;
     });
-
     return publicUrls;
   } catch (error) {
     console.log("Error generating public URLs:", error);

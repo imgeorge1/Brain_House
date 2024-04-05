@@ -1,8 +1,10 @@
+import React, { useEffect, useState } from "react";
 import Ticket from "./Ticket";
 import useTicketHandler from "../../hooks/useTicketHandler/useTicketHandler";
 import Pagination from "../pagination/Pagination";
 import { useUserContext } from "../../context/UserContext";
 import { TicketsTypes } from "../../types/Types";
+import useTicketRoutes from "../../hooks/useTicketRoutes/useTicketRoutes";
 
 const TicketTests = ({
   setCorrectAnswer,
@@ -19,19 +21,45 @@ const TicketTests = ({
     setCompleted,
     setCurrentPage,
   } = useTicketHandler(setCorrectAnswer);
+
+  const { categoryData } = useTicketRoutes();
   const { ticketData } = useUserContext();
+  const [currentCategoryVideo, setCurrentCategoryVideo] = useState<
+    string | null
+  >(null);
+
+  // Determine current category ID
+  useEffect(() => {
+    const categoryId =
+      currentTicket.length > 0 ? currentTicket[0].categoryID : null;
+    if (categoryId) {
+      const category = categoryData.find((cat) => cat.id === categoryId);
+      console.log("category", category);
+      if (category && category?.videoURL) {
+        setCurrentCategoryVideo(category.videoURL);
+        console.log("currentCategoryVideo", currentCategoryVideo);
+      } else {
+        setCurrentCategoryVideo(null); // No video available for current category
+        console.log("currentCategoryVideo", currentCategoryVideo);
+      }
+    }
+  }, [currentTicket, categoryData]);
 
   const checkForVideo =
     currentPage === 1 && location.pathname.startsWith("/courses");
 
   return (
-    <section className="w-full max-w-[690px] mt-40">
-      {checkForVideo && (
-        <img
-          src="https://github.com/lomsadze123/audiophile-ecommerce-website/blob/master/src/assets/home/mobile/image-earphones-yx1.jpg?raw=true"
-          alt="test"
-          width={300}
-          height={300}
+    <section className="w-full max-w-[690px] mt-40  border-4 border-green-700">
+      {currentCategoryVideo && (
+        <iframe
+          key={`video-${currentCategoryVideo}`} // Use a unique key for each iframe
+          title={`Video ${currentTicket[0]?.id}`} // Updated line
+          src={currentCategoryVideo}
+          width="100%"
+          height="500px"
+          style={{ marginBottom: "20px" }}
+          sandbox="allow-same-origin allow-scripts"
+          allowFullScreen
         />
       )}
 
