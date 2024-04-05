@@ -30,7 +30,7 @@ const Temp = () => {
           width="50%"
           height="400px"
           style={{ marginBottom: "20px" }}
-          sandbox="allow-same-origin allow-scripts"
+          sandbox="allow-same-origin allow-scripts allow-popups"
         />
       ))}
     </div>

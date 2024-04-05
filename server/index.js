@@ -33,6 +33,14 @@ app.use(cookieParser());
 
 mongoConnection();
 
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "frame-ancestors https://drive.google.com"
+  );
+  next();
+});
+
 app.use(
   session({
     secret: secretKey,
