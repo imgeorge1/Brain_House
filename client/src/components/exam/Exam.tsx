@@ -1,7 +1,11 @@
 import categoryData2 from "../../data/categoryData2";
 import useExam from "../../hooks/useExam/useExam";
 
-const Exam = () => {
+const Exam = ({
+  setStart,
+}: {
+  setStart: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const {
     checkboxes,
     handleCheckboxChange,
@@ -9,8 +13,13 @@ const Exam = () => {
     handleFilteredCategory,
   } = useExam();
 
+  const filteredAndStart = () => {
+    handleFilteredCategory();
+    setStart(false);
+  };
+
   return (
-    <div>
+    <div className="mb-28">
       <button
         onClick={toggleAll}
         className="buttonBorder mt-36 ml-4 px-6 py-2 pb-2 rounded-3xl duration-200 hover:bg-orange-500 text-xl hover:text-white "
@@ -37,7 +46,7 @@ const Exam = () => {
         ))}
       </ul>
       <button
-        onClick={handleFilteredCategory}
+        onClick={filteredAndStart}
         className="buttonBorder mt-2 mb-2 ml-4 px-6 py-2 pb-2 rounded-3xl duration-200 hover:bg-orange-500 text-xl hover:text-white "
       >
         გამოცდის დაწყება

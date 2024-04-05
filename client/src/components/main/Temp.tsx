@@ -31,6 +31,7 @@ const Temp = () => {
           height="400px"
           style={{ marginBottom: "20px" }}
           sandbox="allow-same-origin allow-scripts"
+          allowFullScreen
         />
       ))}
     </div>
