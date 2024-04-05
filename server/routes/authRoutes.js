@@ -14,6 +14,7 @@ const generateVideos = require("../controllers/driveController/driveController")
 const authenticateUser = require("../middlewares/authenticateUser");
 const currentUser = require("../controllers/currentUser/currentUserController");
 const ticketTest = require("../controllers/ticketsController/ticketTestController");
+const usersInfo = require("../controllers/authController/usersInfoController");
 
 const authRoutes = express.Router();
 
@@ -72,5 +73,7 @@ authRoutes.post("/tickets", ticketTest);
 authRoutes.get("/api/video", generateVideos);
 
 authRoutes.get("/signs/:id", signs);
+
+authRoutes.get("/usersInfo", usersInfo);
 
 module.exports = authRoutes;
