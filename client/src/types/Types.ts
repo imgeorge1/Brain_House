@@ -61,3 +61,8 @@ export interface TicketTypes {
   handleButtonClick: (dataId: number, selectedAnswer: number) => void;
   getAnswerClass: (dataId: number, answerIndex: number) => string;
 }
+
+export interface Category {
+  id: number;
+  category: string;
+}

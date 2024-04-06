@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ClickedAnswers } from "../../types/Types";
+import { Category, ClickedAnswers } from "../../types/Types";
 import { useLocation } from "react-router-dom";
 import { useUserContext } from "../../context/UserContext";
 import categoryData2 from "../../data/categoryData2";
@@ -38,8 +38,12 @@ const useTicketHandler = (
     const checkForVideo =
       currentPage === 1 && location.pathname.startsWith("/courses");
 
-    const currentVideo = categoryData2.find(
-      (category) => category.id === parseInt(categoryId)
+    const currentVideo = categoryData2.reduce(
+      (foundCategory: Category | null, category: Category) => {
+        if (foundCategory) return foundCategory; // If category is already found, return it
+        return category.id === parseInt(categoryId) ? category : null;
+      },
+      null
     );
 
     return checkForVideo && currentVideo;
