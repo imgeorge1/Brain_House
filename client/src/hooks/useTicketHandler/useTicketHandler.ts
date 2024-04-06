@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { ClickedAnswers } from "../../types/Types";
 import { useLocation } from "react-router-dom";
 import { useUserContext } from "../../context/UserContext";
+import categoryData2 from "../../data/categoryData2";
 
 const useTicketHandler = (
   setCorrectAnswer?: React.Dispatch<React.SetStateAction<number>>
@@ -29,7 +30,20 @@ const useTicketHandler = (
     setCurrentPage(1);
     setClickedAnswers({});
     setCorrectAnswer && setCorrectAnswer(0);
+    setCompleted(false);
   }, [location.pathname]);
+
+  const checkForVideoFunc = () => {
+    const categoryId = location.pathname.split("/")[2];
+    const checkForVideo =
+      currentPage === 1 && location.pathname.startsWith("/courses");
+
+    const currentVideo = categoryData2.find(
+      (category) => category.id === parseInt(categoryId)
+    );
+
+    return checkForVideo && currentVideo;
+  };
 
   const ticketDataMap = new Map(ticketData.map((item) => [item.id, item]));
 
@@ -86,6 +100,7 @@ const useTicketHandler = (
     countIncorrectAnswer,
     passedQuestionLength,
     restartClicks,
+    checkForVideoFunc,
   };
 };
 

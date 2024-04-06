@@ -18,20 +18,24 @@ const TicketTests = ({
     getAnswerClass,
     setCompleted,
     setCurrentPage,
+    checkForVideoFunc,
   } = useTicketHandler(setCorrectAnswer);
   const { ticketData } = useUserContext();
 
-  const checkForVideo =
-    currentPage === 1 && location.pathname.startsWith("/courses");
+  const checkForVideo = checkForVideoFunc();
 
   return (
     <section className="w-full max-w-[690px] mt-40">
       {checkForVideo && (
-        <img
-          src="https://github.com/lomsadze123/audiophile-ecommerce-website/blob/master/src/assets/home/mobile/image-earphones-yx1.jpg?raw=true"
-          alt="test"
-          width={300}
-          height={300}
+        <iframe
+          key={`video-${checkForVideo.id}`} // Use a unique key for each iframe
+          title={`Video ${checkForVideo.id}`} // Updated line
+          src={checkForVideo.videoUrl}
+          width="100%"
+          height="500px"
+          style={{ marginBottom: "20px" }}
+          sandbox="allow-same-origin allow-scripts"
+          allowFullScreen
         />
       )}
 
