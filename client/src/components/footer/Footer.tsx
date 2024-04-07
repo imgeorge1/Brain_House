@@ -16,7 +16,9 @@ function Footer() {
           +995 599 79 57 67
         </div>
         <div className="flex text-blue-500 w-full mt-2">
-          <FaFacebook />
+          <a href="https://www.facebook.com/Brain.House.Geo" target="_blank">
+            <FaFacebook />
+          </a>
         </div>
         <div className="flex text-gray-400 w-full items-center gap-2 mt-2">
           Brain House © 2024
