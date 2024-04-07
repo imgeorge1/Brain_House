@@ -3,9 +3,27 @@ const categoryData2 = [
   //   id: 0,
   //   category: "ყველა",
   // },
-  { id: 21, category: "რკინიგზის გადასასვლელი", index: 1 },
-  { id: 22, category: "მოძრაობა ავტომაგისტრალზე", index: 2 },
-  { id: 23, category: "საცხოვრებელი ზონა, სამარშრუტოს პრიორიტეტი", index: 3 },
+  {
+    id: 21,
+    category: "რკინიგზის გადასასვლელი",
+    index: 1,
+    videoUrl:
+      "https://drive.google.com/file/d/1z1Z1ABJrhkeYEyAOY2O1QINDmX_lekx0/preview",
+  },
+  {
+    id: 22,
+    category: "მოძრაობა ავტომაგისტრალზე",
+    index: 2,
+    videoUrl:
+      "https://drive.google.com/file/d/18RZKvWRRxMjfeA2GFFUlr6zlR8JvWwOu/preview",
+  },
+  {
+    id: 23,
+    category: "საცხოვრებელი ზონა, სამარშრუტოს პრიორიტეტი",
+    index: 3,
+    videoUrl:
+      "https://drive.google.com/file/d/17d30EUjBA3T-BT5M7kPH_pq2EW76phGh/preview",
+  },
   { id: 24, category: "ბუქსირება", index: 4 },
   { id: 25, category: "სასწავლო სვლა", index: 5 },
   { id: 8, category: "სერვისის ნიშნები", index: 6 },

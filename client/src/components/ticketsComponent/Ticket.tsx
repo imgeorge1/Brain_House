@@ -19,7 +19,7 @@ const Ticket = ({
         <img
           loading="lazy"
           src={data.image}
-          alt="drive ticket image"
+          alt={`drive ticket image ${data.id}`}
           className="w-full h-full rounded-lg"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
