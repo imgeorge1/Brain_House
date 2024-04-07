@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import API from "../../utils/API";
 import { useUserContext } from "../../context/UserContext";
+import { toast } from "react-toastify";
 
 const useCourses = () => {
   const [correctAnswer, setCorrectAnswer] = useState(0);
@@ -14,6 +15,8 @@ const useCourses = () => {
       : currentUser?.completed || 1;
   });
 
+  const notify = () => toast("congratulations you made it!");
+
   const [categoryId, setCategoryId] = useState(
     currentUser ? currentUser.completed : completed
   );
@@ -25,6 +28,7 @@ const useCourses = () => {
   useEffect(() => {
     if (correctAnswer > 2 && changeCategory && booleanPaid) {
       setCompleted((prevCompleted) => prevCompleted + 1);
+      notify();
     }
   }, [correctAnswer]);
 
