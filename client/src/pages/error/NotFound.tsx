@@ -8,13 +8,12 @@ const NotFound = () => {
         404 Page Not Found
       </h1>
       <p className="text-[18px] errorpage-text mb-5">
-        We're sorry, but the page you are looking for cannot be found. It may
-        have been removed,
-        <br /> had its name changed, or is temporarily unavailable.
+        გვერდი, რომელსაც თქვენ ეძებთ, ვერ მოიძებნა.
+        <br />
       </p>
       <Link to="/" className="justify-center inline-flex text-[18px]">
         <a>
-          Go TO <span className="errorpage-link">HOMEPAGE</span>{" "}
+          <span className="errorpage-link">მთავარ გვერდზე დაბრუნება</span>{" "}
           <span className="text-[25px]">←</span>
         </a>
       </Link>
