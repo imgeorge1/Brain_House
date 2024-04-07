@@ -30,7 +30,7 @@ const TicketTests = ({
         <iframe
           key={`video-${checkForVideo.id}`} // Use a unique key for each iframe
           title={`Video ${checkForVideo.id}`} // Updated line
-          src={checkForVideo.videoUrl}
+          src={checkForVideo?.videoUrl}
           width="100%"
           height="500px"
           style={{ marginBottom: "20px" }}

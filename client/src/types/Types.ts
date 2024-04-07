@@ -65,4 +65,5 @@ export interface TicketTypes {
 export interface Category {
   id: number;
   category: string;
+  videoUrl?: string;
 }
