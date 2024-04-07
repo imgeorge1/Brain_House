@@ -51,7 +51,7 @@ const TicketTests = ({
           className="bg-black text-white mt-2 p-2"
           onClick={() => setCompleted(true)}
         >
-          COMPLETED
+          შესრულდა
         </button>
       )}
       {(completed || location.pathname.startsWith("/tickets")) && (
