@@ -44,9 +44,15 @@ const Tests = ({
             თქვენ გქონდათ {countIncorrectAnswer} შეცდომა და დააგროვეთ{" "}
             {passedQuestionLength - countIncorrectAnswer} სწორი პასუხი
           </motion.h1>
-          <button onClick={restartTest} className="mt-14 bg-black text-white">
+          <motion.button
+            initial={{ opacity: 0, rotate: 180 }}
+            animate={{ opacity: 1, rotate: 0 }}
+            transition={{ duration: 0.8 }}
+            onClick={restartTest}
+            className="mt-14 bg-black text-white"
+          >
             თავიდან დაწყება
-          </button>
+          </motion.button>
         </div>
       )}
     </div>
