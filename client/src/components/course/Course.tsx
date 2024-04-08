@@ -13,9 +13,16 @@ const Course = ({ completed }: { completed: number[] }) => {
   return (
     <section className="flex align-center mt-32">
       <div className="flex flex-col p-3">
-        <Link className="text-xl text-yellow-600" to="/signs">
-          საგზაო ნიშნები
-        </Link>
+        <motion.button
+          initial={{ opacity: 0, y: -200 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-left"
+        >
+          <Link className="text-xl text-yellow-600" to="/signs">
+            საგზაო ნიშნები
+          </Link>
+        </motion.button>
         <motion.div
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0 }}
