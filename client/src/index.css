@@ -133,6 +133,18 @@ code {
   top: 80px !important;
 }
 
+.main-text{
+  color: var(--purple);
+}
+.li-item{
+  margin-left: -20px;
+  margin-bottom: 10px;
+  border: var(--orange) 2px solid;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
 @media (max-width: 1170px) {
   .nav-link {
     font-size: 18px;
@@ -175,6 +187,17 @@ code {
   .nav-btn {
     margin-top: 100px;
   }
+  .main-text{
+    font-size: 30px;
+  }
+  .li-item{
+    font-size: 16px;
+  }
+  .main-desc{
+    font-size: 16px;
+    line-height: 22px;
+  }
+  
 }
 
 @media (max-width: 768px) {
