@@ -49,7 +49,7 @@ const Tests = ({
             animate={{ opacity: 1, rotate: 0 }}
             transition={{ duration: 0.8 }}
             onClick={restartTest}
-            className="mt-14 bg-black text-white"
+            className="mt-14 px-2 bg-black text-white"
           >
             თავიდან დაწყება
           </motion.button>

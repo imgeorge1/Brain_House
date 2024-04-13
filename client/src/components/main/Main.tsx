@@ -4,7 +4,7 @@ import Light from "../../assets/lightbulb1.png";
 const Main = () => {
   return (
     <main className="w-full mt-4 items-center px-4 md:px-20">
-      <div className="flex flex-col md:flex-row justify-evenly gap-3">
+      <div className="flex flex-col md:flex-row justify-evenly mt-8">
         <div className="">
           <h2 className="text-4xl font-bold main-text">რა არის ბრეინ ჰაუსი?</h2>
           <p className="text-xl mt-8 max-w-[550px] main-desc">
@@ -42,7 +42,7 @@ const Main = () => {
         <img
           src={Light}
           alt="newlogo"
-          className="md:max-w-[350px] h-full main-img"
+          className="md:max-w-[350px] h-full w-full main-img"
         />
       </div>
     </main>

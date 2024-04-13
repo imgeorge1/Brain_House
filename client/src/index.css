@@ -139,7 +139,7 @@ code {
 .li-item{
   margin-left: -20px;
   margin-bottom: 10px;
-  border: var(--orange) 2px solid;
+  border: #fe6e466b 2px solid;
   border-top: none;
   border-left: none;
   border-right: none;
