@@ -67,3 +67,8 @@ export interface Category {
   category: string;
   videoUrl?: string;
 }
+
+export interface TestTypes {
+  clickedAnswers: ClickedAnswers;
+  ticketData: TicketsTypes[];
+}

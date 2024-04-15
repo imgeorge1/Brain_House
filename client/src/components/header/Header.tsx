@@ -4,14 +4,12 @@ import BrainHouseLogo from "../../assets/newbrainhouselogo.png";
 import SignInModal from "../signin/SignInModal";
 import useWidth from "../../hooks/useWidth/useWidth";
 import { motion } from "framer-motion";
-import { useUserContext } from "../../context/UserContext";
 
 const Header = () => {
   const location = useLocation();
   const categoryId = parseInt(location.pathname.split("/")[2]);
   const width = useWidth();
   const [hide, setHide] = useState(true);
-  const { booleanPaid, currentUser } = useUserContext();
 
   const toggleMenu = () => {
     setHide(!hide);
@@ -51,27 +49,11 @@ const Header = () => {
             </NavLink>
 
             <NavLink
-              to={`/tickets/${categoryId || 0}`}
+              to={`/tickets/${categoryId || 21}`}
               className="nav-link text-white text-center"
             >
               მართვის ბარათი
             </NavLink>
-            {currentUser && (
-              <NavLink
-                to="/courses/21"
-                className="nav-link text-white no-underline text-center"
-              >
-                კურსები
-              </NavLink>
-            )}
-            {booleanPaid && currentUser && (
-              <NavLink
-                to="/exams"
-                className="nav-link text-white no-underline text-center"
-              >
-                გამოცდა
-              </NavLink>
-            )}
           </motion.nav>
         )}
 

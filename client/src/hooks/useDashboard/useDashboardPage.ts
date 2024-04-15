@@ -20,10 +20,18 @@ const useDashboardPage = () => {
           {}
         );
 
-        const mergedUsers = res.data.users.map((user: FullUser) => ({
-          ...user,
-          ...(userInfoMap[user.email] || {}), // Use default empty object to avoid errors if userInfo not found
-        }));
+        // Merge data from both responses while ensuring _id from res remains intact
+        const mergedUsers = res.data.users.map((user: FullUser) => {
+          const userInfo = userInfoMap[user.email];
+          const mergedUser = {
+            ...(userInfo || {}), // Merge userInfo if available
+            ...user, // Merge user data
+          };
+          if (userInfo) {
+            mergedUser._id = user._id; // Keep the _id from the first response
+          }
+          return mergedUser;
+        });
         setUsers(mergedUsers);
         console.log(mergedUsers);
       } catch (error) {

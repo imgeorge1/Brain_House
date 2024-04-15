@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import category from "../../assets/category.png";
 import { motion } from "framer-motion";
 import useTicketRoutes from "../../hooks/useTicketRoutes/useTicketRoutes";
+import categoryData from "../../data/categoryData";
 
 const TicketRoutes = () => {
   const {
@@ -11,21 +12,36 @@ const TicketRoutes = () => {
     width,
     categoryId,
     handleChooseCategory,
-    categoryData,
   } = useTicketRoutes();
 
   return (
-    <section className="flex align-center ">
+    <section className="flex align-center mt-24">
       <div className="flex flex-col p-3">
+        <motion.div
+          initial={{ opacity: 0, y: -200 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="flex items-center justify-between"
+        >
+          <Link className="text-xl text-yellow-600" to="/signs">
+            საგზაო ნიშნები
+          </Link>
+          <NavLink
+            to="/exams"
+            className="text-xl text-yellow-600 no-underline text-center"
+          >
+            გამოცდა
+          </NavLink>
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 mt-6"
         >
           <h1
             onClick={() => setShow(!show)}
-            className="font-bold text-3xl mb-4 mt-40"
+            className="font-bold text-3xl mb-4"
           >
             კატეგორიები
             <button>
@@ -47,7 +63,7 @@ const TicketRoutes = () => {
               <motion.li
                 initial={{ opacity: 0, x: -200 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 * item.id }}
+                transition={{ duration: 0.8, delay: 0.1 * item.index }}
                 onClick={() => handleChooseCategory(item.category)}
                 key={item.id}
               >
@@ -57,7 +73,7 @@ const TicketRoutes = () => {
                   }`}
                   to={`/tickets/${item.id}`}
                 >
-                  {item.id === 0 ? "" : item.id + "."} {item.category}{" "}
+                  {item.id + "."} {item.category}{" "}
                 </Link>
               </motion.li>
             ))}

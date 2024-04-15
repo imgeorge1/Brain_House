@@ -7,10 +7,9 @@ const {
 } = require("../controllers/showUsers/showUsers");
 const googleStrategy = require("../config/passport/google");
 const facebookStrategy = require("../config/passport/facebook");
-const allowedNextCategory = require("../controllers/permissionController/permissionController");
 const signs = require("../controllers/sign/signController");
 const additionUserInfoMiddleware = require("../middlewares/additionUserInfoMiddleware");
-const generateVideos = require("../controllers/driveController/driveController");
+// const generateVideos = require("../controllers/driveController/driveController");
 const authenticateUser = require("../middlewares/authenticateUser");
 const currentUser = require("../controllers/currentUser/currentUserController");
 const ticketTest = require("../controllers/ticketsController/ticketTestController");
@@ -48,8 +47,6 @@ authRoutes.get(
 
 authRoutes.get("/user", authenticateUser, currentUser);
 
-authRoutes.put("/user", authenticateUser, allowedNextCategory);
-
 authRoutes.get("/login/failed", (req, res) => {
   res.status(401).json({
     success: false,
@@ -70,7 +67,7 @@ authRoutes.put("/users/:userId", updateUserPaidStatus);
 authRoutes.get("/tickets/:id", ticket);
 authRoutes.post("/tickets", ticketTest);
 
-authRoutes.get("/api/video", generateVideos);
+// authRoutes.get("/api/video", generateVideos);
 
 authRoutes.get("/signs/:id", signs);
 

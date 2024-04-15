@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import categoryData2 from "../../data/categoryData2";
+import categoryData from "../../data/categoryData";
 import useExam from "../../hooks/useExam/useExam";
 
 const Exam = ({
@@ -31,7 +31,7 @@ const Exam = ({
         ყველა
       </motion.button>
       <ul className="exam-list grid lg:grid-cols-3 md:grid-cols-2 gap-x-20 gap-y-6 m-4 p-4 max-w-full bg-[#2D2862] text-white rounded">
-        {categoryData2.map((data) => (
+        {categoryData.map((data) => (
           <motion.li
             initial={{ opacity: 0, x: -200 }}
             animate={{ opacity: 1, x: 0 }}
