@@ -18,13 +18,13 @@ function Slider() {
         ></div>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className=" flex flex-col gap-4 items-center ">
-            <h2 className="text-5xl md:text-8xl font-bold text-[#2D2862]">
+            <h2 className="text-5xl md:text-8xl font-semibold text-[#2D2862] font-roboto">
               კურსები
             </h2>
-            <p className="text-1xl md:text-2xl text-[#FDE047] mt-2">
+            <p className="text-1xl md:text-2xl text-[#FDE047] mt-2 font-roboto">
               ონლაინ კურსები
             </p>
-            <button className="flex items-center justify-between w-[12rem] px-4 py-2 md:w-60 md:px-7 md:py-3 rounded-2xl bg-[#2D2862] text-xl  md:text-2xl text-white slider-button">
+            <button className=" font-roboto flex items-center justify-between w-[12rem] px-4 py-2 md:w-60 md:px-7 md:py-3 rounded-2xl bg-[#2D2862] text-xl  md:text-2xl text-white slider-button">
               გაიგეთ მეტი
               <FaArrowRight />
             </button>
@@ -42,10 +42,10 @@ function Slider() {
         ></div>
         <div className="absolute inset-0 flex items-center justify-center ">
           <div className=" flex flex-col gap-5 items-center">
-            <h2 className="text-5xl md:text-8xl font-bold text-[#2D2862]">
-              რატომ ჩვენ ?
+            <h2 className="text-4xl md:text-8xl font-semibold text-[#2D2862] font-roboto">
+              რატომ ჩვენ?
             </h2>
-            <p className="text-1xl md:text-2xl text-[#FDE047] mt-2">
+            <p className="text-1xl md:text-2xl text-[#FDE047] mt-2 font-roboto">
               ჩვენ ვასწავლით ონლაინ, უმარტივესი მეთოდებით
             </p>
           </div>
@@ -61,13 +61,13 @@ function Slider() {
         ></div>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className=" flex flex-col gap-5 items-center">
-            <h2 className="text-5xl md:text-8xl font-bold text-[#2D2862]">
+            <h2 className="text-4xl md:text-8xl font-semibold text-[#2D2862] font-roboto">
               რეგისტრაცია
             </h2>
-            <p className="text-1xl md:text-2xl text-[#FDE047] mt-2">
-              შეეგიძლიათ გაიაროთ რეგისტრაცია ახლა უკვე ჩვენი საიტიდან!
+            <p className="text-lg md:text-2xl text-[#FDE047] mt-2 font-roboto">
+              ახლა რეგისტრაცია ჩვენი საიტიდან შეგიძლიათ!
             </p>
-            <button className="flex items-center justify-between w-[12rem] px-4 py-2 md:w-60 md:px-7 md:py-3 rounded-2xl bg-[#2D2862] md:text-2xl text-white slider-button">
+            <button className="font-roboto flex items-center justify-between w-[12rem] px-4 py-2 md:w-60 md:px-6 md:py-3 rounded-2xl bg-[#2D2862] md:text-2xl text-white slider-button">
               რეგისტრაცია
               <FaPenToSquare />
             </button>

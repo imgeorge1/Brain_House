@@ -23,12 +23,15 @@ const TicketRoutes = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="flex items-center justify-between"
         >
-          <Link className="text-xl text-yellow-600" to="/signs">
+          <Link
+            className="text-sm lg:text-lg text-yellow-600 font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 rounded-3xl duration-200 hover:bg-orange-500 hover:text-white "
+            to="/signs"
+          >
             საგზაო ნიშნები
           </Link>
           <NavLink
             to="/exams"
-            className="text-xl text-yellow-600 no-underline text-center"
+            className="text-sm lg:text-lg text-yellow-600 font-roboto buttonBorder mt-2 mb-2 ml-4 px-6 py-2 pb-2 rounded-3xl duration-200 hover:bg-orange-500 hover:text-white "
           >
             გამოცდა
           </NavLink>
