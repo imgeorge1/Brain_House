@@ -133,10 +133,10 @@ code {
   top: 80px !important;
 }
 
-.main-text{
+.main-text {
   color: var(--purple);
 }
-.li-item{
+.li-item {
   margin-left: -20px;
   margin-bottom: 10px;
   border: #fe6e466b 2px solid;
@@ -187,17 +187,16 @@ code {
   .nav-btn {
     margin-top: 100px;
   }
-  .main-text{
+  .main-text {
     font-size: 30px;
   }
-  .li-item{
+  .li-item {
     font-size: 16px;
   }
-  .main-desc{
+  .main-desc {
     font-size: 16px;
     line-height: 22px;
   }
-  
 }
 
 @media (max-width: 768px) {

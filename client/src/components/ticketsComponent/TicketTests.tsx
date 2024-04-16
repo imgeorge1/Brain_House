@@ -25,7 +25,7 @@ const TicketTests = () =>
     const checkForVideo = checkForVideoFunc();
 
     return (
-      <section className="w-full max-w-[690px] mt-40">
+      <section className="w-full max-w-[800px] mt-40">
         {checkForVideo && (
           <iframe
             key={`video-${checkForVideo.id}`} // Use a unique key for each iframe
