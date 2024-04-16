@@ -12,7 +12,7 @@ const Ticket = ({
       initial={{ opacity: 0, x: 200 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 1, delay: 0.5 }}
-      className="flex flex-col bg-[#230751] items-center mt-16 rounded-lg w-full !scale-[1.07]"
+      className="flex flex-col bg-[#230751] items-center mt-16 rounded-lg w-full !scale-[1.07] md:!scale-[1]"
       key={data.id}
     >
       <div className="w-full md:w-[790px] md:h-[680px]">
