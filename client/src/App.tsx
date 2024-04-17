@@ -4,6 +4,7 @@ import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
 import Register from "./pages/register/Register";
 import { Suspense, lazy } from "react";
+import Brain from "./assets/brain.png";
 
 const TicketsLazy = lazy(() => import("./pages/tickets/Tickets"));
 const ExamsLazy = lazy(() => import("./pages/exams/Exams"));
@@ -16,7 +17,13 @@ const App = () => {
     <>
       <Header />
       <Suspense
-        fallback={<h1 className="text-3xl text-center mt-40">Loading...</h1>}
+        fallback={
+          <img
+            className="w-32 h-32 animate-bounce mt-44 mx-auto"
+            src={Brain}
+            alt="brain logo"
+          />
+        }
       >
         <Routes>
           <Route path="/" element={<Home />} />
