@@ -19,7 +19,7 @@ const Main = () => {
           </p>
         </div>
         <img
-          className="w-full h-full md:max-w-[350px] main-img rounded-lg"
+          className="w-full h-full md:max-w-[350px] main-img rounded-lg mt-8 md:mt-0"
           src={BrainHouse}
           alt="Brain House logo"
         />
