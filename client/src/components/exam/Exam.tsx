@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import categoryData from "../../data/categoryData";
 import useExam from "../../hooks/useExam/useExam";
+import { Link } from "react-router-dom";
+import back from "../../assets/back.png";
 
 const Exam = ({
   setStart,
@@ -21,12 +23,22 @@ const Exam = ({
 
   return (
     <div className="mb-28">
+      <button className="ml-3 mt-24 block">
+        {" "}
+        <Link
+          to="/tickets/21"
+          className="flex rounded-lg hover:bg-slate-300 duration-200"
+        >
+          <img src={back} width={18} alt="back" />{" "}
+          <p className="px-1">დაბრუნება</p>
+        </Link>
+      </button>
       <motion.button
         initial={{ opacity: 0, y: -200 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: "spring", duration: 0.8, stiffness: 100 }}
         onClick={toggleAll}
-        className="buttonBorder mt-36 ml-4 px-6 py-2 pb-2 rounded-3xl duration-200 hover:bg-orange-500 text-xl hover:text-white "
+        className="buttonBorder mt-10 ml-4 px-6 py-2 pb-2 rounded-3xl duration-200 hover:bg-orange-500 text-xl hover:text-white "
       >
         ყველა
       </motion.button>

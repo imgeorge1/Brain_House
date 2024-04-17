@@ -2,13 +2,25 @@ import SignImages from "./SignImages";
 import useRoadSign from "../../hooks/useRoadSign/useRoadSign";
 import roadSignsData from "../../data/roadSignsData";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import back from "../../assets/back.png";
 
 const RoadSign = () => {
   const { signImages, loading, setSignIn } = useRoadSign();
 
   return (
-    <div className="min-h-[800px]">
-      <ul className="flex flex-wrap mx-auto justify-center gap-8 max-w-[950px] mt-32 mb-20">
+    <div className="min-h-[800px] pt-20">
+      <button className="m-3 ">
+        {" "}
+        <Link
+          to="/tickets/21"
+          className="flex rounded-lg hover:bg-slate-300 duration-200"
+        >
+          <img src={back} width={18} alt="back" />{" "}
+          <p className="px-1">დაბრუნება</p>
+        </Link>
+      </button>
+      <ul className="flex flex-wrap mx-auto justify-center gap-8 max-w-[950px]  mb-20">
         {roadSignsData.map((signs) => (
           <motion.li
             initial={{ opacity: 0, rotate: -180 }}
