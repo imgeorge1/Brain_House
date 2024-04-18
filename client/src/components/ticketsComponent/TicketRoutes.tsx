@@ -61,7 +61,7 @@ const TicketRoutes = () => {
           </h1>
         </motion.div>
         {(show || width >= 1024) && (
-          <ul className="pl-0 w-full max-w-[690px] border-4 border-gray-900">
+          <ul className="pl-0 w-full max-w-[690px]">
             {categoryData.map((item) => (
               <motion.li
                 initial={{ opacity: 0, x: -200 }}
