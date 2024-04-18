@@ -1,29 +1,40 @@
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
-import Courses from "./pages/courses/Courses";
 import Register from "./pages/register/Register";
-import Dashboard from "./pages/dashboard/Dashboard";
-import NotFound from "./pages/error/NotFound";
-import Tickets from "./pages/tickets/Tickets";
-import Exams from "./pages/exams/Exams";
-import RoadSigns from "./pages/roadSigns/RoadSigns";
+import { Suspense, lazy } from "react";
+import Brain from "./assets/brain.png";
+
+const TicketsLazy = lazy(() => import("./pages/tickets/Tickets"));
+const ExamsLazy = lazy(() => import("./pages/exams/Exams"));
+const RoadSignsLazy = lazy(() => import("./pages/roadSigns/RoadSigns"));
+const DashboardLazy = lazy(() => import("./pages/dashboard/Dashboard"));
+const NotFoundLazy = lazy(() => import("./pages/error/NotFound"));
 
 const App = () => {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/courses/:id" element={<Courses />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/tickets/:id" element={<Tickets />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/exams" element={<Exams />} />
-        <Route path="/signs" element={<RoadSigns />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense
+        fallback={
+          <img
+            className="w-32 h-32 animate-bounce mt-44 mx-auto"
+            src={Brain}
+            alt="brain logo"
+          />
+        }
+      >
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/tickets/:id" element={<TicketsLazy />} />
+          <Route path="/dashboard" element={<DashboardLazy />} />
+          <Route path="/exams" element={<ExamsLazy />} />
+          <Route path="/signs" element={<RoadSignsLazy />} />
+          <Route path="*" element={<NotFoundLazy />} />
+        </Routes>
+      </Suspense>
       <Footer />
     </>
   );

@@ -6,7 +6,7 @@ const Exams = () => {
   const [start, setStart] = useState(true);
 
   return (
-    <div>
+    <div className="overflow-x-hidden md:overflow-x-auto">
       {start && <Exam setStart={setStart} />}
       <Tests setStart={setStart} />
     </div>

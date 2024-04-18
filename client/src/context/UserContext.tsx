@@ -63,21 +63,10 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const booleanPaid = localStorage.getItem("paid") === "true";
 
   useEffect(() => {
-    if (
-      location.pathname.startsWith("/courses/") &&
-      location.pathname !== "/courses/21"
-    ) {
-      window.location.href = "/courses/21"; // Redirect to /courses/1
-    }
-
-    if (location.pathname.startsWith("/courses/") && !tokenFromLocalStorage) {
-      window.location.href = "/";
-    }
-
     if (tokenFromLocalStorage) {
       getUser();
     }
-  }, []); // Run this effect only once on initial render
+  }, []);
 
   useEffect(() => {
     setTicketData([]);

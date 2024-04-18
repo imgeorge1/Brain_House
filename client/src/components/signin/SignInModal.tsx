@@ -3,8 +3,9 @@ import google from "../../assets/google.png";
 import facebook from "../../assets/facebook.png";
 import Dashboard from "./Dashboard";
 import useSignInModal from "../../hooks/useSignInModal/useSignInModal";
+import { motion } from "framer-motion";
 
-function SignInModal() {
+const SignInModal = () => {
   const { show, setShow, currentUser, handleClose, googleAuth, facebookAuth } =
     useSignInModal();
 
@@ -16,7 +17,12 @@ function SignInModal() {
           className="absolute top-0 h-screen left-0 right-0 bottom-0 bg-black bg-opacity-50"
           onClick={handleClose}
         >
-          <div className="mt-10 justify-content-center align-items-center text-center text-black">
+          <motion.div
+            initial={{ opacity: 0, y: -200 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mt-10 justify-content-center align-items-center text-center text-black"
+          >
             <div className="space-y-2 bg-white inline-block p-6 rounded-lg text-2xl">
               <h6 className="mb-4">შესვლა</h6>
               <button
@@ -42,11 +48,11 @@ function SignInModal() {
                 <span>შესვლა Facebook ანგარიშით</span>
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
     </>
   );
-}
+};
 
 export default SignInModal;
