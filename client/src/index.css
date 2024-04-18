@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-  --l-purple: #2D2862; 
+:root {
+  --l-purple: #2d2862;
   --purple: #272559;
   --orange: #fe6d46;
-  --yellow: #FDE047;
+  --yellow: #fde047;
 }
 
 * {
@@ -16,6 +16,10 @@
   font-family: sans-serif;
   scroll-behavior: smooth;
 }
+.font-roboto{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
 
 body {
   margin: 0;
@@ -87,36 +91,36 @@ code {
   background: var(--orange);
 }
 
-.slider-button:hover{
+.slider-button:hover {
   transform: translateY(-5px);
   transition-duration: 0.3s;
 }
 
-.sign-in-parent{
+.sign-in-parent {
   display: flex;
   text-align: center;
 }
-.sign-image:hover{
+.sign-image:hover {
   transition-duration: 300ms;
   transform: translateY(-15px);
   box-shadow: 0px 2px 30px #000000;
 }
 
-.errorpage-oops{
+.errorpage-oops {
   color: var(--purple);
 }
-.errorpage-404{
+.errorpage-404 {
   margin-top: -25px;
   color: var(--purple);
 }
-.errorpage-text{
+.errorpage-text {
   color: black;
 }
-.errorpage-link{
+.errorpage-link {
   color: var(--l-purple);
 }
 /* header */
-.logo{
+.logo {
   font-size: 20px;
 }
 .nav-link {
@@ -125,85 +129,112 @@ code {
   text-decoration: none;
   font-size: 20px;
 }
-.users-name{
+.users-name {
   font-size: 20px;
 }
 
+.Toastify__toast-container--top-right {
+  top: 80px !important;
+}
 
-@media (max-width: 1170px){
-  .nav-link{
+.main-text {
+  color: var(--purple);
+}
+.li-item {
+  margin-left: -20px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.li-item::before{
+  content: "";
+  padding: 2px;
+  left: 0;
+  top: 0;
+  height: 10px;
+  width: 50%;
+  border-left: #fe6e46 5px solid;
+}
+
+@media (max-width: 1170px) {
+  .nav-link {
     font-size: 18px;
   }
-  .logo{
+  .logo {
     font-size: 18px;
   }
-  .sign-out{
+  .sign-out {
     font-size: 18px;
   }
-  .users-name{
+  .users-name {
     font-size: 18px;
   }
 }
-@media (max-width: 1100px){
-  .nav-link{
+@media (max-width: 1100px) {
+  .nav-link {
     font-size: 16px;
   }
-  .logo{
+  .logo {
     font-size: 16px;
   }
-  .sign-out{
+  .sign-out {
     font-size: 16px;
   }
-  .users-name{
+  .users-name {
     font-size: 16px;
   }
 }
-@media (max-width: 1023px){
-  .bigparent{
+@media (max-width: 1023px) {
+  .bigparent {
     width: 51%;
   }
-  .logo{
+  .logo {
     font-size: 17px;
     position: relative;
   }
-  .nav-link{
+  .nav-link {
     font-size: 18px;
   }
-  .nav-btn{
+  .nav-btn {
     margin-top: 100px;
+  }
+  .main-text {
+    font-size: 30px;
+  }
+  .li-item {
+    font-size: 16px;
+  }
+  .main-desc {
+    font-size: 16px;
+    line-height: 22px;
   }
 }
 
-@media (max-width: 768px){
-  .bigparent{
+@media (max-width: 768px) {
+  .bigparent {
     width: 55%;
     height: 23px;
   }
-  .sign-in-parent{
+  .sign-in-parent {
     display: inline-block;
     position: relative;
     text-decoration: none;
     font-size: 24px;
-    display:flex;
+    display: flex;
     flex-direction: column-reverse;
   }
-  .logo{
+  .logo {
     top: 1rem;
     margin-left: 1rem;
     position: fixed;
   }
-  .nav-btn{
-    margin-top: 175px;
+  .nav-btn {
+    margin-top: 150px;
   }
 
-
-  .exam-list{
+  .exam-list {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
-  
 }
-
-
 
 /* 
 @media (max-width: 670px){

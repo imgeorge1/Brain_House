@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import back from "../../assets/back.png";
 
 const NotFound = () => {
   return (
@@ -8,14 +9,20 @@ const NotFound = () => {
         404 Page Not Found
       </h1>
       <p className="text-[18px] errorpage-text mb-5">
-        We're sorry, but the page you are looking for cannot be found. It may
-        have been removed,
-        <br /> had its name changed, or is temporarily unavailable.
+        გვერდი, რომელსაც თქვენ ეძებთ, ვერ მოიძებნა.
+        <br />
       </p>
-      <Link to="/" className="justify-center inline-flex text-[18px]">
+      <Link to="/" className="justify-center flex text-[18px]">
         <a>
-          Go TO <span className="errorpage-link">HOMEPAGE</span>{" "}
-          <span className="text-[25px]">←</span>
+          <span className="errorpage-link">
+            <p className="gap-2 flex">
+              <img src={back} width={20} alt="back" />
+              მთავარ გვერდზე დაბრუნება
+            </p>
+          </span>
+          {/* <span className="text-[25px]">
+            <img src={back} width={16} alt="back" />
+          </span> */}
         </a>
       </Link>
     </div>

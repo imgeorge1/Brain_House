@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import categoryData2 from "../../data/categoryData2";
+import categoryData from "../../data/categoryData";
 import { CheckboxState } from "../../types/Types";
 import API from "../../utils/API";
 import { useUserContext } from "../../context/UserContext";
@@ -11,7 +11,7 @@ const useExam = () => {
   // Initialize checkboxes state
   useEffect(() => {
     const initialState: CheckboxState = {};
-    categoryData2.forEach((data) => {
+    categoryData.forEach((data) => {
       initialState[data.id] = true;
     });
     setCheckboxes(initialState);

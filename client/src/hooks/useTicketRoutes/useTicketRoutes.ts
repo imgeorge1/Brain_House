@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import categoryData from "../../data/categoryData";
 import { useLocation } from "react-router-dom";
 import API from "../../utils/API";
 import useWidth from "../useWidth/useWidth";
@@ -22,10 +21,7 @@ const useTicketRoutes = () => {
         console.error(error);
       }
     };
-    if (
-      location.pathname.startsWith("/tickets/") ||
-      location.pathname.startsWith("/courses/")
-    ) {
+    if (location.pathname.startsWith("/tickets/")) {
       getCategories(categoryId);
     }
   }, [categoryId, setTicketData]);
@@ -42,7 +38,6 @@ const useTicketRoutes = () => {
     width,
     categoryId,
     handleChooseCategory,
-    categoryData,
   };
 };
 

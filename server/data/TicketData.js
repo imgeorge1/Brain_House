@@ -851,7 +851,7 @@ const largeTicketList = [
   {
     id: 651,
     categoryID: 3,
-    image: "",
+    image: "https://tinyurl.com/43d345tz",
     correctAnswer: 4,
     quantityAnswer: 4,
   },
@@ -2078,7 +2078,7 @@ const largeTicketList = [
     categoryID: 10,
     image: "https://tinyurl.com/msjazphz",
     correctAnswer: 1,
-    quantityAnswer: 1,
+    quantityAnswer: 2,
   },
   {
     id: 109,

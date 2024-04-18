@@ -12,10 +12,10 @@ const Ticket = ({
       initial={{ opacity: 0, x: 200 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 1, delay: 0.5 }}
-      className="flex flex-col bg-[#230751] items-center mt-16 rounded-lg w-full "
+      className="flex flex-col bg-[#230751] items-center mt-16 rounded-lg w-full !scale-[1.07] md:!scale-[1]"
       key={data.id}
     >
-      <div className="w-full md:w-[690px] md:h-[680px]">
+      <div className="w-full min-h-[380px] md:w-[790px] md:h-[680px]">
         <img
           loading="lazy"
           src={data.image}

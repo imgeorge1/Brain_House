@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import category from "../../assets/category.png";
 import { motion } from "framer-motion";
 import useTicketRoutes from "../../hooks/useTicketRoutes/useTicketRoutes";
+import categoryData from "../../data/categoryData";
 
 const TicketRoutes = () => {
   const {
@@ -11,32 +12,61 @@ const TicketRoutes = () => {
     width,
     categoryId,
     handleChooseCategory,
-    categoryData,
   } = useTicketRoutes();
 
   return (
-    <section className="flex align-center ">
+    <section className="flex align-center mt-24">
       <div className="flex flex-col p-3">
+        <motion.div
+          initial={{ opacity: 0, y: -200 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="flex items-center justify-between"
+        >
+          <Link
+            className="text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 rounded-3xl duration-200 hover:bg-orange-500 hover:text-white "
+            to="/signs"
+          >
+            საგზაო ნიშნები
+          </Link>
+          <NavLink
+            to="/exams"
+            className="text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 ml-4 px-6 py-2 pb-2 rounded-3xl duration-200 hover:bg-orange-500 hover:text-white "
+          >
+            გამოცდა
+          </NavLink>
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex items-center gap-2 "
+          className="flex items-center gap-2 mt-6"
         >
-          <h1 className="font-bold text-3xl mb-4 mt-40">კატეგორიები</h1>
-          <button onClick={() => setShow(!show)}>
-            {width < 1024 && (
-              <img src={category} alt="category icon" width={22} height={22} />
-            )}
-          </button>
+          <h1
+            onClick={() => setShow(!show)}
+            className="font-bold text-3xl mb-4"
+          >
+            კატეგორიები
+            <button>
+              {width < 1024 && (
+                <img
+                  src={category}
+                  alt="category icon"
+                  width={22}
+                  height={22}
+                  className="ml-2"
+                />
+              )}
+            </button>
+          </h1>
         </motion.div>
         {(show || width >= 1024) && (
-          <ul className="pl-0 w-full max-w-[690px] border-4 border-gray-900">
+          <ul className="pl-0 w-full max-w-[690px]">
             {categoryData.map((item) => (
               <motion.li
                 initial={{ opacity: 0, x: -200 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 * item.id }}
+                transition={{ duration: 0.8, delay: 0.1 * item.index }}
                 onClick={() => handleChooseCategory(item.category)}
                 key={item.id}
               >
@@ -46,7 +76,7 @@ const TicketRoutes = () => {
                   }`}
                   to={`/tickets/${item.id}`}
                 >
-                  {item.id === 0 ? "" : item.id + "."} {item.category}{" "}
+                  {item.id + "."} {item.category}{" "}
                 </Link>
               </motion.li>
             ))}

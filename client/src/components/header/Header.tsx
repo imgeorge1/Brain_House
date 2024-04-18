@@ -4,14 +4,13 @@ import BrainHouseLogo from "../../assets/newbrainhouselogo.png";
 import SignInModal from "../signin/SignInModal";
 import useWidth from "../../hooks/useWidth/useWidth";
 import { motion } from "framer-motion";
-import { useUserContext } from "../../context/UserContext";
+import X from "../../assets/X.png";
 
 const Header = () => {
   const location = useLocation();
   const categoryId = parseInt(location.pathname.split("/")[2]);
   const width = useWidth();
   const [hide, setHide] = useState(true);
-  const { booleanPaid, currentUser } = useUserContext();
 
   const toggleMenu = () => {
     setHide(!hide);
@@ -39,6 +38,7 @@ const Header = () => {
             initial={{ opacity: 0, y: -200 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            onClick={() => setHide(true)}
             className="flex lg:bg-transparent bg-opacity-50 bg-black md:bg-black md:bg-opacity-50 w-[55%] h-screen flex-col lg:flex-row absolute top-0
         right-0 bottom-0 z-10 gap-6 lg:h-full lg:p-0 lg:static lg:w-auto"
           >
@@ -50,27 +50,11 @@ const Header = () => {
             </NavLink>
 
             <NavLink
-              to={`/tickets/${categoryId || 0}`}
+              to={`/tickets/${categoryId || 21}`}
               className="nav-link text-white text-center"
             >
               მართვის ბარათი
             </NavLink>
-            {currentUser && (
-              <NavLink
-                to="/courses/21"
-                className="nav-link text-white no-underline text-center"
-              >
-                კურსები
-              </NavLink>
-            )}
-            {booleanPaid && currentUser && (
-              <NavLink
-                to="/exams"
-                className="nav-link text-white no-underline text-center"
-              >
-                გამოცდა
-              </NavLink>
-            )}
           </motion.nav>
         )}
 
@@ -84,9 +68,10 @@ const Header = () => {
           ) : (
             <h1
               onClick={toggleMenu}
-              className="z-50 mt-[-60px] ml-[-100px] text-3xl absolute right-1"
+              className="z-50 mt-[-40px] ml-[-100px] text-3xl absolute 
+              right-1 cursor-pointer border-2 rounded-full hover:bg-gray-700 duration-200"
             >
-              x
+              <img src={X} width={32} alt="back" />
             </h1>
           ))}
 
