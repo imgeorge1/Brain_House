@@ -42,7 +42,7 @@ app.use(
     saveUninitialized: true,
     cookie: {
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days in milliseconds
-      secure: true, // Set to true for HTTPS environments
+      secure: false, // Set to true for HTTPS environments
     },
     // store: MongoStore.create({
     //   mongoUrl: process.env.MONGODB_URL,
