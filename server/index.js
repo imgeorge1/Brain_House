@@ -25,7 +25,10 @@ const DEV_MODE = process.env.NODE_ENV === "production";
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://drive.google.com"],
+    origin: [
+      "https://brain-house-gamma.vercel.app",
+      "https://drive.google.com",
+    ], // https://brain-house-gamma.vercel.app http://localhost:5173
     credentials: true,
   })
 );
