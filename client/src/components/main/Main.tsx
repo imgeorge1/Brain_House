@@ -1,11 +1,9 @@
 import BrainHouse from "../../assets/newlogofull.png";
 import Light from "../../assets/lightbulb1.png";
-import Temp from "./Temp";
 
 const Main = () => {
   return (
     <main className="w-full mt-4 items-center px-4 md:px-20">
-      <Temp />
       <div className="flex flex-col md:flex-row justify-evenly gap-3">
         <img
           className="w-full h-full md:max-w-[400px]"
