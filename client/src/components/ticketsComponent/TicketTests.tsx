@@ -1,8 +1,10 @@
+import React, { useEffect, useState } from "react";
 import Ticket from "./Ticket";
 import useTicketHandler from "../../hooks/useTicketHandler/useTicketHandler";
 import Pagination from "../pagination/Pagination";
 import { useUserContext } from "../../context/UserContext";
 import { TicketsTypes } from "../../types/Types";
+import useTicketRoutes from "../../hooks/useTicketRoutes/useTicketRoutes";
 
 const TicketTests = () =>
   //   {
@@ -21,7 +23,6 @@ const TicketTests = () =>
       checkForVideoFunc,
     } = useTicketHandler();
     const { ticketData } = useUserContext();
-
     const checkForVideo = checkForVideoFunc();
 
     return (
