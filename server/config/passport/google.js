@@ -9,7 +9,7 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL:
         process.env.GOOGLE_CALLBACK_URL ||
-        "http://localhost:3001/auth/google/callback", // https://brain-house-vkk7.onrender.com/auth/google/callback
+        "https://brain-house-vkk7.onrender.com/auth/google/callback", // https://brain-house-vkk7.onrender.com/auth/google/callback http://localhost:3001/auth/google/callback
       scope: ["email", "profile"],
     },
     async (accessToken, refreshToken, profile, cb) => {
