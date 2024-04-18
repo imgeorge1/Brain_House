@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import back from "../../assets/back.png";
 
 const NotFound = () => {
   return (
@@ -11,10 +12,17 @@ const NotFound = () => {
         გვერდი, რომელსაც თქვენ ეძებთ, ვერ მოიძებნა.
         <br />
       </p>
-      <Link to="/" className="justify-center inline-flex text-[18px]">
+      <Link to="/" className="justify-center flex text-[18px]">
         <a>
-          <span className="errorpage-link">მთავარ გვერდზე დაბრუნება</span>{" "}
-          <span className="text-[25px]">←</span>
+          <span className="errorpage-link">
+            <p className="gap-2 flex">
+              <img src={back} width={20} alt="back" />
+              მთავარ გვერდზე დაბრუნება
+            </p>
+          </span>
+          {/* <span className="text-[25px]">
+            <img src={back} width={16} alt="back" />
+          </span> */}
         </a>
       </Link>
     </div>

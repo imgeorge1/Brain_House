@@ -4,6 +4,7 @@ import BrainHouseLogo from "../../assets/newbrainhouselogo.png";
 import SignInModal from "../signin/SignInModal";
 import useWidth from "../../hooks/useWidth/useWidth";
 import { motion } from "framer-motion";
+import X from "../../assets/X.png";
 
 const Header = () => {
   const location = useLocation();
@@ -67,9 +68,10 @@ const Header = () => {
           ) : (
             <h1
               onClick={toggleMenu}
-              className="z-50 mt-[-60px] ml-[-100px] text-3xl absolute right-1"
+              className="z-50 mt-[-40px] ml-[-100px] text-3xl absolute 
+              right-1 cursor-pointer border-2 rounded-full hover:bg-gray-700 duration-200"
             >
-              x
+              <img src={X} width={32} alt="back" />
             </h1>
           ))}
 
