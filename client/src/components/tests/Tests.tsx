@@ -6,14 +6,16 @@ import useTestMove from "../../hooks/useTestMove/useTestMove";
 
 const Tests = ({
   setStart,
+  start,
 }: {
   setStart: React.Dispatch<React.SetStateAction<boolean>>;
+  start: boolean;
 }) => {
   const {
     clickedAnswers,
     handleButtonClick,
     getAnswerClass,
-    countIncorrectAnswer,
+    countAnswer,
     passedQuestionLength,
     restartClicks,
   } = useTicketHandler();
@@ -31,6 +33,15 @@ const Tests = ({
 
   return (
     <div className=" mx-auto lg:max-w-[800px] mb-40 mt-28">
+      {location.pathname.split("/")[1] === "exams" &&
+        !start &&
+        passedQuestionLength !== 30 && (
+          <>
+            <p className="text-3xl">{currentTicketIndex + 1} / 30</p>
+            <p className="text-3xl">შეცდომა {countAnswer.incorrect}</p>
+            <p className="text-3xl">სწორი {countAnswer.correct}</p>
+          </>
+        )}
       {currentTicketIndex < ticketData.length && (
         <Ticket
           key={ticketData[currentTicketIndex].id}
@@ -47,8 +58,8 @@ const Tests = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            თქვენ გქონდათ {countIncorrectAnswer} შეცდომა და დააგროვეთ{" "}
-            {passedQuestionLength - countIncorrectAnswer} სწორი პასუხი
+            თქვენ გქონდათ {countAnswer.incorrect} შეცდომა და დააგროვეთ{" "}
+            {countAnswer.correct} სწორი პასუხი
           </motion.h1>
           <motion.button
             initial={{ opacity: 0, rotate: 180 }}

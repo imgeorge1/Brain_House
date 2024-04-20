@@ -21,14 +21,13 @@ const secretKey = generateSecretKey();
 // Connect to MongoDB
 mongoConnection();
 
-const DEV_MODE = process.env.NODE_ENV === "production";
+const DEV_MODE = process.env.NODE_ENV === "developer";
 
 app.use(
   cors({
-    origin: [
-      "https://brain-house-gamma.vercel.app",
-      "https://drive.google.com",
-    ], // https://brain-house-gamma.vercel.app http://localhost:5173
+    origin: DEV_MODE
+      ? ["http://localhost:5173", "https://drive.google.com"]
+      : ["https://brain-house-gamma.vercel.app", "https://drive.google.com"],
     credentials: true,
   })
 );
