@@ -44,7 +44,7 @@ const TicketRoutes = () => {
         >
           <h1
             onClick={() => setShow(!show)}
-            className="font-bold text-3xl mb-4"
+            className="font-bold text-2xl md:text-3xl mb-4"
           >
             კატეგორიები
             <button>
@@ -52,9 +52,9 @@ const TicketRoutes = () => {
                 <img
                   src={category}
                   alt="category icon"
-                  width={22}
-                  height={22}
-                  className="ml-2"
+                  width={17}
+                  height={17}
+                  className="ml-1 md:w-22 md:h-22 md:ml-2"
                 />
               )}
             </button>
@@ -83,7 +83,11 @@ const TicketRoutes = () => {
           </ul>
         )}
         {!show && width < 1024 && (
-          <h2 className="text-2xl text-[#230751] mt-5">{categoryName}</h2>
+          <h2 className="w-full text-white mt-5 bg-[#663aac] p-3 rounded-md text-lg">
+            {/* {categoryId + ". " + categoryName} */}
+            {/* add number in front */}
+            {categoryName}
+          </h2>
         )}
       </div>
     </section>
