@@ -84,9 +84,9 @@ const TicketRoutes = () => {
         )}
         {!show && width < 1024 && (
           <h2 className="w-full text-white mt-5 bg-[#663aac] p-3 rounded-md text-lg">
-            {/* {categoryId + ". " + categoryName} */}
+            {categoryId + ". " + categoryName}
             {/* add number in front */}
-            {categoryName}
+            {/* {categoryName} */}
           </h2>
         )}
       </div>
