@@ -7,7 +7,7 @@ import { useUserContext } from "../../context/UserContext";
 const useTicketRoutes = () => {
   const { setTicketData } = useUserContext();
   const [show, setShow] = useState(false);
-  const [categoryName, setCategoryName] = useState("ყველა");
+  const [categoryName, setCategoryName] = useState("რკინიგზის გადასასვლელი");
   const width = useWidth();
   const location = useLocation();
 
