@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useUserContext } from "../../context/UserContext";
 
+const DEV_MODE = "developer";
+
 const useSignInModal = () => {
   const [show, setShow] = useState(false);
   const { currentUser } = useUserContext();
@@ -10,11 +12,21 @@ const useSignInModal = () => {
   };
 
   const googleAuth = () => {
-    window.open("https://brain-house-vkk7.onrender.com/auth/google", "_self");
+    window.open(
+      DEV_MODE
+        ? "http://localhost:3001/auth/google"
+        : "https://brain-house-vkk7.onrender.com/auth/google",
+      "_self"
+    );
   };
 
   const facebookAuth = () => {
-    window.open("https://brain-house-vkk7.onrender.com/auth/facebook", "_self");
+    window.open(
+      DEV_MODE
+        ? "http://localhost:3001/auth/facebook"
+        : "https://brain-house-vkk7.onrender.com/auth/facebook",
+      "_self"
+    );
   };
 
   return {

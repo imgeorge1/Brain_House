@@ -23,29 +23,40 @@ const SignInModal = () => {
             transition={{ duration: 0.8 }}
             className="mt-10 justify-content-center align-items-center text-center text-black"
           >
-            <div className="space-y-2 bg-white inline-block p-6 rounded-lg text-2xl">
-              <h6 className="mb-4">შესვლა</h6>
+            <div className="space-y-2 bg-white inline-block text-center p-6 rounded-lg">
+              <h6 className="font-semibold mb-4 font-roboto border-b-[1px] border-b-gray-200 w-32 mx-auto text-lg sm:text-xl">
+                შესვლა
+              </h6>
               <button
-                className="flex gap-5 bg-white border-b-[1px] border-b-gray-400 pb-2"
+                className="flex gap-5 bg-white p-1 mx-auto hover:-translate-y-1 hover:shadow-md
+                hover:shadow-gray-300 duration-200 text-sm sm:text-lg"
                 type="submit"
                 onClick={googleAuth}
               >
-                <img src={google} alt="google" width={30} height={30} />
-                <span>შესვლა GOOGLE ანგარიშით</span>
+                <img
+                  src={google}
+                  alt="google"
+                  width={20}
+                  height={20}
+                  className="sm:w-7 sm:h-7"
+                />
+                <span className="font-roboto">შესვლა GOOGLE ანგარიშით</span>
               </button>
-
+              <hr />
               <button
-                className="flex gap-5 bg-white"
+                className="flex gap-5 bg-white p-1 hover:-translate-y-1 hover:shadow-md
+                hover:shadow-gray-300 duration-200 text-sm sm:text-lg"
                 type="submit"
                 onClick={facebookAuth}
               >
                 <img
                   src={facebook}
                   alt="facebook logo"
-                  width={30}
-                  height={30}
+                  width={20}
+                  height={20}
+                  className="sm:w-7 sm:h-7"
                 />
-                <span>შესვლა Facebook ანგარიშით</span>
+                <span className="font-roboto"> შესვლა Facebook ანგარიშით </span>
               </button>
             </div>
           </motion.div>

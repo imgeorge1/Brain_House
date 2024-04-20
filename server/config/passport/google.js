@@ -2,14 +2,16 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const User = require("../../models/userSchema");
 
+const DEV_MODE = process.env.NODE_ENV === "developer";
+
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL:
-        process.env.GOOGLE_CALLBACK_URL ||
-        "https://brain-house-vkk7.onrender.com/auth/google/callback", // https://brain-house-vkk7.onrender.com/auth/google/callback http://localhost:3001/auth/google/callback
+      callbackURL: DEV_MODE
+        ? "http://localhost:3001/auth/google/callback"
+        : process.env.GOOGLE_CALLBACK_URL,
       scope: ["email", "profile"],
     },
     async (accessToken, refreshToken, profile, cb) => {

@@ -2,12 +2,19 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { DashboardTypes } from "../../types/Types";
 
+const DEV_MODE = "developer";
+
 const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const logout = () => {
-    window.open("https://brain-house-vkk7.onrender.com/logout", "_self");
+    window.open(
+      DEV_MODE
+        ? "http://localhost:3001/logout"
+        : "https://brain-house-vkk7.onrender.com/logout",
+      "_self"
+    );
     localStorage.removeItem("token");
     localStorage.removeItem("paid");
   };

@@ -2,14 +2,16 @@ const passport = require("passport");
 const FacebookStrategy = require("passport-facebook").Strategy;
 const User = require("../../models/userSchema");
 
+const DEV_MODE = process.env.NODE_ENV === "developer";
+
 passport.use(
   new FacebookStrategy(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL:
-        process.env.FACEBOOK_CALLBACK_URL ||
-        "https://brain-house-vkk7.onrender.com/auth/facebook/callback", // https://brain-house-vkk7.onrender.com/auth/facebook/callback http://localhost:3001/auth/facebook/callback
+      callbackURL: DEV_MODE
+        ? "http://localhost:3001/auth/facebook/callback"
+        : process.env.FACEBOOK_CALLBACK_URL,
       profileFields: ["id", "emails", "name"],
     },
     async function (accessToken, refreshToken, profile, cb) {

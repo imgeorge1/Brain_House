@@ -8,7 +8,7 @@ const Exams = () => {
   return (
     <div className="overflow-x-hidden md:overflow-x-auto">
       {start && <Exam setStart={setStart} />}
-      <Tests setStart={setStart} />
+      <Tests setStart={setStart} start={start} />
     </div>
   );
 };

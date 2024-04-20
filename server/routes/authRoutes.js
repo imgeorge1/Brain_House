@@ -17,6 +17,8 @@ const usersInfo = require("../controllers/authController/usersInfoController");
 
 const authRoutes = express.Router();
 
+const DEV_MODE = process.env.NODE_ENV === "developer";
+
 authRoutes.get(
   "/auth/google",
   googleStrategy.authenticate("google", {
@@ -56,7 +58,7 @@ authRoutes.get("/login/failed", (req, res) => {
 
 authRoutes.get("/logout", (req, res) => {
   req.logout();
-  res.redirect(process.env.CLIENT_URL);
+  res.redirect(DEV_MODE ? "http://localhost:5173" : process.env.CLIENT_URL);
 });
 
 authRoutes.post("/signup", signup);
