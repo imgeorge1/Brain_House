@@ -24,14 +24,16 @@ const TicketRoutes = () => {
           className="flex items-center justify-between"
         >
           <Link
-            className="text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 rounded-3xl duration-200 hover:bg-orange-500 hover:text-white "
+            className="text-sm  lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
+            rounded-3xl duration-200 hover:bg-orange-500 hover:text-black roadSignsButtonImage"
             to="/signs"
           >
             საგზაო ნიშნები
           </Link>
           <NavLink
             to="/exams"
-            className="text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 ml-4 px-6 py-2 pb-2 rounded-3xl duration-200 hover:bg-orange-500 hover:text-white "
+            className="text-sm  lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 ml-4 px-6 py-2 pb-2 
+            rounded-3xl duration-200 hover:bg-orange-500 hover:text-white "
           >
             გამოცდა
           </NavLink>
