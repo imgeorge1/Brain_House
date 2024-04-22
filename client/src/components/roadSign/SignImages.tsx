@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Images } from "../../types/Types";
 
 const SignImages = ({ signImages }: { signImages: Images[] }) => {
+  console.log(signImages);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -200 }}

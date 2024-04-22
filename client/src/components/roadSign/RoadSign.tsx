@@ -4,9 +4,19 @@ import roadSignsData from "../../data/roadSignsData";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import back from "../../assets/back.png";
+import { useEffect, useMemo } from "react";
 
 const RoadSign = () => {
-  const { signImages, loading, setSignIn } = useRoadSign();
+  const { signImages, loading, setSignIn, fetchRoadSignData } = useRoadSign();
+
+  useEffect(() => {
+    fetchRoadSignData();
+  }, [fetchRoadSignData]);
+
+  const memoizedSignImages = useMemo(
+    () => <SignImages signImages={signImages} />,
+    [signImages]
+  );
 
   return (
     <div className="min-h-[800px] pt-20">
@@ -42,7 +52,7 @@ const RoadSign = () => {
       {loading ? (
         <p className="text-center text-2xl mt-28">Loading...</p>
       ) : (
-        <SignImages signImages={signImages} />
+        memoizedSignImages
       )}
     </div>
   );
