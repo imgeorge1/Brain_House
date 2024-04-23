@@ -155,19 +155,36 @@ code {
   border-left: #fe6e46 5px solid;
 }
 
-.roadSignsButtonImage {
-  background:url(https://tinyurl.com/5fvx87ck) no-repeat -50px 0px,
-   url(https://tinyurl.com/mrybry2h) no-repeat 50px 50px, 
-   url(https://tinyurl.com/yyb5yfrh) no-repeat 105px 50px,
-   url(https://tinyurl.com/54pz245u) no-repeat 200px 0px;
+.drivebtnparent{
+  display: flex;
+  flex-direction: column;
 }
-.roadSignsButtonImage:hover {
-  background:url(https://tinyurl.com/5fvx87ck) no-repeat -10px 0px,
-   url(https://tinyurl.com/mrybry2h) no-repeat 50px 20px, 
-   url(https://tinyurl.com/yyb5yfrh) no-repeat 105px 20px,
-   url(https://tinyurl.com/54pz245u) no-repeat 160px 0px;
+.drivebtn{
+  text-align: center;
+}
+.drivebtn:hover{
+  color: white;
+  text-shadow: 0px 1px 1px #000000
+}
+.roadSignsButtonImage {
+  background:
+   url(https://tinyurl.com/5fvx87ck) no-repeat -50px 0px,
+   url(https://tinyurl.com/498r9nft) no-repeat -50px 0px, 
+   url(https://tinyurl.com/yru7fm4c) no-repeat 500px 0px,
+   url(https://tinyurl.com/5fvx87ck) no-repeat 500px 0px;
+   color: black;
 }
 
+.roadSignsButtonImage:hover {
+  background:
+   url(https://tinyurl.com/mrybry2h) no-repeat 0% 0px,
+   url(https://tinyurl.com/498r9nft) no-repeat 20% 0px, 
+   url(https://tinyurl.com/yru7fm4c) no-repeat 80% 0px,
+   url(https://tinyurl.com/5fvx87ck) no-repeat 100% 0px;
+
+  
+}
+ 
 @media (max-width: 1170px) {
   .nav-link {
     font-size: 18px;
@@ -182,19 +199,6 @@ code {
     font-size: 18px;
   }
 
-  
-  .roadSignsButtonImage {
-    background:url() no-repeat -50px 0px,
-     url() no-repeat 50px 50px, 
-     url() no-repeat 105px 50px,
-     url() no-repeat 200px 0px;
-  }
-  .roadSignsButtonImage:hover {
-    background:url() no-repeat -10px 0px,
-     url() no-repeat 50px 20px, 
-     url() no-repeat 105px 20px,
-     url() no-repeat 160px 0px;
-  }  /* prevents some problems for now */
 }
 @media (max-width: 1100px) {
   .nav-link {
