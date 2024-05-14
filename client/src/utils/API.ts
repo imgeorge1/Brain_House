@@ -1,7 +1,11 @@
 import axios from "axios";
 
+const DEV_MODE = "developer";
+
 const API = axios.create({
-  baseURL: "https://brain-house-vkk7.onrender.com", // https://brain-house-vkk7.onrender.com http://localhost:3001
+  baseURL: !DEV_MODE
+    ? "http://localhost:3001"
+    : "https://brain-house-vkk7.onrender.com",
   withCredentials: true,
 });
 

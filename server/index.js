@@ -21,11 +21,13 @@ const secretKey = generateSecretKey();
 // Connect to MongoDB
 mongoConnection();
 
-const DEV_MODE = process.env.NODE_ENV === "production";
+const DEV_MODE = process.env.NODE_ENV === "developer";
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://drive.google.com"],
+    origin: DEV_MODE
+      ? ["http://localhost:5173", "https://drive.google.com"]
+      : ["https://brain-house-gamma.vercel.app", "https://drive.google.com"],
     credentials: true,
   })
 );
@@ -39,7 +41,7 @@ app.use(
     saveUninitialized: true,
     cookie: {
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days in milliseconds
-      secure: true, // Set to true for HTTPS environments
+      secure: false, // Set to true for HTTPS environments
     },
     // store: MongoStore.create({
     //   mongoUrl: process.env.MONGODB_URL,

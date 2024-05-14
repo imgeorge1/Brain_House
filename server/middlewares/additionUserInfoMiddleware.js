@@ -2,6 +2,8 @@ const AdditionUserInfo = require("../models/AdditionUserInfoSchema");
 const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.JWT_SECRET;
 
+const DEV_MODE = process.env.NODE_ENV === "developer";
+
 const additionUserInfoMiddleware = async (req, res, next) => {
   try {
     const { firstName, lastName, email, completed, isPaid } = req.user;
@@ -20,10 +22,18 @@ const additionUserInfoMiddleware = async (req, res, next) => {
     });
 
     if (!additionUserInfo) {
-      res.redirect(`${process.env.CLIENT_URL}/register/?jwtToken=${jwtToken}`);
+      res.redirect(
+        `${
+          DEV_MODE ? "http://localhost:5173" : process.env.CLIENT_URL
+        }/register/?jwtToken=${jwtToken}`
+      );
     } else {
       // Redirect user to client URL with JWT token as parameter
-      res.redirect(`${process.env.CLIENT_URL}/?jwtToken=${jwtToken}`);
+      res.redirect(
+        `${
+          DEV_MODE ? "http://localhost:5173" : process.env.CLIENT_URL
+        }/?jwtToken=${jwtToken}`
+      );
     }
 
     // Call next to pass control to the next middleware
