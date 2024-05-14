@@ -48,7 +48,7 @@ const Main = () => {
         <img
           src={Light}
           alt="newlogo"
-          className="md:max-w-[350px] h-full w-full main-img rounded-lg"
+          className="md:max-w-[350px] h-full w-full main-img rounded-lg mb-4"
         />
       </div>
     </main>
