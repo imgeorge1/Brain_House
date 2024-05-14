@@ -21,17 +21,19 @@ const TicketRoutes = () => {
           initial={{ opacity: 0, y: -200 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex items-center justify-between"
+          className="drivebtnparent"
         >
           <Link
-            className="text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 rounded-3xl duration-200 hover:bg-orange-500 hover:text-white "
+            className="drivebtn text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
+            rounded-3xl duration-200 hover:bg-orange-500 roadSignsButtonImage"
             to="/signs"
           >
             საგზაო ნიშნები
           </Link>
           <NavLink
             to="/exams"
-            className="text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 ml-4 px-6 py-2 pb-2 rounded-3xl duration-200 hover:bg-orange-500 hover:text-white "
+            className="drivebtn text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
+            rounded-3xl duration-200 hover:bg-orange-500 hover:text-white"
           >
             გამოცდა
           </NavLink>
@@ -44,7 +46,7 @@ const TicketRoutes = () => {
         >
           <h1
             onClick={() => setShow(!show)}
-            className="font-bold text-3xl mb-4"
+            className="font-bold text-2xl md:text-3xl mb-4"
           >
             კატეგორიები
             <button>
@@ -52,9 +54,9 @@ const TicketRoutes = () => {
                 <img
                   src={category}
                   alt="category icon"
-                  width={22}
-                  height={22}
-                  className="ml-2"
+                  width={17}
+                  height={17}
+                  className="ml-1 md:w-22 md:h-22 md:ml-2"
                 />
               )}
             </button>
@@ -83,7 +85,9 @@ const TicketRoutes = () => {
           </ul>
         )}
         {!show && width < 1024 && (
-          <h2 className="text-2xl text-[#230751] mt-5">{categoryName}</h2>
+          <h2 className="w-full text-white mt-5 bg-[#663aac] p-3 rounded-md text-lg">
+            {categoryId + ". " + categoryName}
+          </h2>
         )}
       </div>
     </section>

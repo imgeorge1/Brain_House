@@ -19,7 +19,7 @@ const TicketTests = () => {
 
   return (
     <section className="w-full max-w-[800px] mt-40">
-      {checkForVideo && (
+      {checkForVideo ? (
         <iframe
           key={`video-${checkForVideo.id}`} // Use a unique key for each iframe
           title={`Video ${checkForVideo.id}`}
@@ -30,6 +30,10 @@ const TicketTests = () => {
           sandbox="allow-same-origin allow-scripts"
           allowFullScreen
         />
+      ) : (
+        <p className="text-xl text-red-600 font-bold text-center">
+          ვიდეო გამოჩნდება ფასიანი პაკეტის შეძენის შემდეგ
+        </p>
       )}
 
       {currentTicket.length > 0 &&
