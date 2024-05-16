@@ -14,7 +14,10 @@ const useTicketHandler = () => {
   const passedQuestionLength = Object.keys(clickedAnswers).length;
 
   useEffect(() => {
-    if (passedQuestionLength === 30) {
+    if (
+      passedQuestionLength === 30 &&
+      !location.pathname.startsWith("/tickets")
+    ) {
       setTicketData([]);
     }
   }, [passedQuestionLength]);
