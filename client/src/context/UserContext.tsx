@@ -14,6 +14,8 @@ interface UserContextType {
   booleanPaid: boolean;
   setTicketData: React.Dispatch<React.SetStateAction<TicketsTypes[]>>;
   ticketData: TicketsTypes[];
+  setCorrectAnswer: React.Dispatch<React.SetStateAction<number>>;
+  correctAnswer: number;
 }
 
 const UserContext = createContext<UserContextType>({
@@ -21,6 +23,8 @@ const UserContext = createContext<UserContextType>({
   booleanPaid: false,
   setTicketData: () => {},
   ticketData: [],
+  setCorrectAnswer: () => {},
+  correctAnswer: 0,
 });
 
 interface UserProviderProps {
@@ -32,6 +36,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const [ticketData, setTicketData] = useState<TicketsTypes[]>([]);
+  const [correctAnswer, setCorrectAnswer] = useState(0);
 
   const token = queryParams.get("jwtToken");
 
@@ -69,7 +74,8 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    setTicketData([]);
+    if (!location.pathname.startsWith("/tickets")) setTicketData([]);
+    setCorrectAnswer(0);
   }, [location.pathname]);
 
   return (
@@ -79,6 +85,8 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         booleanPaid,
         setTicketData,
         ticketData,
+        setCorrectAnswer,
+        correctAnswer,
       }}
     >
       {children}

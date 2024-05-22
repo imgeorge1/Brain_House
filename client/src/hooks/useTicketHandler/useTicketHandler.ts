@@ -5,8 +5,13 @@ import { useUserContext } from "../../context/UserContext";
 import categoryData from "../../data/categoryData";
 
 const useTicketHandler = () => {
-  const { ticketData, booleanPaid, setTicketData, currentUser } =
-    useUserContext();
+  const {
+    ticketData,
+    booleanPaid,
+    setTicketData,
+    currentUser,
+    setCorrectAnswer,
+  } = useUserContext();
   const [clickedAnswers, setClickedAnswers] = useState<ClickedAnswers>({});
   const [currentPage, setCurrentPage] = useState(1);
   const [countAnswer, setCountAnswer] = useState({ correct: 0, incorrect: 0 });
@@ -56,6 +61,9 @@ const useTicketHandler = () => {
     }
 
     const correctAnswer = ticketDataMap.get(dataId)?.correctAnswer;
+
+    if (correctAnswer === selectedAnswer)
+      setCorrectAnswer((prev: number) => prev + 1);
 
     setClickedAnswers({
       ...clickedAnswers,

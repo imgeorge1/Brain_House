@@ -1,8 +1,8 @@
+import categoryData from "../../data/categoryData";
 import { Link, NavLink } from "react-router-dom";
 import category from "../../assets/category.png";
-import { motion } from "framer-motion";
 import useTicketRoutes from "../../hooks/useTicketRoutes/useTicketRoutes";
-import categoryData from "../../data/categoryData";
+import { motion } from "framer-motion";
 
 const TicketRoutes = () => {
   const {
@@ -11,7 +11,9 @@ const TicketRoutes = () => {
     categoryName,
     width,
     categoryId,
+    categoryNumber,
     handleChooseCategory,
+    completedArray,
   } = useTicketRoutes();
 
   return (
@@ -72,14 +74,23 @@ const TicketRoutes = () => {
                 onClick={() => handleChooseCategory(item.category)}
                 key={item.id}
               >
-                <Link
-                  className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
-                    item.id === categoryId ? "bg-[#230751]" : "bg-[#663aac]"
-                  }`}
-                  to={`/tickets/${item.id}`}
-                >
-                  {item.id + "."} {item.category}{" "}
-                </Link>
+                {!completedArray.includes(item.index) ? (
+                  <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed">
+                    {item.id + "."} {item.category}{" "}
+                  </span>
+                ) : (
+                  <Link
+                    className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
+                      item.id === categoryNumber
+                        ? "bg-[#230751]"
+                        : "bg-[#663aac]"
+                    }`}
+                    to={`/tickets/${item.id}`}
+                    state={item.index}
+                  >
+                    {item.id + "."} {item.category}{" "}
+                  </Link>
+                )}
               </motion.li>
             ))}
           </ul>

@@ -5,6 +5,8 @@ import Home from "./pages/home/Home";
 import Register from "./pages/register/Register";
 import { Suspense, lazy } from "react";
 import Brain from "./assets/brain.png";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const TicketsLazy = lazy(() => import("./pages/tickets/Tickets"));
 const ExamsLazy = lazy(() => import("./pages/exams/Exams"));
@@ -16,6 +18,7 @@ const App = () => {
   return (
     <>
       <Header />
+      <ToastContainer />
       <Suspense
         fallback={
           <img
