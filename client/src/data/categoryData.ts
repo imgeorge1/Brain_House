@@ -22,99 +22,151 @@ const categoryData2 = [
     category: "საცხოვრებელი ზონა, სამარშრუტოს პრიორიტეტი",
     index: 3,
     videoUrl:
-      "https://drive.google.com/file/d/1DO_HUubUFv6s5wEXT94u8bEVngD9dR4x/view?usp=drive_link",
+      "https://drive.google.com/file/d/1jtzGFXDkpJt2kzb24WMvdYXXrJWdLSBq/preview",
   },
-  { id: 24, category: "ბუქსირება", index: 4 },
+  { 
+    id: 24, 
+    category: "ბუქსირება", 
+    index: 4, 
+    videoUrl: 
+      "https://drive.google.com/file/d/1H5cLSppz3GpUhAwzeBk8sfyHXhXWW3Up/preview"
+},
   {
     id: 25,
     category: "სასწავლო სვლა",
     index: 5,
     videoUrl:
-      "https://drive.google.com/file/d/1_AH1cz2S54xp2hzInM28ew7OPfaYjmMk/view?usp=drive_link",
+      "https://drive.google.com/file/d/1_AH1cz2S54xp2hzInM28ew7OPfaYjmMk/preview",
   },
   {
     id: 8,
     category: "სერვისის ნიშნები",
     index: 6,
     videoUrl:
-      "https://drive.google.com/file/d/1zEcExd2izh80rIGxf5IrwTbQeWJhHLze/view?usp=drive_link",
+      "https://drive.google.com/file/d/1zEcExd2izh80rIGxf5IrwTbQeWJhHLze/preview",
   },
-  { id: 2, category: "უწესივრობა და მართვის პირობები", index: 7 },
+  { 
+    id: 2,
+    category: "უწესივრობა და მართვის პირობები", 
+    index: 7,
+    videoUrl: 
+      "https://drive.google.com/file/d/1JdkbINAHiRr7WeO6OHNPq2TVdk5vNukV/preview", 
+  },
   {
     id: 7,
     category: "საინფორმაციო-მაჩვენებელი ნიშნები",
     index: 8,
     videoUrl:
-      "https://drive.google.com/file/d/1Y0rfr3VRIO3tKgOn9Y3ZbheMWd2zeCnK/view?usp=drive_link",
+      "https://drive.google.com/file/d/1Y0rfr3VRIO3tKgOn9Y3ZbheMWd2zeCnK/preview",
   },
   {
     id: 27,
     category: "ველოსიპედი, მოპედი და პირუტყვის გადარეკვა",
     index: 9,
     videoUrl:
-      "https://drive.google.com/file/d/1DO_HUubUFv6s5wEXT94u8bEVngD9dR4x/view?usp=drive_link",
+      "https://drive.google.com/file/d/1DO_HUubUFv6s5wEXT94u8bEVngD9dR4x/preview",
   },
-  { id: 28, category: "საგზაო მონიშვნა", index: 10 },
-  { id: 15, category: "მოძრაობა, მანევრირება, სავალი ნაწილი", index: 11 },
-  { id: 26, category: "გადაზიდვები, ხალხი, ტვირთი", index: 12 },
-  { id: 19, category: "გაჩერება დგომა", index: 13 },
-  { id: 17, category: "მოძრაობის სიჩქარე", index: 14 },
-  { id: 16, category: "გასწრება შემხვედრის გვერდის ავლით", index: 15 },
-  { id: 3, category: "მაფრთხილებელი ნიშნები", index: 16 },
-  { id: 4, category: "პრიორიტეტის ნიშნები", index: 17 },
-  { id: 5, category: "ამკრძალავი ნიშნები", index: 18 },
-  { id: 6, category: "მიმთითებელი ნიშნები", index: 19 },
-  { id: 12, category: "სპეციალური სიგნალის გამოყენება", index: 20 },
-  { id: 13, category: "საავარიო შუქური სიგნალიზაცია", index: 21 },
-  { id: 9, category: "დამატებითი ინფორმაციის ნიშნები", index: 22 },
+  { 
+    id: 28, 
+    category: "საგზაო მონიშვნა", 
+    index: 10
+  },
+  { 
+    id: 15, 
+    category: "მოძრაობა, მანევრირება, სავალი ნაწილი", index: 11 },
+  { 
+    id: 26, 
+    category: "გადაზიდვები, ხალხი, ტვირთი", index: 12 },
+  { 
+    id: 19, 
+    category: "გაჩერება დგომა", 
+    index: 13,
+    videoUrl: 
+      "https://drive.google.com/file/d/1HOJygatWf8bV0pjKY5L6SwXYq0QGUEmb/preview"
+  },
+  { 
+    id: 17, 
+    category: "მოძრაობის სიჩქარე", index: 14 },
+  { 
+    id: 16, 
+    category: "გასწრება შემხვედრის გვერდის ავლით", 
+    index: 15, 
+    videoUrl: "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview"
+  },
+  { 
+    id: 3, category: "მაფრთხილებელი ნიშნები", index: 16 },
+  { 
+    id: 4, category: "პრიორიტეტის ნიშნები", index: 17 },
+  { 
+    id: 5, category: "ამკრძალავი ნიშნები", index: 18 },
+  { 
+    id: 6, category: "მიმთითებელი ნიშნები", index: 19 },
+  { 
+    id: 12, category: "სპეციალური სიგნალის გამოყენება", index: 20 },
+  { 
+    id: 13, category: "საავარიო შუქური სიგნალიზაცია", index: 21 },
+  { 
+    id: 9, category: "დამატებითი ინფორმაციის ნიშნები", index: 22 },
   {
     id: 1,
     category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
     index: 23,
   },
-  { id: 14, category: "სანათი ხელსაწყოები, ხმოვანი სიგნალი", index: 24 },
+  { 
+    id: 14, 
+    category: "სანათი ხელსაწყოები, ხმოვანი სიგნალი", 
+    index: 24, 
+    videoUrl:
+      "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview"
+  },
   {
     id: 31,
     category: "ადმინისტრაციული კანონი",
     index: 25,
     videoUrl:
-      "https://drive.google.com/file/d/1MaPbbvdheOPs72ZDWc8E8mRirIgr_Swl/view?usp=drive_link",
+      "https://drive.google.com/file/d/1MaPbbvdheOPs72ZDWc8E8mRirIgr_Swl/preview",
   },
   {
     id: 29,
     category: "სამედიცინო დახმარება",
     index: 26,
     videoUrl:
-      "https://drive.google.com/file/d/19C-dbQ-qLHiKounv7XqwjL1nhOgJ_7Uc/view?usp=drive_link",
+      "https://drive.google.com/file/d/19C-dbQ-qLHiKounv7XqwjL1nhOgJ_7Uc/preview",
   },
   {
     id: 18,
     category: "სამუხრუჭე მანძილი, დისტანცია",
     index: 27,
     videoUrl:
-      "https://drive.google.com/file/d/19-UVBDzH73QY_SpSUfYAoucPOi7yRn_F/view?usp=drive_link",
+      "https://drive.google.com/file/d/19-UVBDzH73QY_SpSUfYAoucPOi7yRn_F/preview",
   },
-  { id: 20, category: "გზაჯვარედინის გავლა", index: 28 },
+  { 
+    id: 20, 
+    category: "გზაჯვარედინის გავლა", 
+    index: 28, 
+    videoUrl: 
+      "https://drive.google.com/file/d/1qVHsMBD8PdjchZHqy4eIo5uDHXgh-JBX/preview"
+  },
   {
     id: 10,
     category: "შუქნიშნის სიგნალები",
     index: 29,
     videoUrl:
-      "https://drive.google.com/file/d/1PVHsyIQ16D9Vm1dcwmarqPr9ygz58P7Q/view?usp=drive_link",
+      "https://drive.google.com/file/d/1PVHsyIQ16D9Vm1dcwmarqPr9ygz58P7Q/preview",
   },
   {
     id: 11,
     category: "მარეგულირებლის სიგნალები",
     index: 30,
     videoUrl:
-      "https://drive.google.com/file/d/1x0AwLuq_KXwWKEyNw03lFu0S4hprbhNN/view?usp=drive_link",
+      "https://drive.google.com/file/d/1x0AwLuq_KXwWKEyNw03lFu0S4hprbhNN/preview",
   },
   {
     id: 32,
     category: "ეკო-მართვა",
     index: 31,
     videoUrl:
-      "https://drive.google.com/file/d/1MaPbbvdheOPs72ZDWc8E8mRirIgr_Swl/view?usp=drive_link",
+      "https://drive.google.com/file/d/17j6HEaqQrSYstrw3t8z0IwYFsIGCH57n/preview",
   },
   { id: 30, category: "მოძრაობის უსაფრთხოება", index: 32 },
 ];
