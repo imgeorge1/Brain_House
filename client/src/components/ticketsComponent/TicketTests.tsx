@@ -18,15 +18,13 @@ const TicketTests = () => {
   const checkForVideo = checkForVideoFunc();
 
   return (
-    <section className="w-full max-w-[800px] mt-40">
+    <section className="w-full max-w-[800px] mt-14 md:mt-40">
       {checkForVideo ? (
         <iframe
+          className="w-full h-[280px] md:h-[460px]"
           key={`video-${checkForVideo.id}`} // Use a unique key for each iframe
           title={`Video ${checkForVideo.id}`}
           src={checkForVideo?.videoUrl}
-          width="100%"
-          height="500px"
-          style={{ marginBottom: "20px" }}
           sandbox="allow-same-origin allow-scripts"
           allowFullScreen
         />

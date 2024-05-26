@@ -32,7 +32,7 @@ passport.use(
             lastName: profile.name.familyName,
             email: email,
             provider: "google", // Set the provider property
-            completed: 1,
+            completed: 2,
             isPaid: false,
           });
 

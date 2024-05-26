@@ -15,6 +15,8 @@ const currentUser = require("../controllers/currentUser/currentUserController");
 const ticketTest = require("../controllers/ticketsController/ticketTestController");
 const usersInfo = require("../controllers/authController/usersInfoController");
 
+const allowedNextCategory = require("../controllers/permission/permissionController");
+
 const authRoutes = express.Router();
 
 const DEV_MODE = process.env.NODE_ENV === "developer";
@@ -48,6 +50,8 @@ authRoutes.get(
 );
 
 authRoutes.get("/user", authenticateUser, currentUser);
+
+authRoutes.put("/user", allowedNextCategory);
 
 authRoutes.get("/login/failed", (req, res) => {
   res.status(401).json({
