@@ -7,15 +7,15 @@ const categoryData2 = [
     id: 21,
     category: "რკინიგზის გადასასვლელი",
     index: 1,
-    videoUrl:
-      "https://drive.google.com/file/d/1z1Z1ABJrhkeYEyAOY2O1QINDmX_lekx0/preview", // this is not our video
+    videoUrl: "https://drive.google.com/file/d/16FoULhq3rp6RaP0BdiIy3f5uQwzZ7TKS/preview"
+      // "https://drive.google.com/file/d/1z1Z1ABJrhkeYEyAOY2O1QINDmX_lekx0/preview", // this is not our video
   },
   {
     id: 22,
     category: "მოძრაობა ავტომაგისტრალზე",
     index: 2,
-    videoUrl:
-      "https://drive.google.com/file/d/18RZKvWRRxMjfeA2GFFUlr6zlR8JvWwOu/preview", // this is not our video
+    videoUrl: "https://drive.google.com/file/d/1dfyK6BDXEJdclsnk7H_pnXW8gBZAzyjm/preview"
+      // "https://drive.google.com/file/d/18RZKvWRRxMjfeA2GFFUlr6zlR8JvWwOu/preview", // this is not our video
   },
   {
     id: 23,
@@ -98,7 +98,10 @@ const categoryData2 = [
   { 
     id: 4, category: "პრიორიტეტის ნიშნები", index: 17 },
   { 
-    id: 5, category: "ამკრძალავი ნიშნები", index: 18 },
+    id: 5, 
+    category: "ამკრძალავი ნიშნები", 
+    index: 18, 
+    videoUrl: "https://drive.google.com/file/d/1p2fmuCTlfJqJQXA7QsAHEVllyBNTXMr-/preview" },
   { 
     id: 6, category: "მიმთითებელი ნიშნები", index: 19 },
   { 
@@ -111,6 +114,7 @@ const categoryData2 = [
     id: 1,
     category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
     index: 23,
+    videoUrl: "https://drive.google.com/file/d/1qfkn9LsmtHDy-NW6LGX4sI8fSzK_RxUQ/preview"
   },
   { 
     id: 14, 
