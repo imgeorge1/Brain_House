@@ -163,7 +163,7 @@ const categoryData2 = [
     category: "მარეგულირებლის სიგნალები",
     index: 30,
     videoUrl:
-      "https://drive.google.com/file/d/1x0AwLuq_KXwWKEyNw03lFu0S4hprbhNN/preview",
+      "https://drive.google.com/file/d/17gvFmO5cLmiSS_2GsFR2k_7cxUZzqxS4/preview",
   },
   {
     id: 32,
