@@ -69,14 +69,22 @@ const categoryData2 = [
   { 
     id: 28, 
     category: "საგზაო მონიშვნა", 
-    index: 10
+    index: 10,
+    videoUrl: "https://drive.google.com/file/d/1wt_0C7CDQMv3IcR_uMTTLqNmVKkpQ5N7/preview"
   },
   { 
     id: 15, 
-    category: "მოძრაობა, მანევრირება, სავალი ნაწილი", index: 11 },
+    category: "მოძრაობა, მანევრირება, სავალი ნაწილი", 
+    index: 11,
+    videoUrl: "https://drive.google.com/file/d/1LNKTQXaqub25gWkHqn3TrdIf82PcK-92/preview" 
+  
+    },
   { 
     id: 26, 
-    category: "გადაზიდვები, ხალხი, ტვირთი", index: 12 },
+    category: "გადაზიდვები, ხალხი, ტვირთი", 
+    index: 12,
+    videoUrl:  ""
+  },
   { 
     id: 19, 
     category: "გაჩერება დგომა", 
@@ -86,7 +94,10 @@ const categoryData2 = [
   },
   { 
     id: 17, 
-    category: "მოძრაობის სიჩქარე", index: 14 },
+    category: "მოძრაობის სიჩქარე", 
+    index: 14,
+    videoUrl: ""
+  },
   { 
     id: 16, 
     category: "გასწრება შემხვედრის გვერდის ავლით", 
@@ -94,22 +105,45 @@ const categoryData2 = [
     videoUrl: "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview"
   },
   { 
-    id: 3, category: "მაფრთხილებელი ნიშნები", index: 16 },
+    id: 3, 
+    category: "მაფრთხილებელი ნიშნები", 
+    index: 16,
+    videoUrl: "https://drive.google.com/file/d/1UugO30-4VeJRVJq37EzVpmeEteGzGM3y/preview"
+  },
   { 
-    id: 4, category: "პრიორიტეტის ნიშნები", index: 17 },
+    id: 4, 
+    category: "პრიორიტეტის ნიშნები", 
+    index: 17,
+    vidoeUrl: ""
+  },
   { 
     id: 5, 
     category: "ამკრძალავი ნიშნები", 
     index: 18, 
     videoUrl: "https://drive.google.com/file/d/1p2fmuCTlfJqJQXA7QsAHEVllyBNTXMr-/preview" },
   { 
-    id: 6, category: "მიმთითებელი ნიშნები", index: 19 },
+    id: 6, 
+    category: "მიმთითებელი ნიშნები", 
+    index: 19,
+    videoUrl: "https://drive.google.com/file/d/1vvDClkf1DXuL1OizW8f-SXz2Kl-bt1XE/preview"    
+  },
   { 
-    id: 12, category: "სპეციალური სიგნალის გამოყენება", index: 20 },
+    id: 12, 
+    category: "სპეციალური სიგნალის გამოყენება", 
+    index: 20,
+    videoUrl: "https://drive.google.com/file/d/1PeFOrADMmfGCa8H2H76PGhF8FvvJP0DK/preview" },
   { 
-    id: 13, category: "საავარიო შუქური სიგნალიზაცია", index: 21 },
+    id: 13, 
+    category: "საავარიო შუქური სიგნალიზაცია", 
+    index: 21,
+    videoUrl: "https://drive.google.com/file/d/1EeniWZCHqaVQ3QyciSa_xPRjHAc3X9_-/preview"
+  },
   { 
-    id: 9, category: "დამატებითი ინფორმაციის ნიშნები", index: 22 },
+    id: 9, 
+    category: "დამატებითი ინფორმაციის ნიშნები", 
+    index: 22,
+    videoUrl: "https://drive.google.com/file/d/1CgpIc0lZLDTIkPrRKtUruDnNFHdizvw_/preview"
+  },
   {
     id: 1,
     category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
