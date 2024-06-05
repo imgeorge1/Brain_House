@@ -1,21 +1,19 @@
 const categoryData2 = [
-  // {
-  //   id: 0,
-  //   category: "ყველა",
-  // },
   {
     id: 21,
     category: "რკინიგზის გადასასვლელი",
     index: 1,
-    videoUrl: "https://drive.google.com/file/d/16FoULhq3rp6RaP0BdiIy3f5uQwzZ7TKS/preview"
-      // "https://drive.google.com/file/d/1z1Z1ABJrhkeYEyAOY2O1QINDmX_lekx0/preview", // this is not our video
+    videoUrl:
+      "https://drive.google.com/file/d/16FoULhq3rp6RaP0BdiIy3f5uQwzZ7TKS/preview",
+    // "https://drive.google.com/file/d/1z1Z1ABJrhkeYEyAOY2O1QINDmX_lekx0/preview", // this is not our video
   },
   {
     id: 22,
     category: "მოძრაობა ავტომაგისტრალზე",
     index: 2,
-    videoUrl: "https://drive.google.com/file/d/1dfyK6BDXEJdclsnk7H_pnXW8gBZAzyjm/preview"
-      // "https://drive.google.com/file/d/18RZKvWRRxMjfeA2GFFUlr6zlR8JvWwOu/preview", // this is not our video
+    videoUrl:
+      "https://drive.google.com/file/d/1dfyK6BDXEJdclsnk7H_pnXW8gBZAzyjm/preview",
+    // "https://drive.google.com/file/d/18RZKvWRRxMjfeA2GFFUlr6zlR8JvWwOu/preview", // this is not our video
   },
   {
     id: 23,
@@ -24,13 +22,13 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/1jtzGFXDkpJt2kzb24WMvdYXXrJWdLSBq/preview",
   },
-  { 
-    id: 24, 
-    category: "ბუქსირება", 
-    index: 4, 
-    videoUrl: 
-      "https://drive.google.com/file/d/1H5cLSppz3GpUhAwzeBk8sfyHXhXWW3Up/preview"
-},
+  {
+    id: 24,
+    category: "ბუქსირება",
+    index: 4,
+    videoUrl:
+      "https://drive.google.com/file/d/1H5cLSppz3GpUhAwzeBk8sfyHXhXWW3Up/preview",
+  },
   {
     id: 25,
     category: "სასწავლო სვლა",
@@ -45,12 +43,12 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/1zEcExd2izh80rIGxf5IrwTbQeWJhHLze/preview",
   },
-  { 
+  {
     id: 2,
-    category: "უწესივრობა და მართვის პირობები", 
+    category: "უწესივრობა და მართვის პირობები",
     index: 7,
-    videoUrl: 
-      "https://drive.google.com/file/d/1JdkbINAHiRr7WeO6OHNPq2TVdk5vNukV/preview", 
+    videoUrl:
+      "https://drive.google.com/file/d/1JdkbINAHiRr7WeO6OHNPq2TVdk5vNukV/preview",
   },
   {
     id: 7,
@@ -66,96 +64,107 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/1DO_HUubUFv6s5wEXT94u8bEVngD9dR4x/preview",
   },
-  { 
-    id: 28, 
-    category: "საგზაო მონიშვნა", 
+  {
+    id: 28,
+    category: "საგზაო მონიშვნა",
     index: 10,
-    videoUrl: "https://drive.google.com/file/d/1wt_0C7CDQMv3IcR_uMTTLqNmVKkpQ5N7/preview"
+    videoUrl:
+      "https://drive.google.com/file/d/1wt_0C7CDQMv3IcR_uMTTLqNmVKkpQ5N7/preview",
   },
-  { 
-    id: 15, 
-    category: "მოძრაობა, მანევრირება, სავალი ნაწილი", 
+  {
+    id: 15,
+    category: "მოძრაობა, მანევრირება, სავალი ნაწილი",
     index: 11,
-    videoUrl: "https://drive.google.com/file/d/1LNKTQXaqub25gWkHqn3TrdIf82PcK-92/preview" 
-  
-    },
-  { 
-    id: 26, 
-    category: "გადაზიდვები, ხალხი, ტვირთი", 
+    videoUrl:
+      "https://drive.google.com/file/d/1LNKTQXaqub25gWkHqn3TrdIf82PcK-92/preview",
+  },
+  {
+    id: 26,
+    category: "გადაზიდვები, ხალხი, ტვირთი",
     index: 12,
-    videoUrl:  ""
+    videoUrl: "",
   },
-  { 
-    id: 19, 
-    category: "გაჩერება დგომა", 
+  {
+    id: 19,
+    category: "გაჩერება დგომა",
     index: 13,
-    videoUrl: 
-      "https://drive.google.com/file/d/1HOJygatWf8bV0pjKY5L6SwXYq0QGUEmb/preview"
+    videoUrl:
+      "https://drive.google.com/file/d/1HOJygatWf8bV0pjKY5L6SwXYq0QGUEmb/preview",
   },
-  { 
-    id: 17, 
-    category: "მოძრაობის სიჩქარე", 
+  {
+    id: 17,
+    category: "მოძრაობის სიჩქარე",
     index: 14,
-    videoUrl: ""
+    videoUrl: "",
   },
-  { 
-    id: 16, 
-    category: "გასწრება შემხვედრის გვერდის ავლით", 
-    index: 15, 
-    videoUrl: "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview"
+  {
+    id: 16,
+    category: "გასწრება შემხვედრის გვერდის ავლით",
+    index: 15,
+    videoUrl:
+      "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview",
   },
-  { 
-    id: 3, 
-    category: "მაფრთხილებელი ნიშნები", 
+  {
+    id: 3,
+    category: "მაფრთხილებელი ნიშნები",
     index: 16,
-    videoUrl: "https://drive.google.com/file/d/1UugO30-4VeJRVJq37EzVpmeEteGzGM3y/preview"
+    videoUrl:
+      "https://drive.google.com/file/d/1UugO30-4VeJRVJq37EzVpmeEteGzGM3y/preview",
   },
-  { 
-    id: 4, 
-    category: "პრიორიტეტის ნიშნები", 
+  {
+    id: 4,
+    category: "პრიორიტეტის ნიშნები",
     index: 17,
-    vidoeUrl: ""
+    videoUrl: "",
   },
-  { 
-    id: 5, 
-    category: "ამკრძალავი ნიშნები", 
-    index: 18, 
-    videoUrl: "https://drive.google.com/file/d/1p2fmuCTlfJqJQXA7QsAHEVllyBNTXMr-/preview" },
-  { 
-    id: 6, 
-    category: "მიმთითებელი ნიშნები", 
+  {
+    id: 5,
+    category: "ამკრძალავი ნიშნები",
+    index: 18,
+    videoUrl:
+      "https://drive.google.com/file/d/1p2fmuCTlfJqJQXA7QsAHEVllyBNTXMr-/preview",
+  },
+  {
+    id: 6,
+    category: "მიმთითებელი ნიშნები",
     index: 19,
-    videoUrl: "https://drive.google.com/file/d/1vvDClkf1DXuL1OizW8f-SXz2Kl-bt1XE/preview"    
+    videoUrl:
+      "https://drive.google.com/file/d/1vvDClkf1DXuL1OizW8f-SXz2Kl-bt1XE/preview",
   },
-  { 
-    id: 12, 
-    category: "სპეციალური სიგნალის გამოყენება", 
+  {
+    id: 12,
+    category: "სპეციალური სიგნალის გამოყენება",
     index: 20,
-    videoUrl: "https://drive.google.com/file/d/1PeFOrADMmfGCa8H2H76PGhF8FvvJP0DK/preview" },
-  { 
-    id: 13, 
-    category: "საავარიო შუქური სიგნალიზაცია", 
-    index: 21,
-    videoUrl: "https://drive.google.com/file/d/1EeniWZCHqaVQ3QyciSa_xPRjHAc3X9_-/preview"
+    videoUrl:
+      "https://drive.google.com/file/d/1PeFOrADMmfGCa8H2H76PGhF8FvvJP0DK/preview",
   },
-  { 
-    id: 9, 
-    category: "დამატებითი ინფორმაციის ნიშნები", 
+  {
+    id: 13,
+    category: "საავარიო შუქური სიგნალიზაცია",
+    index: 21,
+    videoUrl:
+      "https://drive.google.com/file/d/1EeniWZCHqaVQ3QyciSa_xPRjHAc3X9_-/preview",
+  },
+  {
+    id: 9,
+    category: "დამატებითი ინფორმაციის ნიშნები",
     index: 22,
-    videoUrl: "https://drive.google.com/file/d/1CgpIc0lZLDTIkPrRKtUruDnNFHdizvw_/preview"
+    videoUrl:
+      "https://drive.google.com/file/d/1CgpIc0lZLDTIkPrRKtUruDnNFHdizvw_/preview",
   },
   {
     id: 1,
     category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
     index: 23,
-    videoUrl: "https://drive.google.com/file/d/1qfkn9LsmtHDy-NW6LGX4sI8fSzK_RxUQ/preview"
-  },
-  { 
-    id: 14, 
-    category: "სანათი ხელსაწყოები, ხმოვანი სიგნალი", 
-    index: 24, 
     videoUrl:
-      "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview"
+      "https://drive.google.com/file/d/1qfkn9LsmtHDy-NW6LGX4sI8fSzK_RxUQ/preview",
+  },
+  {
+    id: 14,
+    category: "სანათი ხელსაწყოები, ხმოვანი სიგნალი",
+    index: 24,
+    videoUrl:
+      "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview",
   },
   {
     id: 31,
@@ -178,12 +187,12 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/19-UVBDzH73QY_SpSUfYAoucPOi7yRn_F/preview",
   },
-  { 
-    id: 20, 
-    category: "გზაჯვარედინის გავლა", 
-    index: 28, 
-    videoUrl: 
-      "https://drive.google.com/file/d/1qVHsMBD8PdjchZHqy4eIo5uDHXgh-JBX/preview"
+  {
+    id: 20,
+    category: "გზაჯვარედინის გავლა",
+    index: 28,
+    videoUrl:
+      "https://drive.google.com/file/d/1qVHsMBD8PdjchZHqy4eIo5uDHXgh-JBX/preview",
   },
   {
     id: 10,

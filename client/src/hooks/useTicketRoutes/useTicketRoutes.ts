@@ -38,6 +38,11 @@ const useTicketRoutes = () => {
   };
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
     const getCategories = async (categoryId: number) => {
       try {
         const response = await API.get(`/tickets/${categoryId}`);
@@ -46,6 +51,7 @@ const useTicketRoutes = () => {
         console.error(error);
       }
     };
+
     if (location.pathname.startsWith("/tickets/")) {
       getCategories(categoryNumber);
     }

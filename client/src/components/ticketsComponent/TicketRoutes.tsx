@@ -74,7 +74,11 @@ const TicketRoutes = () => {
                 onClick={() => handleChooseCategory(item.category)}
                 key={item.id}
               >
-                {completedArray.includes(item.index) && (
+                {!completedArray.includes(item.index) ? (
+                  <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed">
+                    {item.category}{" "}
+                  </span>
+                ) : (
                   <Link
                     className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
                       item.id === categoryNumber
