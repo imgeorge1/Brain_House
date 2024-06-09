@@ -65,7 +65,7 @@ const TicketRoutes = () => {
           </h1>
         </motion.div>
         {(show || width >= 1024) && (
-          <ul className="pl-0 w-full max-w-[690px]">
+          <ul className="pl-0 w-full max-w-[690px] xl:w-[469px]">
             {categoryData.map((item) => (
               <motion.li
                 initial={{ opacity: 0, x: -200 }}
@@ -76,7 +76,7 @@ const TicketRoutes = () => {
               >
                 {!completedArray.includes(item.index) ? (
                   <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed">
-                    {item.category}{" "}
+                    ვიდეო გაგეხსნებათ შეძენის შემდეგ
                   </span>
                 ) : (
                   <Link

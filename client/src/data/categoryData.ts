@@ -136,7 +136,7 @@ const categoryData2 = [
     category: "სპეციალური სიგნალის გამოყენება",
     index: 20,
     videoUrl:
-      "https://drive.google.com/file/d/1PeFOrADMmfGCa8H2H76PGhF8FvvJP0DK/preview",
+      "https://drive.google.com/file/d/1fGvyLtXDp0E09tQ6qsjnzPv1t6MFEIIf/preview",
   },
   {
     id: 13,
