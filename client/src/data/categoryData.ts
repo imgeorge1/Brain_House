@@ -115,7 +115,7 @@ const categoryData2 = [
     id: 4,
     category: "პრიორიტეტის ნიშნები",
     index: 17,
-    videoUrl: "",
+    videoUrl: "https://drive.google.com/file/d/1mlA1bditMZ-rJgxtjOtVNs7t_XmBYy-P/preview",
   },
   {
     id: 5,
