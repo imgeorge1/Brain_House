@@ -50,7 +50,11 @@ const useTicketHandler = () => {
       null
     );
 
-    return checkForVideo && booleanPaid && currentUser && currentVideo;
+    if (
+      (checkForVideo && booleanPaid && currentUser) ||
+      parseInt(categoryId) === 21
+    )
+      return currentVideo;
   };
 
   const ticketDataMap = new Map(ticketData.map((item) => [item.id, item]));

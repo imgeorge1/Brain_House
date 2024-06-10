@@ -58,7 +58,13 @@ const useTicketRoutes = () => {
   }, [categoryNumber, setTicketData]);
 
   useEffect(() => {
-    if (correctAnswer > 2 && changeCategory && currentUser) {
+    //  correctAnswer > 2 && changeCategory && currentUser
+    if (
+      correctAnswer > 2 &&
+      changeCategory &&
+      currentUser &&
+      categoryNumber !== 30
+    ) {
       setCompleted((prevCompleted) => prevCompleted + 1);
       toast("Congrats ! You open next category !");
     } else if (correctAnswer > 2 && !currentUser && changeCategory) {
@@ -107,6 +113,7 @@ const useTicketRoutes = () => {
     handleChooseCategory,
     completedArray,
     categoryName,
+    currentUser,
   };
 };
 

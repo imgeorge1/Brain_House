@@ -215,12 +215,13 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/17j6HEaqQrSYstrw3t8z0IwYFsIGCH57n/preview",
   },
-  { 
-    id: 30, 
-    category: "მოძრაობის უსაფრთხოება", 
-    index: 32, 
-    videoUrl: "" 
-},
+  {
+    id: 30,
+    category: "მოძრაობის უსაფრთხოება",
+    index: 32,
+    videoUrl:
+      "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/1Sz1dhZOelq8UAfJn4JXIz6WZlqgXc0dX/preview https://drive.google.com/file/d/17NeNsj1okN75Ok9mpkPa2rEAuqyQope1/preview",
+  },
 ];
 
 export default categoryData2;
