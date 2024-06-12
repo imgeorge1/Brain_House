@@ -4,6 +4,7 @@ import Light from "../../assets/lightbulb1.png";
 const Main = () => {
   return (
     <main className="w-full mt-4 items-center px-4 md:px-20">
+
       <div className="flex flex-col md:flex-row justify-evenly mt-8">
         <div className="">
           <h2 className="text-4xl font-semibold main-text font-roboto">

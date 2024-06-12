@@ -1,9 +1,9 @@
+import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
 import Register from "./pages/register/Register";
-import { Suspense, lazy } from "react";
 import Brain from "./assets/brain.png";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
