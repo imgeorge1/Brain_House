@@ -8,6 +8,7 @@ export interface PaginationTypes {
 export interface User {
   // Define your user interface here
   // This is just an example, replace it with your actual user interface
+  fullName: string;
   firstName: string;
   lastName: string;
   email: string;

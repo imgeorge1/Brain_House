@@ -9,8 +9,9 @@ function Dashboard() {
       <table className="table-auto border-collapse border w-[70%]">
         <thead className="bg-gray-800 text-white">
           <tr>
-            <th className="px-4 py-2">სახელი</th>
-            <th className="px-4 py-2">გვარი</th>
+            <th className="px-4 py-2"> სახელი გვარი</th>
+            <th className="px-4 py-2">სახელი (მეილის)</th>
+            <th className="px-4 py-2">გვარი (მეილის)</th>
             <th className="px-4 py-2">მეილი</th>
             <th className="px-4 py-2">ასაკი</th>
             <th className="px-4 py-2">ქალაქი</th>
