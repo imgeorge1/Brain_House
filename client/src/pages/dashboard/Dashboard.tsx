@@ -23,6 +23,9 @@ function Dashboard() {
           {users.map((user) => (
             <tr key={user._id}>
               <td className="border px-4 py-2 border-gray-300">
+                {user.fullName}
+              </td>
+              <td className="border px-4 py-2 border-gray-300">
                 {user.firstName}
               </td>
               <td className="border px-4 py-2 border-gray-300">
