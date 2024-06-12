@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useUserContext } from "../../context/UserContext";
 
-const DEV_MODE = "developer";
+const DEV_MODE = "developer"; // change for production
 
 const useSignInModal = () => {
   const [show, setShow] = useState(false);
@@ -13,7 +13,7 @@ const useSignInModal = () => {
 
   const googleAuth = () => {
     window.open(
-      DEV_MODE
+      !DEV_MODE
         ? "http://localhost:3001/auth/google"
         : "https://brain-house-vkk7.onrender.com/auth/google",
       "_self"
@@ -22,7 +22,7 @@ const useSignInModal = () => {
 
   const facebookAuth = () => {
     window.open(
-      DEV_MODE
+      !DEV_MODE
         ? "http://localhost:3001/auth/facebook"
         : "https://brain-house-vkk7.onrender.com/auth/facebook",
       "_self"

@@ -1,8 +1,8 @@
+import categoryData from "../../data/categoryData";
 import { Link, NavLink } from "react-router-dom";
 import category from "../../assets/category.png";
-import { motion } from "framer-motion";
 import useTicketRoutes from "../../hooks/useTicketRoutes/useTicketRoutes";
-import categoryData from "../../data/categoryData";
+import { motion } from "framer-motion";
 
 const TicketRoutes = () => {
   const {
@@ -10,8 +10,9 @@ const TicketRoutes = () => {
     setShow,
     categoryName,
     width,
-    categoryId,
+    categoryNumber,
     handleChooseCategory,
+    completedArray,
   } = useTicketRoutes();
 
   return (
@@ -21,17 +22,19 @@ const TicketRoutes = () => {
           initial={{ opacity: 0, y: -200 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex items-center justify-between"
+          className="drivebtnparent"
         >
           <Link
-            className="text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 rounded-3xl duration-200 hover:bg-orange-500 hover:text-white "
+            className="drivebtn text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
+            rounded-3xl duration-200 hover:bg-orange-500 roadSignsButtonImage"
             to="/signs"
           >
             საგზაო ნიშნები
           </Link>
           <NavLink
             to="/exams"
-            className="text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 ml-4 px-6 py-2 pb-2 rounded-3xl duration-200 hover:bg-orange-500 hover:text-white "
+            className="drivebtn text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
+            rounded-3xl duration-200 hover:bg-orange-500 hover:text-white"
           >
             გამოცდა
           </NavLink>
@@ -44,7 +47,7 @@ const TicketRoutes = () => {
         >
           <h1
             onClick={() => setShow(!show)}
-            className="font-bold text-3xl mb-4"
+            className="font-bold text-2xl md:text-3xl mb-4"
           >
             კატეგორიები
             <button>
@@ -52,16 +55,16 @@ const TicketRoutes = () => {
                 <img
                   src={category}
                   alt="category icon"
-                  width={22}
-                  height={22}
-                  className="ml-2"
+                  width={17}
+                  height={17}
+                  className="ml-1 md:w-22 md:h-22 md:ml-2"
                 />
               )}
             </button>
           </h1>
         </motion.div>
         {(show || width >= 1024) && (
-          <ul className="pl-0 w-full max-w-[690px]">
+          <ul className="pl-0 w-full max-w-[690px] xl:w-[469px]">
             {categoryData.map((item) => (
               <motion.li
                 initial={{ opacity: 0, x: -200 }}
@@ -70,20 +73,31 @@ const TicketRoutes = () => {
                 onClick={() => handleChooseCategory(item.category)}
                 key={item.id}
               >
-                <Link
-                  className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
-                    item.id === categoryId ? "bg-[#230751]" : "bg-[#663aac]"
-                  }`}
-                  to={`/tickets/${item.id}`}
-                >
-                  {item.id + "."} {item.category}{" "}
-                </Link>
+                {!completedArray.includes(item.index) ? (
+                  <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed">
+                    ვიდეო გაგეხსნებათ შეძენის შემდეგ
+                  </span>
+                ) : (
+                  <Link
+                    className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
+                      item.id === categoryNumber
+                        ? "bg-[#230751]"
+                        : "bg-[#663aac]"
+                    }`}
+                    to={`/tickets/${item.id}`}
+                    state={item.index}
+                  >
+                    {item.id + "."} {item.category}{" "}
+                  </Link>
+                )}
               </motion.li>
             ))}
           </ul>
         )}
         {!show && width < 1024 && (
-          <h2 className="text-2xl text-[#230751] mt-5">{categoryName}</h2>
+          <h2 className="w-full text-white mt-5 bg-[#663aac] p-3 rounded-md text-lg">
+            {categoryNumber + ". " + categoryName}
+          </h2>
         )}
       </div>
     </section>

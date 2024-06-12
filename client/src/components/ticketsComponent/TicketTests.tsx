@@ -3,6 +3,7 @@ import useTicketHandler from "../../hooks/useTicketHandler/useTicketHandler";
 import Pagination from "../pagination/Pagination";
 import { useUserContext } from "../../context/UserContext";
 import { TicketsTypes } from "../../types/Types";
+import VideoRender from "./VideoRender";
 
 const TicketTests = () => {
   const {
@@ -18,18 +19,13 @@ const TicketTests = () => {
   const checkForVideo = checkForVideoFunc();
 
   return (
-    <section className="w-full max-w-[800px] mt-40">
-      {checkForVideo && (
-        <iframe
-          key={`video-${checkForVideo.id}`} // Use a unique key for each iframe
-          title={`Video ${checkForVideo.id}`}
-          src={checkForVideo?.videoUrl}
-          width="100%"
-          height="500px"
-          style={{ marginBottom: "20px" }}
-          sandbox="allow-same-origin allow-scripts"
-          allowFullScreen
-        />
+    <section className="w-full max-w-[800px] mt-14 md:mt-40">
+      {checkForVideo ? (
+        <VideoRender checkForVideo={checkForVideo} />
+      ) : (
+        <p className="text-xl text-red-600 font-bold text-center">
+          ვიდეო გამოჩნდება ფასიანი პაკეტის შეძენის შემდეგ
+        </p>
       )}
 
       {currentTicket.length > 0 &&

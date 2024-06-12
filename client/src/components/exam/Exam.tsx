@@ -55,7 +55,7 @@ const Exam = ({
               className="text-ellipsis cursor-pointer min-w-8"
               htmlFor={data.category}
             >
-              {data.category}
+              {data.id}. {data.category}
             </label>
             <input
               className="cursor-pointer"

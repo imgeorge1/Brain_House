@@ -557,7 +557,7 @@ const largeTicketList = [
     id: 1321,
     categoryID: 2,
     image: "http://tinyurl.com/mswh5wmy",
-    correctAnswer: 1,
+    correctAnswer: 2,
     quantityAnswer: 2,
   },
   {
@@ -2724,7 +2724,7 @@ const largeTicketList = [
     categoryID: 12,
     image: "https://tinyurl.com/2anjrf7k",
     correctAnswer: 2,
-    quantityAnswer: 2,
+    quantityAnswer: 3,
   },
   {
     id: 1010,
@@ -4221,7 +4221,7 @@ const largeTicketList = [
     categoryID: 18,
     image: "https://tinyurl.com/2zyba7y4",
     correctAnswer: 3,
-    quantityAnswer: 3,
+    quantityAnswer: 4,
   },
   {
     id: 1285,
@@ -5156,7 +5156,7 @@ const largeTicketList = [
     categoryID: 22,
     image: "https://tinyurl.com/mrydsbkh",
     correctAnswer: 2,
-    quantityAnswer: 2,
+    quantityAnswer: 4,
   },
   {
     id: 456,
@@ -5529,7 +5529,7 @@ const largeTicketList = [
   {
     id: 585,
     categoryID: 26,
-    image: "https://tinyurl.com/2ymfv33d",
+    image: "https://tinyurl.com/3hf5uxcb",
     correctAnswer: 1,
     quantityAnswer: 3,
   },
@@ -5615,7 +5615,7 @@ const largeTicketList = [
     categoryID: 26,
     image: "https://tinyurl.com/yc8r87kk",
     correctAnswer: 1,
-    quantityAnswer: 4,
+    quantityAnswer: 3,
   },
   {
     id: 870,
