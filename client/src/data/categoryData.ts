@@ -82,7 +82,7 @@ const categoryData2 = [
     id: 26,
     category: "გადაზიდვები, ხალხი, ტვირთი",
     index: 12,
-    videoUrl: "",
+    videoUrl: "https://drive.google.com/file/d/1IKNRL9i5afleq_HAmhqAP0mbRiOiw7qh/preview",
   },
   {
     id: 19,

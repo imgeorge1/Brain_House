@@ -29,6 +29,15 @@ const RoadSign = () => {
           <p className="px-2">დაბრუნება</p>
         </Link>
       </button>
+      <iframe
+        className="w-full max-w-4xl mx-auto h-[280px] md:h-[460px]"
+        title="Video for sign in"
+        src={
+          "https://drive.google.com/file/d/1DtHh5BAzyAfoUMUTioSpWxKl1VvgxStc/preview"
+        }
+        sandbox="allow-same-origin allow-scripts"
+        allowFullScreen
+      />
       <ul className="flex flex-wrap mx-auto justify-center gap-8 max-w-[950px]  mb-20">
         {roadSignsData.map((signs) => (
           <motion.li
@@ -48,15 +57,6 @@ const RoadSign = () => {
           </motion.li>
         ))}
       </ul>
-      <iframe
-        className="w-full max-w-4xl mx-auto h-[280px] md:h-[460px]"
-        title="Video for sign in"
-        src={
-          "https://drive.google.com/file/d/17gvFmO5cLmiSS_2GsFR2k_7cxUZzqxS4/preview"
-        }
-        sandbox="allow-same-origin allow-scripts"
-        allowFullScreen
-      />
       {loading ? (
         <p className="text-center text-2xl mt-28">Loading...</p>
       ) : (
