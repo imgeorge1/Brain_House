@@ -21,7 +21,6 @@ const RoadSign = () => {
   return (
     <div className="min-h-[800px] pt-20">
       <button className="m-3 mt-5">
-        {" "}
         <Link
           to="/tickets/21"
           className="flex rounded-lg hover:bg-slate-300 duration-200"
@@ -49,6 +48,15 @@ const RoadSign = () => {
           </motion.li>
         ))}
       </ul>
+      <iframe
+        className="w-full max-w-4xl mx-auto h-[280px] md:h-[460px]"
+        title="Video for sign in"
+        src={
+          "https://drive.google.com/file/d/17gvFmO5cLmiSS_2GsFR2k_7cxUZzqxS4/preview"
+        }
+        sandbox="allow-same-origin allow-scripts"
+        allowFullScreen
+      />
       {loading ? (
         <p className="text-center text-2xl mt-28">Loading...</p>
       ) : (
