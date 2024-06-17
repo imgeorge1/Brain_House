@@ -66,9 +66,9 @@ const useTicketRoutes = () => {
       categoryNumber !== 30
     ) {
       setCompleted((prevCompleted) => prevCompleted + 1);
-      toast("Congrats ! You open next category !");
+      toast("გილოცავთ ! თქვენ გახსენით შემდეგი კატეგორია !");
     } else if (correctAnswer > 2 && !currentUser && changeCategory) {
-      toast("You are not signed in!");
+      toast("თქვენ არ გაქვთ ავტორიზაცია გავლილი !");
     }
   }, [correctAnswer]);
 
