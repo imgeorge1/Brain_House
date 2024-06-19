@@ -30,7 +30,8 @@ const RoadSign = () => {
         </Link>
       </button>
       <iframe
-        className="w-full max-w-4xl mx-auto h-[280px] md:h-[460px]"
+        className="w-full max-w-4xl mx-auto h-[280px] md:h-[460px] my-2 border border-slate-300 
+        border-solid rounded-sm"
         title="Video for sign in"
         src={
           "https://drive.google.com/file/d/1inPqi124ACuYemMz3ZUL8MU1FxU77OZo/preview"
@@ -38,7 +39,7 @@ const RoadSign = () => {
         sandbox="allow-same-origin allow-scripts"
         allowFullScreen
       />
-      <ul className="flex flex-wrap mx-auto justify-center gap-8 max-w-[950px]  mb-20">
+      <ul className="flex flex-wrap mx-auto justify-center gap-2 max-w-[950px] mb-20">
         {roadSignsData.map((signs) => (
           <motion.li
             initial={{ opacity: 0, rotate: -180 }}
@@ -58,7 +59,7 @@ const RoadSign = () => {
         ))}
       </ul>
       {loading ? (
-        <p className="text-center text-2xl mt-28">Loading...</p>
+        <p className="text-center text-2xl mt-28">იტვირთება...</p>
       ) : (
         memoizedSignImages
       )}
