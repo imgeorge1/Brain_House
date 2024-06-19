@@ -3,8 +3,8 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "beka.lomsadze.1@btu.edu.ge",
-    pass: "qtqf mcbl xppg hbeu",
+    user: "brainhouse2021@gmail.com",
+    pass: "vjqi ayfz zemw hbcv",
   },
   tls: {
     rejectUnauthorized: false, // Add this line to accept self-signed certificates (NOT recommended)
@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 
 const sendConfirmationEmail = async (user) => {
   const mailOptions = {
-    from: "beka.lomsadze.1@btu.edu.ge",
+    from: "brainhouse2021@gmail.com",
     to: user.email,
     subject: "Registration Successful",
     text: "Thank you for registering with our app!",
