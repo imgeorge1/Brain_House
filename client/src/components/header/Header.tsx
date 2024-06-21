@@ -48,7 +48,12 @@ const Header = () => {
             >
               მთავარი
             </NavLink>
-
+            <NavLink
+              to="/about"
+              className="nav-btn nav-link text-white no-underline text-center"
+            >
+              ჩვენ შესახებ
+            </NavLink>
             <NavLink
               to={`/tickets/${categoryId || 21}`}
               className="nav-link text-white text-center"
