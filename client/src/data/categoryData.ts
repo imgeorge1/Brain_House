@@ -12,7 +12,7 @@ const categoryData2 = [
     category: "მოძრაობა ავტომაგისტრალზე",
     index: 2,
     videoUrl:
-      "https://drive.google.com/file/d/1dfyK6BDXEJdclsnk7H_pnXW8gBZAzyjm/preview",
+      "https://drive.google.com/file/d/1wLGb8tGMLKE-KYZwBHVXh-N0i-2AMyTO/preview",
     // "https://drive.google.com/file/d/18RZKvWRRxMjfeA2GFFUlr6zlR8JvWwOu/preview", // this is not our video
   },
   {
@@ -82,7 +82,7 @@ const categoryData2 = [
     id: 26,
     category: "გადაზიდვები, ხალხი, ტვირთი",
     index: 12,
-    videoUrl: "",
+    videoUrl: "https://drive.google.com/file/d/1IKNRL9i5afleq_HAmhqAP0mbRiOiw7qh/preview",
   },
   {
     id: 19,
@@ -95,7 +95,7 @@ const categoryData2 = [
     id: 17,
     category: "მოძრაობის სიჩქარე",
     index: 14,
-    videoUrl: "",
+    videoUrl: "https://drive.google.com/file/d/1eUwYGyzFeCWXhvCUTIIOb6eN9eTjB4sF/preview",
   },
   {
     id: 16,
@@ -115,7 +115,7 @@ const categoryData2 = [
     id: 4,
     category: "პრიორიტეტის ნიშნები",
     index: 17,
-    videoUrl: "",
+    videoUrl: "https://drive.google.com/file/d/1mlA1bditMZ-rJgxtjOtVNs7t_XmBYy-P/preview",
   },
   {
     id: 5,
