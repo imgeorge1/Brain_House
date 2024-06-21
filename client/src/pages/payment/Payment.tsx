@@ -1,11 +1,4 @@
-import { SubmitHandler, useForm } from "react-hook-form";
-import API from "../../utils/API";
-import { FullUser } from "../../types/Types";
-import { useUserContext } from "../../context/UserContext";
-
 const Payment = () => {
-  const { currentUser } = useUserContext();
-
   return (
     <div className="w-1/3 mx-auto mb-24 mt-40 ">
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8">
