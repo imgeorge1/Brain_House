@@ -7,6 +7,9 @@ import Register from "./pages/register/Register";
 import Brain from "./assets/brain.png";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import About from "./pages/about/About";
+import Payment from "./pages/payment/Payment";
+import Policy from "./pages/policy/Policy";
 
 const TicketsLazy = lazy(() => import("./pages/tickets/Tickets"));
 const ExamsLazy = lazy(() => import("./pages/exams/Exams"));
@@ -30,7 +33,11 @@ const App = () => {
       >
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/policy" element={<Policy />} />
+          <Route path="/tickets/:id" element={<TicketsLazy />} />
           <Route path="/tickets/:id" element={<TicketsLazy />} />
           <Route path="/dashboard" element={<DashboardLazy />} />
           <Route path="/exams" element={<ExamsLazy />} />
