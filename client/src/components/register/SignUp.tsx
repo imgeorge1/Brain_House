@@ -3,8 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import API from "../../utils/API";
 import { FullUser } from "../../types/Types";
 import { useUserContext } from "../../context/UserContext";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = ({
   setSuccess,
@@ -28,8 +27,8 @@ const SignUp = ({
       const bodyWithEmail = { ...body, email };
       setSuccess(true);
       const res = await API.post(url, bodyWithEmail);
-      console.log("res: ", res);
-      navigate("/payment"); // Navigate to /payment route after successful submission
+      console.log("resსსსსს: ", res);
+      navigate("/payment");
     } catch (error) {
       console.log(error);
     }
@@ -141,19 +140,19 @@ const SignUp = ({
         </div>
 
         <div className="flex items-center justify-between">
-          <Link to="/payment">
-            <button
-              type="submit"
-              className={`font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
-                isCheckboxChecked
-                  ? "bg-blue-500 hover:bg-blue-700 text-white"
-                  : "bg-blue-300 text-white cursor-not-allowed"
-              }`}
-              disabled={!isCheckboxChecked}
-            >
-              გაგზავნა
-            </button>
-          </Link>
+          {/* <Link to="/payment"> */}
+          <button
+            type="submit"
+            className={`font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+              isCheckboxChecked
+                ? "bg-blue-500 hover:bg-blue-700 text-white"
+                : "bg-blue-300 text-white cursor-not-allowed"
+            }`}
+            disabled={!isCheckboxChecked}
+          >
+            გაგზავნა
+          </button>
+          {/* </Link> */}
         </div>
         <div className="flex gap-5 items-center mt-5">
           <input
