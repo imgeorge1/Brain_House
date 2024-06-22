@@ -1,7 +1,10 @@
+import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import API from "../../utils/API";
 import { FullUser } from "../../types/Types";
 import { useUserContext } from "../../context/UserContext";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = ({
   setSuccess,
@@ -14,6 +17,9 @@ const SignUp = ({
     formState: { errors },
   } = useForm<FullUser>();
   const { currentUser } = useUserContext();
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<FullUser> = async (body) => {
     try {
@@ -23,13 +29,14 @@ const SignUp = ({
       setSuccess(true);
       const res = await API.post(url, bodyWithEmail);
       console.log("res: ", res);
+      navigate("/payment"); // Navigate to /payment route after successful submission
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className="w-1/3 mx-auto mb-24 mt-40 ">
+    <div className="w-1/3 mx-auto mb-24 mt-40">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8"
@@ -133,48 +140,39 @@ const SignUp = ({
           )}
         </div>
 
-        <div className="mb-6">
-          <label
-            className="block text-gray-700 text-base font-bold mb-2"
-            htmlFor="age"
-          >
-            ანგარიშის ნომერი
-          </label>
-          <div className="flex items-center justify-start pl-2 gap-2  ">
-            <span style={{ fontSize: "15px" }}>TBC ბანკი</span>{" "}
-            <input
-              type="text"
-              id="iban"
-              className="shadow appearance-none border rounded w-9/12 py-2 px-3 text-gray-500 leading-tight focus:outline-none focus:shadow-outline"
-              readOnly
-              value="GE26TB7765836020100010"
-            />
-          </div>
-          <div className="flex items-center justify-start gap-5 pl-2 mt-2 ">
-            <span style={{ fontSize: "15px" }}>მიმღები</span>{" "}
-            <input
-              type="text"
-              id="recipient"
-              className="shadow appearance-none border rounded w-9/12 py-2 px-3 text-gray-500 leading-tight focus:outline-none focus:shadow-outline"
-              readOnly
-              value="შ.პ.ს. ბრეინ ჰაუსი 2021"
-            />
-          </div>
-
-          <p className="text-red-500 mt-2" style={{ fontSize: "12px" }}>
-            ვიდეო ლექციებზე წვდომა მოგეცემათ თანხის ანგარიშზე ასახვის შემდეგ
-          </p>
-        </div>
-
         <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          <Link to="/payment">
+            <button
+              type="submit"
+              className={`font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+                isCheckboxChecked
+                  ? "bg-blue-500 hover:bg-blue-700 text-white"
+                  : "bg-blue-300 text-white cursor-not-allowed"
+              }`}
+              disabled={!isCheckboxChecked}
+            >
+              გაგზავნა
+            </button>
+          </Link>
+        </div>
+        <div className="flex gap-5 items-center mt-5">
+          <input
+            className="h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 cursor-pointer"
+            type="checkbox"
+            onChange={(e) => setIsCheckboxChecked(e.target.checked)}
+          />
+          <span
+            className={`text-xs ${
+              isCheckboxChecked ? "text-green-500" : "text-red-500"
+            }`}
           >
-            გაგზავნა
-          </button>
+            გავეცანი და ვეთანხმები კონფიდენციალურობის პოლიტიკას
+          </span>
         </div>
       </form>
+      <Link to="/policy" className="text-blue-500 underline">
+        კონფიდენციალურობის პოლიტიკა
+      </Link>
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import React from "react";
 
-function About() {
+function Policy() {
   return (
     <div className="border-4 mt-20 ">
-      <h1>ჩვენ შესახებ</h1>
+      <h1>კონფიდენციალურობის პოლიტიკა</h1>
       <p>
         dicta placeat impedit quaerat, ducimus eos laudantium est aperiam
         voluptas dolorem voluptatibus sed temporibus! Eligendi natus tempora
@@ -53,4 +53,4 @@ function About() {
   );
 }
 
-export default About;
+export default Policy;
