@@ -54,7 +54,6 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
             Authorization: `Bearer ${tokenFromLocalStorage}`,
           },
         });
-        console.log("response", response);
         if (response.data) {
           setCurrentUser(response.data);
           localStorage.setItem("paid", response.data.isPaid.toString());

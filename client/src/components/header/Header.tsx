@@ -16,8 +16,12 @@ const Header = () => {
     setHide(!hide);
   };
 
+  const check =
+    !location.pathname.startsWith("/register") &&
+    !location.pathname.startsWith("/payment");
+
   return (
-    !location.pathname.startsWith("/register") && (
+    check && (
       <header className="fixed z-50 top-0 w-full background flex items-center justify-between px-2 py-7 md:py-7 lg:py-4  md:px-10 text-white">
         <motion.div
           initial={{ opacity: 0, x: -200 }}

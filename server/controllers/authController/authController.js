@@ -24,6 +24,9 @@ const signup = async (req, res) => {
       city,
       phone,
     });
+    res
+      .status(200)
+      .json({ status: "success", message: "User registered successfully" });
   } catch (error) {
     console.error("Error in signup:", error.message);
     res
