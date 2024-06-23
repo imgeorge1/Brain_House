@@ -1,12 +1,26 @@
 import { useState } from "react";
+import API from "../../utils/API";
+import { toast } from "react-toastify";
 
-const CommentForm = ({ addComment }: any) => {
+const CommentForm = ({ addComment, currentUser }: any) => {
   const [text, setText] = useState("");
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addComment(text);
-    setText("");
+    try {
+      if (!currentUser) toast("ჯერ გაიარე რეგისტაცია!");
+      else
+        await API.post("/comments", {
+          email: currentUser?.email,
+          comment: text,
+        });
+      toast("კომენტარი დაემატა წარმატებით!");
+
+      addComment(text);
+      setText("");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
