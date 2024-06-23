@@ -1,15 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import API from "../../utils/API";
 import { FullUser } from "../../types/Types";
 import { useUserContext } from "../../context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 
-const SignUp = ({
-  setSuccess,
-}: {
-  setSuccess: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+const SignUp = () => {
   const {
     register,
     handleSubmit,
@@ -25,9 +21,9 @@ const SignUp = ({
       const url = "/signup";
       const email = currentUser?.email;
       const bodyWithEmail = { ...body, email };
-      setSuccess(true);
+
       const res = await API.post(url, bodyWithEmail);
-      console.log("resსსსსს: ", res);
+      console.log("res: ", res);
       navigate("/payment");
     } catch (error) {
       console.log(error);
@@ -140,7 +136,6 @@ const SignUp = ({
         </div>
 
         <div className="flex items-center justify-between">
-          {/* <Link to="/payment"> */}
           <button
             type="submit"
             className={`font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
@@ -152,7 +147,6 @@ const SignUp = ({
           >
             გაგზავნა
           </button>
-          {/* </Link> */}
         </div>
         <div className="flex gap-5 items-center mt-5">
           <input

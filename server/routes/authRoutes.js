@@ -16,6 +16,11 @@ const ticketTest = require("../controllers/ticketsController/ticketTestControlle
 const usersInfo = require("../controllers/authController/usersInfoController");
 
 const allowedNextCategory = require("../controllers/permission/permissionController");
+const {
+  postComments,
+  getComments,
+  deleteComment,
+} = require("../controllers/commentController/commentController");
 
 const authRoutes = express.Router();
 
@@ -78,5 +83,11 @@ authRoutes.post("/tickets", ticketTest);
 authRoutes.get("/signs/:id", signs);
 
 authRoutes.get("/usersInfo", usersInfo);
+
+authRoutes.post("/comments", postComments);
+
+authRoutes.get("/comments", getComments);
+
+authRoutes.delete("/comments/:id", deleteComment);
 
 module.exports = authRoutes;
