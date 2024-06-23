@@ -12,6 +12,7 @@ const CommentForm = ({ addComment, currentUser }: any) => {
       else
         await API.post("/comments", {
           email: currentUser?.email,
+          fullName: currentUser.firstName + " " + currentUser.lastName,
           comment: text,
         });
       toast("კომენტარი დაემატა წარმატებით!");
