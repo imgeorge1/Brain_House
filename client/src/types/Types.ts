@@ -8,7 +8,6 @@ export interface PaginationTypes {
 export interface User {
   // Define your user interface here
   // This is just an example, replace it with your actual user interface
-  fullName: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -19,6 +18,7 @@ export interface User {
 
 export interface FullUser extends User {
   _id: string;
+  fullName: string;
   userId?: string;
   age: number;
   city: string;

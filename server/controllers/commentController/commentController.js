@@ -2,9 +2,10 @@ const Comments = require("../../models/commentsSchema");
 
 const postComments = async (req, res) => {
   try {
-    const { email, comment } = req.body;
+    const { email, fullName, comment } = req.body;
     const newComment = new Comments({
       email,
+      fullName,
       comment,
     });
 

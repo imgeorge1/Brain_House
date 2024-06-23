@@ -14,10 +14,7 @@ const Comments = () => {
         >
           <div>
             <p>
-              <strong>
-                {currentUser?.fullName ||
-                  currentUser?.firstName + " " + currentUser?.lastName}
-              </strong>
+              <strong>{comment.fullName}</strong>
             </p>
             <p>{comment.comment}</p>
           </div>
