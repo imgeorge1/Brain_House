@@ -12,7 +12,15 @@ const Comments = () => {
           key={index}
           className="bg-white rounded-lg shadow-md p-4 mb-4 flex justify-between items-center"
         >
-          <p>{comment.comment}</p>
+          <div>
+            <p>
+              <strong>
+                {currentUser?.fullName ||
+                  currentUser?.firstName + " " + currentUser?.lastName}
+              </strong>
+            </p>
+            <p>{comment.comment}</p>
+          </div>
           {currentUser?.email === comment.email && (
             <button
               className="text-red-500 hover:text-red-700 focus:outline-none"
