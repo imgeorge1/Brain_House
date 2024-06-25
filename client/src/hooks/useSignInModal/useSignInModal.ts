@@ -13,7 +13,7 @@ const useSignInModal = () => {
 
   const googleAuth = () => {
     window.open(
-      DEV_MODE
+      !DEV_MODE
         ? "http://localhost:3001/auth/google"
         : "https://brain-house-vkk7.onrender.com/auth/google",
       "_self"
