@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import About from "./pages/about/About";
 import Payment from "./pages/payment/Payment";
 import Policy from "./pages/policy/Policy";
+import PracticePage from "./pages/practice/PracticePage";
 
 const TicketsLazy = lazy(() => import("./pages/tickets/Tickets"));
 const ExamsLazy = lazy(() => import("./pages/exams/Exams"));
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/dashboard" element={<DashboardLazy />} />
           <Route path="/exams" element={<ExamsLazy />} />
           <Route path="/signs" element={<RoadSignsLazy />} />
+          <Route path="/practice" element={<PracticePage />} />
           <Route path="*" element={<NotFoundLazy />} />
         </Routes>
       </Suspense>

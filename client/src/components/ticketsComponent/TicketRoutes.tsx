@@ -24,6 +24,13 @@ const TicketRoutes = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="drivebtnparent"
         >
+          <NavLink
+            to="/practice"
+            className="drivebtn text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
+            rounded-3xl duration-200 hover:bg-orange-500 hover:text-white"
+          >
+            პრაქტიკა
+          </NavLink>
           <Link
             className="drivebtn text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
             rounded-3xl duration-200 hover:bg-orange-500 roadSignsButtonImage"
