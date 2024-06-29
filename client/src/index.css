@@ -120,6 +120,10 @@ code {
   color: var(--l-purple);
 }
 /* header */
+.spin-on-hover:hover{
+  transform: rotateZ(360deg);
+  transition-duration: 800ms;
+}
 .logo {
   font-size: 20px;
 }
