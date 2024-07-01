@@ -37,9 +37,22 @@ const VideoRender = ({
           sandbox="allow-same-origin allow-scripts"
           allowFullScreen
         />
-        <div className="flex justify-between pt-2">
-          <p>შეფასება 5.0</p>
-          <button onClick={() => setHide(!hide)}>კომენტარები</button>
+        <div className="flex justify-between pt-2 mx-2">
+          <p className="flex justify-center items-center">
+            <img
+              src="/src/assets/star.png"
+              alt="star"
+              className="w-[14px] h-[14px] mb-1"
+            />{" "}
+            <p>5.0</p>
+          </p>
+          <button
+            onClick={() => setHide(!hide)}
+            className="border border-[#663aac] text-[#663aac] rounded-3xl px-2 hover:border-[#230751]
+            hover:text-[#230751] duration-200 focus:border-[#230751] focus:text-[#230751]"
+          >
+            კომენტარები
+          </button>
         </div>
         {hide && <Comments />}
       </div>

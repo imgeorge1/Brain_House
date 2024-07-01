@@ -27,17 +27,19 @@ const CommentForm = ({ addComment, currentUser }: any) => {
   return (
     <form onSubmit={handleSubmit} className="mt-4">
       <textarea
-        className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
-        placeholder="Write a comment..."
+        className="w-full px-3 py-2 border-b border-gray-300 focus:outline-none 
+        focus:border-b-[#663aac] duration-200 resize-none"
+        placeholder="დაწერეთ კომენტარი..."
         value={text}
         onChange={(e) => setText(e.target.value)}
         required
       ></textarea>
       <button
         type="submit"
-        className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+        className="mt-2 px-4 py-2 hover:bg-[#230751] text-white rounded-lg bg-[#663aac] duration-200
+        focus:outline-none focus:bg-[#663aac]"
       >
-        Post Comment
+        კომენტარი
       </button>
     </form>
   );

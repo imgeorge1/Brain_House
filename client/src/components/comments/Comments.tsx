@@ -5,8 +5,8 @@ const Comments = () => {
   const { currentUser, addComment, handleDelete, comments } = useGetComments();
 
   return (
-    <section className="p-4 bg-gray-100">
-      <h1 className="text-2xl font-bold mb-4">Comments</h1>
+    <section className="p-4 bg-gray-100 mt-2 rounded-sm">
+      <h1 className="text-2xl font-bold mb-4">კომენტარები</h1>
       {comments?.map((comment, index) => (
         <div
           key={index}
