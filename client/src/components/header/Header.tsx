@@ -54,7 +54,7 @@ const Header = () => {
             </NavLink>
             <NavLink
               to="/about"
-              className="nav-btn nav-link text-white no-underline text-center"
+              className="nav-link text-white no-underline text-center"
             >
               ჩვენ შესახებ
             </NavLink>
@@ -77,7 +77,7 @@ const Header = () => {
           ) : (
             <h1
               onClick={toggleMenu}
-              className="z-50 mt-[-40px] ml-[-100px] text-3xl absolute 
+              className="z-50 mt-[-40px] ml-[-100px] text-3xl absolute spin-on-hover
               right-1 cursor-pointer border-2 rounded-full hover:bg-gray-700 duration-200"
             >
               <img src={X} width={32} alt="back" />
