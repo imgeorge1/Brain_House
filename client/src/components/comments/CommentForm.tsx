@@ -8,16 +8,18 @@ const CommentForm = ({ addComment, currentUser }: any) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      if (!currentUser) toast("ჯერ გაიარე რეგისტაცია!");
-      else
+      if (!currentUser) {
+        toast("ჯერ გაიარე რეგისტაცია!");
+      } else {
         await API.post("/comments", {
           email: currentUser?.email,
           fullName: currentUser.firstName + " " + currentUser.lastName,
           comment: text,
         });
-      toast("კომენტარი დაემატა წარმატებით!");
+        toast("კომენტარი დაემატა წარმატებით!");
 
-      addComment(text);
+        addComment(text);
+      }
       setText("");
     } catch (error) {
       console.log(error);

@@ -1,12 +1,11 @@
 import "../../index.css";
 import google from "../../assets/google.png";
-import facebook from "../../assets/facebook.png";
 import Dashboard from "./Dashboard";
 import useSignInModal from "../../hooks/useSignInModal/useSignInModal";
 import { motion } from "framer-motion";
 
 const SignInModal = () => {
-  const { show, setShow, currentUser, handleClose, googleAuth, facebookAuth } =
+  const { show, setShow, currentUser, handleClose, googleAuth } =
     useSignInModal();
 
   return (
@@ -50,25 +49,6 @@ const SignInModal = () => {
                 </span>
               </button>
               <hr />
-              <button
-                className="flex gap-5 border-solid border-[#2d2862] border rounded-lg bg-white py-2 p-1 hover:-translate-y-1 hover:shadow-md
-                hover:shadow-gray-300 hover:bg-[#2d286215] duration-200 text-sm sm:text-lg"
-                type="submit"
-                onClick={facebookAuth}
-              >
-                <img
-                  src={facebook}
-                  alt="facebook logo"
-                  width={20}
-                  height={20}
-                  className="sm:w-7 sm:h-7 rounded-xl"
-                />
-                <span className="font-roboto w-60 sm:w-72">
-                  {" "}
-                  შესვლა <span className="text-[#0866FF]">facebook</span>{" "}
-                  ანგარიშით{" "}
-                </span>
-              </button>
             </div>
           </motion.div>
         </div>

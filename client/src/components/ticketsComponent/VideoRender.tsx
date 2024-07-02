@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Category } from "../../types/Types";
 import Comments from "../comments/Comments";
+import star from "../../assets/star.png";
 
 const VideoRender = ({
   checkForVideo,
@@ -39,11 +40,7 @@ const VideoRender = ({
         />
         <div className="flex justify-between pt-2 mx-2">
           <p className="flex justify-center items-center">
-            <img
-              src="/src/assets/star.png"
-              alt="star"
-              className="w-[14px] h-[14px] mb-1"
-            />{" "}
+            <img src={star} alt="star" className="w-[14px] h-[14px] mb-1" />{" "}
             <p>5.0</p>
           </p>
           <button
