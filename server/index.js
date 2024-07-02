@@ -27,7 +27,7 @@ app.use(
   cors({
     origin: DEV_MODE
       ? ["http://localhost:5173", "https://drive.google.com"]
-      : ["https://brain-house-gamma.vercel.app", "https://drive.google.com"],
+      : ["https://brainhouse.ge", "https://drive.google.com"],
     credentials: true,
   })
 );

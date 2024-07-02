@@ -15,7 +15,7 @@ const useSignInModal = () => {
     window.open(
       !DEV_MODE
         ? "http://localhost:3001/auth/google"
-        : "https://brain-house-vkk7.onrender.com/auth/google",
+        : "https://api.brainhouse.ge/auth/google",
       "_self"
     );
   };
