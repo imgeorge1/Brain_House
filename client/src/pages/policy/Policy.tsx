@@ -1,6 +1,6 @@
 function Policy() {
   return (
-    <div className="border-4 mt-24 mx-16">
+    <div className="border-4 mt-24 mx-8 sm:mx-16">
       <h1 className="text-xl md:text-3xl text-center p-2 font-bold">
         წესები, პირობები და მონაცემთა დაცვა
       </h1>
