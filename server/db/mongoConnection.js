@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 
 const MONGODB_URL = process.env.MONGODB_URL;
-
+console.log("MONGODB_URL", MONGODB_URL);
 const mongoConnection = async () => {
   try {
     // Establish MongoDB connection
     mongoose.connect(MONGODB_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 5000, // Increase timeout to 5 seconds
     });
 
     // Log success message

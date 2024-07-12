@@ -1,9 +1,7 @@
 <IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  RewriteCond %{HTTP_HOST} ^(www\.)?brainhouse\.ge$ [NC]
-  RewriteCond %{REQUEST_URI} !^/newdirectory/
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.*)$ /newdirectory/index.html [L]
+  RewriteEngine On RewriteBase / # Redirect all requests to the new directory
+  RewriteCond %{HTTP_HOST} ^(www\.)?yourmaindomain\.com$ [NC] RewriteCond
+  %{REQUEST_URI} !^/newdirectory/ RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d RewriteRule ^(.*)$
+  /newdirectory/index.html [L]
 </IfModule>
