@@ -4,7 +4,7 @@ const DEV_MODE = "developer";
 
 const API = axios.create({
   //need to change !
-  baseURL: !DEV_MODE ? "http://localhost:3001" : "https://brainhouse.ge",
+  baseURL: !DEV_MODE ? "http://localhost:3001" : "https://api.brainhouse.ge",
   withCredentials: true,
 });
 
