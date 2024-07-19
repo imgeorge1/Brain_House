@@ -12,7 +12,7 @@ passport.use(
       callbackURL: DEV_MODE
         ? "http://localhost:3001/auth/google/callback"
         : process.env.GOOGLE_CALLBACK_URL ||
-          "https://api.brainhouse.ge/auth/google/callback",
+          "https://brain-house-api.onrender.com/auth/google/callback",
       scope: ["email", "profile"],
     },
     async (accessToken, refreshToken, profile, cb) => {
