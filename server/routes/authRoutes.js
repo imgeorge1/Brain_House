@@ -56,6 +56,10 @@ authRoutes.get(
 
 authRoutes.get("/user", authenticateUser, currentUser);
 
+authRoutes.get("/beka", (req, res) => {
+  res.send("Hello beka!");
+});
+
 authRoutes.put("/user", allowedNextCategory);
 
 authRoutes.get("/login/failed", (req, res) => {
