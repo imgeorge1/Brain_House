@@ -19,7 +19,7 @@ const TicketTests = () => {
   const checkForVideo = checkForVideoFunc();
 
   return (
-    <section className="w-full max-w-[800px] mt-14 md:mt-40">
+    <section className="w-full max-w-[670px] mt-14 md:mt-40">
       {checkForVideo ? (
         <VideoRender checkForVideo={checkForVideo} />
       ) : (

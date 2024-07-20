@@ -40,8 +40,12 @@ const VideoRender = ({
         />
         <div className="flex justify-between pt-2 mx-2">
           <p className="flex justify-center items-center">
-            <img src={star} alt="star" className="w-[14px] h-[14px] mb-1" />{" "}
-            <p>5.0</p>
+            <img
+              src={star}
+              alt="star"
+              className="w-[14px] h-[14px] mb-1 mr-1"
+            />{" "}
+            <span>5.0</span>
           </p>
           <button
             onClick={() => setHide(!hide)}
