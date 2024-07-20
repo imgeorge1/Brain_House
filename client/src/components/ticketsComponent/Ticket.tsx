@@ -15,7 +15,7 @@ const Ticket = ({
       className="flex flex-col bg-[#230751] items-center mt-16 rounded-lg w-full !scale-[1.04] md:!scale-[1]"
       key={data.id}
     >
-      <div className="w-full min-h-[380px] md:w-[750px] md:h-[680px]">
+      <div className="w-full min-h-[380px] md:w-[640px] md:h-[560px]">
         <img
           loading="lazy"
           src={data.image}

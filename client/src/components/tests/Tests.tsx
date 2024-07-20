@@ -32,7 +32,7 @@ const Tests = ({
   };
 
   return (
-    <div className=" mx-auto lg:max-w-[800px] mb-40 mt-28">
+    <div className=" mx-auto lg:max-w-[680px] mb-40 mt-28">
       {currentTicketIndex < ticketData.length && (
         <Ticket
           key={ticketData[currentTicketIndex].id}
