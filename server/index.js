@@ -27,7 +27,7 @@ app.use(
   cors({
     origin: DEV_MODE
       ? ["http://localhost:5173", "https://drive.google.com"]
-      : ["https://brain-house-1.onrender.com", "https://drive.google.com"],
+      : ["http://brainhouse.ge", "https://drive.google.com"],
     credentials: true,
   })
 );
