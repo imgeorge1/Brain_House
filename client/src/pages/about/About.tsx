@@ -1,52 +1,62 @@
 function About() {
   return (
     <div className="border-4 mt-20 ">
-      <h1>ჩვენ შესახებ</h1>
-      <p>
-        dicta placeat impedit quaerat, ducimus eos laudantium est aperiam
-        voluptas dolorem voluptatibus sed temporibus! Eligendi natus tempora
-        totam sint excepturi eos! Aliquam et, iure non sint fugiat, harum ipsa,
-        facere accusamus illo assumenda a optio magnam cum eveniet amet
-        blanditiis consequuntur rerum dolore accusantium. Dolores, vitae.
-        <br />
-        Doloremque, numquam, dolore facilis, atque illo reprehenderit facere
-        suscipit doloribus ut minus voluptates. Sequi repellat, provident
-        <br />
-        ratione excepturi ipsam animi perspiciatis modi quod iure, reiciendis
-        minima reprehenderit sint omnis explicabo? Doloribus, sequi est ipsa
-        explicabo eaque amet ex blanditiis temporibus, laboriosam error
-        reprehenderit exercitationem tempore ipsum pariatur assumenda tenetur
-        atque. Est doloribus quis ipsa eveniet non explicabo similique, eius
-        facilis quibusdam rerum id blanditiis officiis ab quia aperiam sint
-        <br />
-        dolorum, maiores iste ut dicta. Est hic adipisci quae minima nisi enim
-        ex repudiandae, assumenda corporis ad atque ab aperiam suscipit.
-        Aspernatur, ducimus numquam omnis sunt modi asperiores atque. Non
-        excepturi voluptatum velit sit sint quam? Adipisci, perspiciatis.
-        Aliquam, repudiandae similique. Consequatur, officia.
-      </p>
-      <br />
-      <p>
-        dicta placeat impedit quaerat, ducimus eos laudantium est aperiam
-        voluptas dolorem voluptatibus sed temporibus! Eligendi natus tempora
-        totam sint excepturi eos! Aliquam et, iure non sint fugiat, harum ipsa,
-        facere accusamus illo assumenda a optio magnam cum eveniet amet
-        blanditiis consequuntur rerum dolore accusantium. Dolores, vitae.
-        <br />
-        Doloremque, numquam, dolore facilis, atque illo reprehenderit facere
-        suscipit doloribus ut minus voluptates. Sequi repellat, provident
-        ratione excepturi ipsam animi perspiciatis modi quod iure, reiciendis
-        minima reprehenderit sint omnis explicabo? Doloribus, sequi est ipsa
-        explicabo eaque amet ex blanditiis temporibus, laboriosam error
-        reprehenderit exercitationem tempore ipsum pariatur assumenda tenetur
-        atque. Est doloribus quis ipsa eveniet non explicabo similique, eius
-        facilis quibusdam rerum id blanditiis officiis ab quia aperiam sint
-        dolorum, maiores iste ut dicta. Est hic adipisci quae minima nisi enim
-        ex repudiandae, assumenda corporis ad atque ab aperiam suscipit.
-        Aspernatur, ducimus numquam omnis sunt modi asperiores atque. Non
-        excepturi voluptatum velit sit sint quam? Adipisci, perspiciatis.
-        Aliquam, repudiandae similique. Consequatur, officia.
-      </p>
+      <h1 className="text-2xl text-center font-bold py-6 pb-2">ჩვენ შესახებ</h1>
+      <div className="px-4 py-2 md:px-24">
+        <p className="py-1">
+          &nbsp; ონლაინ აკადემია{" "}
+          <span className="font-semibold">
+            (Academy Brainhouse - Brainhouse.ge)
+          </span>{" "}
+          დაფუძნდა 2021 წელს.{" "}
+        </p>
+        <p className="py-1">
+          &nbsp; Brainhouse.ge არის ქართულენოვანი საგანმანათლებლო პლატფორმა,
+          რომელიც მომხმარებლებს სთავაზობს ონლაინ კურსებს პროფესიონალი,
+          წარმატებული მენტორების ავტორობით. 
+        </p>
+        <p className="py-1">
+          &nbsp; Brainhouse.ge-ს მიზანია, ხარისხიანი განათლება გახდეს ყველასთვის
+          ხელმისაწვდომი. ამისთვის, იქმნება მაღალი ხარისხის ონლაინ კურსები და
+          ლექციები.{" "}
+        </p>
+        <p className="py-1">
+          &nbsp; ონლაინ აკადემიის დაფუძნებას, წინ უძღოდა მრავალწლიანი
+          საერთაშორისო და ადგილობრივი გამოცდილება როგორც საგანმანათლებლო
+          სივრცეში, ასევე, საქართველოს შრომის ბაზრის კვლევების მიმართულებით.
+        </p>
+        <p className="py-1">
+          &nbsp; შედეგად გამოიკვეთა, რომ არსებობს დიდი შეუსაბამობა ბაზრის
+          მოთხოვნებსა და საგანმანათლებლო სივრცეების მიერ მიწოდებულ ცოდნას შორის.
+          ასევე, პრობლემატური საკითხია განათლებაზე, გეოგრაფიული და მატერიალური
+          ხელმისაწვდომობა.{" "}
+        </p>
+        <p className="py-1">
+          {" "}
+          &nbsp; ჩვენი ერთ-ერთი დიდი პროექტი გახლავთ ’’ მართვის ბარათი’’ რომლის
+          მეშვეობითაც შეგიძლიათ 4 დღეში შეისწავლოთ მართვის მოწმობის თეორიული
+          ნაწილი ონლაინ რეჟიმში, ხოლო პრაქტიკულ გაკვეთილებზე მიიღოთ 30%-მდე
+          ფასდაკლება.{" "}
+        </p>
+        <p className="py-1">
+          &nbsp; აკადემია ბრეინ ჰაუსი აქტიურად მუშაობს ახალი მოთხოვნადი კურსების
+          შექმნაზე, რომელთაც ეტაპობრივად შემოგთავაზებთ.{" "}
+        </p>
+        <p className="pt-1">
+          &nbsp; სიახლეების ონლაინ რეჟიმში მისაღებად გამოიწერეთ ჩვენი Facebook
+          გვერდი:{" "}
+        </p>
+        <p className="text-[#2D2862] hover:text-[#6b62d3] inline duration-200">
+          <a href="https://www.facebook.com/Brain.House.Geo" target="_blank">
+            &nbsp; https://www.facebook.com/Brain.House.Geo
+          </a>
+        </p>
+        <p className="pt-1">&nbsp; კითხვების შემთხვევაში დაგვიკავშირდით: </p>
+        <p>
+          &nbsp; საკონტაქტო ტელეფონი: +995 599 79 57 67 <br /> &nbsp; ელ-ფოსტა:
+          brainhouseedu@gmail.com{" "}
+        </p>
+      </div>
     </div>
   );
 }

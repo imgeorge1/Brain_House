@@ -23,15 +23,17 @@ function Slider() {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className=" flex flex-col gap-4 items-center ">
             <h2 className="text-5xl md:text-8xl font-semibold text-[#2D2862] font-roboto">
-              კურსები
+              მართვის ბარათი
             </h2>
             <p className="text-1xl md:text-2xl text-[#FDE047] mt-2 font-roboto">
-              ონლაინ კურსები
+              მართვის მოწმობის გაკვეთილები
             </p>
-            <button className=" font-roboto flex items-center justify-between w-[12rem] px-4 py-2 md:w-60 md:px-7 md:py-3 rounded-2xl bg-[#2D2862] text-xl  md:text-2xl text-white slider-button">
-              გაიგეთ მეტი
-              <FaArrowRight />
-            </button>
+            <a href="/tickets/21">
+              <button className="font-roboto flex items-center justify-between w-[12rem] px-4 py-2 md:w-60 md:px-7 md:py-3 rounded-2xl bg-[#2D2862] text-xl  md:text-2xl text-white slider-button">
+                გაიგეთ მეტი
+                <FaArrowRight />
+              </button>
+            </a>
           </div>
         </div>
       </SwiperSlide>
@@ -52,6 +54,12 @@ function Slider() {
             <p className="text-1xl md:text-2xl text-[#FDE047] mt-2 font-roboto">
               ჩვენ ვასწავლით ონლაინ, უმარტივესი მეთოდებით
             </p>
+            <a href="/about">
+              <button className="font-roboto flex items-center justify-between w-[12rem] px-4 py-2 md:w-60 md:px-7 md:py-3 rounded-2xl bg-[#2D2862] text-xl  md:text-2xl text-white slider-button">
+                გაიგეთ მეტი
+                <FaArrowRight />
+              </button>
+            </a>
           </div>
         </div>
       </SwiperSlide>
@@ -71,10 +79,12 @@ function Slider() {
             <p className="text-lg md:text-2xl text-[#FDE047] mt-2 font-roboto">
               ახლა რეგისტრაცია ჩვენი საიტიდან შეგიძლიათ!
             </p>
-            <button className="font-roboto flex items-center justify-between w-[12rem] px-4 py-2 md:w-60 md:px-6 md:py-3 rounded-2xl bg-[#2D2862] md:text-2xl text-white slider-button">
-              რეგისტრაცია
-              <FaPenToSquare />
-            </button>
+            <a href="/register">
+              <button className="font-roboto flex items-center justify-between w-[12rem] px-4 py-2 md:w-60 md:px-6 md:py-3 rounded-2xl bg-[#2D2862] md:text-2xl text-white slider-button">
+                რეგისტრაცია
+                <FaPenToSquare />
+              </button>
+            </a>
           </div>
         </div>
       </SwiperSlide>

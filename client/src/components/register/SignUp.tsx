@@ -135,7 +135,7 @@ const SignUp = () => {
           )}
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between pb-4">
           <button
             type="submit"
             className={`font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
@@ -148,9 +148,12 @@ const SignUp = () => {
             გაგზავნა
           </button>
         </div>
+        <Link to="/policy" className="text-blue-500 underline">
+          კონფიდენციალურობის პოლიტიკა
+        </Link>
         <div className="flex gap-5 items-center mt-5">
           <input
-            className="h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 cursor-pointer"
+            className="h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:rotate-[360deg] checked:border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 cursor-pointer"
             type="checkbox"
             onChange={(e) => setIsCheckboxChecked(e.target.checked)}
           />
@@ -163,9 +166,6 @@ const SignUp = () => {
           </span>
         </div>
       </form>
-      <Link to="/policy" className="text-blue-500 underline">
-        კონფიდენციალურობის პოლიტიკა
-      </Link>
     </div>
   );
 };
