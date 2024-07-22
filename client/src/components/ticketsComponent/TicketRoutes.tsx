@@ -13,6 +13,7 @@ const TicketRoutes = () => {
     categoryNumber,
     handleChooseCategory,
     completedArray,
+    currentUser,
   } = useTicketRoutes();
 
   return (
@@ -38,13 +39,22 @@ const TicketRoutes = () => {
           >
             საგზაო ნიშნები
           </Link>
-          <NavLink
-            to="/exams"
-            className="drivebtn text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
+          {currentUser ? (
+            <NavLink
+              to="/exams"
+              className="drivebtn text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
             rounded-3xl duration-200 hover:bg-orange-500 hover:text-white"
-          >
-            გამოცდა
-          </NavLink>
+            >
+              გამოცდა
+            </NavLink>
+          ) : (
+            <span
+              className="text-center text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
+            rounded-3xl opacity-50"
+            >
+              გამოცდა
+            </span>
+          )}
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: -200 }}
