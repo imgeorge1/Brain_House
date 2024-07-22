@@ -31,13 +31,13 @@ const SignUp = () => {
   };
 
   return (
-    <div className="w-1/3 mx-auto mb-24 mt-40">
+    <div className="w-2/3 md:w-2/3 lg:w-1/3 mx-auto mb-24 mt-40">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8"
         noValidate
       >
-        <h2 className="text-3xl font-bold mb-4">რეგისტრაცია</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4">რეგისტრაცია</h2>
         <div className="mb-4">
           <label
             className="block text-gray-700 text-base font-bold mb-2"
