@@ -122,7 +122,7 @@ const categoryData2 = [
     category: "ამკრძალავი ნიშნები",
     index: 18,
     videoUrl:
-      "https://drive.google.com/file/d/1p2fmuCTlfJqJQXA7QsAHEVllyBNTXMr-/preview",
+      "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
   },
   {
     id: 6,
@@ -157,7 +157,7 @@ const categoryData2 = [
     category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
     index: 23,
     videoUrl:
-      "https://drive.google.com/file/d/1qfkn9LsmtHDy-NW6LGX4sI8fSzK_RxUQ/preview",
+      "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
   },
   {
     id: 14,
@@ -178,7 +178,7 @@ const categoryData2 = [
     category: "სამედიცინო დახმარება",
     index: 26,
     videoUrl:
-      "https://drive.google.com/file/d/19C-dbQ-qLHiKounv7XqwjL1nhOgJ_7Uc/preview",
+      "https://drive.google.com/file/d/15XKo1iU7ag5PSvwR5FFuZBHrSZhLVnIA/preview",
   },
   {
     id: 18,
@@ -220,7 +220,7 @@ const categoryData2 = [
     category: "მოძრაობის უსაფრთხოება",
     index: 32,
     videoUrl:
-      "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/1Sz1dhZOelq8UAfJn4JXIz6WZlqgXc0dX/preview https://drive.google.com/file/d/17NeNsj1okN75Ok9mpkPa2rEAuqyQope1/preview",
+      "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview",
   },
 ];
 
