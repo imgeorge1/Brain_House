@@ -6650,14 +6650,14 @@ const largeTicketList = [
     correctAnswer: 3,
     quantityAnswer: 3,
   },
+  {
+      id: 994,
+    categoryID: 30,
+    image: "https://tinyurl.com/3b5x2v3m",
+    correctAnswer: 2,
+    quantityAnswer: 3,
+  },
   //      tickets for video 30.3
-  // {
-  //   id: 994,
-  //   categoryID: 30,
-  //   image: "https://tinyurl.com/3b5x2v3m",
-  //   correctAnswer: 2,
-  //   quantityAnswer: 3,
-  // },
   // {
   //   id: 995,
   //   categoryID: 30,
