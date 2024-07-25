@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
@@ -11,6 +11,7 @@ import About from "./pages/about/About";
 import Payment from "./pages/payment/Payment";
 import Policy from "./pages/policy/Policy";
 import PracticePage from "./pages/practice/PracticePage";
+import Updates from "./pages/updates/Update";
 
 const TicketsLazy = lazy(() => import("./pages/tickets/Tickets"));
 const ExamsLazy = lazy(() => import("./pages/exams/Exams"));
@@ -21,6 +22,7 @@ const NotFoundLazy = lazy(() => import("./pages/error/NotFound"));
 const App = () => {
   return (
     <>
+      <Navigate to={"/updates"} />
       <Header />
       <ToastContainer />
       <Suspense
@@ -45,6 +47,7 @@ const App = () => {
           <Route path="/signs" element={<RoadSignsLazy />} />
           <Route path="/practice" element={<PracticePage />} />
           <Route path="*" element={<NotFoundLazy />} />
+          <Route path="/updates" element={<Updates />} />
         </Routes>
       </Suspense>
       <Footer />
