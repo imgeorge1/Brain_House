@@ -1,7 +1,7 @@
 import { MdMarkEmailRead } from "react-icons/md";
 import { IoCall } from "react-icons/io5";
 import { FaFacebookSquare } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import BrainHouseLogo from "../../assets/newbrainhouselogo.png";
 
 function Footer() {
@@ -17,18 +17,20 @@ function Footer() {
             <h5 className="font-bold my-auto">Brain House</h5>
           </NavLink>
           <div>
-            <a href="/policy">
-              <p className="mt-2 text-yellow-500 hover:text-yellow-600 duration-100">
-                წესები, პირობები და მონაცემთა დაცვა
-              </p>
-            </a>
+            <Link
+              to="/policy"
+              className="mt-2 text-yellow-500 hover:text-yellow-600 duration-100"
+              title="წესები, პირობები და მონაცემთა დაცვა"
+            >
+              წესები, პირობები და მონაცემთა დაცვა
+            </Link>
           </div>
           <div>
-            <a href="/about">
+            <Link to="/about">
               <p className="mt-3 text-yellow-500  hover:text-yellow-600 duration-150">
                 ჩვენ შესახებ
               </p>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="flex flex-col min-w-60 text-white gap-2 ">
