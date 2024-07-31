@@ -44,7 +44,7 @@ const Header = () => {
                 height={40}
                 className="rounded-xl"
               />
-              <h5 className="font-bold my-auto">Brain House</h5>
+              <h1 className="font-bold my-auto">Brain House</h1>
             </NavLink>
           </motion.div>
 
