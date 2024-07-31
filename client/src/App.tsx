@@ -41,7 +41,6 @@ const App = () => {
           <Route path="/payment" element={<Payment />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/tickets/:id" element={<TicketsLazy />} />
-          <Route path="/tickets/:id" element={<TicketsLazy />} />
           <Route path="/dashboard" element={<DashboardLazy />} />
           <Route path="/exams" element={<ExamsLazy />} />
           <Route path="/signs" element={<RoadSignsLazy />} />

@@ -1,5 +1,7 @@
 require("dotenv").config();
 const express = require("express");
+const path = require("path");
+const generateSitemap = require("./generateSitemap");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const session = require("cookie-session");
@@ -10,6 +12,25 @@ const mongoConnection = require("./db/mongoConnection");
 const router = require("./routes/main");
 
 const app = express();
+
+// Serve robots.txt
+app.use("/robots.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "robots.txt"));
+});
+
+// Serve sitemap.xml
+app.get("/sitemap.xml", async (req, res) => {
+  try {
+    const sitemap = await generateSitemap();
+    res.header("Content-Type", "application/xml");
+    res.send(sitemap);
+  } catch (err) {
+    res.status(500).send("Error generating sitemap");
+  }
+});
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "client/build")));
 
 // Generate secret key for session
 const generateSecretKey = () => {
