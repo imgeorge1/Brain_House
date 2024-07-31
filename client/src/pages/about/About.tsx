@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function About() {
   return (
     <div className="border-4 mt-20 ">
@@ -47,9 +49,9 @@ function About() {
           გვერდი:{" "}
         </p>
         <p className="text-[#2D2862] hover:text-[#6b62d3] inline duration-200">
-          <a href="https://www.facebook.com/Brain.House.Geo" target="_blank">
+          <Link to="https://www.facebook.com/Brain.House.Geo" target="_blank">
             &nbsp; https://www.facebook.com/Brain.House.Geo
-          </a>
+          </Link>
         </p>
         <p className="pt-1">&nbsp; კითხვების შემთხვევაში დაგვიკავშირდით: </p>
         <p>
