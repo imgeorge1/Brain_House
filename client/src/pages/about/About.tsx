@@ -49,9 +49,9 @@ function About() {
           გვერდი:{" "}
         </p>
         <p className="text-[#2D2862] hover:text-[#6b62d3] inline duration-200">
-          <Link to="https://www.facebook.com/Brain.House.Geo" target="_blank">
+          <a href="https://www.facebook.com/Brain.House.Geo" target="_blank">
             &nbsp; https://www.facebook.com/Brain.House.Geo
-          </Link>
+          </a>
         </p>
         <p className="pt-1">&nbsp; კითხვების შემთხვევაში დაგვიკავშირდით: </p>
         <p>
