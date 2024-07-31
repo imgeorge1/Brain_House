@@ -46,9 +46,9 @@ function Footer() {
             +995 599 79 57 67
           </div>
           <div className="flex text-blue-500 items-center w-full gap-2 mt-2 justify-center sm:justify-start">
-            <Link to="https://www.facebook.com/Brain.House.Geo" target="_blank">
+            <a href="https://www.facebook.com/Brain.House.Geo" target="_blank">
               <FaFacebookSquare />
-            </Link>
+            </a>
           </div>
         </div>
       </div>
