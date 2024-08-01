@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 function About() {
   return (
     <div className="border-4 mt-20 ">
