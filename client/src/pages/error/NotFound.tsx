@@ -13,17 +13,15 @@ const NotFound = () => {
         <br />
       </p>
       <Link to="/" className="justify-center flex text-[18px]">
-        <a>
-          <span className="errorpage-link">
-            <p className="gap-2 flex">
-              <img src={back} width={20} alt="back" />
-              მთავარ გვერდზე დაბრუნება
-            </p>
-          </span>
-          {/* <span className="text-[25px]">
+        <span className="errorpage-link">
+          <p className="gap-2 flex">
+            <img src={back} width={20} alt="back" />
+            მთავარ გვერდზე დაბრუნება
+          </p>
+        </span>
+        {/* <span className="text-[25px]">
             <img src={back} width={16} alt="back" />
           </span> */}
-        </a>
       </Link>
     </div>
   );
