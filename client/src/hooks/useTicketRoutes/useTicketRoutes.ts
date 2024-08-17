@@ -8,12 +8,13 @@ import { toast } from "react-toastify";
 const useTicketRoutes = () => {
   const { setTicketData, currentUser, correctAnswer } = useUserContext();
   const location = useLocation();
-  const [completed, setCompleted] = useState<number>(() => {
-    const localCompleted = localStorage.getItem("completed");
-    return localCompleted
-      ? parseInt(localCompleted)
-      : currentUser?.completed || 2;
-  });
+  // const [completed, setCompleted] = useState<number>(() => {
+  //   const localCompleted = localStorage.getItem("completed");
+  //   return localCompleted
+  //     ? parseInt(localCompleted)
+  //     : currentUser?.completed || 2;
+  // });
+  const [completed, setCompleted] = useState<number>(32);
   const [categoryId, setCategoryId] = useState(
     currentUser ? currentUser.completed : completed
   );
