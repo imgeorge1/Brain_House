@@ -26,6 +26,13 @@ function Footer() {
             </Link>
           </div>
           <div>
+            <Link to="/course-info">
+              <p className="mt-3 text-yellow-500  hover:text-yellow-600 duration-150">
+                კურსის შესახებ
+              </p>
+            </Link>
+          </div>
+          <div>
             <Link to="/about">
               <p className="mt-3 text-yellow-500  hover:text-yellow-600 duration-150">
                 ჩვენ შესახებ

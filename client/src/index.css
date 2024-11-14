@@ -158,7 +158,14 @@ code {
   width: 50%;
   border-left: #fe6e46 5px solid;
 }
+.info-list li::before {
+  content: "✅ "; /* Adds the checkmark symbol */
+}
 
+.course-info-link:hover{
+  color: #fe6d46;
+  transition-duration: 200ms;
+}
 .drivebtnparent {
   display: flex;
   flex-direction: column;
