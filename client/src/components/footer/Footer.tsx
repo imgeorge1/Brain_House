@@ -39,6 +39,13 @@ function Footer() {
               </p>
             </Link>
           </div>
+          <div>
+            <Link to="/theory-info">
+              <p className="mt-3 text-yellow-500  hover:text-yellow-600 duration-150">
+                თეორიული კურსი
+              </p>
+            </Link>
+          </div>
         </div>
         <div className="flex flex-col min-w-60 text-white gap-2 ">
           <p className="text-2xl font-bold active-link text-center sm:text-left pl-1">

@@ -26,7 +26,7 @@ const Header = () => {
         <header
           className="fixed z-50 top-0 w-full backdrop-brightness-[.85]
           backdrop-blur bg-gradient-to-b from-[#2D2862] to-transparent to-100%
-      flex items-center justify-between px-2 py-7 md:py-7 lg:py-4  md:px-10 text-white "
+      flex items-center justify-between px-2 py-7 md:py-5 lg:py-4  md:px-10 text-white "
         >
           <motion.div
             initial={{ opacity: 0, x: -200 }}
@@ -73,7 +73,7 @@ const Header = () => {
                 to={`/tickets/${categoryId || 21}`}
                 className="nav-link text-white text-center"
               >
-                მართვის ბარათი
+                თეორიის კურსი
               </NavLink>
             </motion.nav>
           )}

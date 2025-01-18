@@ -12,6 +12,7 @@ import CourseInfo from "./pages/courseInfo/CourseInfo";
 import Payment from "./pages/payment/Payment";
 import Policy from "./pages/policy/Policy";
 import PracticePage from "./pages/practice/PracticePage";
+import TheoryInfo from "./pages/theoryInfo/TheoryInfo"
 // import Updates from "./pages/updates/Update";
 
 const TicketsLazy = lazy(() => import("./pages/tickets/Tickets"));
@@ -47,6 +48,7 @@ const App = () => {
           <Route path="/exams" element={<ExamsLazy />} />
           <Route path="/signs" element={<RoadSignsLazy />} />
           <Route path="/practice" element={<PracticePage />} />
+          <Route path="/theory-info" element={<TheoryInfo />} />
           <Route path="*" element={<NotFoundLazy />} />
           {/* <Route path="/updates" element={<Updates />} /> */}
         </Routes>
