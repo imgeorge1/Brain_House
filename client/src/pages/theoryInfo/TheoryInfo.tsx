@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import beqaImage from "../../assets/theory-info-images/beqa.png";
 import olive from "../../assets/theory-info-images/olive.png";
 import comment1 from "../../assets/theory-info-images/comment (1).jpeg";
