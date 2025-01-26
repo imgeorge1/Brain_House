@@ -102,23 +102,22 @@ const TheoryInfo = () => {
         </div>
 
         {/* Carousel */}
-        <div className="relative w-full md:w-[60%] mt-6">
-          <div className="relative w-full h-56 md:h-96 rounded-lg">
+        <div className="relative w-[60%] md:w-[50%] mt-6">
+          <div className="relative w-full h-56 md:h-96 rounded-lg flex items-center justify-center border 
+          border-gray-300 shadow-xl shadow-[#2D2862]">
             <img
               src={images[currentIndex]}
               alt={`carousel-item-${currentIndex}`}
-              className="absolute top-0 left-0 w-full h-full object-contain shadow-xl shadow-[#2D2862]"
+              className="w-full h-auto max-h-full object-contain "
             />
           </div>
           {/* Slider controls */}
           <button
             type="button"
             onClick={goToPrevious}
-            className="absolute top-0 left-0 md:left-[-3.5rem] z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+            className="absolute top-0 left-0 left-[-3.5rem] md:left-[-3.5rem] z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
           >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full 
-            bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-[#2D2862]
-            group-focus:bg-[#2D2862] group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#2D2862]">
               <svg
                 className="w-4 h-4 text-white dark:text-gray-200 rtl:rotate-180"
                 aria-hidden="true"
@@ -140,11 +139,9 @@ const TheoryInfo = () => {
           <button
             type="button"
             onClick={goToNext}
-            className="absolute top-0 right-0 md:right-[-3.5rem] z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+            className="absolute top-0 right-0 right-[-3.5rem] md:right-[-3.5rem] z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
           >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 
-            dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-[#2D2862] group-focus:bg-[#2D2862]
-            group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#2D2862]">
               <svg
                 className="w-4 h-4 text-white dark:text-gray-200 rtl:rotate-180"
                 aria-hidden="true"
@@ -164,6 +161,7 @@ const TheoryInfo = () => {
             </span>
           </button>
         </div>
+
 
 
 
