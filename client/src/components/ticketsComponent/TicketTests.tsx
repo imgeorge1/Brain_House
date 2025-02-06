@@ -23,7 +23,7 @@ const TicketTests = () => {
       {checkForVideo ? (
         <VideoRender checkForVideo={checkForVideo} />
       ) : (
-        <p className="text-xl text-red-600 font-bold text-center">
+        <p className="">
           ვიდეო გამოჩნდება ფასიანი პაკეტის შეძენის შემდეგ
         </p>
       )}
