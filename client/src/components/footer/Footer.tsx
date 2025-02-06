@@ -26,9 +26,9 @@ function Footer() {
             </Link>
           </div>
           <div>
-            <Link to="/course-info">
+            <Link to="/buy-course">
               <p className="mt-3 text-yellow-500  hover:text-yellow-600 duration-150">
-                კურსის შესახებ
+                თეორიის კურსის შეძენა
               </p>
             </Link>
           </div>
@@ -66,8 +66,8 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex text-gray-400 w-full justify-center gap-2 mt-12">
-        Brain House © 2024
+      <div className="flex text-gray-400 w-full justify-center gap-2 mt-12 font-mono">
+      © 2024 ყველა უფლება დაცულია 
       </div>
     </div>
   );

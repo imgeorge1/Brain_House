@@ -2,7 +2,7 @@ function About() {
   return (
     <div className="border-4 mt-20 ">
       <h1 className="text-2xl text-center font-bold py-6 pb-2">ჩვენ შესახებ</h1>
-      <div className="px-4 py-2 md:px-24">
+      <div className="mx-auto max-w-4xl">
         <p className="py-1">
           &nbsp; ონლაინ აკადემია{" "}
           <span className="font-semibold">

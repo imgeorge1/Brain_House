@@ -8,7 +8,7 @@ import Brain from "./assets/brain.png";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import About from "./pages/about/About";
-import CourseInfo from "./pages/courseInfo/CourseInfo";
+import BuyCourse from "./pages/buycourse/BuyCourse";
 import Payment from "./pages/payment/Payment";
 import Policy from "./pages/policy/Policy";
 import PracticePage from "./pages/practice/PracticePage";
@@ -39,7 +39,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/course-info" element={<CourseInfo />} />
+          <Route path="/buy-course" element={<BuyCourse />} />
           <Route path="/register" element={<Register />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/policy" element={<Policy />} />
