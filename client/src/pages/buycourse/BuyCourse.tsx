@@ -8,7 +8,7 @@ function BuyCourse() {
         border-solid rounded-sm"
         title="Video for sign in"
         src={
-          "https://drive.google.com/file/d/1-TExdbkIyWgbS1jlgLawaANMqM7bkWZF/preview"
+          "https://drive.google.com/file/d/18GWa5D4Xpd7_PpvyXbdSRWgxJk-JLMul/preview"
         }
         sandbox="allow-same-origin allow-scripts"
         allowFullScreen
