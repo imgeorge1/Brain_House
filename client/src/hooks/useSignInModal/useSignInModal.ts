@@ -13,7 +13,7 @@ const useSignInModal = () => {
 
   const googleAuth = () => {
     window.open(
-      !DEV_MODE
+      DEV_MODE
         ? "http://localhost:3001/auth/google"
         : "https://brain-house-api.onrender.com/auth/google",
       "_self"
@@ -22,7 +22,7 @@ const useSignInModal = () => {
 
   const facebookAuth = () => {
     window.open(
-      !DEV_MODE
+      DEV_MODE
         ? "http://localhost:3001/auth/facebook"
         : "https://brain-house-api.onrender.com/auth/facebook",
       "_self"
