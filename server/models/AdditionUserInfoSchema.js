@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const AdditionUserInfoSchema = new mongoose.Schema({
   fullName: {
@@ -25,4 +25,4 @@ const AdditionUserInfo = mongoose.model(
   AdditionUserInfoSchema
 );
 
-module.exports = AdditionUserInfo;
+export default AdditionUserInfo;

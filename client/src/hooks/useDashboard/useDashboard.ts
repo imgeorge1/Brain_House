@@ -24,6 +24,7 @@ const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
 
   const checkAdmin =
     currentUser?.email === "beka.lomsadze.1@btu.edu.ge" ||
+    currentUser?.email === "shvangiradze22giorgi@gmail.com" ||
     currentUser?.email === "chikviladze555@gmail.com" ||
     currentUser?.email === "ubitoz133@gmail.com" ||
     currentUser?.email === "b.ejibishvili1@gmail.com";

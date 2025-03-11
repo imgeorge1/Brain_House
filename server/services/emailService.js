@@ -1,4 +1,4 @@
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -28,4 +28,4 @@ const sendConfirmationEmail = async (user) => {
   }
 };
 
-module.exports = sendConfirmationEmail;
+export default sendConfirmationEmail;

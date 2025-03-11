@@ -1,60 +1,24 @@
-const express = require("express");
-const signup = require("../controllers/authController/authController");
-const ticket = require("../controllers/ticketsController/ticketController");
-const {
+import express from "express";
+import ticket from "../controllers/ticketsController/ticketController.js";
+import {
   users,
   updateUserPaidStatus,
-} = require("../controllers/showUsers/showUsers");
-const googleStrategy = require("../config/passport/google");
-const facebookStrategy = require("../config/passport/facebook");
-const signs = require("../controllers/sign/signController");
-const additionUserInfoMiddleware = require("../middlewares/additionUserInfoMiddleware");
-// const generateVideos = require("../controllers/driveController/driveController");
-const authenticateUser = require("../middlewares/authenticateUser");
-const currentUser = require("../controllers/currentUser/currentUserController");
-const ticketTest = require("../controllers/ticketsController/ticketTestController");
-const usersInfo = require("../controllers/authController/usersInfoController");
+} from "../controllers/showUsers/showUsers.js";
+import signs from "../controllers/sign/signController.js";
+import currentUser from "../controllers/currentUser/currentUserController.js";
+import ticketTest from "../controllers/ticketsController/ticketTestController.js";
+import usersInfo from "../controllers/authController/usersInfoController.js";
 
-const allowedNextCategory = require("../controllers/permission/permissionController");
-const {
+import allowedNextCategory from "../controllers/permission/permissionController.js";
+import {
   postComments,
   getComments,
   deleteComment,
-} = require("../controllers/commentController/commentController");
+} from "../controllers/commentController/commentController.js";
 
 const authRoutes = express.Router();
 
-const DEV_MODE = process.env.NODE_ENV === "developer";
-
-authRoutes.get(
-  "/auth/google",
-  googleStrategy.authenticate("google", {
-    scope: ["profile", "email"],
-  })
-);
-
-authRoutes.get(
-  "/auth/facebook",
-  facebookStrategy.authenticate("facebook", { scope: "email" })
-);
-
-authRoutes.get(
-  "/auth/google/callback",
-  googleStrategy.authenticate("google", {
-    failureRedirect: "/login/failed",
-  }),
-  additionUserInfoMiddleware
-);
-
-authRoutes.get(
-  "/auth/facebook/callback",
-  facebookStrategy.authenticate("facebook", {
-    failureRedirect: "/login/failed",
-  }),
-  additionUserInfoMiddleware
-);
-
-authRoutes.get("/user", authenticateUser, currentUser);
+authRoutes.get("/user", currentUser);
 
 authRoutes.get("/beka", (req, res) => {
   res.send("Hello beka!");
@@ -68,13 +32,6 @@ authRoutes.get("/login/failed", (req, res) => {
     message: "failure",
   });
 });
-
-authRoutes.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect(DEV_MODE ? "http://localhost:5173" : process.env.CLIENT_URL);
-});
-
-authRoutes.post("/signup", signup);
 
 authRoutes.get("/users", users);
 authRoutes.put("/users/:userId", updateUserPaidStatus);
@@ -94,4 +51,4 @@ authRoutes.get("/comments", getComments);
 
 authRoutes.delete("/comments/:id", deleteComment);
 
-module.exports = authRoutes;
+export default authRoutes;

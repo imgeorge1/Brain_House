@@ -1,4 +1,4 @@
-const Ticket = require("../../models/ticketSchema");
+import Ticket from "../../models/ticketSchema.js";
 
 const ticket = async (req, res) => {
   try {
@@ -15,4 +15,4 @@ const ticket = async (req, res) => {
   }
 };
 
-module.exports = ticket;
+export default ticket;

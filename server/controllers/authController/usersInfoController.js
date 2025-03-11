@@ -1,4 +1,4 @@
-const AdditionUserInfo = require("../../models/AdditionUserInfoSchema");
+import AdditionUserInfo from "../../models/AdditionUserInfoSchema.js";
 
 const usersInfo = async (req, res) => {
   try {
@@ -11,4 +11,4 @@ const usersInfo = async (req, res) => {
   }
 };
 
-module.exports = usersInfo;
+export default usersInfo;

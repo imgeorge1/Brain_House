@@ -9,5 +9,28 @@ const API = axios.create({
     : "https://brain-house-api.onrender.com",
   withCredentials: true,
 });
+API.interceptors.request.use(async (config) => {
+  let token = localStorage.getItem("accessToken");
 
+  if (!token) {
+    // Refresh token logic
+    try {
+      const { data } = await axios.post(
+        "https://yourbackend.com/auth/refresh",
+        {},
+        { withCredentials: true }
+      );
+      token = data.accessToken;
+      localStorage.setItem("accessToken", token);
+    } catch (err) {
+      console.error("Session expired, please log in again.");
+    }
+  }
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});
 export default API;

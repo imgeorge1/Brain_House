@@ -1,4 +1,4 @@
-const { google } = require("googleapis");
+import { google } from "googleapis";
 
 const CLIENT_ID = process.env.DRIVE_CLIENT_ID;
 const CLIENT_SECRET = process.env.DRIVE_CLIENT_SECRET;
@@ -28,4 +28,4 @@ const drive = google.drive({
   auth: oauth2Client,
 });
 
-module.exports = drive;
+export default drive;

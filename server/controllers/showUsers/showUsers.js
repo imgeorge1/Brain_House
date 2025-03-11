@@ -1,4 +1,4 @@
-const User = require("../../models/userSchema");
+import User from "../../models/userSchema.js";
 
 const users = async (req, res) => {
   try {
@@ -34,4 +34,4 @@ const updateUserPaidStatus = async (req, res) => {
   }
 };
 
-module.exports = { users, updateUserPaidStatus };
+export { users, updateUserPaidStatus };

@@ -1,5 +1,5 @@
-const AdditionUserInfo = require("../models/AdditionUserInfoSchema");
-const jwt = require("jsonwebtoken");
+import AdditionUserInfo from "../models/AdditionUserInfoSchema.js";
+import jwt from "jsonwebtoken";
 const jwtSecret = process.env.JWT_SECRET;
 
 const DEV_MODE = process.env.NODE_ENV === "developer";
@@ -45,4 +45,4 @@ const additionUserInfoMiddleware = async (req, res, next) => {
   }
 };
 
-module.exports = additionUserInfoMiddleware;
+export default additionUserInfoMiddleware;

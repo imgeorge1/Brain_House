@@ -1,4 +1,4 @@
-const User = require("../../models/userSchema");
+import User from "../../models/userSchema.js";
 
 const currentUser = async (req, res) => {
   try {
@@ -18,4 +18,4 @@ const currentUser = async (req, res) => {
   }
 };
 
-module.exports = currentUser;
+export default currentUser;
