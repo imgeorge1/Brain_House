@@ -2,16 +2,21 @@ import { getSession } from "@auth/express";
 import authConfig from "../src/config/auth.config.js";
 
 export async function authenticatedUser(req, res, next) {
-  const session =
-    res.locals.session ?? (await getSession(req, authConfig)) ?? undefined;
+  try {
+    const session =
+      res.locals.session ?? (await getSession(req, authConfig)) ?? undefined;
 
-  res.locals.session = session;
+    res.locals.session = session;
 
-  if (session) {
-    return next();
+    if (session) {
+      return next();
+    }
+
+    res.status(401).json({ message: "Not Authenticated" });
+  } catch (error) {
+    console.error("Error fetching session:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
-
-  res.status(401).json({ message: "Not Authenticated" });
 }
 
 export async function currentSession(req, res, next) {

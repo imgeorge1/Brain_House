@@ -15,8 +15,10 @@ import {
   getComments,
   deleteComment,
 } from "../controllers/commentController/commentController.js";
+import { authenticatedUser } from "../middleware/auth.middleware.js";
 
 const authRoutes = express.Router();
+const DEV_MODE = process.env.NODE_ENV === "developer";
 
 authRoutes.get("/user", currentUser);
 
@@ -31,6 +33,30 @@ authRoutes.get("/login/failed", (req, res) => {
     success: false,
     message: "failure",
   });
+});
+
+authRoutes.get("/logout", (req, res) => {
+  // Get the auth instance to clear the session or token
+
+  // Clear the auth token cookie (make sure the cookie name matches)
+  res.clearCookie("authjs.callback-url", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+  });
+  res.clearCookie("authjs.csrf-token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+  });
+  res.clearCookie("authjs.session-token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+  });
+
+  // Redirect to frontend (adjust URLs based on your environment)
+  res.redirect(DEV_MODE ? "http://localhost:5173" : process.env.CLIENT_URL);
 });
 
 authRoutes.get("/users", users);

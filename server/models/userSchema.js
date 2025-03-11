@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema({
       message: "Invalid email format",
     },
   },
+  image: String,
   provider: {
     type: String,
     required: true,

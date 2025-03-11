@@ -20,6 +20,7 @@ import {
   errorNotFoundHandler,
 } from "./middleware/error.middleware.js";
 import authConfig from "./src/config/auth.config.js";
+import currentUser from "./controllers/currentUser/currentUserController.js";
 
 const app = express();
 
@@ -88,39 +89,54 @@ app.use(currentSession);
 // Set up ExpressAuth to handle authentication
 // IMPORTANT: It is highly encouraged set up rate limiting on this route
 app.use("/api/auth/*", ExpressAuth(authConfig));
-app.get("/api/auth/callback/google", async (req, res) => {
-  // Get user session details
-  console.log("Hiiit");
+app.get("/api/auth/callback/google");
 
-  const user = res.locals.session?.user;
+app.get("/logout", (req, res) => {
+  // Get the auth instance to clear the session or token
 
-  if (!user) {
-    console.log("FAILEEEEEDD");
-
-    return res.status(401).json({ message: "Authentication failed" });
-  }
-  console.log("from callabck", user);
-
-  //  Better: Store user in a session/cookie & redirect
-  res.cookie("token", user.token, {
-    httpOnly: false,
-    secure: false, // Set to true in production (HTTPS)
-    sameSite: "None", // For cross-domain cookies
-    maxAge: 30 * 24 * 60 * 60 * 1000, // Optional: Cookie expiration
+  // Clear the auth token cookie (make sure the cookie name matches)
+  res.clearCookie("authjs.callback-url", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
   });
-  // return res.redirect("http://localhost:5173");
+  res.clearCookie("authjs.csrf-token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+  });
+  res.clearCookie("authjs.session-token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+  });
+
+  // Redirect to frontend (adjust URLs based on your environment)
+  res.redirect(DEV_MODE ? "http://localhost:5173" : process.env.CLIENT_URL);
 });
 
-app.get("/", async (_req, res) => {
+app.get("/", async (req, res) => {
   console.log("from main route");
 
-  // res.json({
-  //   title: "Express Auth Example",
-  //   user: res.locals.session?.user || null,
-  // });
-  res.redirect("http://localhost:5173");
-});
+  try {
+    // Extract the token from cookies (if using cookie-based auth)
+    const token = req.cookies["authjs.session-token"];
+    const session = res.locals.session;
+    console.log("current session ........", session.user.email);
+    if (!token) {
+      return res.redirect("http://localhost:5173/");
+    }
 
+    // console.log("Auth token:", token);
+
+    // Redirect to frontend with token as a query parameter
+    res.redirect(`http://localhost:5173/?jwtToken=${token}`);
+  } catch (error) {
+    console.error("Error retrieving token:", error);
+    res.redirect("http://localhost:5173/login?error=auth_failed");
+  }
+});
+app.get("/user", currentUser);
 // Error handlers
 app.use(errorNotFoundHandler);
 app.use(errorHandler);

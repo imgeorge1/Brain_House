@@ -14,23 +14,25 @@ const authConfig = {
     async signIn({ profile }) {
       if (!profile) throw new Error("Google authentication failed");
 
-      const { name, email, picture } = profile;
-
+      const { given_name, family_name, email, picture } = profile;
+      // console.log("Google Profile:", profile);
       try {
         let user = await User.findOne({ email });
 
         if (!user) {
           // If user doesn't exist, create a new user in MongoDB
           user = new User({
-            firstName: name,
+            firstName: given_name,
+            lastName: family_name,
             email,
             image: picture,
             provider: "google",
           });
           await user.save();
         }
+        // console.log("User authenticated:", user);
 
-        return true; // Allow sign-in
+        return true;
       } catch (error) {
         console.error("Error saving user:", error);
         return false; // Deny sign-in if an error occurs
@@ -47,12 +49,15 @@ const authConfig = {
     async jwt({ token, profile }) {
       if (profile) {
         token.user = {
-          name: profile.name,
+          name: profile.given_name,
+          lastname: profile.family_name,
           email: profile.email,
           image: profile.picture,
           provider: "google",
         };
       }
+
+      // token.customJWT = customJWT;
       return token;
     },
   },
