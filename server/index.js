@@ -21,6 +21,20 @@ import {
 } from "./middleware/error.middleware.js";
 import authConfig from "./src/config/auth.config.js";
 import currentUser from "./controllers/currentUser/currentUserController.js";
+import ticket from "./controllers/ticketsController/ticketController.js";
+import ticketTest from "./controllers/ticketsController/ticketTestController.js";
+import allowedNextCategory from "./controllers/permission/permissionController.js";
+import {
+  updateUserPaidStatus,
+  users,
+} from "./controllers/showUsers/showUsers.js";
+import signs from "./controllers/sign/signController.js";
+import usersInfo from "./controllers/authController/usersInfoController.js";
+import {
+  deleteComment,
+  getComments,
+  postComments,
+} from "./controllers/commentController/commentController.js";
 
 const app = express();
 
@@ -115,6 +129,23 @@ app.get("/logout", (req, res) => {
   res.redirect(DEV_MODE ? "http://localhost:5173" : process.env.CLIENT_URL);
 });
 
+app.get("/user", currentUser);
+app.get("/tickets/:id", ticket);
+app.post("/tickets", ticketTest);
+app.put("/user", allowedNextCategory);
+app.get("/users", users);
+app.put("/users/:userId", updateUserPaidStatus);
+app.get("/signs/:id", signs);
+app.get("/usersInfo", usersInfo);
+app.post("/comments", postComments);
+app.get("/comments", getComments);
+app.delete("/comments/:id", deleteComment);
+// Error handlers
+app.use(errorNotFoundHandler);
+app.use(errorHandler);
+
+app.use("/", router);
+
 app.get("/", async (req, res) => {
   console.log("from main route");
 
@@ -136,14 +167,7 @@ app.get("/", async (req, res) => {
     res.redirect("http://localhost:5173/login?error=auth_failed");
   }
 });
-app.get("/user", currentUser);
-// Error handlers
-app.use(errorNotFoundHandler);
-app.use(errorHandler);
-
-app.use("/", router);
-
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 app
   .listen(PORT, () => {

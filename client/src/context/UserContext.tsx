@@ -46,8 +46,6 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const tokenFromLocalStorage = localStorage.getItem("token");
 
-  // console.log(`Bearer ${tokenFromLocalStorage}`);
-
   const getUser = async () => {
     try {
       if (tokenFromLocalStorage) {
