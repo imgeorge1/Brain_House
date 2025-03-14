@@ -30,7 +30,7 @@ const authConfig = {
           });
           await user.save();
         }
-        // console.log("User authenticated:", user);
+        console.log("User authenticated:", user);
 
         return true;
       } catch (error) {
@@ -57,7 +57,6 @@ const authConfig = {
         };
       }
 
-      // token.customJWT = customJWT;
       return token;
     },
   },

@@ -98,75 +98,55 @@ app.use(
 );
 app.set("trust proxy", true);
 
-app.use(currentSession);
+// app.use(currentSession);
 
-// Set up ExpressAuth to handle authentication
-// IMPORTANT: It is highly encouraged set up rate limiting on this route
-app.use("/api/auth/*", ExpressAuth(authConfig));
-app.get("/api/auth/callback/google");
+// app.use("/api/auth/*", ExpressAuth(authConfig));
+// app.get("/api/auth/callback/google");
 
-app.get("/logout", (req, res) => {
-  // Get the auth instance to clear the session or token
+// app.get("/logout", (req, res) => {
+//   // Get the auth instance to clear the session or token
 
-  // Clear the auth token cookie (make sure the cookie name matches)
-  res.clearCookie("authjs.callback-url", {
-    httpOnly: true,
-    secure: true,
-    sameSite: "lax",
-  });
-  res.clearCookie("authjs.csrf-token", {
-    httpOnly: true,
-    secure: true,
-    sameSite: "lax",
-  });
-  res.clearCookie("authjs.session-token", {
-    httpOnly: true,
-    secure: true,
-    sameSite: "lax",
-  });
+//   // Clear the auth token cookie (make sure the cookie name matches)
+//   res.clearCookie("authjs.callback-url", {
+//     httpOnly: true,
+//     secure: true,
+//     sameSite: "lax",
+//   });
+//   res.clearCookie("authjs.csrf-token", {
+//     httpOnly: true,
+//     secure: true,
+//     sameSite: "lax",
+//   });
+//   res.clearCookie("authjs.session-token", {
+//     httpOnly: true,
+//     secure: true,
+//     sameSite: "lax",
+//   });
 
-  // Redirect to frontend (adjust URLs based on your environment)
-  res.redirect(DEV_MODE ? "http://localhost:5173" : process.env.CLIENT_URL);
-});
+//   // Redirect to frontend (adjust URLs based on your environment)
+//   // res.redirect(DEV_MODE ? "http://localhost:5173" : process.env.CLIENT_URL);
+// });
 
-app.get("/user", currentUser);
-app.get("/tickets/:id", ticket);
-app.post("/tickets", ticketTest);
-app.put("/user", allowedNextCategory);
-app.get("/users", users);
-app.put("/users/:userId", updateUserPaidStatus);
-app.get("/signs/:id", signs);
-app.get("/usersInfo", usersInfo);
-app.post("/comments", postComments);
-app.get("/comments", getComments);
-app.delete("/comments/:id", deleteComment);
-// Error handlers
-app.use(errorNotFoundHandler);
-app.use(errorHandler);
+// app.get("/user", currentUser);
+// app.put("/user", allowedNextCategory);
+// app.get("/users", users);
+// app.put("/users/:userId", updateUserPaidStatus);
+// app.get("/usersInfo", usersInfo);
+
+// app.get("/tickets/:id", ticket);
+// app.post("/tickets", ticketTest);
+
+// app.get("/signs/:id", signs);
+
+// app.post("/comments", postComments);
+// app.get("/comments", getComments);
+// app.delete("/comments/:id", deleteComment);
 
 app.use("/", router);
 
-app.get("/", async (req, res) => {
-  console.log("from main route");
+app.use(errorNotFoundHandler);
+app.use(errorHandler);
 
-  try {
-    // Extract the token from cookies (if using cookie-based auth)
-    const token = req.cookies["authjs.session-token"];
-    const session = res.locals.session;
-    console.log("current session ........", session.user.email);
-    if (!token) {
-      return res.redirect("http://localhost:5173/");
-    }
-
-    // console.log("Auth token:", token);
-
-    // Redirect to frontend with token as a query parameter
-    res.redirect(`http://localhost:5173/?jwtToken=${token}`);
-  } catch (error) {
-    console.error("Error retrieving token:", error);
-    res.redirect("http://localhost:5173/login?error=auth_failed");
-  }
-});
 const PORT = process.env.PORT || 3000;
 
 app
