@@ -14,6 +14,8 @@ function Pagination({
   }
 
   const handleClick = (page: number) => {
+    console.log(page);
+
     setCurrentPage(page);
     window.scrollTo({
       top: 0,

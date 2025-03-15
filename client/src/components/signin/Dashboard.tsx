@@ -7,7 +7,6 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
     currentUser,
     setShow,
   });
-  console.log(currentUser);
 
   return (
     <div>
