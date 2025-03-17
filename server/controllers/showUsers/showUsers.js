@@ -1,4 +1,5 @@
 import User from "../../models/userSchema.js";
+import sendConfirmationEmail from "../../services/emailService.js";
 
 const users = async (req, res) => {
   try {
@@ -23,6 +24,8 @@ const updateUserPaidStatus = async (req, res) => {
 
     if (!user) {
       return res.status(404).json({ error: "User not found" });
+    } else if (user.isPaid === true) {
+      sendConfirmationEmail(user);
     }
 
     console.log("Change Paid Status: ", user.email);

@@ -3,20 +3,26 @@ import nodemailer from "nodemailer";
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "brainhouse2021@gmail.com",
-    pass: "vjqi ayfz zemw hbcv",
+    user: "shvangiradze22giorgi@gmail.com",
+    pass: "yegb cuyy seqq ahyy",
   },
-  tls: {
-    rejectUnauthorized: false, // Add this line to accept self-signed certificates (NOT recommended)
-  },
+  // tls: {
+  //   rejectUnauthorized: false, // Add this line to accept self-signed certificates (NOT recommended)
+  // },
 });
 
 const sendConfirmationEmail = async (user) => {
+  console.log(user);
   const mailOptions = {
-    from: "brainhouse2021@gmail.com",
+    from: "shvangiradze22giorgi@gmail.com",
     to: user.email,
-    subject: "Registration Successful",
-    text: "Thank you for registering with our app!",
+    subject: "Welcome to our app | We're glad to have you!", // More natural subject
+    text: `Hi ${user.name},\n\nThank you for joining us! Let us know if you have any questions.\n\nBest,\nYour App Team`,
+    // Uncomment in production
+
+    headers: {
+      "List-Unsubscribe": "<mailto:shvangiradze22giorgi@gmail.com>",
+    },
   };
 
   try {
