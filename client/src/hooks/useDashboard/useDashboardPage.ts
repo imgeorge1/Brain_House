@@ -9,6 +9,8 @@ const useDashboardPage = () => {
     const getUsers = async () => {
       try {
         const res = await API.get("/users");
+        console.log(res);
+
         const res2 = await API.get("/usersInfo");
 
         // Merge the data from both responses

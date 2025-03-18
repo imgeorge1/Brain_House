@@ -10,31 +10,31 @@ import CryptoJS from "crypto-js";
 import mongoConnection from "./db/mongoConnection.js";
 import router from "./routes/main.js";
 import { fileURLToPath } from "url";
-import { ExpressAuth } from "@auth/express";
-import {
-  authenticatedUser,
-  currentSession,
-} from "./middleware/auth.middleware.js";
+// import { ExpressAuth } from "@auth/express";
+// import {
+//   authenticatedUser,
+//   currentSession,
+// } from "./middleware/auth.middleware.js";
 import {
   errorHandler,
   errorNotFoundHandler,
 } from "./middleware/error.middleware.js";
-import authConfig from "./src/config/auth.config.js";
-import currentUser from "./controllers/currentUser/currentUserController.js";
-import ticket from "./controllers/ticketsController/ticketController.js";
-import ticketTest from "./controllers/ticketsController/ticketTestController.js";
-import allowedNextCategory from "./controllers/permission/permissionController.js";
-import {
-  updateUserPaidStatus,
-  users,
-} from "./controllers/showUsers/showUsers.js";
-import signs from "./controllers/sign/signController.js";
-import usersInfo from "./controllers/authController/usersInfoController.js";
-import {
-  deleteComment,
-  getComments,
-  postComments,
-} from "./controllers/commentController/commentController.js";
+// import authConfig from "./src/config/auth.config.js";
+// import currentUser from "./controllers/currentUser/currentUserController.js";
+// import ticket from "./controllers/ticketsController/ticketController.js";
+// import ticketTest from "./controllers/ticketsController/ticketTestController.js";
+// import allowedNextCategory from "./controllers/permission/permissionController.js";
+// import {
+//   updateUserPaidStatus,
+//   users,
+// } from "./controllers/showUsers/showUsers.js";
+// import signs from "./controllers/sign/signController.js";
+// import usersInfo from "./controllers/authController/usersInfoController.js";
+// import {
+//   deleteComment,
+//   getComments,
+//   postComments,
+// } from "./controllers/commentController/commentController.js";
 
 const app = express();
 
