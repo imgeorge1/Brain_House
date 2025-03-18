@@ -17,6 +17,7 @@ function Dashboard() {
             <th className="px-4 py-2">ქალაქი</th>
             <th className="px-4 py-2">ტელეფონი</th>
             <th className="px-4 py-2">სტატუსი</th>
+            <th className="px-4 py-2">გადახდის თარიღი</th>
           </tr>
         </thead>
         <tbody>
@@ -46,6 +47,9 @@ function Dashboard() {
                 >
                   {user.isPaid ? "აქტიური" : "პასიური"}
                 </button>
+              </td>
+              <td className="border px-4 py-2 border-gray-300">
+                {user.paidDate}
               </td>
             </tr>
           ))}
