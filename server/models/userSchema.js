@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
     default: false,
   },
   payDate: {
-    type: Date,
+    type: String,
     default: null,
   },
 });

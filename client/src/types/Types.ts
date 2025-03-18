@@ -24,7 +24,7 @@ export interface FullUser extends User {
   city: string;
   phone: string;
   isPaid: boolean;
-  paidDate: string;
+  payDate: string;
 }
 
 export interface TicketsTypes {
