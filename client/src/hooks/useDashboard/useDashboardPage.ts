@@ -39,7 +39,7 @@ const useDashboardPage = () => {
       }
     };
     getUsers();
-  }, [users]);
+  }, []);
 
   const handleActive = async (userId: string, isPaid: boolean) => {
     try {
@@ -48,16 +48,17 @@ const useDashboardPage = () => {
 
       console.log(currentDate);
 
-      // Send the updated isPaid status and the date
       await API.put(url, {
         isPaid: !isPaid,
         payDate: isPaid ? null : currentDate,
       });
 
-      // Update the local state with the new isPaid value and date
-      setUsers(
-        users.map((user) =>
-          user._id === userId ? { ...user, isPaid: !isPaid } : user
+      //here we use callback function for latest data
+      setUsers((prevUsers) =>
+        prevUsers.map((user) =>
+          user._id === userId
+            ? { ...user, isPaid: !isPaid, payDate: isPaid ? "" : currentDate }
+            : user
         )
       );
     } catch (error) {
