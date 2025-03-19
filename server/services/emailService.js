@@ -1,7 +1,9 @@
 import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
   auth: {
     user: "shvangiradze22giorgi@gmail.com",
     pass: "yegb cuyy seqq ahyy",
@@ -20,9 +22,9 @@ const sendConfirmationEmail = async (user) => {
     text: `Hi ${user.firstName},\n\nThank you for joining us! Let us know if you have any questions.\n\nBest,\nBrain House's Team`,
     // Uncomment in production
 
-    headers: {
-      "List-Unsubscribe": "<mailto:shvangiradze22giorgi@gmail.com>",
-    },
+    // headers: {
+    //   "List-Unsubscribe": "<mailto:shvangiradze22giorgi@gmail.com>",
+    // },
   };
 
   try {
