@@ -18,7 +18,7 @@ const useTicketHandler = () => {
   const location = useLocation();
   const passedQuestionLength = Object.keys(clickedAnswers).length;
 
-  console.log("current Page .......", currentPage);
+  // console.log("current Page .......", currentPage);
 
   useEffect(() => {
     if (
@@ -47,7 +47,7 @@ const useTicketHandler = () => {
       currentPage >= 1 &&
       currentPage <= 10 &&
       location.pathname.startsWith("/tickets");
-    console.log(checkForVideo);
+    // console.log(checkForVideo);
 
     const currentVideo = categoryData.reduce(
       (foundCategory: Category | null, category: Category) => {
