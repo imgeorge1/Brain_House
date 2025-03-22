@@ -16,6 +16,7 @@ import {
   deleteComment,
 } from "../controllers/commentController/commentController.js";
 import { authenticatedUser } from "../middleware/auth.middleware.js";
+import signup from "../config/driveConfig/additionalinfo.js";
 
 const authRoutes = express.Router();
 const DEV_MODE = process.env.NODE_ENV === "developer";
@@ -32,6 +33,8 @@ authRoutes.get("/usersInfo", usersInfo);
 
 authRoutes.get("/tickets/:id", ticket);
 authRoutes.post("/tickets", ticketTest);
+
+authRoutes.post("/signup", signup);
 
 // authRoutes.get("/api/video", generateVideos);
 
