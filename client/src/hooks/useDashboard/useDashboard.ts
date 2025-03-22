@@ -13,7 +13,7 @@ const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
       // change for production
       !DEV_MODE
         ? "http://localhost:3000/logout"
-        : "https://brain-house-api.onrender.com/logout",
+        : "https://brain-house.onrender.com/logout",
       "_self"
     );
     localStorage.removeItem("token");
