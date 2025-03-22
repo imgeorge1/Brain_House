@@ -1,22 +1,30 @@
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
   auth: {
-    user: "brainhouse2021@gmail.com",
-    pass: "vjqi ayfz zemw hbcv",
+    user: "shvangiradze22giorgi@gmail.com",
+    pass: "yegb cuyy seqq ahyy",
   },
-  tls: {
-    rejectUnauthorized: false, // Add this line to accept self-signed certificates (NOT recommended)
-  },
+  // tls: {
+  //   rejectUnauthorized: false, // Add this line to accept self-signed certificates (NOT recommended)
+  // },
 });
 
 const sendConfirmationEmail = async (user) => {
+  // console.log(user);
   const mailOptions = {
-    from: "brainhouse2021@gmail.com",
+    from: "shvangiradze22giorgi@gmail.com",
     to: user.email,
-    subject: "Registration Successful",
-    text: "Thank you for registering with our app!",
+    subject: "Welcome to our app | We're glad to have you!", // More natural subject
+    text: `Hi ${user.firstName},\n\nThank you for joining us! Let us know if you have any questions.\n\nBest,\nBrain House's Team`,
+    // Uncomment in production
+
+    // headers: {
+    //   "List-Unsubscribe": "<mailto:shvangiradze22giorgi@gmail.com>",
+    // },
   };
 
   try {
@@ -28,4 +36,4 @@ const sendConfirmationEmail = async (user) => {
   }
 };
 
-module.exports = sendConfirmationEmail;
+export default sendConfirmationEmail;

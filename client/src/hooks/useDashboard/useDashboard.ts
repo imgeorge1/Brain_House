@@ -11,8 +11,8 @@ const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
   const logout = () => {
     window.open(
       // change for production
-      !DEV_MODE
-        ? "http://localhost:3001/logout"
+      DEV_MODE
+        ? "http://localhost:3000/logout"
         : "https://brain-house-api.onrender.com/logout",
       "_self"
     );
@@ -24,6 +24,7 @@ const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
 
   const checkAdmin =
     currentUser?.email === "beka.lomsadze.1@btu.edu.ge" ||
+    currentUser?.email === "shvangiradze22giorgi@gmail.com" ||
     currentUser?.email === "chikviladze555@gmail.com" ||
     currentUser?.email === "ubitoz133@gmail.com" ||
     currentUser?.email === "b.ejibishvili1@gmail.com";

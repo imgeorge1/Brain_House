@@ -4,8 +4,8 @@ const DEV_MODE = "developer";
 
 const API = axios.create({
   //need to change !
-  baseURL: !DEV_MODE
-    ? "http://localhost:3001"
+  baseURL: DEV_MODE
+    ? "http://localhost:3000"
     : "https://brain-house-api.onrender.com",
   withCredentials: true,
 });

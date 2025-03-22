@@ -1,4 +1,4 @@
-const Comments = require("../../models/commentsSchema");
+import Comments from "../../models/commentsSchema.js";
 
 const postComments = async (req, res) => {
   try {
@@ -55,4 +55,4 @@ const deleteComment = async (req, res) => {
   }
 };
 
-module.exports = { postComments, getComments, deleteComment };
+export { postComments, getComments, deleteComment };

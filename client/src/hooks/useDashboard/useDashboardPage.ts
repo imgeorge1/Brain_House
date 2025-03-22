@@ -9,6 +9,7 @@ const useDashboardPage = () => {
     const getUsers = async () => {
       try {
         const res = await API.get("/users");
+
         const res2 = await API.get("/usersInfo");
 
         // Merge the data from both responses
@@ -33,7 +34,6 @@ const useDashboardPage = () => {
           return mergedUser;
         });
         setUsers(mergedUsers);
-        console.log(mergedUsers);
       } catch (error) {
         console.error(error);
       }
@@ -44,10 +44,21 @@ const useDashboardPage = () => {
   const handleActive = async (userId: string, isPaid: boolean) => {
     try {
       const url = `/users/${userId}`;
-      await API.put(url, { isPaid: !isPaid });
-      setUsers(
-        users.map((user) =>
-          user._id === userId ? { ...user, isPaid: !isPaid } : user
+      const currentDate = new Date().toISOString().split("T")[0];
+
+      console.log(currentDate);
+
+      await API.put(url, {
+        isPaid: !isPaid,
+        payDate: isPaid ? null : currentDate,
+      });
+
+      //here we use callback function for latest data
+      setUsers((prevUsers) =>
+        prevUsers.map((user) =>
+          user._id === userId
+            ? { ...user, isPaid: !isPaid, payDate: isPaid ? "" : currentDate }
+            : user
         )
       );
     } catch (error) {

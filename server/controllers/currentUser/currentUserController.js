@@ -1,12 +1,20 @@
-const User = require("../../models/userSchema");
+import User from "../../models/userSchema.js";
 
 const currentUser = async (req, res) => {
   try {
-    const { email } = req.user;
-    const user = await User.findOne({ email });
+    const session = res.locals.session;
+    if (!session || !session.user || !session.user.email) {
+      return res.status(401).json({ error: "Not authenticated" });
+    }
+    const email = session.user.email;
+
+    const user = await User.findOne({
+      email,
+    });
 
     if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      console.error("user not found");
+      return res.status(404).json({ error: "User Not Found" });
     }
 
     const { firstName, lastName, completed, isPaid } = user;
@@ -18,4 +26,4 @@ const currentUser = async (req, res) => {
   }
 };
 
-module.exports = currentUser;
+export default currentUser;

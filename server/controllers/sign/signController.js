@@ -1,4 +1,4 @@
-const Signs = require("../../models/signSchema");
+import Signs from "../../models/signSchema.js";
 
 const signs = async (req, res) => {
   try {
@@ -15,4 +15,4 @@ const signs = async (req, res) => {
   }
 };
 
-module.exports = signs;
+export default signs;

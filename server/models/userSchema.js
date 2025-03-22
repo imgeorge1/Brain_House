@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
-const uniqueValidator = require("mongoose-unique-validator");
-const findOrCreate = require("mongoose-findorcreate");
-const validator = require("validator");
+import mongoose from "mongoose";
+import uniqueValidator from "mongoose-unique-validator";
+import findOrCreate from "mongoose-findorcreate";
+import validator from "validator";
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema({
       message: "Invalid email format",
     },
   },
+  image: String,
   provider: {
     type: String,
     required: true,
@@ -32,6 +33,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  payDate: {
+    type: String,
+    default: null,
+  },
 });
 
 userSchema.plugin(uniqueValidator);
@@ -39,4 +44,4 @@ userSchema.plugin(findOrCreate);
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+export default User;

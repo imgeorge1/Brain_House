@@ -1,38 +1,22 @@
 import { useState } from "react";
+import lecturers from "../../data/lecturer";
 
 const Practice = () => {
-  const data = [
-    { city: "თბილისი", street: "ვარკეთილი" },
-    { city: "თბილისი", street: "ისანი" },
-    { city: "თბილისი", street: "გლდანი" },
-    { city: "თბილისი", street: "საბურთალო" },
-    { city: "თბილისი", street: "ნაძალადევი" },
-    { city: "თელავი", street: "" },
-    { city: "რუსთავი", street: "" },
-    { city: "გორი", street: "" },
-    { city: "ბათუმი", street: "" },
-    { city: "ზუგდიდი", street: "" },
-    { city: "ოზურგეთი", street: "" },
-    { city: "ქუთაისი", street: "" },
-    { city: "ახალციხე", street: "" },
-    { city: "საჩხერე", street: "" },
-  ];
-
   const [selectedCity, setSelectedCity] = useState("თბილისი");
   const [selectedStreet, setSelectedStreet] = useState("");
 
-  const uniqueCities = [...new Set(data.map((item) => item.city))];
+  const uniqueCities = [...new Set(lecturers.map((item) => item.city))];
 
-  const streetsForCity = data
-    .filter((item) => item.city === selectedCity)
-    .map((item) => item.street);
+  const selectedCityData = lecturers.find((item) => item.city === selectedCity);
+  const streetsForCity = selectedCityData ? selectedCityData.street : [];
 
-  const filteredData = data.filter((item) => {
-    return (
-      (!selectedCity || item.city === selectedCity) &&
-      (!selectedStreet || item.street === selectedStreet)
-    );
-  });
+  const filteredLecturers = selectedCityData
+    ? selectedCityData.lectures.name.map((name, index) => ({
+        name,
+        phone: selectedCityData.lectures.phone[index],
+        street: streetsForCity[index],
+      }))
+    : [];
 
   return (
     <main className="container mt-80 mb-60 mx-auto p-4">
@@ -42,7 +26,7 @@ const Practice = () => {
           value={selectedCity}
           onChange={(e) => {
             setSelectedCity(e.target.value);
-            setSelectedStreet(""); // Reset street when city changes
+            setSelectedStreet("");
           }}
         >
           {uniqueCities.map((city, index) => (
@@ -51,6 +35,7 @@ const Practice = () => {
             </option>
           ))}
         </select>
+
         {streetsForCity.length > 1 && (
           <select
             className="border p-2"
@@ -67,22 +52,27 @@ const Practice = () => {
           </select>
         )}
       </div>
+
       <table className="min-w-full bg-white">
         <thead>
-          <tr>
-            <th className="py-2">ქალაქი</th>
-            {streetsForCity.length > 1 && <th className="py-2">ქუჩა</th>}
+          <tr className="bg-gray-300">
+            <th className="py-2 w-36 border maxw">ქუჩა</th>
+            <th className="py-2 w-36 border">ლექტორი</th>
+            <th className="py-2 w-36 border">ნომერი</th>
           </tr>
         </thead>
         <tbody>
-          {filteredData.map((item, index) => (
-            <tr key={index}>
-              <td className="border px-4 py-2">{item.city}</td>
-              {streetsForCity.length > 1 && (
-                <td className="border px-4 py-2">{item.street}</td>
-              )}
-            </tr>
-          ))}
+          {filteredLecturers
+            .filter((lecturer) =>
+              selectedStreet ? lecturer.street === selectedStreet : true
+            )
+            .map((lecturer, index) => (
+              <tr key={index}>
+                <td className="border px-4 py-2 w-36">{lecturer.street}</td>
+                <td className="border px-4 py-2 w-36">{lecturer.name}</td>
+                <td className="border px-4 py-2 w-36">{lecturer.phone}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </main>

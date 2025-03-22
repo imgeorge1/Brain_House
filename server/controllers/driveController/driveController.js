@@ -1,5 +1,5 @@
 // This file contains route handlers for Google Drive API endpoints
-const drive = require("../../config/driveConfig/driveConfig");
+import drive from "../../config/driveConfig/driveConfig.js";
 
 const generatePublicUrl = async () => {
   try {
@@ -32,4 +32,4 @@ const generateVideos = async (req, res) => {
   }
 };
 
-module.exports = generateVideos;
+export default generateVideos;
