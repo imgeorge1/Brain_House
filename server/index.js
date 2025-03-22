@@ -55,9 +55,9 @@ const DEV_MODE = process.env.NODE_ENV === "developer";
 
 app.use(
   cors({
-    origin: DEV_MODE
+    origin: !DEV_MODE
       ? ["http://localhost:5173", "https://drive.google.com"]
-      : ["https://www.brainhouse.ge", "https://drive.google.com"],
+      : [`${process.env.CLIENT_URL}`, "https://drive.google.com"],
     credentials: true,
   })
 );
