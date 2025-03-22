@@ -9,6 +9,7 @@ const useDashboardPage = () => {
     const getUsers = async () => {
       try {
         const res = await API.get("/users");
+
         const res2 = await API.get("/usersInfo");
 
         // Merge the data from both responses
@@ -33,7 +34,6 @@ const useDashboardPage = () => {
           return mergedUser;
         });
         setUsers(mergedUsers);
-        console.log(mergedUsers);
       } catch (error) {
         console.error(error);
       }
@@ -44,28 +44,20 @@ const useDashboardPage = () => {
   const handleActive = async (userId: string, isPaid: boolean) => {
     try {
       const url = `/users/${userId}`;
-      const currentDate = new Date(); // Get the current date in ISO format
+      const currentDate = new Date().toISOString().split("T")[0];
 
-      const year = currentDate.getFullYear();
-      const month = currentDate.getMonth() + 1; // Months are 0-indexed, so we add 1
-      const day = currentDate.getDate();
-      const hour = currentDate.getHours();
+      console.log(currentDate);
 
-
-      const formattedDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}. ${hour < 10 ? '0' + hour : hour}:00`;
-
-
-      // Send the updated isPaid status and the date
-      await API.put(url, { 
-        isPaid: !isPaid, 
-        paidDate: currentDate
+      await API.put(url, {
+        isPaid: !isPaid,
+        payDate: isPaid ? null : currentDate,
       });
 
-      // Update the local state with the new isPaid value and date
-      setUsers(
-        users.map((user) =>
-          user._id === userId 
-            ? { ...user, isPaid: !isPaid, paidDate: formattedDate } 
+      //here we use callback function for latest data
+      setUsers((prevUsers) =>
+        prevUsers.map((user) =>
+          user._id === userId
+            ? { ...user, isPaid: !isPaid, payDate: isPaid ? "" : currentDate }
             : user
         )
       );

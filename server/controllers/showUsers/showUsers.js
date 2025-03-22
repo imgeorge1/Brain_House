@@ -14,21 +14,24 @@ const users = async (req, res) => {
 const updateUserPaidStatus = async (req, res) => {
   try {
     const userId = req.params.userId;
-    const { isPaid } = req.body;
+    const { isPaid, payDate } = req.body;
+
+    console.log("payDate >>>>>>>>>", payDate);
 
     const user = await User.findByIdAndUpdate(
       userId,
-      { isPaid },
+      { isPaid, payDate },
       { new: true }
     );
 
     if (!user) {
       return res.status(404).json({ error: "User not found" });
-    } else if (user.isPaid === true) {
+    }
+    if (user.isPaid !== true) {
       sendConfirmationEmail(user);
     }
 
-    console.log("Change Paid Status: ", user.email);
+    console.log("Change Paid Status: ", user);
 
     res.status(200).json({ user });
   } catch (error) {

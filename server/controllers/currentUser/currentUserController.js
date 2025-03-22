@@ -14,7 +14,7 @@ const currentUser = async (req, res) => {
 
     if (!user) {
       console.error("user not found");
-      return res.status(404).json({ error: "laaaaaaaaaaaaaaaa" });
+      return res.status(404).json({ error: "User Not Found" });
     }
 
     const { firstName, lastName, completed, isPaid } = user;

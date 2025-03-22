@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  payDate: {
+    type: String,
+    default: null,
+  },
 });
 
 userSchema.plugin(uniqueValidator);

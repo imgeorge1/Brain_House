@@ -15,6 +15,8 @@ const TicketRoutes = () => {
     completedArray,
     currentUser,
   } = useTicketRoutes();
+  const isPaid = localStorage.getItem("paid")?.toString();
+  // console.log(isPaid);
 
   return (
     <section className="flex align-center mt-24">
@@ -82,33 +84,69 @@ const TicketRoutes = () => {
         </motion.div>
         {(show || width >= 1024) && (
           <ul className="pl-0 w-full max-w-[690px] xl:w-[469px]">
-            {categoryData.map((item) => (
-              <motion.li
-                initial={{ opacity: 0, x: -200 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 * item.index }}
-                onClick={() => handleChooseCategory(item.category)}
-                key={item.id}
-              >
-                {!completedArray.includes(item.index) ? (
-                  <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed">
-                    ვიდეო გაგეხსნებათ შეძენის შემდეგ
-                  </span>
-                ) : (
-                  <Link
-                    className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
-                      item.id === categoryNumber
-                        ? "bg-[#230751]"
-                        : "bg-[#663aac]"
-                    }`}
-                    to={`/tickets/${item.id}`}
-                    state={item.index}
+            {categoryData.map((item, index) => {
+              // If isPaid is false, only render the item at index 0
+              if (isPaid === "false" && index === 0) {
+                return (
+                  <motion.li
+                    initial={{ opacity: 0, x: -200 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.1 * item.index }}
+                    onClick={() => handleChooseCategory(item.category)}
+                    key={item.id}
                   >
-                    {item.id + "."} {item.category}{" "}
-                  </Link>
-                )}
-              </motion.li>
-            ))}
+                    {!completedArray.includes(item.index) ? (
+                      <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed">
+                        ვიდეო გაგეხსნებათ შეძენის შემდეგ
+                      </span>
+                    ) : (
+                      <Link
+                        className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
+                          item.id === categoryNumber
+                            ? "bg-[#230751]"
+                            : "bg-[#663aac]"
+                        }`}
+                        to={`/tickets/${item.id}`}
+                        state={item.index}
+                      >
+                        {item.id + "."} {item.category}
+                      </Link>
+                    )}
+                  </motion.li>
+                );
+              }
+
+              // If isPaid is true or the item is not at index 0, render normally
+              if (isPaid === "true") {
+                return (
+                  <motion.li
+                    initial={{ opacity: 0, x: -200 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.1 * item.index }}
+                    onClick={() => handleChooseCategory(item.category)}
+                    key={item.id}
+                  >
+                    {!completedArray.includes(item.index) ? (
+                      <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed">
+                        ვიდეო გაგეხსნებათ შეძენის შემდეგ
+                      </span>
+                    ) : (
+                      <Link
+                        className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
+                          item.id === categoryNumber
+                            ? "bg-[#230751]"
+                            : "bg-[#663aac]"
+                        }`}
+                        to={`/tickets/${item.id}`}
+                        state={item.index}
+                      >
+                        {item.id + "."} {item.category}
+                      </Link>
+                    )}
+                  </motion.li>
+                );
+              }
+            })}
           </ul>
         )}
         {!show && width < 1024 && (
