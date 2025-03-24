@@ -23,8 +23,8 @@ router.get("/", (req, res) => {
     // Extract the token from cookies (if using cookie-based auth)
     const token = req.cookies["authjs.session-token"];
     const session = res.locals.session;
-    console.log("current session ........", session.user.email);
     if (!token) {
+      console.log("current session ........", session.user.email);
       return res.redirect("http://localhost:5173/");
     }
 
