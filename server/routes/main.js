@@ -16,26 +16,26 @@ router.use("/api/auth/*", ExpressAuth(authConfig));
 router.get("/api/auth/callback/google");
 
 router.use("/", authRoutes);
-router.get("/", (req, res) => {
-  console.log("Root route accessed!");
+// router.get("/", (req, res) => {
+//   console.log("Root route accessed!");
 
-  try {
-    // Extract the token from cookies (if using cookie-based auth)
-    const token = req.cookies["authjs.session-token"];
-    const session = res.locals.session;
-    if (!token) {
-      console.log("current session ........", session.user.email);
-      return res.redirect("http://localhost:5173/");
-    }
+//   try {
+//     // Extract the token from cookies (if using cookie-based auth)
+//     const token = req.cookies["authjs.session-token"];
+//     const session = res.locals.session;
+//     if (!token) {
+//       // console.log("current session ........", session.user.email);
+//       return res.redirect("http://localhost:5173/");
+//     }
 
-    // console.log("Auth token:", token);
+//     // console.log("Auth token:", token);
 
-    // Redirect to frontend with token as a query parameter
-    res.redirect(`http://localhost:5173/?jwtToken=${token}`);
-  } catch (error) {
-    console.error("Error retrieving token:", error);
-    res.redirect("http://localhost:5173/login?error=auth_failed");
-  }
-});
+//     // Redirect to frontend with token as a query parameter
+//     res.redirect(`http://localhost:5173/?jwtToken=${token}`);
+//   } catch (error) {
+//     console.error("Error retrieving token:", error);
+//     res.redirect("http://localhost:5173/login?error=auth_failed");
+//   }
+// });
 
 export default router;
