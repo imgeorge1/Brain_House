@@ -51,7 +51,7 @@ const secretKey = generateSecretKey();
 // Connect to MongoDB
 mongoConnection();
 
-const DEV_MODE = process.env.NODE_ENV === "production";
+const DEV_MODE = process.env.NODE_ENV === "developer";
 console.log(DEV_MODE);
 
 app.use(
