@@ -6,7 +6,7 @@ const API = axios.create({
   //need to change !
   baseURL: !DEV_MODE
     ? "http://localhost:3000"
-    : "https://brain-house.onrender.com",
+    : "https://brainhouse.onrender.com",
   withCredentials: true,
 });
 
