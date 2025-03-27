@@ -54,14 +54,7 @@ mongoConnection();
 const DEV_MODE = process.env.NODE_ENV === "developer";
 console.log(DEV_MODE);
 console.log(DEV_MODE ? "http://localhost:5173" : `${process.env.CLIENT_URL}`);
-app.use(
-  cors({
-    origin: DEV_MODE
-      ? ["http://localhost:5173", "https://drive.google.com"]
-      : [`${process.env.CLIENT_URL}`, "https://drive.google.com"],
-    credentials: true,
-  })
-);
+app.use(cors({ credentials: true, origin: "https://housebrain.netlify.app" }));
 app.use(express.json());
 app.use(cookieParser());
 

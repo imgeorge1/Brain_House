@@ -8,9 +8,7 @@ console.log(
 
 const API = axios.create({
   //need to change !
-  baseURL: !DEV_MODE
-    ? "http://localhost:3000"
-    : "https://brainhouse.onrender.com",
+  baseURL: "https://brainhouse.onrender.com",
   withCredentials: true,
 });
 

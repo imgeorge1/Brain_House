@@ -65,7 +65,9 @@ authRoutes.get("/logout", (req, res) => {
   });
 
   // Redirect to frontend (adjust URLs based on your environment)
-  res.redirect(DEV_MODE ? "http://localhost:5173" : process.env.CLIENT_URL);
+  res.redirect(
+    DEV_MODE ? "http://localhost:5173" : "https://housebrain.netlify.app"
+  );
 });
 
 export default authRoutes;
