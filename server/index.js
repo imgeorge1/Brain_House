@@ -1,15 +1,20 @@
-require("dotenv").config();
-const express = require("express");
-const path = require("path");
-const generateSitemap = require("./generateSitemap");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const session = require("cookie-session");
-// const MongoStore = require("connect-mongo");
-const passport = require("passport");
-const CryptoJS = require("crypto-js");
-const mongoConnection = require("./db/mongoConnection");
-const router = require("./routes/main");
+import dotenv from "dotenv/config";
+import express from "express";
+import path from "path";
+import generateSitemap from "./generateSitemap.js";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import session from "cookie-session";
+
+import CryptoJS from "crypto-js";
+import mongoConnection from "./db/mongoConnection.js";
+import router from "./routes/main.js";
+import { fileURLToPath } from "url";
+
+import {
+  errorHandler,
+  errorNotFoundHandler,
+} from "./middleware/error.middleware.js";
 
 const app = express();
 
@@ -30,6 +35,10 @@ app.get("/sitemap.xml", async (req, res) => {
 });
 
 // Serve static files from the React app
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve static files from React build folder
 app.use(express.static(path.join(__dirname, "client/build")));
 
 // Generate secret key for session
@@ -43,12 +52,13 @@ const secretKey = generateSecretKey();
 mongoConnection();
 
 const DEV_MODE = process.env.NODE_ENV === "developer";
+console.log( "klient url" + process.env.CLIENT_URL);
 
 app.use(
   cors({
-    origin: DEV_MODE
+    origin: !DEV_MODE
       ? ["http://localhost:5173", "https://drive.google.com"]
-      : ["https://www.brainhouse.ge", "https://drive.google.com"],
+      : [`${process.env.CLIENT_URL}`, "https://drive.google.com"],
     credentials: true,
   })
 );
@@ -64,17 +74,17 @@ app.use(
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days in milliseconds
       secure: false, // Set to true for HTTPS environments
     },
-    // store: MongoStore.create({
-    //   mongoUrl: process.env.MONGODB_URL,
-    // }),
     proxy: true,
   })
 );
-app.use(passport.initialize());
-app.use(passport.session());
+app.set("trust proxy", true);
+
 app.use("/", router);
 
-const PORT = process.env.PORT || 3001;
+app.use(errorNotFoundHandler);
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 3000;
 
 app
   .listen(PORT, () => {

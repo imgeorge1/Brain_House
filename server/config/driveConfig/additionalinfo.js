@@ -1,5 +1,5 @@
-const sendConfirmationEmail = require("../../services/emailService");
-const AdditionUserInfo = require("../../models/AdditionUserInfoSchema");
+import AdditionUserInfo from "../../models/AdditionUserInfoSchema.js";
+import sendConfirmationEmail from "../../services/emailService.js";
 
 const signup = async (req, res) => {
   try {
@@ -35,4 +35,4 @@ const signup = async (req, res) => {
   }
 };
 
-module.exports = signup;
+export default signup;

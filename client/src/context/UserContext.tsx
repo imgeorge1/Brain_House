@@ -49,11 +49,9 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const getUser = async () => {
     try {
       if (tokenFromLocalStorage) {
-        const response = await API.get<User>("/user", {
-          headers: {
-            Authorization: `Bearer ${tokenFromLocalStorage}`,
-          },
-        });
+        const response = await API.get<User>("/user");
+        console.log("resoinse", response.data);
+
         if (response.data) {
           setCurrentUser(response.data);
           localStorage.setItem("paid", response.data.isPaid.toString());

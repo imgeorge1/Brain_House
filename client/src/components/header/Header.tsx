@@ -24,9 +24,9 @@ const Header = () => {
     check && (
       <div className="bg-black background absolute top-0 w-full h-20">
         <header
-          className="fixed z-50 top-0 w-full backdrop-brightness-[.85]
+          className="fixed z-50 top-0 w-full backdrop-brightness-[.85] 
           backdrop-blur bg-gradient-to-b from-[#2D2862] to-transparent to-100%
-      flex items-center justify-between px-2 py-7 md:py-5 lg:py-4  md:px-10 text-white "
+      flex items-center justify-between px-2 py-7 md:py-5 lg:py-4 md:px-10 text-white text"
         >
           <motion.div
             initial={{ opacity: 0, x: -200 }}
@@ -53,13 +53,17 @@ const Header = () => {
               initial={{ opacity: 0, y: -200 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              onClick={() => setHide(true)}
-              className="flex lg:bg-transparent bg-opacity-50 bg-black md:bg-black md:bg-opacity-50 w-[55%] h-screen flex-col lg:flex-row absolute top-0
-        right-0 bottom-0 z-10 gap-6 lg:h-full lg:p-0 lg:static lg:w-auto"
+              onClick={(e) => e.stopPropagation()} 
+              className="flex lg:bg-transparent bg-opacity-95 bg-black md:bg-black md:bg-opacity-95 w-[100%]
+              h-fit pb-6 flex-col lg:flex-row absolute top-0 text-center
+              right-0 bottom-0 z-10 gap-6 lg:h-full lg:p-0 lg:static lg:w-auto"
             >
+              <div className="flex justify-center items-center mt-4 lg:hidden z-50">
+                <SignInModal />
+              </div>
               <NavLink
                 to="/"
-                className="nav-btn nav-link text-white no-underline text-center"
+                className="nav-link text-white no-underline text-center "
               >
                 მთავარი
               </NavLink>
@@ -88,16 +92,16 @@ const Header = () => {
             ) : (
               <h1
                 onClick={toggleMenu}
-                className="z-50 mt-[-40px] ml-[-100px] text-3xl absolute spin-on-hover
-              right-1 cursor-pointer border-2 rounded-full hover:bg-gray-700 duration-200"
+                className="z-20 mt-[-40px] ml-[-100px] text-3xl absolute spin-on-hover 
+              right-1 cursor-pointer border-2 rounded-full hover:bg-gray-700 duration-200 mt-1"
               >
                 <img src={X} width={32} alt="back" />
               </h1>
             ))}
 
-          {(width >= 1024 || !hide) && (
+          {(width >= 1024 || !hide) && width >= 1024 && (
             <motion.div
-              initial={{ opacity: 0, x: 200 }}
+              initial={{ opacity: 0, x: 300 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               className="z-20 bigparent justify-center flex"

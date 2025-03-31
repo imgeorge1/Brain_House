@@ -1,4 +1,4 @@
-const User = require("../../models/userSchema");
+import User from "../../models/userSchema.js";
 
 const allowedNextCategory = async (req, res) => {
   try {
@@ -16,4 +16,4 @@ const allowedNextCategory = async (req, res) => {
   }
 };
 
-module.exports = allowedNextCategory;
+export default allowedNextCategory;

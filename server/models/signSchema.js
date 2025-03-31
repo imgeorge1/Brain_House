@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const signSchema = new mongoose.Schema({
   signID: Number,
@@ -7,5 +7,4 @@ const signSchema = new mongoose.Schema({
 });
 
 const Signs = mongoose.model("Signs", signSchema);
-
-module.exports = Signs;
+export default Signs;

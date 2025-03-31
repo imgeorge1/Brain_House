@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const MONGODB_URL = process.env.MONGODB_URL;
 console.log("MONGODB_URL", MONGODB_URL);
@@ -25,4 +25,4 @@ const mongoConnection = async () => {
   }
 };
 
-module.exports = mongoConnection;
+export default mongoConnection;

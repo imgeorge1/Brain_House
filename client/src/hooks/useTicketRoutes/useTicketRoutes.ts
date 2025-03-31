@@ -30,11 +30,7 @@ const useTicketRoutes = () => {
   const categoryNumber = parseInt(location.pathname.split("/")[2]);
 
   const getUser = async () => {
-    const res = await API.get("/user", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    const res = await API.get("/user");
     console.log(res);
   };
 
@@ -80,11 +76,7 @@ const useTicketRoutes = () => {
     };
     const allowNextCategory = async () => {
       try {
-        await API.put("/user", updated, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        await API.put("/user", updated);
       } catch (error) {
         console.log(error);
       }

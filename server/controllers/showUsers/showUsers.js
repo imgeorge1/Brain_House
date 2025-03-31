@@ -1,4 +1,5 @@
-const User = require("../../models/userSchema");
+import User from "../../models/userSchema.js";
+import sendConfirmationEmail from "../../services/emailService.js";
 
 const users = async (req, res) => {
   try {
@@ -13,19 +14,24 @@ const users = async (req, res) => {
 const updateUserPaidStatus = async (req, res) => {
   try {
     const userId = req.params.userId;
-    const { isPaid } = req.body;
+    const { isPaid, payDate } = req.body;
+
+    console.log("payDate >>>>>>>>>", payDate);
 
     const user = await User.findByIdAndUpdate(
       userId,
-      { isPaid },
+      { isPaid, payDate },
       { new: true }
     );
 
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
+    if (user.isPaid !== true) {
+      sendConfirmationEmail(user);
+    }
 
-    console.log("Change Paid Status: ", user.email);
+    console.log("Change Paid Status: ", user);
 
     res.status(200).json({ user });
   } catch (error) {
@@ -34,4 +40,4 @@ const updateUserPaidStatus = async (req, res) => {
   }
 };
 
-module.exports = { users, updateUserPaidStatus };
+export { users, updateUserPaidStatus };

@@ -16,6 +16,7 @@ function Dashboard() {
             <th className="px-4 py-2">ასაკი</th>
             <th className="px-4 py-2">ქალაქი</th>
             <th className="px-4 py-2">ტელეფონი</th>
+            <th className="px-4 py-2">გადახდის თარიღი</th>
             <th className="px-4 py-2">სტატუსი</th>
           </tr>
         </thead>
@@ -35,6 +36,9 @@ function Dashboard() {
               <td className="border px-4 py-2 border-gray-300">{user.age}</td>
               <td className="border px-4 py-2 border-gray-300">{user.city}</td>
               <td className="border px-4 py-2 border-gray-300">{user.phone}</td>
+              <td className="border px-4 py-2 border-gray-300">
+                {user.payDate}
+              </td>
               <td className="border px-4 py-2 border-gray-300 flex justify-center">
                 <button
                   onClick={() => handleActive(user._id, user.isPaid)}

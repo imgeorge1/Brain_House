@@ -1,4 +1,4 @@
-const Ticket = require("../../models/ticketSchema");
+import Ticket from "../../models/ticketSchema.js";
 
 const ticketTest = async (req, res) => {
   try {
@@ -22,5 +22,4 @@ const ticketTest = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
-
-module.exports = ticketTest;
+export default ticketTest;

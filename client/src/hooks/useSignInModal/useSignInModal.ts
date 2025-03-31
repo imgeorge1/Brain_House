@@ -14,8 +14,8 @@ const useSignInModal = () => {
   const googleAuth = () => {
     window.open(
       !DEV_MODE
-        ? "http://localhost:3001/auth/google"
-        : "https://brain-house-api.onrender.com/auth/google",
+        ? "http://localhost:3000/api/auth/signin"
+        : "https://brain-house.onrender.com/auth/google",
       "_self"
     );
   };
@@ -23,8 +23,8 @@ const useSignInModal = () => {
   const facebookAuth = () => {
     window.open(
       !DEV_MODE
-        ? "http://localhost:3001/auth/facebook"
-        : "https://brain-house-api.onrender.com/auth/facebook",
+        ? "http://localhost:3000/auth/facebook"
+        : "https://brain-house.onrender.com/auth/facebook",
       "_self"
     );
   };

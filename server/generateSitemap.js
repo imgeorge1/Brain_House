@@ -1,5 +1,5 @@
-const { SitemapStream, streamToPromise } = require("sitemap");
-const { Readable } = require("stream");
+import { SitemapStream, streamToPromise } from "sitemap";
+import { Readable } from "stream";
 
 const links = [
   { url: "/", changefreq: "daily", priority: 0.7 },
@@ -29,4 +29,4 @@ const generateSitemap = async () => {
   );
 };
 
-module.exports = generateSitemap;
+export default generateSitemap;

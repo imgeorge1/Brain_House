@@ -1,9 +1,9 @@
-const AdditionUserInfo = require("../../models/AdditionUserInfoSchema");
+import AdditionUserInfo from "../../models/AdditionUserInfoSchema.js";
 
 const usersInfo = async (req, res) => {
   try {
     const userInfoList = await AdditionUserInfo.find({});
-
+    // console.log(userInfoList);
     res.status(200).json({ userInfoList });
   } catch (error) {
     console.error("Error while fetching user information:", error);
@@ -11,4 +11,4 @@ const usersInfo = async (req, res) => {
   }
 };
 
-module.exports = usersInfo;
+export default usersInfo;
