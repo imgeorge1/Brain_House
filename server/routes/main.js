@@ -18,7 +18,7 @@ router.use("/api/auth/*", ExpressAuth(authConfig));
 router.use("/", authRoutes);
 router.get("/", (req, res) => {
   const token = req.cookies["authjs.session-token"];
-
+  console.log(req);
   if (token) {
     // If the session token exists, redirect to the frontend
     console.log("Session token found, redirecting to frontend...");
@@ -32,9 +32,9 @@ router.get("/", (req, res) => {
     console.log("No session token found, clearing all cookies...");
 
     // Clear the cookies by setting them to expired in the response
-    res.clearCookie("authjs.csrf-token");
-    res.clearCookie("authjs.callback-url");
-    res.clearCookie("authjs.session-token");
+    // res.clearCookie("authjs.csrf-token");
+    // res.clearCookie("authjs.callback-url");
+    // res.clearCookie("authjs.session-token");
 
     // Optionally, send a response indicating the state
     res.redirect(
