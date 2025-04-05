@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { DashboardTypes } from "../../types/Types";
 
-const DEV_MODE = "developer";
+const DEV_MODE = false;
 
 const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
   const navigate = useNavigate();
