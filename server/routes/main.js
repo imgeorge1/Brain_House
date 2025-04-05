@@ -17,27 +17,6 @@ router.use("/api/auth/*", ExpressAuth(authConfig));
 
 router.use("/", authRoutes);
 // router.get("/", (req, res) => {
-<<<<<<< HEAD
-//   console.log("Root route accessed!");
-
-//   try {
-//     // Extract the token from cookies (if using cookie-based auth)
-//     const token = req.cookies["authjs.session-token"];
-//     const session = res.locals.session;
-//     if (!token) {
-//       // console.log("current session ........", session.user.email);
-//       return res.redirect("http://localhost:5173/");
-//     }
-
-//     // console.log("Auth token:", token);
-
-//     // Redirect to frontend with token as a query parameter
-//     res.redirect(`http://localhost:5173/?jwtToken=${token}`);
-//   } catch (error) {
-//     console.error("Error retrieving token:", error);
-//     res.redirect("http://localhost:5173/login?error=auth_failed");
-=======
-//   // Check if the 'authjs.session-token' cookie exists
 //   const token = req.cookies["authjs.session-token"];
 
 //   if (token) {
@@ -61,7 +40,6 @@ router.use("/", authRoutes);
 //     res.redirect(
 //       DEV_MODE ? "http://localhost:5173" : "https://housebrain.netlify.app"
 //     );
->>>>>>> 3994e1bfefeaf839d58cb5fde618bb61df1b1ec8
 //   }
 // });
 
