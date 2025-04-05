@@ -29,7 +29,7 @@ authRoutes.get("/user", currentUser);
 authRoutes.put("/user", allowedNextCategory);
 authRoutes.get("/users", users);
 authRoutes.put("/users/:userId", updateUserPaidStatus);
-authRoutes.get("/usersInfo", authenticatedUser, usersInfo);
+authRoutes.get("/usersInfo", usersInfo);
 
 authRoutes.get("/tickets/:id", ticket);
 authRoutes.post("/tickets", ticketTest);
