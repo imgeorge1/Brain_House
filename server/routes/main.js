@@ -17,7 +17,7 @@ router.use("/api/auth/*", ExpressAuth(authConfig));
 
 router.use("/", authRoutes);
 router.get("/", (req, res) => {
-  const token = req.cookies["authjs.session-token"];
+  const token = req.cookies["__Secure-authjs.session-token"];
   console.log(req);
   if (token) {
     // If the session token exists, redirect to the frontend
