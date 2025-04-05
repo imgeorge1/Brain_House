@@ -56,10 +56,10 @@ console.log( "klient url" + process.env.CLIENT_URL);
 
 app.use(
   cors({
-    origin: !DEV_MODE
-      ? ["http://localhost:5173", "https://drive.google.com"]
-      : [`${process.env.CLIENT_URL}`, "https://drive.google.com"],
     credentials: true,
+    origin: DEV_MODE
+      ? "http://localhost:5173"
+      : "https://housebrain.netlify.app",
   })
 );
 app.use(express.json());
