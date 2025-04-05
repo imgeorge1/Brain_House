@@ -15,8 +15,9 @@ const TicketRoutes = () => {
     completedArray,
     currentUser,
   } = useTicketRoutes();
-  const isPaid = localStorage.getItem("paid")?.toString();
-  // console.log(isPaid);
+  const isPaid = localStorage.getItem("paid") === "true";
+
+  console.log(isPaid);
 
   return (
     <section className="flex align-center mt-24">
@@ -86,7 +87,7 @@ const TicketRoutes = () => {
           <ul className="pl-0 w-full max-w-[690px] xl:w-[469px]">
             {categoryData.map((item, index) => {
               // If isPaid is false, only render the item at index 0
-              if (isPaid === "false" && index === 0) {
+              if (isPaid !== true && index === 0) {
                 return (
                   <motion.li
                     initial={{ opacity: 0, x: -200 }}
@@ -117,7 +118,7 @@ const TicketRoutes = () => {
               }
 
               // If isPaid is true or the item is not at index 0, render normally
-              if (isPaid === "true") {
+              if (isPaid === true) {
                 return (
                   <motion.li
                     initial={{ opacity: 0, x: -200 }}
