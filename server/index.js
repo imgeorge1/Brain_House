@@ -52,7 +52,6 @@ const secretKey = generateSecretKey();
 mongoConnection();
 
 const DEV_MODE = process.env.NODE_ENV === "developer";
-console.log( "klient url" + process.env.CLIENT_URL);
 
 app.use(
   cors({
