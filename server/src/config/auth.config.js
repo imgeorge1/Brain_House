@@ -1,6 +1,8 @@
 import Google from "@auth/express/providers/google";
 import User from "../../models/userSchema.js";
 
+const DEV_MODE = process.env.NODE_ENV === "developer";
+
 const authConfig = {
   trustHost: true,
   providers: [
@@ -10,6 +12,7 @@ const authConfig = {
     }),
   ],
   secret: process.env.AUTH_SECRET,
+
   callbacks: {
     async signIn({ profile }) {
       if (!profile) throw new Error("Google authentication failed");
@@ -30,7 +33,7 @@ const authConfig = {
           });
           await user.save();
         }
-        console.log("User authenticated:", user);
+        // console.log("User authenticated:", user);
 
         return true;
       } catch (error) {

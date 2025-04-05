@@ -1,14 +1,15 @@
 import axios from "axios";
 
-const DEV_MODE = "production";
-console.log(DEV_MODE);
+const DEV_MODE = "production"; //need to change !
+
 console.log(
-  !DEV_MODE ? "http://localhost:3000" : "https://brainhouse.onrender.com"
+  DEV_MODE ? "http://localhost:3000" : "https://brainhouse.onrender.com"
 );
 
 const API = axios.create({
-  //need to change !
-  baseURL: "https://brainhouse.onrender.com",
+  baseURL: DEV_MODE
+    ? "http://localhost:3000"
+    : "https://brainhouse.onrender.com",
   withCredentials: true,
 });
 
