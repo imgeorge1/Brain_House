@@ -22,7 +22,7 @@ export async function authenticatedUser(req, res, next) {
 export async function currentSession(req, res, next) {
   const session = (await getSession(req, authConfig)) ?? undefined;
 
-  console.log("[req.session]", req.session);
+  console.log("[req.session]", session);
   res.locals.session = session;
   return next();
 }
