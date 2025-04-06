@@ -25,7 +25,7 @@ authRoutes.get("/beka", (req, res) => {
   res.send("Hello beka!");
 });
 
-authRoutes.get("/user", currentUser);
+authRoutes.get("/user", authenticatedUser, currentUser);
 authRoutes.put("/user", allowedNextCategory);
 authRoutes.get("/users", users);
 authRoutes.put("/users/:userId", updateUserPaidStatus);
