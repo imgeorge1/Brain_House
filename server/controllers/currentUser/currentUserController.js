@@ -4,7 +4,7 @@ const currentUser = async (req, res) => {
   try {
     const session = res.locals.session;
     console.log("sesssioooon......", session);
-    console.log("requeeessst......", req);
+    console.log("requeeessst......", req.session);
     if (!session || !session.user || !session.user.email) {
       return res.status(401).json({ error: "Not authenticated" });
     }

@@ -15,6 +15,8 @@ import {
   errorHandler,
   errorNotFoundHandler,
 } from "./middleware/error.middleware.js";
+import currentUser from "./controllers/currentUser/currentUserController.js";
+import { currentSession } from "./middleware/auth.middleware.js";
 
 const app = express();
 
@@ -76,6 +78,8 @@ app.use(
     proxy: true,
   })
 );
+
+app.use(currentSession);
 app.set("trust proxy", true);
 
 app.use("/", router);
