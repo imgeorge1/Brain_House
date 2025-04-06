@@ -3,6 +3,8 @@ import User from "../../models/userSchema.js";
 const currentUser = async (req, res) => {
   try {
     const session = res.locals.session;
+    console.log("sesssioooon......", session);
+    console.log("requeeessst......", req);
     if (!session || !session.user || !session.user.email) {
       return res.status(401).json({ error: "Not authenticated" });
     }
