@@ -1,8 +1,8 @@
 // import dotenv from "dotenv/config";
 import mongoose from "mongoose";
 
-const MONGODB_URL = process.env.MONGODB_URL;
-console.log("MONGODB_URL", MONGODB_URL);
+// const MONGODB_URL = process.env.MONGODB_URL;
+console.log("MONGODB_URL", process.env.MONGODB_URL);
 const mongoConnection = async () => {
   try {
     // Establish MongoDB connection
