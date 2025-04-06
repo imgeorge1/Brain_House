@@ -5,7 +5,7 @@ const allowedNextCategory = async (req, res) => {
     const { completed, email } = req.body;
     const user = await User.findOne({ email: email });
     user.completed = completed;
-    console.log("allow user", user);
+    // console.log("allow user", user);
 
     await user.save();
 
