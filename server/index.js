@@ -84,8 +84,6 @@ app.use(
 app.set("trust proxy", true);
 app.use(currentSession);
 
-app.use(auth(authConfig));
-
 app.use("/", router);
 
 app.use(errorNotFoundHandler);
