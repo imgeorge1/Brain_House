@@ -17,6 +17,7 @@ import {
 } from "../controllers/commentController/commentController.js";
 import { authenticatedUser } from "../middleware/auth.middleware.js";
 import signup from "../config/driveConfig/additionalinfo.js";
+import { getSession } from "@auth/express";
 
 const authRoutes = express.Router();
 const DEV_MODE = process.env.NODE_ENV === "developer";
