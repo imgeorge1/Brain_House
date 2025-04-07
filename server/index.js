@@ -16,6 +16,7 @@ import {
   errorNotFoundHandler,
 } from "./middleware/error.middleware.js";
 import { currentSession } from "./middleware/auth.middleware.js";
+import authConfig from "./src/config/auth.config.js";
 
 const app = express();
 app.use(cookieParser());
@@ -82,6 +83,8 @@ app.use(
 
 app.set("trust proxy", true);
 app.use(currentSession);
+
+app.use(auth(authConfig));
 
 app.use("/", router);
 

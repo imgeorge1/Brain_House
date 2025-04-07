@@ -45,6 +45,7 @@ const authConfig = {
     async session({ session, token }) {
       if (token) {
         session.user = token.user; // Attach user info to the session
+        console.log("Token saved");
       }
       return session;
     },
