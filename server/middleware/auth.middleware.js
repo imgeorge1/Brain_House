@@ -4,10 +4,11 @@ import authConfig from "../src/config/auth.config.js";
 export async function authenticatedUser(req, res, next) {
   try {
     // Explicitly log the cookie header
-    console.log("🍪 Cookie Header:", req.headers.cookie);
+    const sessioncookie = req.cookies["__Secure-authjs.session-token"];
+    console.log("SeSSIONNNNCOOKIEEEEEEE", sessioncookie);
 
     // Try getting the session from the cookie
-    const session = res.locals.session ?? (await getSession(req, authConfig));
+    const session = await getSession(req, authConfig);
 
     // Debug log for session
     console.log("🔐 Authenticated Session:", session);

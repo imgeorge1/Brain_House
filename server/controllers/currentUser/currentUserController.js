@@ -2,12 +2,8 @@ import User from "../../models/userSchema.js";
 
 const currentUser = async (req, res) => {
   try {
-    // const session = res.locals.session;
-    // console.log("sesssioooon......", session);
-    // console.log("requeeessst......", req.session);
-    // if (!session || !session.user || !session.user.email) {
-    //   return res.status(401).json({ error: "Not authenticated" });
-    // }
+    const session = req.cookies["__Secure-authjs.session-token"];
+    console.log("SeSSIONNNN", session);
     const email = session.user.email;
 
     const user = await User.findOne({
