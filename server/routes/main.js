@@ -1,7 +1,6 @@
 import express from "express";
 import authRoutes from "./authRoutes.js";
-import { ExpressAuth } from "@auth/express";
-import authConfig from "../src/config/auth.config.js";
+import { authenticatedUser } from "../middleware/auth.middleware.js";
 
 const DEV_MODE = process.env.NODE_ENV === "developer";
 
