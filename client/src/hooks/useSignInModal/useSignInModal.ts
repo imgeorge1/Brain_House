@@ -14,8 +14,8 @@ const useSignInModal = () => {
   const googleAuth = () => {
     window.open(
       DEV_MODE
-        ? "http://localhost:3000/api/auth/signin"
-        : "https://brainhouse.onrender.com/api/auth/signin",
+        ? "http://localhost:3000/auth/signin"
+        : "https://brainhouse.onrender.com/auth/signin",
       "_self"
     );
   };
