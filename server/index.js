@@ -18,8 +18,9 @@ import {
 import { currentSession } from "./middleware/auth.middleware.js";
 
 const app = express();
-app.use(express.json());
 app.use(cookieParser());
+app.use(express.json());
+
 // Serve robots.txt
 app.use("/robots.txt", (req, res) => {
   res.sendFile(path.join(__dirname, "robots.txt"));
