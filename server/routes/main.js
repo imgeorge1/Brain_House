@@ -23,13 +23,13 @@ authRoutes.get(
     try {
       // Explicitly log the cookie header
       const sessioncookie = req;
-      console.log("SeSSIONNNNCOOKIEEEEEEE", sessioncookie);
+      // console.log("SeSSIONNNNCOOKIEEEEEEE", sessioncookie);
 
       // Try getting the session from the cookie
       const session = await getSession(req, authConfig);
 
       // Debug log for session
-      console.log("🔐 Authenticated Session:", session);
+      // console.log("🔐 Authenticated Session:", session);
 
       if (session) {
         res.locals.session = session;
@@ -46,7 +46,7 @@ authRoutes.get(
 );
 router.get("/", (req, res) => {
   const token = req.cookies["__Secure-authjs.session-token"];
-  // console.log(req);
+  console.log(req);
   if (token) {
     // If the session token exists, redirect to the frontend
     console.log("Session token found, redirecting to frontend...");
