@@ -21,8 +21,9 @@ import { ExpressAuth } from "@auth/express";
 
 const app = express();
 app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.set("trust proxy", true);
 // Serve robots.txt
 app.use("/robots.txt", (req, res) => {
   res.sendFile(path.join(__dirname, "robots.txt"));
@@ -82,9 +83,16 @@ app.use(
   })
 );
 
-app.set("trust proxy", true);
 app.use(currentSession);
 app.use("/auth", ExpressAuth(authConfig));
+
+app.get("/protected", async (req, res) => {
+  res.render("protected", { session: res.locals.session });
+});
+
+app.get("/api/protected", authenticatedUser, async (req, res) => {
+  res.json(res.locals.session);
+});
 
 app.use("/", router);
 
