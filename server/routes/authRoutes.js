@@ -27,7 +27,7 @@ authRoutes.get("/beka", (req, res) => {
 
 authRoutes.get(
   "/user",
-  async () => {
+  async (req, res) => {
     try {
       // Explicitly log the cookie header
       const sessioncookie = req;
