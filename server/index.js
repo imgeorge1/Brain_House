@@ -72,14 +72,14 @@ app.use(
     saveUninitialized: true,
     cookie: {
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days in milliseconds
-      secure: false, // Set to true for HTTPS environments
+      secure: true, // Set to true for HTTPS environments
     },
     proxy: true,
   })
 );
 
-app.use(currentSession);
 app.set("trust proxy", true);
+app.use(currentSession);
 
 app.use("/", router);
 
