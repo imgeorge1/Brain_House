@@ -2,10 +2,12 @@ import User from "../../models/userSchema.js";
 
 const currentUser = async (req, res) => {
   try {
-    // const session = req.cookies["__Secure-authjs.session-token"];
-    // console.log("SeSSIONNNN", session);
-    // const email = session.user.email;
-    const email = "shvangiradze22giorgi@gmail.com";
+    const session = res.locals.session;
+    console.log("currentUser>>>>>>>>>>>>>>", session);
+    const { email } = session.user;
+
+    console.log(email);
+
     const user = await User.findOne({
       email,
     });

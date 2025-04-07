@@ -5,6 +5,7 @@ export async function authenticatedUser(req, res, next) {
   const session =
     res.locals.session ?? (await getSession(req, authConfig)) ?? undefined;
 
+  console.log("authenticatedUser>>>>>>>>>>>>>", session);
   res.locals.session = session;
 
   if (session) {
@@ -16,6 +17,7 @@ export async function authenticatedUser(req, res, next) {
 
 export async function currentSession(req, res, next) {
   const session = (await getSession(req, authConfig)) ?? undefined;
+  console.log("currentSession>>>>>>>>>>>>>", session);
   res.locals.session = session;
   return next();
 }
