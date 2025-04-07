@@ -90,14 +90,14 @@ app.use(
 app.use(currentSession);
 app.use("/auth", ExpressAuth(authConfig));
 
-app.get("/protected", async (req, res) => {
-  console.log(res.locals.session);
-  res.json(res.locals.session);
-});
+// app.get("/protected", async (req, res) => {
+//   console.log(res.locals.session);
+//   res.json(res.locals.session);
+// });
 
-app.get("/api/protected", authenticatedUser, async (req, res) => {
-  res.json(res.locals.session);
-});
+// app.get("/api/protected", authenticatedUser, async (req, res) => {
+//   res.json(res.locals.session);
+// });
 
 app.use("/", router);
 

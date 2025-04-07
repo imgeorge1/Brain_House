@@ -8,7 +8,14 @@ const DEV_MODE = process.env.NODE_ENV === "developer";
 const router = express.Router();
 
 router.use("/", authRoutes);
+router.get("/protected", async (req, res) => {
+  console.log(res.locals.session);
+  res.json(res.locals.session);
+});
 
+router.get("/api/protected", authenticatedUser, async (req, res) => {
+  res.json(res.locals.session);
+});
 router.get("/", (req, res) => {
   const token = req.cookies["__Secure-authjs.session-token"];
   // console.log(req);
