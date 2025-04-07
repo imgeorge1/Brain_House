@@ -15,7 +15,10 @@ import {
   errorHandler,
   errorNotFoundHandler,
 } from "./middleware/error.middleware.js";
-import { currentSession } from "./middleware/auth.middleware.js";
+import {
+  authenticatedUser,
+  currentSession,
+} from "./middleware/auth.middleware.js";
 import authConfig from "./src/config/auth.config.js";
 import { ExpressAuth } from "@auth/express";
 
