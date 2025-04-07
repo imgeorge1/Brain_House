@@ -2,6 +2,7 @@ import { getSession } from "@auth/express";
 import authConfig from "../src/config/auth.config.js";
 
 export async function authenticatedUser(req, res, next) {
+  console.log(req.headers.cookie);
   const session =
     res.locals.session ?? (await getSession(req, authConfig)) ?? undefined;
 
