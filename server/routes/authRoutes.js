@@ -21,6 +21,14 @@ import signup from "../config/driveConfig/additionalinfo.js";
 const authRoutes = express.Router();
 const DEV_MODE = process.env.NODE_ENV === "developer";
 
+authRoutes.get("/protected", async (req, res) => {
+  console.log(res.locals.session);
+  res.json(res.locals.session);
+});
+
+authRoutes.get("/api/protected", authenticatedUser, async (req, res) => {
+  res.json(res.locals.session);
+});
 authRoutes.get("/beka", (req, res) => {
   res.send("Hello beka!");
 });
