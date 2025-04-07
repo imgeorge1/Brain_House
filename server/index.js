@@ -1,4 +1,4 @@
-import dotenv from "dotenv/config";
+// import dotenv from "dotenv/config";
 import express from "express";
 import path from "path";
 import generateSitemap from "./generateSitemap.js";
