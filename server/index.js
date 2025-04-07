@@ -72,20 +72,20 @@ app.use(
   })
 );
 
-app.use(
-  session({
-    secret: secretKey,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none", // REQUIRED for cross-site cookies
-      maxAge: 30 * 24 * 60 * 60 * 1000,
-    },
-    proxy: true,
-  })
-);
+// app.use(
+//   session({
+//     secret: secretKey,
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//       httpOnly: true,
+//       secure: true,
+//       sameSite: "none", // REQUIRED for cross-site cookies
+//       maxAge: 30 * 24 * 60 * 60 * 1000,
+//     },
+//     proxy: true,
+//   })
+// );
 
 app.use(currentSession);
 app.use("/auth", ExpressAuth(authConfig));
