@@ -7,10 +7,6 @@ const DEV_MODE = process.env.NODE_ENV === "developer";
 
 const router = express.Router();
 
-// router.use(currentSession);
-
-// router.use("/api/auth", ExpressAuth(authConfig));
-
 router.use("/", authRoutes);
 
 router.get("/", (req, res) => {
