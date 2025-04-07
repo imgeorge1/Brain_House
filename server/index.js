@@ -15,11 +15,11 @@ import {
   errorHandler,
   errorNotFoundHandler,
 } from "./middleware/error.middleware.js";
-import currentUser from "./controllers/currentUser/currentUserController.js";
 import { currentSession } from "./middleware/auth.middleware.js";
 
 const app = express();
-
+app.use(express.json());
+app.use(cookieParser());
 // Serve robots.txt
 app.use("/robots.txt", (req, res) => {
   res.sendFile(path.join(__dirname, "robots.txt"));
@@ -63,8 +63,6 @@ app.use(
       : "https://housebrain.netlify.app",
   })
 );
-app.use(express.json());
-app.use(cookieParser());
 
 app.use(
   session({
