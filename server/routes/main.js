@@ -9,7 +9,7 @@ const router = express.Router();
 
 // router.use(currentSession);
 
-router.use("/api/auth", ExpressAuth(authConfig));
+// router.use("/api/auth", ExpressAuth(authConfig));
 
 router.use("/", authRoutes);
 
