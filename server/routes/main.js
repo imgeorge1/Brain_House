@@ -17,34 +17,34 @@ const router = express.Router();
 router.use("/api/auth/*", ExpressAuth(authConfig));
 
 router.use("/", authRoutes);
-// authRoutes.get(
-//   "/user",
-//   async (req, res) => {
-//     const token = req.cookies["__Secure-authjs.session-token"];
-//     try {
-//       // Explicitly log the cookie header
-//       // const sessioncookie = req;
-//       console.log("SeSSIONNNNCOOKIEEEEEEE", token);
+authRoutes.get(
+  "/user",
+  async (req, res) => {
+    const token = req.cookies["__Secure-authjs.session-token"];
+    try {
+      // Explicitly log the cookie header
+      // const sessioncookie = req;
+      console.log("SeSSIONNNNCOOKIEEEEEEE", token);
 
-//       // Try getting the session from the cookie
-//       const session = await getSession(req, authConfig);
+      // Try getting the session from the cookie
+      const session = await getSession(req, authConfig);
 
-//       // Debug log for session
-//       // console.log("🔐 Authenticated Session:", session);
+      // Debug log for session
+      // console.log("🔐 Authenticated Session:", session);
 
-//       if (session) {
-//         res.locals.session = session;
-//         return next();
-//       }
+      if (session) {
+        res.locals.session = session;
+        return next();
+      }
 
-//       res.status(401).json({ message: "Not Authenticated" });
-//     } catch (error) {
-//       console.error("❌ Error fetching session:", error);
-//       res.status(500).json({ message: "Internal Server Error" });
-//     }
-//   },
-//   currentUser
-// );
+      res.status(401).json({ message: "Not Authenticated" });
+    } catch (error) {
+      console.error("❌ Error fetching session:", error);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  },
+  currentUser
+);
 router.get("/", (req, res) => {
   const token = req.cookies["__Secure-authjs.session-token"];
   // console.log(req);
