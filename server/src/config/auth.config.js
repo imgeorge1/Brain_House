@@ -1,8 +1,6 @@
 import Google from "@auth/express/providers/google";
 import User from "../../models/userSchema.js";
 
-const DEV_MODE = process.env.NODE_ENV === "developer";
-
 const authConfig = {
   trustHost: true,
   providers: [
@@ -11,6 +9,36 @@ const authConfig = {
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
     }),
   ],
+  cookies: {
+    sessionToken: {
+      name: `__Secure-authjs.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "None",
+        path: "/",
+        secure: true,
+        domain: "https://housebrain.netlify.app", // optional
+      },
+    },
+    callbackUrl: {
+      name: "__Secure-authjs.callback-url",
+      options: {
+        sameSite: "None",
+        path: "/",
+        secure: true,
+      },
+    },
+    csrfToken: {
+      name: "__Host-authjs.csrf-token",
+      options: {
+        httpOnly: true,
+        sameSite: "None",
+        path: "/",
+        secure: true,
+      },
+    },
+    // you can add more or override other cookies
+  },
   secret: process.env.AUTH_SECRET,
 
   callbacks: {
