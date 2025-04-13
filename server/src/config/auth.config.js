@@ -17,7 +17,6 @@ const authConfig = {
         sameSite: "None",
         path: "/",
         secure: true,
-        domain: "housebrain.netlify.app", // optional
       },
     },
     callbackUrl: {
