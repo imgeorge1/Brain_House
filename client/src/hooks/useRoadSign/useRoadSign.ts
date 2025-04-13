@@ -1,5 +1,4 @@
 import { useState } from "react";
-import API from "../../utils/API";
 import { Images, SignCache } from "../../types/Types";
 import axios from "axios";
 
