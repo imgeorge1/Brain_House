@@ -49,7 +49,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const getUser = async () => {
     try {
       if (tokenFromLocalStorage) {
-        const response = await API.get<User>("/api/protected");
+        const response = await API.get<User>("/user");
         console.log("resoinse", response.data);
 
         if (response.data) {

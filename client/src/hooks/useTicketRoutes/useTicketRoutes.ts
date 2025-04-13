@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import useWidth from "../useWidth/useWidth";
 import { useUserContext } from "../../context/UserContext";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const useTicketRoutes = () => {
   const { setTicketData, currentUser, correctAnswer } = useUserContext();
@@ -42,7 +43,9 @@ const useTicketRoutes = () => {
 
     const getCategories = async (categoryId: number) => {
       try {
-        const response = await API.get(`/tickets/${categoryId}`);
+        const response = await axios.get(`/tickets/${categoryId}`, {
+          withCredentials: true,
+        });
         setTicketData && setTicketData(response.data);
       } catch (error) {
         console.error(error);
