@@ -47,15 +47,15 @@ const authConfig = {
   },
 
   callbacks: {
-    async redirect({ url, baseUrl }) {
-      console.log(url);
-      // Redirect after sign-in or sign-out
-      if (url.startsWith(process.env.CLIENT_URL)) {
-        return url;
-      }
-      // Default to home page
-      return `${process.env.CLIENT_URL}/`;
-    },
+    // async redirect({ url, baseUrl }) {
+    //   console.log(url);
+    //   // Redirect after sign-in or sign-out
+    //   if (url.startsWith(process.env.CLIENT_URL)) {
+    //     return url;
+    //   }
+    //   // Default to home page
+    //   return `${process.env.CLIENT_URL}/`;
+    // },
 
     async signIn({ profile }) {
       if (!profile) throw new Error("Google authentication failed");
