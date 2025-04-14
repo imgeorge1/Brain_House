@@ -40,22 +40,22 @@ const authConfig = {
   },
   secret: process.env.AUTH_SECRET,
 
-  // pages: {
-  //   signIn: `${process.env.CLIENT_URL}/login`, // When user is sent to sign in
-  //   signOut: `${process.env.CLIENT_URL}/logout`, // When user is signed out
-  //   error: `${process.env.CLIENT_URL}/error`, // Optional: handle auth errors
-  // },
+  pages: {
+    signIn: `${process.env.CLIENT_URL}/auth/signin`, // When user is sent to sign in
+    signOut: `${process.env.CLIENT_URL}/logout`, // When user is signed out
+    error: `${process.env.CLIENT_URL}/error`, // Optional: handle auth errors
+  },
 
   callbacks: {
-    // async redirect({ url, baseUrl }) {
-    //   console.log(url);
-    //   // Redirect after sign-in or sign-out
-    //   if (url.startsWith(process.env.CLIENT_URL)) {
-    //     return url;
-    //   }
-    //   // Default to home page
-    //   return `${process.env.CLIENT_URL}/`;
-    // },
+    async redirect({ url, baseUrl }) {
+      console.log(url);
+      // Redirect after sign-in or sign-out
+      if (url.startsWith(process.env.CLIENT_URL)) {
+        return url;
+      }
+      // Default to home page
+      return `${process.env.CLIENT_URL}/`;
+    },
 
     async signIn({ profile }) {
       if (!profile) throw new Error("Google authentication failed");
