@@ -36,7 +36,6 @@ const authConfig = {
         secure: true,
       },
     },
-    // you can add more or override other cookies
   },
   secret: process.env.AUTH_SECRET,
 

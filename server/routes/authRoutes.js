@@ -54,9 +54,9 @@ authRoutes.get("/logout", (req, res) => {
   // Get the auth instance to clear the session or token
 
   // Clear the auth token cookie (make sure the cookie name matches)
-  res.clearCookie("authjs.csrf-token");
-  res.clearCookie("authjs.callback-url");
-  res.clearCookie("authjs.session-token");
+  res.clearCookie("__Secure-authjs.session-token");
+  res.clearCookie("__Secure-authjs.callback-url");
+  res.clearCookie("__Host-authjs.csrf-token");
 
   // Redirect to frontend (adjust URLs based on your environment)
   res.redirect(
