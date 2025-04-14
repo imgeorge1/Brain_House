@@ -34,41 +34,61 @@ interface UserProviderProps {
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
+  // const queryParams = new URLSearchParams(location.search);
   const [ticketData, setTicketData] = useState<TicketsTypes[]>([]);
   const [correctAnswer, setCorrectAnswer] = useState(0);
 
-  const token = queryParams.get("jwtToken");
+  // const token = queryParams.get("jwtToken");
 
-  if (token) {
-    localStorage.setItem("token", token);
-  }
+  // if (token) {
+  //   localStorage.setItem("token", token);
+  // }
 
-  const tokenFromLocalStorage = localStorage.getItem("token");
+  // const tokenFromLocalStorage = localStorage.getItem("token");
 
-  const getUser = async () => {
-    try {
-      if (tokenFromLocalStorage) {
-        const response = await API.get<User>("/user");
-        console.log("resoinse", response.data);
+  useEffect(() => {
+    const getSession = async () => {
+      try {
+        const res = await API.get("/auth/session");
+        console.log(res);
 
-        if (response.data) {
-          setCurrentUser(response.data);
-          localStorage.setItem("paid", response.data.isPaid.toString());
+        if (res.data?.user) {
+          console.log("✅ Signed in:", res.data.user);
+          setCurrentUser(res.data.user);
+        } else {
+          console.log("❌ Not signed in");
         }
+      } catch (error) {
+        console.error("Error fetching session:", error);
       }
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
+    };
+
+    getSession();
+  }, []);
+
+  // const getUser = async () => {
+  //   try {
+  //     if (tokenFromLocalStorage) {
+  //       const response = await API.get<User>("/user");
+  //       console.log("resoinse", response.data);
+
+  //       if (response.data) {
+  //         setCurrentUser(response.data);
+  //         localStorage.setItem("paid", response.data.isPaid.toString());
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.log("error", error);
+  //   }
+  // };
 
   const booleanPaid = localStorage.getItem("paid") === "true";
 
-  useEffect(() => {
-    if (tokenFromLocalStorage) {
-      getUser();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (tokenFromLocalStorage) {
+  //     getUser();
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (!location.pathname.startsWith("/tickets")) setTicketData([]);
