@@ -40,11 +40,11 @@ const authConfig = {
   },
   secret: process.env.AUTH_SECRET,
 
-  pages: {
-    signIn: `${process.env.CLIENT_URL}/login`, // When user is sent to sign in
-    signOut: `${process.env.CLIENT_URL}/logout`, // When user is signed out
-    error: `${process.env.CLIENT_URL}/error`, // Optional: handle auth errors
-  },
+  // pages: {
+  //   signIn: `${process.env.CLIENT_URL}/login`, // When user is sent to sign in
+  //   signOut: `${process.env.CLIENT_URL}/logout`, // When user is signed out
+  //   error: `${process.env.CLIENT_URL}/error`, // Optional: handle auth errors
+  // },
 
   callbacks: {
     // async redirect({ url, baseUrl }) {
