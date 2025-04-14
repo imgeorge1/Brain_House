@@ -14,11 +14,12 @@ router.get("/", (req, res) => {
   if (token) {
     // If the session token exists, redirect to the frontend
     console.log("Session token found, redirecting to frontend...");
-    res.redirect(
-      DEV_MODE
-        ? `http://localhost:5173/?jwtToken=${token}`
-        : `https://housebrain.netlify.app/?jwtToken=${token}`
-    );
+    res.send("hellooo");
+    // res.redirect(
+    //   DEV_MODE
+    //     ? `http://localhost:5173/?jwtToken=${token}`
+    //     : `https://housebrain.netlify.app/?jwtToken=${token}`
+    // );
   } else {
     // If no session token, clear all cookies
     console.log("No session token found, clearing all cookies...");
@@ -29,9 +30,9 @@ router.get("/", (req, res) => {
     // res.clearCookie("authjs.session-token");
 
     // Optionally, send a response indicating the state
-    res.redirect(
-      DEV_MODE ? "http://localhost:5173" : "https://housebrain.netlify.app"
-    );
+    // res.redirect(
+    //   DEV_MODE ? "http://localhost:5173" : "https://housebrain.netlify.app"
+    // );
   }
 });
 
