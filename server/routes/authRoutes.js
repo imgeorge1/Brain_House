@@ -62,7 +62,9 @@ authRoutes.get("/logout", (req, res) => {
   res.clearCookie("__Secure-authjs.callback-url", cookieOptions);
   res.clearCookie("__Host-authjs.csrf-token", cookieOptions);
 
-  res.status(200).json({ message: "Logged out" });
+  res.redirect(
+    DEV_MODE ? "http://localhost:5173" : "https://housebrain.netlify.app"
+  );
 });
 
 export default authRoutes;
