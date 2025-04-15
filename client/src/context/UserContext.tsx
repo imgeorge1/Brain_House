@@ -45,7 +45,19 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   // }
 
   // const tokenFromLocalStorage = localStorage.getItem("token");
+  const getUser = async () => {
+    try {
+      const response = await API.get<User>("/user");
+      console.log("resoinse", response.data);
 
+      if (response.data) {
+        setCurrentUser(response.data);
+        localStorage.setItem("paid", response.data.isPaid.toString());
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   useEffect(() => {
     const getSession = async () => {
       try {
@@ -53,8 +65,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         console.log(res);
 
         if (res.data?.user) {
-          console.log("✅ Signed in:", res.data.user);
-          setCurrentUser(res.data.user);
+          getUser();
         } else {
           console.log("❌ Not signed in");
         }
@@ -65,22 +76,6 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
     getSession();
   }, []);
-
-  // const getUser = async () => {
-  //   try {
-  //     if (tokenFromLocalStorage) {
-  //       const response = await API.get<User>("/user");
-  //       console.log("resoinse", response.data);
-
-  //       if (response.data) {
-  //         setCurrentUser(response.data);
-  //         localStorage.setItem("paid", response.data.isPaid.toString());
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.log("error", error);
-  //   }
-  // };
 
   const booleanPaid = localStorage.getItem("paid") === "true";
 
