@@ -4,7 +4,6 @@ import API from "../../utils/API";
 import useWidth from "../useWidth/useWidth";
 import { useUserContext } from "../../context/UserContext";
 import { toast } from "react-toastify";
-import axios from "axios";
 
 const useTicketRoutes = () => {
   const { setTicketData, currentUser, correctAnswer } = useUserContext();

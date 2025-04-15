@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Images, SignCache } from "../../types/Types";
-import axios from "axios";
+
 import API from "../../utils/API";
 
 const useRoadSign = () => {
