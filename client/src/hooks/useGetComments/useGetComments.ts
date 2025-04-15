@@ -14,7 +14,7 @@ const useGetComments = () => {
 
   const fetchComments = async () => {
     try {
-      const fetchedComments = await axios.get("/comments", {
+      const fetchedComments = await API.get("/comments", {
         withCredentials: true,
       });
       setComments(fetchedComments.data.comments);

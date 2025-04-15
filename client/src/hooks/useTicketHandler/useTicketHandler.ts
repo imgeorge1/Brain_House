@@ -19,6 +19,7 @@ const useTicketHandler = () => {
   const passedQuestionLength = Object.keys(clickedAnswers).length;
 
   // console.log("current Page .......", currentPage);
+  // console.log("TIKETS DATA >>>>>>>>>>>>>>", ticketData);
 
   useEffect(() => {
     if (

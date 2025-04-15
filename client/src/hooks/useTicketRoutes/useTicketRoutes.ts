@@ -43,9 +43,11 @@ const useTicketRoutes = () => {
 
     const getCategories = async (categoryId: number) => {
       try {
-        const response = await axios.get(`/tickets/${categoryId}`, {
+        const response = await API.get(`/tickets/${categoryId}`, {
           withCredentials: true,
         });
+        console.log("RESPONSE TICKETS", response);
+
         setTicketData && setTicketData(response.data);
       } catch (error) {
         console.error(error);

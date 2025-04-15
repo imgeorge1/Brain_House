@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useUserContext } from "../../context/UserContext";
 
-const DEV_MODE = false; // change for production
+const DEV_MODE = true; // change for production
 
 const useSignInModal = () => {
   const [show, setShow] = useState(false);

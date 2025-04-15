@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Images, SignCache } from "../../types/Types";
 import axios from "axios";
+import API from "../../utils/API";
 
 const useRoadSign = () => {
   const [signId, setSignIn] = useState(1);
@@ -16,9 +17,11 @@ const useRoadSign = () => {
         setSignImages(cache[signId]);
       } else {
         // If data is not cached, fetch from API
-        const res = await axios.get(`/signs/${signId}`, {
+        const res = await API.get(`/signs/${signId}`, {
           withCredentials: true,
         });
+        console.log("RESPONSE SIGNS", res);
+
         setSignImages(res.data);
         // Update cache
         setCache({ ...cache, [signId]: res.data });
