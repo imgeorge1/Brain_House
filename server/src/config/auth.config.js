@@ -9,41 +9,35 @@ const authConfig = {
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
     }),
   ],
-  // cookies: {
-  //   sessionToken: {
-  //     name: `authjs.session-token`,
-  //     options: {
-  //       httpOnly: false,
-  //       sameSite: "None",
-  //       path: "/",
-  //       secure: false,
-  //     },
-  //   },
-  //   callbackUrl: {
-  //     name: "authjs.callback-url",
-  //     options: {
-  //       sameSite: "None",
-  //       path: "/",
-  //       secure: false,
-  //     },
-  //   },
-  //   csrfToken: {
-  //     name: "authjs.csrf-token",
-  //     options: {
-  //       httpOnly: false,
-  //       sameSite: "None",
-  //       path: "/",
-  //       secure: false,
-  //     },
-  //   },
-  // },
+  cookies: {
+    sessionToken: {
+      name: `__Secure-authjs.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "None",
+        path: "/",
+        secure: true,
+      },
+    },
+    callbackUrl: {
+      name: "__Secure-authjs.callback-url",
+      options: {
+        sameSite: "None",
+        path: "/",
+        secure: true,
+      },
+    },
+    csrfToken: {
+      name: "__Host-authjs.csrf-token",
+      options: {
+        httpOnly: true,
+        sameSite: "None",
+        path: "/",
+        secure: true,
+      },
+    },
+  },
   secret: process.env.AUTH_SECRET,
-
-  // pages: {
-  //   signIn: `${process.env.CLIENT_URL}/auth/signin`, // When user is sent to sign in
-  //   signOut: `${process.env.CLIENT_URL}/logout`, // When user is signed out
-  //   error: `${process.env.CLIENT_URL}/error`, // Optional: handle auth errors
-  // },
 
   callbacks: {
     async redirect({ url, baseUrl }) {

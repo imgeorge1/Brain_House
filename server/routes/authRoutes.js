@@ -27,6 +27,7 @@ authRoutes.get("/protected", async (req, res) => {
 });
 
 authRoutes.get("/api/protected", authenticatedUser, currentUser);
+
 authRoutes.get("/beka", (req, res) => {
   res.send("Hello beka!");
 });
@@ -51,17 +52,17 @@ authRoutes.get("/comments", getComments);
 authRoutes.delete("/comments/:id", deleteComment);
 
 authRoutes.get("/logout", (req, res) => {
-  // Get the auth instance to clear the session or token
+  const cookieOptions = {
+    path: "/",
+    sameSite: "None",
+    secure: true, // make sure this matches how they were set
+  };
 
-  // Clear the auth token cookie (make sure the cookie name matches)
-  res.clearCookie("authjs.session-token");
-  res.clearCookie("authjs.callback-url");
-  res.clearCookie("authjs.csrf-token");
+  res.clearCookie("__Secure-authjs.session-token", cookieOptions);
+  res.clearCookie("__Secure-authjs.callback-url", cookieOptions);
+  res.clearCookie("__Host-authjs.csrf-token", cookieOptions);
 
-  // Redirect to frontend (adjust URLs based on your environment)
-  res.redirect(
-    DEV_MODE ? "http://localhost:5173" : "https://housebrain.netlify.app"
-  );
+  res.status(200).json({ message: "Logged out" });
 });
 
 export default authRoutes;
