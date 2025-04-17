@@ -5,6 +5,7 @@ import SignInModal from "../signin/SignInModal";
 import useWidth from "../../hooks/useWidth/useWidth";
 import { motion } from "framer-motion";
 import X from "../../assets/X.png";
+import "../../index.css"
 
 const Header = () => {
   const location = useLocation();
@@ -20,13 +21,38 @@ const Header = () => {
     !location.pathname.startsWith("/register") &&
     !location.pathname.startsWith("/payment");
 
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("header")?.classList.remove("lg:py-4");
+        document.getElementById("header")?.classList.add("lg:py-[6px]");
+        
+        document.getElementById("header")?.classList.remove("md:py-6");
+        document.getElementById("header")?.classList.add("md:py-5");
+
+
+        document.getElementById("header")?.classList.remove("py-7");
+        document.getElementById("header")?.classList.add("py-5");
+
+      } else {
+        document.getElementById("header")?.classList.remove("lg:py-[6px]");
+        document.getElementById("header")?.classList.add("lg:py-4");
+
+        document.getElementById("header")?.classList.remove("md:py-5");
+        document.getElementById("header")?.classList.add("md:py-6");
+
+        document.getElementById("header")?.classList.remove("py-5");
+        document.getElementById("header")?.classList.add("py-7");
+      }
+    }
+
   return (
     check && (
       <div className="bg-black background absolute top-0 w-full h-20">
-        <header
-          className="fixed z-50 top-0 w-full backdrop-brightness-[.85] 
-          backdrop-blur bg-gradient-to-b from-[#2D2862] to-transparent to-100%
-      flex items-center justify-between px-2 py-7 md:py-5 lg:py-4 md:px-10 text-white text"
+        <header id="header"
+          className="fixed z-50 top-0 w-full bg-[#2D2862] 
+      flex items-center justify-between px-2 py-7 md:py-6 lg:py-4 md:px-10 text-white text"
         >
           <motion.div
             initial={{ opacity: 0, x: -200 }}
@@ -92,7 +118,7 @@ const Header = () => {
             ) : (
               <h1
                 onClick={toggleMenu}
-                className="z-20 mt-[-40px] ml-[-100px] text-3xl absolute spin-on-hover 
+                className="z-20 mt-[-8px] ml-[-100px] text-3xl absolute spin-on-hover 
               right-1 cursor-pointer border-2 rounded-full hover:bg-gray-700 duration-200 mt-1"
               >
                 <img src={X} width={32} alt="back" />
