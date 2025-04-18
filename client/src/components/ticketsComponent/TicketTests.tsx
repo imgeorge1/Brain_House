@@ -19,11 +19,11 @@ const TicketTests = () => {
   const checkForVideo = checkForVideoFunc();
 
   return (
-    <section className="w-full max-w-[670px] mt-14 md:mt-40">
+    <section className="w-full max-w-[670px] mt-14 md:mt-32">
       {checkForVideo ? (
         <VideoRender checkForVideo={checkForVideo} />
       ) : (
-        <p className="text-xl text-red-600 font-bold text-center">
+        <p className="text-xl text-red-600 font-bold text-center font-roboto">
           ვიდეო გამოჩნდება ფასიანი პაკეტის შეძენის შემდეგ
         </p>
       )}

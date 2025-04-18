@@ -12,7 +12,7 @@ const Ticket = ({
       initial={{ opacity: 0, x: 200 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 1, delay: 0.5 }}
-      className="flex flex-col bg-[#230751] items-center mt-16 rounded-lg w-full !scale-[1.04] md:!scale-[1]"
+      className="flex flex-col bg-[#230751] items-center mt-16 rounded-lg w-full !scale-[1.04] md:!scale-[1] font-roboto"
       key={data.id}
     >
       <div className="w-full min-h-[380px] md:w-[640px] md:h-[560px]">
@@ -35,7 +35,7 @@ const Ticket = ({
           (_, index) => index + 1
         ).map((item) => (
           <button
-            className={`p-5 text-2xl font-bold rounded-md ${
+            className={`p-5 text-2xl font-bold rounded-md font-roboto ${
               clickedAnswers[data.id] !== undefined
                 ? ""
                 : "lg:hover:bg-blue-400"
