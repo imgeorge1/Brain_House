@@ -1,3 +1,4 @@
+import dotenv from "dotenv/config";
 import express from "express";
 import ticket from "../controllers/ticketsController/ticketController.js";
 import {
@@ -21,12 +22,12 @@ import signup from "../config/driveConfig/additionalinfo.js";
 const authRoutes = express.Router();
 const DEV_MODE = process.env.NODE_ENV === "developer";
 
-authRoutes.get("/protected", async (req, res) => {
-  console.log(res.locals.session);
-  res.json(res.locals.session);
-});
+// authRoutes.get("/protected", async (req, res) => {
+//   console.log(res.locals.session);
+//   res.json(res.locals.session);
+// });
 
-authRoutes.get("/api/protected", authenticatedUser, currentUser);
+// authRoutes.get("/api/protected", authenticatedUser, currentUser);
 
 authRoutes.get("/beka", (req, res) => {
   res.send("Hello beka!");
@@ -63,7 +64,7 @@ authRoutes.get("/logout", (req, res) => {
   res.clearCookie("__Host-authjs.csrf-token", cookieOptions);
 
   res.redirect(
-    DEV_MODE ? "http://localhost:5173" : "https://housebrain.netlify.app"
+    DEV_MODE ? "http://localhost:5173" : "https://brain-house-new.vercel.app"
   );
 });
 

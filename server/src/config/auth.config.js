@@ -1,3 +1,4 @@
+import dotenv from "dotenv/config";
 import Google from "@auth/express/providers/google";
 import User from "../../models/userSchema.js";
 
@@ -9,6 +10,8 @@ const authConfig = {
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
     }),
   ],
+  // __Secure-
+  // __Host-
   cookies: {
     sessionToken: {
       name: `__Secure-authjs.session-token`,

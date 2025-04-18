@@ -1,10 +1,9 @@
-// import dotenv from "dotenv/config";
+import dotenv from "dotenv/config";
 import express from "express";
 import path from "path";
 import generateSitemap from "./generateSitemap.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import session from "cookie-session";
 
 import CryptoJS from "crypto-js";
 import mongoConnection from "./db/mongoConnection.js";
@@ -71,21 +70,6 @@ app.use(
       : "https://housebrain.netlify.app",
   })
 );
-
-// app.use(
-//   session({
-//     secret: secretKey,
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {
-//       httpOnly: true,
-//       secure: true,
-//       sameSite: "none", // REQUIRED for cross-site cookies
-//       maxAge: 30 * 24 * 60 * 60 * 1000,
-//     },
-//     proxy: true,
-//   })
-// );
 
 app.use(currentSession);
 app.use("/auth", ExpressAuth(authConfig));
