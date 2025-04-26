@@ -1,13 +1,20 @@
 import { useState } from "react";
 import lecturers from "../../data/lecturer";
+import { useUserContext } from "../../context/UserContext";
 
 const Practice = () => {
+  const { currentUser } = useUserContext();
+
+  console.log("from usecontext", currentUser);
+
   const [selectedCity, setSelectedCity] = useState("თბილისი");
   const [selectedStreet, setSelectedStreet] = useState("");
 
   const uniqueCities = [...new Set(lecturers.map((item) => item.city))];
 
   const selectedCityData = lecturers.find((item) => item.city === selectedCity);
+  // console.log("CITY", selectedCity);
+
   const streetsForCity = selectedCityData ? selectedCityData.street : [];
 
   const filteredLecturers = selectedCityData

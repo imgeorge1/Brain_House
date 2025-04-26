@@ -4,6 +4,7 @@ import React, {
   useEffect,
   ReactNode,
   useContext,
+  useLayoutEffect,
 } from "react";
 import { useLocation } from "react-router-dom";
 import API from "../utils/API";
@@ -58,11 +59,10 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       console.log("error", error);
     }
   };
-  useEffect(() => {
+  useLayoutEffect(() => {
     const getSession = async () => {
       try {
         const res = await API.get("/auth/session");
-        console.log(res);
 
         if (res.data?.user) {
           getUser();

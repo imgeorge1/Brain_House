@@ -87,43 +87,12 @@ const TicketRoutes = () => {
           <ul className="w-full max-w-[690px] xl:w-[469px] font-roboto">
             {categoryData.map((item, index) => {
               // If isPaid is false, only render the item at index 0
-              if (isPaid !== true && index === 0) {
+              if (isPaid === true || index === 0) {
                 return (
                   <motion.li
                     initial={{ opacity: 0, x: -200 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.1 * item.index }}
-                    onClick={() => handleChooseCategory(item.category)}
-                    key={item.id}
-                  >
-                    {!completedArray.includes(item.index) ? (
-                      <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed font-roboto">
-                        ვიდეო გაგეხსნებათ შეძენის შემდეგ
-                      </span>
-                    ) : (
-                      <Link
-                        className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg font-roboto ${
-                          item.id === categoryNumber
-                            ? "bg-[#230751]"
-                            : "bg-[#663aac]"
-                        }`}
-                        to={`/tickets/${item.id}`}
-                        state={item.index}
-                      >
-                        {item.id + "."} {item.category}
-                      </Link>
-                    )}
-                  </motion.li>
-                );
-              }
-
-              // If isPaid is true or the item is not at index 0, render normally
-              if (isPaid === true) {
-                return (
-                  <motion.li
-                    initial={{ opacity: 0, x: -200 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 * item.index }}
                     onClick={() => handleChooseCategory(item.category)}
                     key={item.id}
                   >
@@ -143,6 +112,32 @@ const TicketRoutes = () => {
                       >
                         {item.id + "."} {item.category}
                       </Link>
+                    )}
+                  </motion.li>
+                );
+              } else {
+                return (
+                  <motion.li
+                    initial={{ opacity: 0, x: -200 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.1 * item.index }}
+                    onClick={() => handleChooseCategory(item.category)}
+                    key={item.id}
+                  >
+                    {!completedArray.includes(item.index) ? (
+                      <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed font-roboto">
+                        ვიდეო გაგეხსნებათ შეძენის შემდეგ
+                      </span>
+                    ) : (
+                      <span
+                        className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg font-roboto opacity-50 cursor-not-allowed ${
+                          item.id === categoryNumber
+                            ? "bg-[#230751]"
+                            : "bg-[#663aac]"
+                        }`}
+                      >
+                        {item.id + "."} {item.category}
+                      </span>
                     )}
                   </motion.li>
                 );

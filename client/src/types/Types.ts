@@ -13,6 +13,7 @@ export interface User {
   email: string;
   completed: number;
   isPaid: boolean;
+  city: string;
   // Add other fields as needed
 }
 
