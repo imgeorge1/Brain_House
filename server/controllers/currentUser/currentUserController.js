@@ -1,3 +1,4 @@
+import AdditionUserInfo from "../../models/AdditionUserInfoSchema.js";
 import User from "../../models/userSchema.js";
 
 const currentUser = async (req, res) => {
@@ -6,9 +7,10 @@ const currentUser = async (req, res) => {
     console.log("currentUser>>>>>>>>>>>>>>", session);
     const { email } = session.user;
 
-    console.log(email);
-
     const user = await User.findOne({
+      email,
+    });
+    const useraditionalinfo = await AdditionUserInfo.findOne({
       email,
     });
 
@@ -18,8 +20,9 @@ const currentUser = async (req, res) => {
     }
 
     const { firstName, lastName, completed, isPaid } = user;
+    const { city } = useraditionalinfo;
 
-    res.json({ firstName, lastName, email, completed, isPaid });
+    res.json({ firstName, lastName, email, completed, isPaid, city });
   } catch (error) {
     console.error("Error fetching user:", error);
     res.status(500).json({ error: "Internal server error" });

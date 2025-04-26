@@ -14,7 +14,7 @@ const authConfig = {
   // __Host-
   cookies: {
     sessionToken: {
-      name: `__Secure-authjs.session-token`,
+      name: `authjs.session-token`,
       options: {
         httpOnly: true,
         sameSite: "None",
@@ -23,7 +23,7 @@ const authConfig = {
       },
     },
     callbackUrl: {
-      name: "__Secure-authjs.callback-url",
+      name: "authjs.callback-url",
       options: {
         sameSite: "None",
         path: "/",
@@ -31,7 +31,7 @@ const authConfig = {
       },
     },
     csrfToken: {
-      name: "__Host-authjs.csrf-token",
+      name: "authjs.csrf-token",
       options: {
         httpOnly: true,
         sameSite: "None",
