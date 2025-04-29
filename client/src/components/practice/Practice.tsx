@@ -29,19 +29,8 @@ const Practice = () => {
 
   return (
     <main className="container mt-80 mb-60 mx-auto p-4">
-      <div className="flex mb-4">
-        {streetsForCity.length > 1 && (
-          <select
-            className="border p-2 mr-4"
-            value={selectedCity}
-            onChange={(e) => {
-              setSelectedCity(e.target.value);
-              setSelectedStreet("");
-            }}
-          >
-            <option value={selectedCity}>{selectedCity}</option>
-          </select>
-        )}
+      <div className="flex mb-4 px-4 py-2 bg-white w-fit rounded">
+        {streetsForCity.length > 1 && <span>{selectedCity}</span>}
       </div>
 
       <table className="min-w-full bg-white">

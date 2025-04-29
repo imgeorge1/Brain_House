@@ -9,6 +9,7 @@ import React, {
 import { useLocation } from "react-router-dom";
 import API from "../utils/API";
 import { TicketsTypes, User } from "../types/Types";
+import { useNavigate } from "react-router-dom";
 
 interface UserContextType {
   currentUser: User | null;
@@ -44,14 +45,21 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   // if (token) {
   //   localStorage.setItem("token", token);
   // }
-
+  // const paid = localStorage.getItem("paid");
   // const tokenFromLocalStorage = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const booleanPaid = localStorage.getItem("paid") === "true";
+
+  console.log(booleanPaid);
+
   const getUser = async () => {
     try {
       const response = await API.get<User>("/user");
       console.log("resoinse", response.data);
 
-      if (response.data) {
+      if (!response.data.city) {
+        navigate("/register");
+      } else if (response.data) {
         setCurrentUser(response.data);
         localStorage.setItem("paid", response.data.isPaid.toString());
       }
@@ -76,8 +84,6 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
     getSession();
   }, []);
-
-  const booleanPaid = localStorage.getItem("paid") === "true";
 
   // useEffect(() => {
   //   if (tokenFromLocalStorage) {
