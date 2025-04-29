@@ -7,7 +7,9 @@ const Practice = () => {
 
   console.log("from usecontext", currentUser);
 
-  const [selectedCity, setSelectedCity] = useState("თბილისი");
+  const [selectedCity, setSelectedCity] = useState(
+    currentUser?.city || "თბილისი"
+  );
   const [selectedStreet, setSelectedStreet] = useState("");
 
   const uniqueCities = [...new Set(lecturers.map((item) => item.city))];
@@ -28,34 +30,16 @@ const Practice = () => {
   return (
     <main className="container mt-80 mb-60 mx-auto p-4">
       <div className="flex mb-4">
-        <select
-          className="border p-2 mr-4"
-          value={selectedCity}
-          onChange={(e) => {
-            setSelectedCity(e.target.value);
-            setSelectedStreet("");
-          }}
-        >
-          {uniqueCities.map((city, index) => (
-            <option key={index} value={city}>
-              {city}
-            </option>
-          ))}
-        </select>
-
         {streetsForCity.length > 1 && (
           <select
-            className="border p-2"
-            value={selectedStreet}
-            onChange={(e) => setSelectedStreet(e.target.value)}
-            disabled={!selectedCity}
+            className="border p-2 mr-4"
+            value={selectedCity}
+            onChange={(e) => {
+              setSelectedCity(e.target.value);
+              setSelectedStreet("");
+            }}
           >
-            <option value="">ყველა</option>
-            {streetsForCity.map((street, index) => (
-              <option key={index} value={street}>
-                {street}
-              </option>
-            ))}
+            <option value={selectedCity}>{selectedCity}</option>
           </select>
         )}
       </div>
@@ -63,7 +47,7 @@ const Practice = () => {
       <table className="min-w-full bg-white">
         <thead>
           <tr className="bg-gray-300">
-            <th className="py-2 w-36 border maxw">ქუჩა</th>
+            <th className="py-2 w-36 border maxw">მისამართი</th>
             <th className="py-2 w-36 border">ლექტორი</th>
             <th className="py-2 w-36 border">ნომერი</th>
           </tr>
