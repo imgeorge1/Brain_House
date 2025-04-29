@@ -7,12 +7,9 @@ const Practice = () => {
 
   console.log("from usecontext", currentUser);
 
-  const [selectedCity, setSelectedCity] = useState(
-    currentUser?.city || "თბილისი"
-  );
-  const [selectedStreet, setSelectedStreet] = useState("");
+  const [selectedCity] = useState(currentUser?.city || "თბილისი");
 
-  const uniqueCities = [...new Set(lecturers.map((item) => item.city))];
+  // const uniqueCities = [...new Set(lecturers.map((item) => item.city))];
 
   const selectedCityData = lecturers.find((item) => item.city === selectedCity);
   console.log("CITY", selectedCity);
@@ -42,17 +39,13 @@ const Practice = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredLecturers
-            .filter((lecturer) =>
-              selectedStreet ? lecturer.street === selectedStreet : true
-            )
-            .map((lecturer, index) => (
-              <tr key={index}>
-                <td className="border px-4 py-2 w-36">{lecturer.street}</td>
-                <td className="border px-4 py-2 w-36">{lecturer.name}</td>
-                <td className="border px-4 py-2 w-36">{lecturer.phone}</td>
-              </tr>
-            ))}
+          {filteredLecturers.map((lecturer, index) => (
+            <tr key={index}>
+              <td className="border px-4 py-2 w-36">{lecturer.street}</td>
+              <td className="border px-4 py-2 w-36">{lecturer.name}</td>
+              <td className="border px-4 py-2 w-36">{lecturer.phone}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </main>
