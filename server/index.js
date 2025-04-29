@@ -14,10 +14,7 @@ import {
   errorHandler,
   errorNotFoundHandler,
 } from "./middleware/error.middleware.js";
-import {
-  authenticatedUser,
-  currentSession,
-} from "./middleware/auth.middleware.js";
+import { currentSession } from "./middleware/auth.middleware.js";
 import authConfig from "./src/config/auth.config.js";
 import { ExpressAuth } from "@auth/express";
 
@@ -49,13 +46,6 @@ const __dirname = path.dirname(__filename);
 
 // Serve static files from React build folder
 app.use(express.static(path.join(__dirname, "client/build")));
-
-// Generate secret key for session
-// const generateSecretKey = () => {
-//   return CryptoJS.lib.WordArray.random(16).toString(CryptoJS.enc.Hex);
-// };
-
-// const secretKey = generateSecretKey();
 
 // Connect to MongoDB
 mongoConnection();
