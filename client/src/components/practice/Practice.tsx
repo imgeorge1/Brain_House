@@ -7,13 +7,15 @@ const Practice = () => {
 
   console.log("from usecontext", currentUser);
 
-  const [selectedCity, setSelectedCity] = useState("თბილისი");
+  const [selectedCity, setSelectedCity] = useState(
+    currentUser?.city || "თბილისი"
+  );
   const [selectedStreet, setSelectedStreet] = useState("");
 
   const uniqueCities = [...new Set(lecturers.map((item) => item.city))];
 
   const selectedCityData = lecturers.find((item) => item.city === selectedCity);
-  // console.log("CITY", selectedCity);
+  console.log("CITY", selectedCity);
 
   const streetsForCity = selectedCityData ? selectedCityData.street : [];
 

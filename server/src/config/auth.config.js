@@ -2,6 +2,10 @@ import dotenv from "dotenv/config";
 import Google from "@auth/express/providers/google";
 import User from "../../models/userSchema.js";
 
+console.log(process.env.AUTH_GOOGLE_ID);
+console.log(process.env.AUTH_GOOGLE_SECRET);
+console.log(process.env.AUTH_SECRET);
+
 const authConfig = {
   trustHost: true,
   providers: [
@@ -12,35 +16,38 @@ const authConfig = {
   ],
   // __Secure-
   // __Host-
-  cookies: {
-    sessionToken: {
-      name: `authjs.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: "None",
-        path: "/",
-        secure: true,
-      },
-    },
-    callbackUrl: {
-      name: "authjs.callback-url",
-      options: {
-        sameSite: "None",
-        path: "/",
-        secure: true,
-      },
-    },
-    csrfToken: {
-      name: "authjs.csrf-token",
-      options: {
-        httpOnly: true,
-        sameSite: "None",
-        path: "/",
-        secure: true,
-      },
-    },
-  },
+  // cookies: {
+  //   sessionToken: {
+  //     name: `authjs.session-token`,
+  //     options: {
+  //       httpOnly: true,
+  //       sameSite: "None",
+  //       path: "/",
+  //       secure: true,
+  //     },
+  //   },
+  //   callbackUrl: {
+  //     name: "authjs.callback-url",
+  //     options: {
+  //       sameSite: "None",
+  //       path: "/",
+  //       secure: true,
+  //     },
+  //   },
+  //   csrfToken: {
+  //     name: "authjs.csrf-token",
+  //     options: {
+  //       httpOnly: true,
+  //       sameSite: "None",
+  //       path: "/",
+  //       secure: true,
+  //     },
+  //   },
+  // },
   secret: process.env.AUTH_SECRET,
+  jwt: {
+    secret: process.env.AUTH_SECRET,
+  },
 
   callbacks: {
     async redirect({ url, baseUrl }) {

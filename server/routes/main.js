@@ -11,6 +11,7 @@ router.use("/", authRoutes);
 
 router.get("/", (req, res) => {
   const token = req.cookies["authjs.session-token"];
+
   if (token) {
     console.log("Session token found, redirecting to frontend...");
     res.send("hellooo");

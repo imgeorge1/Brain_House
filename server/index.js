@@ -51,16 +51,18 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, "client/build")));
 
 // Generate secret key for session
-const generateSecretKey = () => {
-  return CryptoJS.lib.WordArray.random(16).toString(CryptoJS.enc.Hex);
-};
+// const generateSecretKey = () => {
+//   return CryptoJS.lib.WordArray.random(16).toString(CryptoJS.enc.Hex);
+// };
 
-const secretKey = generateSecretKey();
+// const secretKey = generateSecretKey();
 
 // Connect to MongoDB
 mongoConnection();
 
 const DEV_MODE = process.env.NODE_ENV === "developer";
+
+console.log("DEV_MODE>>>>>>>>", DEV_MODE);
 
 app.use(
   cors({
