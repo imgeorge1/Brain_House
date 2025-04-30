@@ -17,13 +17,13 @@ const signup = async (req, res) => {
 
     await sendConfirmationEmail(newUser);
 
-    // console.log("New AdditionUserInfo saved: ", {
-    //   fullName,
-    //   email,
-    //   age,
-    //   city,
-    //   phone,
-    // });
+    console.log("New AdditionUserInfo saved: ", {
+      fullName,
+      email,
+      age,
+      city,
+      phone,
+    });
     res
       .status(200)
       .json({ status: "success", message: "User registered successfully" });
