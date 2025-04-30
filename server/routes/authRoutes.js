@@ -60,13 +60,13 @@ authRoutes.get("/logout", (req, res) => {
     secure: true, // make sure this matches how they were set
   };
 
-  res.clearCookie("__Secure-authjs.session-token", cookieOptions);
-  res.clearCookie("__Secure-authjs.callback-url", {
+  res.clearCookie("authjs.session-token", cookieOptions);
+  res.clearCookie("authjs.callback-url", {
     path: "/",
     sameSite: "None",
     secure: true,
   });
-  res.clearCookie("__Host-authjs.csrf-token", cookieOptions);
+  res.clearCookie("authjs.csrf-token", cookieOptions);
 
   res.redirect(
     DEV_MODE ? "http://localhost:5173" : "https://brain-house-new.vercel.app"
