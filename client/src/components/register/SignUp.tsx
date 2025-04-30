@@ -20,6 +20,8 @@ const SignUp = () => {
     try {
       const url = "/signup";
       const email = currentUser?.email;
+      console.log(email);
+
       const bodyWithEmail = { ...body, email };
 
       const res = await API.post(url, bodyWithEmail);
