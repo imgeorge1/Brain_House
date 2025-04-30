@@ -15,16 +15,15 @@ const SignUp = () => {
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
 
   const navigate = useNavigate();
-
+  console.log("currentUser", currentUser);
   const onSubmit: SubmitHandler<FullUser> = async (body) => {
     try {
-      const url = "/signup";
       const email = currentUser?.email;
-      console.log(email);
+      console.log("userraa");
 
       const bodyWithEmail = { ...body, email };
 
-      const res = await API.post(url, bodyWithEmail);
+      const res = await API.post("/signup", bodyWithEmail);
       console.log("res: ", res);
       navigate("/payment");
     } catch (error) {
