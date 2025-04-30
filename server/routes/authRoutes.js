@@ -54,13 +54,18 @@ authRoutes.delete("/comments/:id", deleteComment);
 
 authRoutes.get("/logout", (req, res) => {
   const cookieOptions = {
+    httpOnly: true,
     path: "/",
     sameSite: "None",
     secure: true, // make sure this matches how they were set
   };
 
   res.clearCookie("__Secure-authjs.session-token", cookieOptions);
-  res.clearCookie("__Secure-authjs.callback-url", cookieOptions);
+  res.clearCookie("__Secure-authjs.callback-url", {
+    path: "/",
+    sameSite: "None",
+    secure: true,
+  });
   res.clearCookie("__Host-authjs.csrf-token", cookieOptions);
 
   res.redirect(
