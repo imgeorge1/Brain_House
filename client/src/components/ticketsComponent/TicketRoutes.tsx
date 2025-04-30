@@ -130,6 +130,10 @@ const TicketRoutes = () => {
                       </span>
                     ) : (
                       <span
+                        title={
+                          item.id +
+                          `  თავი გაგეხსნებათ ფასიანი პაკეტის შეძენის შემდეგ`
+                        }
                         className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg font-roboto opacity-50 cursor-not-allowed ${
                           item.id === categoryNumber
                             ? "bg-[#230751]"
