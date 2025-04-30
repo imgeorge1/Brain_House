@@ -57,7 +57,7 @@ const authConfig = {
         return url;
       }
       // Default to home page
-      return `${process.env.CLIENT_URL}/`;
+      return `${process.env.CLIENT_URL}`;
     },
 
     async signIn({ profile }) {

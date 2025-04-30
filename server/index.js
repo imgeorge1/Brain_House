@@ -5,7 +5,6 @@ import generateSitemap from "./generateSitemap.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-import CryptoJS from "crypto-js";
 import mongoConnection from "./db/mongoConnection.js";
 import router from "./routes/main.js";
 import { fileURLToPath } from "url";
@@ -57,9 +56,7 @@ console.log("DEV_MODE>>>>>>>>", DEV_MODE);
 app.use(
   cors({
     credentials: true,
-    origin: DEV_MODE
-      ? "http://localhost:5173"
-      : "https://housebrain.netlify.app",
+    origin: process.env.CLIENT_URL,
   })
 );
 

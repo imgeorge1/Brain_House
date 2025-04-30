@@ -20,7 +20,7 @@ const currentUser = async (req, res) => {
     }
 
     const { firstName, lastName, completed, isPaid } = user;
-    const { city } = useraditionalinfo;
+    const city = useraditionalinfo?.city || null;
 
     res.json({ firstName, lastName, email, completed, isPaid, city });
   } catch (error) {
