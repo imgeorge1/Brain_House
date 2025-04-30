@@ -59,7 +59,7 @@ app.use(
     credentials: true,
     origin: DEV_MODE
       ? "http://localhost:5173"
-      : "https://brain-house-new.vercel.app",
+      : "https://housebrain.netlify.app/",
   })
 );
 

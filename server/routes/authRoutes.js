@@ -69,7 +69,7 @@ authRoutes.get("/logout", (req, res) => {
   res.clearCookie("authjs.csrf-token", cookieOptions);
 
   res.redirect(
-    DEV_MODE ? "http://localhost:5173" : "https://brain-house-new.vercel.app"
+    DEV_MODE ? "http://localhost:5173" : "https://housebrain.netlify.app/"
   );
 });
 
