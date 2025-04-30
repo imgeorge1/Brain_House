@@ -59,7 +59,7 @@ app.use(
     credentials: true,
     origin: DEV_MODE
       ? "http://localhost:5173"
-      : "https://housebrain.netlify.app/",
+      : "https://housebrain.netlify.app",
   })
 );
 
