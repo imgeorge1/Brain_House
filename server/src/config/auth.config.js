@@ -16,34 +16,34 @@ const authConfig = {
   ],
   // __Secure-
   // __Host-
-  // cookies: {
-  //   sessionToken: {
-  //     name: `__Secure-authjs.session-token`,
-  //     options: {
-  //       httpOnly: true,
-  //       sameSite: "None",
-  //       path: "/",
-  //       secure: true,
-  //     },
-  //   },
-  //   callbackUrl: {
-  //     name: "__Secure-authjs.callback-url",
-  //     options: {
-  //       sameSite: "None",
-  //       path: "/",
-  //       secure: true,
-  //     },
-  //   },
-  //   csrfToken: {
-  //     name: "__Host-authjs.csrf-token",
-  //     options: {
-  //       httpOnly: true,
-  //       sameSite: "None",
-  //       path: "/",
-  //       secure: true,
-  //     },
-  //   },
-  // },
+  cookies: {
+    sessionToken: {
+      name: `__Secure-authjs.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "None",
+        path: "/",
+        secure: true,
+      },
+    },
+    callbackUrl: {
+      name: "__Secure-authjs.callback-url",
+      options: {
+        sameSite: "None",
+        path: "/",
+        secure: true,
+      },
+    },
+    csrfToken: {
+      name: "__Host-authjs.csrf-token",
+      options: {
+        httpOnly: true,
+        sameSite: "None",
+        path: "/",
+        secure: true,
+      },
+    },
+  },
   secret: process.env.AUTH_SECRET,
   jwt: {
     secret: process.env.AUTH_SECRET,
