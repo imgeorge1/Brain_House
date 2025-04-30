@@ -24,6 +24,7 @@ const signup = async (req, res) => {
       city,
       phone,
     });
+
     res
       .status(200)
       .json({ status: "success", message: "User registered successfully" });
