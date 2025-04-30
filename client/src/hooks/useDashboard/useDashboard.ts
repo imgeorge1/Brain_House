@@ -9,15 +9,14 @@ const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
   const location = useLocation();
 
   const logout = () => {
+    localStorage.removeItem("paid");
     window.open(
       // change for production
       DEV_MODE
         ? "http://localhost:3000/logout"
-        : "https://brainhouse.onrender.com/logout",
+        : "https://brain-house.onrender.com/logout",
       "_self"
     );
-    localStorage.removeItem("token");
-    localStorage.removeItem("paid");
   };
 
   const handleShow = () => setShow(true);
