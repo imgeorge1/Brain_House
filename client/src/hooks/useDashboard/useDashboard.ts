@@ -14,7 +14,7 @@ const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
       // change for production
       DEV_MODE
         ? "http://localhost:3000/logout"
-        : "https://brain-house.onrender.com/logout",
+        : "https://brainhouse.onrender.com/logout",
       "_self"
     );
   };
