@@ -36,31 +36,22 @@ interface UserProviderProps {
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const location = useLocation();
-  // const queryParams = new URLSearchParams(location.search);
   const [ticketData, setTicketData] = useState<TicketsTypes[]>([]);
   const [correctAnswer, setCorrectAnswer] = useState(0);
 
-  // const token = queryParams.get("jwtToken");
-
-  // if (token) {
-  //   localStorage.setItem("token", token);
-  // }
-  // const paid = localStorage.getItem("paid");
-  // const tokenFromLocalStorage = localStorage.getItem("token");
   const navigate = useNavigate();
   const booleanPaid = localStorage.getItem("paid") === "true";
 
-  console.log(booleanPaid);
+  console.log(currentUser);
 
   const getUser = async () => {
     try {
       const response = await API.get<User>("/user");
       console.log("resoinse", response.data);
-
+      setCurrentUser(response.data);
       if (!response.data.city) {
         navigate("/register");
       } else if (response.data) {
-        setCurrentUser(response.data);
         localStorage.setItem("paid", response.data.isPaid.toString());
       }
     } catch (error) {
@@ -84,12 +75,6 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
     getSession();
   }, []);
-
-  // useEffect(() => {
-  //   if (tokenFromLocalStorage) {
-  //     getUser();
-  //   }
-  // }, []);
 
   useEffect(() => {
     if (!location.pathname.startsWith("/tickets")) setTicketData([]);

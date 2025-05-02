@@ -15,7 +15,7 @@ const useSignInModal = () => {
     window.open(
       DEV_MODE
         ? "http://localhost:3000/auth/signin"
-        : "https://brainhouse.onrender.com/auth/signin",
+        : "https://brain-house.onrender.com/auth/signin",
       "_self"
     );
   };
@@ -24,7 +24,7 @@ const useSignInModal = () => {
     window.open(
       DEV_MODE
         ? "http://localhost:3000/auth/facebook"
-        : "https://brainhouse.onrender.com/auth/facebook",
+        : "https://brain-house.onrender.com/auth/facebook",
       "_self"
     );
   };

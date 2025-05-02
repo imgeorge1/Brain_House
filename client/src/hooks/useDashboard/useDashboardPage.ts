@@ -43,17 +43,15 @@ const useDashboardPage = () => {
 
   const handleActive = async (userId: string, isPaid: boolean) => {
     try {
-      const url = `/users/${userId}`;
       const currentDate = new Date().toISOString().split("T")[0];
 
       console.log(currentDate);
 
-      await API.put(url, {
+      await API.put(`/users/${userId}`, {
         isPaid: !isPaid,
         payDate: isPaid ? null : currentDate,
       });
 
-      //here we use callback function for latest data
       setUsers((prevUsers) =>
         prevUsers.map((user) =>
           user._id === userId
