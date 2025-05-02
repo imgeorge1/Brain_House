@@ -49,10 +49,6 @@ app.use(express.static(path.join(__dirname, "client/build")));
 // Connect to MongoDB
 mongoConnection();
 
-const DEV_MODE = process.env.NODE_ENV === "developer";
-
-console.log("DEV_MODE>>>>>>>>", DEV_MODE);
-
 app.use(
   cors({
     credentials: true,
@@ -62,15 +58,6 @@ app.use(
 
 app.use(currentSession);
 app.use("/auth", ExpressAuth(authConfig));
-
-// app.get("/protected", async (req, res) => {
-//   console.log(res.locals.session);
-//   res.json(res.locals.session);
-// });
-
-// app.get("/api/protected", authenticatedUser, async (req, res) => {
-//   res.json(res.locals.session);
-// });
 
 app.use("/", router);
 

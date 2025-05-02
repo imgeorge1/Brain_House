@@ -1,9 +1,6 @@
 import dotenv from "dotenv/config";
 import express from "express";
 import authRoutes from "./authRoutes.js";
-import { authenticatedUser } from "../middleware/auth.middleware.js";
-
-const DEV_MODE = process.env.NODE_ENV === "developer";
 
 const router = express.Router();
 

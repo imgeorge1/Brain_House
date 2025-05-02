@@ -2,10 +2,6 @@ import dotenv from "dotenv/config";
 import Google from "@auth/express/providers/google";
 import User from "../../models/userSchema.js";
 
-console.log(process.env.AUTH_GOOGLE_ID);
-console.log(process.env.AUTH_GOOGLE_SECRET);
-console.log(process.env.AUTH_SECRET);
-
 const authConfig = {
   trustHost: true,
   providers: [
@@ -51,7 +47,6 @@ const authConfig = {
 
   callbacks: {
     async redirect({ url, baseUrl }) {
-      console.log(url);
       // Redirect after sign-in or sign-out
       if (url.startsWith(process.env.CLIENT_URL)) {
         return url;
@@ -79,7 +74,7 @@ const authConfig = {
           });
           await user.save();
         }
-        console.log("User authenticated:", user);
+        // console.log("User authenticated:", user);
 
         return true;
       } catch (error) {
@@ -91,7 +86,7 @@ const authConfig = {
     async session({ session, token }) {
       if (token) {
         session.user = token.user; // Attach user info to the session
-        console.log("Token saved");
+        // console.log("Token saved");
       }
       return session;
     },

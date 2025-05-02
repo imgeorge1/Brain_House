@@ -20,14 +20,6 @@ import { authenticatedUser } from "../middleware/auth.middleware.js";
 import signup from "../config/driveConfig/additionalinfo.js";
 
 const authRoutes = express.Router();
-const DEV_MODE = process.env.NODE_ENV === "developer";
-
-// authRoutes.get("/protected", async (req, res) => {
-//   console.log(res.locals.session);
-//   res.json(res.locals.session);
-// });
-
-// authRoutes.get("/api/protected", authenticatedUser, currentUser);
 
 authRoutes.get("/beka", (req, res) => {
   res.send("Hello beka!");
@@ -60,6 +52,9 @@ authRoutes.get("/logout", (req, res) => {
     secure: true, // make sure this matches how they were set
   };
 
+  // __Secure-
+  // __Host-
+
   res.clearCookie("__Secure-authjs.session-token", cookieOptions);
   res.clearCookie("__Secure-authjs.callback-url", {
     path: "/",
@@ -68,9 +63,7 @@ authRoutes.get("/logout", (req, res) => {
   });
   res.clearCookie("__Host-authjs.csrf-token", cookieOptions);
 
-  res.redirect(
-    DEV_MODE ? "http://localhost:5173" : "https://housebrain.netlify.app"
-  );
+  res.redirect(`${process.env.CLIENT_URL}`);
 });
 
 export default authRoutes;

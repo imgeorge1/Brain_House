@@ -2,11 +2,11 @@ import { getSession } from "@auth/express";
 import authConfig from "../src/config/auth.config.js";
 
 export async function authenticatedUser(req, res, next) {
-  console.log(req.headers.cookie);
+  // console.log(req.headers.cookie);
   const session =
     res.locals.session ?? (await getSession(req, authConfig)) ?? undefined;
 
-  console.log("authenticatedUser>>>>>>>>>>>>>", session);
+  // console.log("authenticatedUser>>>>>>>>>>>>>", session);
   res.locals.session = session;
 
   if (session) {
@@ -18,7 +18,7 @@ export async function authenticatedUser(req, res, next) {
 
 export async function currentSession(req, res, next) {
   const session = (await getSession(req, authConfig)) ?? undefined;
-  console.log("currentSession>>>>>>>>>>>>>", session);
+  // console.log("currentSession>>>>>>>>>>>>>", session);
   res.locals.session = session;
   return next();
 }

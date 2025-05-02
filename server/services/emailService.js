@@ -5,8 +5,8 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: "shvangiradze22giorgi@gmail.com",
-    pass: "yegb cuyy seqq ahyy",
+    user: "brainhouse2021@gmail.com",
+    pass: "vjqi ayfz zemw hbcv",
   },
   // tls: {
   //   rejectUnauthorized: false, // Add this line to accept self-signed certificates (NOT recommended)
@@ -14,17 +14,15 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendConfirmationEmail = async (user) => {
-  // console.log(user);
   const mailOptions = {
-    from: "shvangiradze22giorgi@gmail.com",
+    from: "brainhouse2021@gmail.com",
     to: user.email,
-    subject: "Welcome to our app | We're glad to have you!", // More natural subject
+    subject: "Welcome to our app | We're glad to have you!",
     text: `Hi ${user.firstName},\n\nThank you for joining us! Let us know if you have any questions.\n\nBest,\nBrain House's Team`,
-    // Uncomment in production
 
-    // headers: {
-    //   "List-Unsubscribe": "<mailto:shvangiradze22giorgi@gmail.com>",
-    // },
+    headers: {
+      "List-Unsubscribe": "<mailto:brainhouse2021@gmail.com>",
+    },
   };
 
   try {

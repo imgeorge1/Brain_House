@@ -4,7 +4,7 @@ import User from "../../models/userSchema.js";
 const currentUser = async (req, res) => {
   try {
     const session = res.locals.session;
-    console.log("currentUser>>>>>>>>>>>>>>", session);
+    // console.log("currentUser>>>>>>>>>>>>>>", session);
     const { email } = session.user;
 
     const user = await User.findOne({
