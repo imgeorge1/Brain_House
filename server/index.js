@@ -51,11 +51,10 @@ mongoConnection();
 
 app.use(
   cors({
+    origin: [process.env.CLIENT_URL, "https://drive.google.com"],
     credentials: true,
-    origin: process.env.CLIENT_URL,
   })
 );
-
 app.use(currentSession);
 app.use("/auth", ExpressAuth(authConfig));
 
