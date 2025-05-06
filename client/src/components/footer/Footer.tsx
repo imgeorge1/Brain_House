@@ -67,7 +67,7 @@ function Footer() {
         </div>
       </div>
       <div className="flex text-gray-400 w-full justify-center gap-2 mt-12 font-mono">
-      © 2024 ყველა უფლება დაცულია 
+        © 2024 ყველა უფლება დაცულია
       </div>
     </div>
   );
