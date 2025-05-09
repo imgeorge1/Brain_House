@@ -124,7 +124,7 @@ code {
   color: var(--l-purple);
 }
 /* header */
-.spin-on-hover:hover{
+.spin-on-hover:hover {
   transform: rotateZ(360deg);
   transition-duration: 800ms;
 }
@@ -166,7 +166,7 @@ code {
   content: "✅ "; /* Adds the checkmark symbol */
 }
 
-.course-info-link:hover{
+.course-info-link:hover {
   color: #fe6d46;
   transition-duration: 200ms;
 }

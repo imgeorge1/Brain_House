@@ -7,6 +7,8 @@ const Ticket = ({
   handleButtonClick,
   getAnswerClass,
 }: TicketTypes) => {
+  console.log(data.image);
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 200 }}
@@ -21,12 +23,12 @@ const Ticket = ({
           src={data.image}
           alt={`drive ticket image ${data.id}`}
           className="w-full h-full rounded-lg"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.onerror = null;
-            target.src =
-              "https://via.placeholder.com/500x300.png?text=Image+Not+Available";
-          }}
+          // onError={(e) => {
+          //   const target = e.target as HTMLImageElement;
+          //   target.onerror = null;
+          //   target.src =
+          //     "https://via.placeholder.com/500x300.png?text=Image+Not+Available";
+          // }}
         />
       </div>
       <div className="flex gap-3 py-3">
