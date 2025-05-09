@@ -55,7 +55,6 @@ app.use(
     credentials: true,
   })
 );
-
 app.use(currentSession);
 app.use("/auth", ExpressAuth(authConfig));
 
