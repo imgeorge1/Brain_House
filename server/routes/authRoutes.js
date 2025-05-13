@@ -18,6 +18,7 @@ import {
 } from "../controllers/commentController/commentController.js";
 import { authenticatedUser } from "../middleware/auth.middleware.js";
 import signup from "../config/driveConfig/additionalinfo.js";
+import oldUser from "../controllers/oldUsers/oldUsers.js";
 
 const authRoutes = express.Router();
 
@@ -28,6 +29,7 @@ authRoutes.get("/beka", (req, res) => {
 authRoutes.get("/user", authenticatedUser, currentUser);
 authRoutes.put("/user", allowedNextCategory);
 authRoutes.get("/users", users);
+authRoutes.get("/oldusers", oldUser);
 authRoutes.put("/users/:userId", updateUserPaidStatus);
 authRoutes.get("/usersInfo", usersInfo);
 

@@ -47,7 +47,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, "client/build")));
 
 // Connect to MongoDB
-mongoConnection();
+await mongoConnection();
 
 app.use(
   cors({

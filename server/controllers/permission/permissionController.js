@@ -1,9 +1,11 @@
-import User from "../../models/userSchema.js";
+import mongoConnection from "../../db/mongoConnection.js";
+
+const { models } = await mongoConnection();
 
 const allowedNextCategory = async (req, res) => {
   try {
     const { completed, email } = req.body;
-    const user = await User.findOne({ email: email });
+    const user = await models.User.findOne({ email: email });
     user.completed = completed;
     // console.log("allow user", user);
 

@@ -8,6 +8,6 @@ const ticketSchema = new mongoose.Schema({
   quantityAnswer: Number,
 });
 
-const Ticket = mongoose.model("Ticket", ticketSchema);
+// const Ticket = mongoose.model("Ticket", ticketSchema);
 
-export default Ticket;
+export default ticketSchema;

@@ -6,5 +6,5 @@ const signSchema = new mongoose.Schema({
   image: String,
 });
 
-const Signs = mongoose.model("Signs", signSchema);
-export default Signs;
+// const Signs = mongoose.model("Signs", signSchema);
+export default signSchema;

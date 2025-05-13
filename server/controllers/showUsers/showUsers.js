@@ -1,9 +1,11 @@
-import User from "../../models/userSchema.js";
+import mongoConnection from "../../db/mongoConnection.js";
 import sendConfirmationEmail from "../../services/emailService.js";
+
+const { models } = await mongoConnection();
 
 const users = async (req, res) => {
   try {
-    const users = await User.find({});
+    const users = await models.User.find({});
     res.status(200).json({ users });
   } catch (error) {
     console.log(error);
@@ -18,7 +20,7 @@ const updateUserPaidStatus = async (req, res) => {
 
     console.log("payDate >>>>>>>>>", payDate);
 
-    const user = await User.findByIdAndUpdate(
+    const user = await models.User.findByIdAndUpdate(
       userId,
       { isPaid, payDate },
       { new: true }

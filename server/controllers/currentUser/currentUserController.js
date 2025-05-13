@@ -1,5 +1,6 @@
-import AdditionUserInfo from "../../models/AdditionUserInfoSchema.js";
-import User from "../../models/userSchema.js";
+import mongoConnection from "../../db/mongoConnection.js";
+
+const { models } = await mongoConnection();
 
 const currentUser = async (req, res) => {
   try {
@@ -7,10 +8,10 @@ const currentUser = async (req, res) => {
     // console.log("currentUser>>>>>>>>>>>>>>", session);
     const { email } = session.user;
 
-    const user = await User.findOne({
+    const user = await models.User.findOne({
       email,
     });
-    const useraditionalinfo = await AdditionUserInfo.findOne({
+    const useraditionalinfo = await models.AdditionUserInfo.findOne({
       email,
     });
 

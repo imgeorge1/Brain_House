@@ -1,6 +1,8 @@
 import dotenv from "dotenv/config";
 import Google from "@auth/express/providers/google";
-import User from "../../models/userSchema.js";
+import mongoConnection from "../../db/mongoConnection.js";
+
+const { models } = await mongoConnection();
 
 const authConfig = {
   trustHost: true,
@@ -61,11 +63,11 @@ const authConfig = {
       const { given_name, family_name, email, picture } = profile;
       // console.log("Google Profile:", profile);
       try {
-        let user = await User.findOne({ email });
+        let user = await models.User.findOne({ email });
 
         if (!user) {
           // If user doesn't exist, create a new user in MongoDB
-          user = new User({
+          user = new models.User({
             firstName: given_name,
             lastName: family_name,
             email,

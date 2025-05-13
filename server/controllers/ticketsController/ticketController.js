@@ -1,4 +1,6 @@
-import Ticket from "../../models/ticketSchema.js";
+import mongoConnection from "../../db/mongoConnection.js";
+
+const { models } = await mongoConnection();
 
 const ticket = async (req, res) => {
   try {
@@ -8,7 +10,7 @@ const ticket = async (req, res) => {
     // } else {
     // }
 
-    const ticket = await Ticket.find({ categoryID: req.params.id });
+    const ticket = await models.Ticket.find({ categoryID: req.params.id });
 
     res.status(200).json(ticket);
   } catch (error) {

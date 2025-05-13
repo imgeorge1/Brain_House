@@ -1,8 +1,10 @@
-import AdditionUserInfo from "../../models/AdditionUserInfoSchema.js";
+import mongoConnection from "../../db/mongoConnection.js";
+
+const { models } = await mongoConnection();
 
 const usersInfo = async (req, res) => {
   try {
-    const userInfoList = await AdditionUserInfo.find({});
+    const userInfoList = await models.AdditionUserInfo.find({});
     // console.log(userInfoList);
     res.status(200).json({ userInfoList });
   } catch (error) {

@@ -20,9 +20,9 @@ const AdditionUserInfoSchema = new mongoose.Schema({
   },
 });
 
-const AdditionUserInfo = mongoose.model(
-  "AdditionUserInfo",
-  AdditionUserInfoSchema
-);
+// const AdditionUserInfo = mongoose.model(
+//   "AdditionUserInfo",
+//   AdditionUserInfoSchema
+// );
 
-export default AdditionUserInfo;
+export default AdditionUserInfoSchema;

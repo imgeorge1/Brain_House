@@ -1,9 +1,11 @@
-import Comments from "../../models/commentsSchema.js";
+import mongoConnection from "../../db/mongoConnection.js";
+
+const { models } = await mongoConnection();
 
 const postComments = async (req, res) => {
   try {
     const { email, fullName, comment } = req.body;
-    const newComment = new Comments({
+    const newComment = new models.Comments({
       email,
       fullName,
       comment,
@@ -24,7 +26,7 @@ const postComments = async (req, res) => {
 
 const getComments = async (_, res) => {
   try {
-    const allComments = await Comments.find({});
+    const allComments = await models.Comments.find({});
 
     res.status(200).json({
       status: "success",
@@ -39,7 +41,9 @@ const getComments = async (_, res) => {
 
 const deleteComment = async (req, res) => {
   try {
-    const deletedComment = await Comments.findByIdAndDelete(req.params.id);
+    const deletedComment = await models.Comments.findByIdAndDelete(
+      req.params.id
+    );
 
     console.log("comment deleted", deletedComment);
 

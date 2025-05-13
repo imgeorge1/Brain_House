@@ -1,4 +1,6 @@
-import Ticket from "../../models/ticketSchema.js";
+import mongoConnection from "../../db/mongoConnection.js";
+
+const { models } = await mongoConnection();
 
 const ticketTest = async (req, res) => {
   try {
@@ -6,7 +8,7 @@ const ticketTest = async (req, res) => {
     const { data: selectedIds } = req.body;
 
     // Perform aggregation query to get tickets
-    const tickets = await Ticket.aggregate([
+    const tickets = await models.Ticket.aggregate([
       // Match documents based on the array of IDs
       { $match: { categoryID: { $in: selectedIds } } },
       // Randomly select documents

@@ -42,6 +42,6 @@ const userSchema = new mongoose.Schema({
 userSchema.plugin(uniqueValidator);
 userSchema.plugin(findOrCreate);
 
-const User = mongoose.model("User", userSchema);
+// const User = db1Connection.model("User", userSchema);
 
-export default User;
+export default userSchema;

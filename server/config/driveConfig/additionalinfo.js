@@ -1,11 +1,13 @@
-import AdditionUserInfo from "../../models/AdditionUserInfoSchema.js";
+import mongoConnection from "../../db/mongoConnection.js";
 import sendConfirmationEmail from "../../services/emailService.js";
+
+const { models } = await mongoConnection();
 
 const signup = async (req, res) => {
   try {
     const { fullName, email, age, city, phone } = req.body;
 
-    const newUser = new AdditionUserInfo({
+    const newUser = new models.AdditionUserInfo({
       fullName,
       email,
       age,
