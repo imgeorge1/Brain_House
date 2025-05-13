@@ -4,6 +4,21 @@ export interface PaginationTypes {
   setCurrentPage: (page: number) => void;
   currentPage: number;
 }
+export interface MergedUser {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  isPaid: boolean;
+  payDate?: string;
+  image?: string;
+  provider?: string;
+  completed?: number;
+  fullName: string;
+  age?: number | null;
+  city?: string;
+  phone?: number | null;
+}
 
 export interface User {
   // Define your user interface here

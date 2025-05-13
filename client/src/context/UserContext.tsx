@@ -66,6 +66,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         if (res.data?.user) {
           getUser();
         } else {
+          window.localStorage.removeItem("paid");
           console.log("❌ Not signed in");
         }
       } catch (error) {

@@ -2,8 +2,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { DashboardTypes } from "../../types/Types";
 
-const DEV_MODE = false;
-
 const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -12,9 +10,7 @@ const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
     localStorage.removeItem("paid");
     window.open(
       // change for production
-      DEV_MODE
-        ? "http://localhost:3000/logout"
-        : "https://brain-house-2.onrender.com/logout",
+      `${import.meta.env.VITE_SERVER_URL}/logout`,
       "_self"
     );
   };
