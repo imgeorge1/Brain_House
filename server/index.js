@@ -58,6 +58,26 @@ app.use(
 app.use(currentSession);
 app.use("/auth", ExpressAuth(authConfig));
 
+const additionalUsers = [
+  {
+    fullName: "Giorgi zurabishvili",
+    email: "ubitoz133@gmail.com",
+    age: 18,
+    city: "Tbilisi",
+    phone: 5555555555,
+  },
+];
+const { models } = await mongoConnection();
+
+try {
+  await models.AdditionUserInfo.insertMany(additionalUsers);
+  console.log("Additional user info added successfully!");
+} catch (error) {
+  console.error("Error inserting additional user info:", error);
+}
+
+
+
 app.use("/", router);
 
 app.use(errorNotFoundHandler);

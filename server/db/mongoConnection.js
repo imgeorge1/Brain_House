@@ -26,12 +26,12 @@ const mongoConnection = async () => {
     });
 
     const User = db1Connection.model("User", userSchema);
-    const OldUser = db1Connection.model("User", userSchema);
+    const OldUser = db2Connection.model("User", userSchema);
     const AdditionUserInfo = db1Connection.model(
       "AdditionUserInfo",
       AdditionUserInfoSchema
     );
-    const OldAdditionUserInfo = db1Connection.model(
+    const OldAdditionUserInfo = db2Connection.model(
       "AdditionUserInfo",
       AdditionUserInfoSchema
     );
