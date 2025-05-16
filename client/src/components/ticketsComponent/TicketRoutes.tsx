@@ -140,7 +140,9 @@ const TicketRoutes = () => {
                             : "bg-[#663aac]"
                         }`}
                       >
-                        {item.id + "."} {item.category}
+                        {isPaid
+                          ? item.id + ". " + item.category
+                          : "ნახვა შეგეძლებათ შეძენის შემდეგ"}
                       </span>
                     )}
                   </motion.li>
