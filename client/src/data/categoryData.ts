@@ -171,7 +171,7 @@ const categoryData2 = [
     category: "ადმინისტრაციული კანონი",
     index: 25,
     videoUrl:
-      "https://drive.google.com/file/d/1MaPbbvdheOPs72ZDWc8E8mRirIgr_Swl/preview",
+      "https://drive.google.com/file/d/1NTioStNbM4RrJMZXAy0BOC5sSBu7fSdT/preview",
   },
   {
     id: 29,
