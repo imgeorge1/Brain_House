@@ -1,5 +1,5 @@
 import mongoConnection from "../../db/mongoConnection.js";
-import sendConfirmationEmail from "../../services/emailService.js";
+// import sendConfirmationEmail from "../../services/emailService.js";
 
 const { models } = await mongoConnection();
 
@@ -17,7 +17,7 @@ const signup = async (req, res) => {
 
     await newUser.save();
 
-    await sendConfirmationEmail(newUser);
+    // await sendConfirmationEmail(newUser);
 
     console.log("New AdditionUserInfo saved: ", {
       fullName,
