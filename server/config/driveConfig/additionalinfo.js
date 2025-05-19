@@ -2,6 +2,7 @@ import mongoConnection from "../../db/mongoConnection.js";
 // import sendConfirmationEmail from "../../services/emailService.js";
 
 const { models } = await mongoConnection();
+let counter = 0;
 
 const signup = async (req, res) => {
   try {
@@ -19,7 +20,7 @@ const signup = async (req, res) => {
 
     // await sendConfirmationEmail(newUser);
 
-    console.log("New AdditionUserInfo saved: ", {
+    console.log(counter++, "New AdditionUserInfo saved: ", {
       fullName,
       email,
       age,
