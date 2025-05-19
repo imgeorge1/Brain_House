@@ -22,6 +22,7 @@ const SignUp = () => {
       console.log("userraa");
 
       const bodyWithEmail = { ...body, email };
+      console.log("bodywith email", bodyWithEmail);
 
       const res = await API.post("/signup", bodyWithEmail);
       console.log("res: ", res);
