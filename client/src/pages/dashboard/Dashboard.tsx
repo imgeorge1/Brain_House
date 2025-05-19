@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 import useDashboardPage from "../../hooks/useDashboard/useDashboardPage";
 import OldDashboard from "../../components/olddata";
 import API from "../../utils/API";
-import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const { users, handleActive } = useDashboardPage();
@@ -10,7 +9,6 @@ function Dashboard() {
   const [oldData, setOldData] = useState<boolean>(false);
   const [editUser, setEditUser] = useState<any>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const navigate = useNavigate();
 
   const handleOldData = () => setOldData(true);
   const handleNewData = () => setOldData(false);
