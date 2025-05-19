@@ -1,5 +1,5 @@
 import mongoConnection from "../../db/mongoConnection.js";
-import sendConfirmationEmail from "../../services/emailService.js";
+// import sendConfirmationEmail from "../../services/emailService.js";
 
 const { models } = await mongoConnection();
 
@@ -28,10 +28,10 @@ const updateUserPaidStatus = async (req, res) => {
 
     if (!user) {
       return res.status(404).json({ error: "User not found" });
-    }
-    if (user.isPaid !== true) {
-      sendConfirmationEmail(user);
-    }
+    };
+    // if (user.isPaid !== true) {
+    //   sendConfirmationEmail(user);
+    // }
 
     console.log("Change Paid Status: ", user);
 
