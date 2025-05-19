@@ -36,7 +36,7 @@ authRoutes.get("/usersInfo", usersInfo);
 authRoutes.get("/tickets/:id", ticket);
 authRoutes.post("/tickets", ticketTest);
 
-authRoutes.post("/signup", signup);
+authRoutes.put("/signup", signup);
 
 // authRoutes.get("/api/video", generateVideos);
 

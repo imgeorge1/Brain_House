@@ -1,12 +1,42 @@
 import mongoConnection from "../../db/mongoConnection.js";
-// import sendConfirmationEmail from "../../services/emailService.js";
 
 const { models } = await mongoConnection();
+let userCounter = 0;
 
-const signup = async (req, res) => {
+const updateUserInfo = async (req, res) => {
   try {
-    const { fullName, email, age, city, phone } = req.body;
+    const { editUser } = req.body;
+    const { fullName, email, age, city, phone } = editUser;
 
+    if (!email) {
+      return res.status(400).json({
+        status: "error",
+        message: "Email is required to update user info",
+      });
+    }
+
+    // Check if user exists
+    const existingUser = await models.AdditionUserInfo.findOne({ email });
+
+    if (existingUser) {
+      // Update existing user
+      existingUser.fullName = fullName;
+      existingUser.age = age;
+      existingUser.city = city;
+      existingUser.phone = phone;
+
+      await existingUser.save();
+
+      console.log("User updated:", existingUser);
+
+      return res.status(200).json({
+        status: "success",
+        message: "User updated successfully",
+        user: existingUser,
+      });
+    }
+
+    // If user doesn't exist, create a new one
     const newUser = new models.AdditionUserInfo({
       fullName,
       email,
@@ -16,26 +46,22 @@ const signup = async (req, res) => {
     });
 
     await newUser.save();
+    userCounter++;
 
-    // await sendConfirmationEmail(newUser);
+    console.log(`User #${userCounter} created:`, newUser);
 
-    console.log("New AdditionUserInfo saved: ", {
-      fullName,
-      email,
-      age,
-      city,
-      phone,
+    res.status(201).json({
+      status: "success",
+      message: "User created successfully",
+      user: newUser,
     });
-
-    res
-      .status(200)
-      .json({ status: "success", message: "User registered successfully" });
   } catch (error) {
-    console.error("Error in signup:", error.message);
+    console.error("Error in updateUserInfo:", error.message);
     res
       .status(500)
-      .json({ status: "error", message: "User registration failed" });
+      .json({ status: "error", message: "Failed to save user info" });
   }
 };
 
-export default signup;
+export default updateUserInfo;
+

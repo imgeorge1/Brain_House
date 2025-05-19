@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
-import Register from "./pages/register/Register";
+// import Register from "./pages/register/Register";
 import Brain from "./assets/brain.png";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -40,7 +40,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/buy-course" element={<BuyCourse />} />
-          <Route path="/register" element={<Register />} />
+          {/* <Route path="/register" element={<Register />} /> */}
           <Route path="/payment" element={<Payment />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/tickets/:id" element={<TicketsLazy />} />
