@@ -42,7 +42,7 @@ const TicketRoutes = () => {
           >
             საგზაო ნიშნები
           </Link>
-          {currentUser ? (
+          {true ? (
             <NavLink
               to="/exams"
               className="drivebtn text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
@@ -53,7 +53,7 @@ const TicketRoutes = () => {
           ) : (
             <span
               className="text-center text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
-            rounded-3xl opacity-50"
+            rounded-3xl"
             >
               გამოცდა
             </span>
@@ -85,9 +85,9 @@ const TicketRoutes = () => {
         </motion.div>
         {(show || width >= 1024) && (
           <ul className="w-full max-w-[690px] xl:w-[469px] font-roboto">
-            {categoryData.map((item, index) => {
+            {categoryData.map((item) => {
               // If isPaid is false, only render the item at index 0
-              if (isPaid === true || index === 0) {
+              if (true) {
                 return (
                   <motion.li
                     initial={{ opacity: 0, x: -200 }}
@@ -134,15 +134,13 @@ const TicketRoutes = () => {
                           item.id +
                           `  თავი გაგეხსნებათ ფასიანი პაკეტის შეძენის შემდეგ`
                         }
-                        className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg font-roboto opacity-50 cursor-not-allowed ${
+                        className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg font-roboto  ${
                           item.id === categoryNumber
                             ? "bg-[#230751]"
                             : "bg-[#663aac]"
                         }`}
                       >
-                        {isPaid
-                          ? item.id + ". " + item.category
-                          : "ნახვა შეგეძლებათ შეძენის შემდეგ"}
+                        {item.id + ". " + item.category}
                       </span>
                     )}
                   </motion.li>

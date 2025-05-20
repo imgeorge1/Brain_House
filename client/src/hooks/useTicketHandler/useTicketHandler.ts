@@ -59,7 +59,7 @@ const useTicketHandler = () => {
     );
 
     if (
-      (checkForVideo && booleanPaid && currentUser) ||
+      (checkForVideo) ||
       parseInt(categoryId) === 21
     )
       return currentVideo;
