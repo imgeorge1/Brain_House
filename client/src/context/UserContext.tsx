@@ -56,7 +56,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       console.log("resoinse", response.data);
       setCurrentUser(response.data);
       if (!response.data.city) {
-        navigate("/register");
+        navigate("/");
       } else if (response.data) {
         localStorage.setItem("paid", response.data.isPaid.toString());
       }

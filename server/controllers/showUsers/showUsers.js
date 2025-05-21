@@ -1,5 +1,5 @@
 import mongoConnection from "../../db/mongoConnection.js";
-import sendConfirmationEmail from "../../services/emailService.js";
+// import sendConfirmationEmail from "../../services/emailService.js";
 
 const { models } = await mongoConnection();
 

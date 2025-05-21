@@ -1,7 +1,7 @@
-import SignUp from "../../components/register/SignUp";
+// import SignUp from "../../components/register/SignUp";
 
-const Register = () => {
-  return <SignUp />;
-};
+// const Register = () => {
+//   return <SignUp />;
+// };
 
-export default Register;
+// export default Register;

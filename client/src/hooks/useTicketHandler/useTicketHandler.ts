@@ -7,9 +7,7 @@ import categoryData from "../../data/categoryData";
 const useTicketHandler = () => {
   const {
     ticketData,
-    booleanPaid,
     setTicketData,
-    currentUser,
     setCorrectAnswer,
   } = useUserContext();
   const [clickedAnswers, setClickedAnswers] = useState<ClickedAnswers>({});
@@ -59,7 +57,7 @@ const useTicketHandler = () => {
     );
 
     if (
-      (checkForVideo && booleanPaid && currentUser) ||
+      (checkForVideo) ||
       parseInt(categoryId) === 21
     )
       return currentVideo;
