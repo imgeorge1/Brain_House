@@ -24,6 +24,7 @@
     "express-session": "^1.18.0",
     "follow-redirects": "^1.15.9",
     "googleapis": "^134.0.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.5",
     "mongoose-findorcreate": "^4.0.0",
     "mongoose-unique-validator": "^4.0.0",

@@ -6,7 +6,7 @@ const transporter = nodemailer.createTransport({
   secure: false,
   auth: {
     user: "brainhouse2021@gmail.com",
-    pass: "vjqi ayfz zemw hbcv",
+    pass: "vjqiayfzzemwhbcv",
   },
   // tls: {
   //   rejectUnauthorized: false, // Add this line to accept self-signed certificates (NOT recommended)

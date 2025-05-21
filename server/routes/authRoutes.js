@@ -16,7 +16,7 @@ import {
   getComments,
   deleteComment,
 } from "../controllers/commentController/commentController.js";
-import { authenticatedUser } from "../middleware/auth.middleware.js";
+import { verifyToken } from "../middleware/auth.middleware.js";
 import signup from "../config/driveConfig/additionalinfo.js";
 import oldUser from "../controllers/oldUsers/oldUsers.js";
 
@@ -26,7 +26,7 @@ authRoutes.get("/beka", (req, res) => {
   res.send("Hello beka!");
 });
 
-authRoutes.get("/user", authenticatedUser, currentUser);
+authRoutes.get("/user", verifyToken, currentUser);
 authRoutes.put("/user", allowedNextCategory);
 authRoutes.get("/users", users);
 authRoutes.get("/oldusers", oldUser);
@@ -36,7 +36,7 @@ authRoutes.get("/usersInfo", usersInfo);
 authRoutes.get("/tickets/:id", ticket);
 authRoutes.post("/tickets", ticketTest);
 
-authRoutes.post("/signup", signup);
+authRoutes.put("/signup", signup);
 
 // authRoutes.get("/api/video", generateVideos);
 
@@ -57,13 +57,13 @@ authRoutes.get("/logout", (req, res) => {
   // __Secure-
   // __Host-
 
-  res.clearCookie("__Secure-authjs.session-token", cookieOptions);
-  res.clearCookie("__Secure-authjs.callback-url", {
+  res.clearCookie("authjs.session-token", cookieOptions);
+  res.clearCookie("authjs.callback-url", {
     path: "/",
     sameSite: "None",
     secure: true,
   });
-  res.clearCookie("__Host-authjs.csrf-token", cookieOptions);
+  res.clearCookie("authjs.csrf-token", cookieOptions);
 
   res.redirect(`${process.env.CLIENT_URL}`);
 });

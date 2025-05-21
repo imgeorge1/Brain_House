@@ -7,6 +7,7 @@ const currentUser = async (req, res) => {
     const session = res.locals.session;
     // console.log("currentUser>>>>>>>>>>>>>>", session);
     const { email } = session.user;
+    console.log("gaeshvaaaa!!!!!!!!!!!!!!!!!");
 
     const user = await models.User.findOne({
       email,

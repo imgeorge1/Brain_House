@@ -1,6 +1,7 @@
 import dotenv from "dotenv/config";
 import Google from "@auth/express/providers/google";
 import mongoConnection from "../../db/mongoConnection.js";
+import jwt from "jsonwebtoken";
 
 const { models } = await mongoConnection();
 
@@ -10,51 +11,61 @@ const authConfig = {
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
+      callbackUrl: "http://localhost:3000/auth/callback/google",
     }),
   ],
   // __Secure-
   // __Host-
-  cookies: {
-    sessionToken: {
-      name: `__Secure-authjs.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: "None",
-        path: "/",
-        secure: true,
-      },
-    },
-    callbackUrl: {
-      name: "__Secure-authjs.callback-url",
-      options: {
-        sameSite: "None",
-        path: "/",
-        secure: true,
-      },
-    },
-    csrfToken: {
-      name: "__Host-authjs.csrf-token",
-      options: {
-        httpOnly: true,
-        sameSite: "None",
-        path: "/",
-        secure: true,
-      },
-    },
-  },
+  // cookies: {
+  //   sessionToken: {
+  //     name: `__Secure-authjs.session-token`,
+  //     options: {
+  //       httpOnly: true,
+  //       sameSite: "None",
+  //       path: "/",
+  //       secure: true,
+  //     },
+  //   },
+  //   callbackUrl: {
+  //     name: "__Secure-authjs.callback-url",
+  //     options: {
+  //       sameSite: "None",
+  //       path: "/",
+  //       secure: true,
+  //     },
+  //   },
+  //   csrfToken: {
+  //     name: "__Host-authjs.csrf-token",
+  //     options: {
+  //       httpOnly: true,
+  //       sameSite: "None",
+  //       path: "/",
+  //       secure: true,
+  //     },
+  //   },
+  // },
   secret: process.env.AUTH_SECRET,
   jwt: {
     secret: process.env.AUTH_SECRET,
   },
 
   callbacks: {
-    async redirect({ url, baseUrl }) {
+    async redirect({ url }) {
+      const payload = { email: "user@example.com" }; // You can dynamically get this from your user/session info
+
+      const signedToken = jwt.sign(payload, process.env.JWT_SECRET, {
+        expiresIn: "1h",
+      });
+
+      const clientUrl = process.env.CLIENT_URL;
+
       // Redirect after sign-in or sign-out
-      if (url.startsWith(process.env.CLIENT_URL)) {
-        return url;
+      if (url.startsWith(clientUrl)) {
+        return `${clientUrl}?token=${signedToken}`;
       }
+
       // Default to home page
-      return `${process.env.CLIENT_URL}`;
+      return `${clientUrl}?token=${signedToken}`;
     },
 
     async signIn({ profile }) {

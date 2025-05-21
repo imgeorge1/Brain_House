@@ -87,7 +87,7 @@ const TicketRoutes = () => {
           <ul className="w-full max-w-[690px] xl:w-[469px] font-roboto">
             {categoryData.map((item, index) => {
               // If isPaid is false, only render the item at index 0
-              if (isPaid === true || index === 0) {
+              if (true) {
                 return (
                   <motion.li
                     initial={{ opacity: 0, x: -200 }}
@@ -97,7 +97,7 @@ const TicketRoutes = () => {
                     key={item.id}
                   >
                     {!completedArray.includes(item.index) ? (
-                      <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed font-roboto">
+                      <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 font-roboto">
                         ვიდეო გაგეხსნებათ შეძენის შემდეგ
                       </span>
                     ) : (
@@ -125,7 +125,7 @@ const TicketRoutes = () => {
                     key={item.id}
                   >
                     {!completedArray.includes(item.index) ? (
-                      <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 cursor-not-allowed font-roboto">
+                      <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 font-roboto">
                         ვიდეო გაგეხსნებათ შეძენის შემდეგ
                       </span>
                     ) : (
@@ -134,15 +134,13 @@ const TicketRoutes = () => {
                           item.id +
                           `  თავი გაგეხსნებათ ფასიანი პაკეტის შეძენის შემდეგ`
                         }
-                        className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg font-roboto opacity-50 cursor-not-allowed ${
+                        className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg font-roboto opacity-50 ${
                           item.id === categoryNumber
                             ? "bg-[#230751]"
                             : "bg-[#663aac]"
                         }`}
                       >
-                        {isPaid
-                          ? item.id + ". " + item.category
-                          : "ნახვა შეგეძლებათ შეძენის შემდეგ"}
+                        {item.id + ". " + item.category}
                       </span>
                     )}
                   </motion.li>
