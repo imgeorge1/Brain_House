@@ -153,18 +153,18 @@ const categoryData2 = [
       "https://drive.google.com/file/d/1CgpIc0lZLDTIkPrRKtUruDnNFHdizvw_/preview",
   },
   {
-    id: 1,
-    category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
-    index: 23,
-    videoUrl:
-      "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
-  },
-  {
     id: 14,
     category: "სანათი ხელსაწყოები, ხმოვანი სიგნალი",
     index: 24,
     videoUrl:
       "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview",
+  },
+  {
+    id: 1,
+    category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
+    index: 23,
+    videoUrl:
+      "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
   },
   {
     id: 31,
@@ -215,13 +215,13 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/17j6HEaqQrSYstrw3t8z0IwYFsIGCH57n/preview",
   },
-  {
-    id: 30,
-    category: "მოძრაობის უსაფრთხოება",
-    index: 32,
-    videoUrl:
-      "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview",
-  },
+  // {
+  //   id: 30,
+  //   category: "მოძრაობის უსაფრთხოება",
+  //   index: 32,
+  //   videoUrl:
+  //     "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview",
+  // },
 ];
 
 export default categoryData2;
