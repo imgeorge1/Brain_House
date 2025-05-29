@@ -1,12 +1,9 @@
 import "../../index.css";
-import google from "../../assets/google.png";
 import Dashboard from "./Dashboard";
 import useSignInModal from "../../hooks/useSignInModal/useSignInModal";
-import { motion } from "framer-motion";
 
 const SignInModal = () => {
-  const { show, setShow, currentUser, handleClose, googleAuth } =
-    useSignInModal();
+  const { setShow, currentUser } = useSignInModal();
 
   return (
     <>
