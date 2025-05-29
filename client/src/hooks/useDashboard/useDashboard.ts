@@ -8,6 +8,7 @@ const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
 
   const logout = () => {
     localStorage.removeItem("paid");
+    localStorage.removeItem("accessToken");
     window.open(
       // change for production
       `${import.meta.env.VITE_SERVER_URL}/logout`,

@@ -45,7 +45,12 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   console.log(currentUser);
 
   const getUser = async () => {
-    const token = localStorage.getItem("auth_token");
+    const token = localStorage.getItem("accessToken");
+
+    if (!token) {
+      console.log("❌ No token found");
+      return;
+    }
 
     try {
       const response = await API.get<User>("/user", {
@@ -53,48 +58,30 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("resoinse", response.data);
+
+      console.log("✅ User response:", response.data);
       setCurrentUser(response.data);
-      if (!response.data.city) {
-        navigate("/");
-      } else if (response.data) {
+
+      if (response.data) {
         localStorage.setItem("paid", response.data.isPaid.toString());
+        navigate("/");
       }
     } catch (error) {
-      console.log("error", error);
+      console.error("❌ Error fetching user:", error);
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("verifyToken");
+      localStorage.removeItem("paid");
     }
   };
   useLayoutEffect(() => {
-    // Grab token from URL if it exists
-    const url = new URL(window.location.href);
-    const token = url.searchParams.get("token");
+    const token = localStorage.getItem("accessToken");
 
     if (token) {
-      // Save token in localStorage
-      localStorage.setItem("auth_token", token);
-
-      // Remove token from URL (optional, for cleaner URL)
-      url.searchParams.delete("token");
-      window.history.replaceState({}, document.title, url.pathname);
+      getUser();
+    } else {
+      console.log("❌ No token found in localStorage");
+      localStorage.removeItem("paid"); // Optional: cleanup
     }
-
-    const getSession = async () => {
-      try {
-        const res = await API.get("/auth/session");
-
-        if (res.data?.user) {
-          getUser();
-        } else {
-          window.localStorage.removeItem("paid");
-          window.localStorage.removeItem("auth_token");
-          console.log("❌ Not signed in");
-        }
-      } catch (error) {
-        console.error("Error fetching session:", error);
-      }
-    };
-
-    getSession();
   }, []);
 
   useEffect(() => {

@@ -6,39 +6,62 @@ export interface PaginationTypes {
 }
 export interface MergedUser {
   _id: string;
-  firstName: string;
-  lastName: string;
   email: string;
   isPaid: boolean;
   payDate?: string;
   image?: string;
   provider?: string;
   completed?: number;
+  firstName: string;
+  lastName: string;
   fullName: string;
-  age?: number | null;
-  city?: string;
-  phone?: number | null;
+  age: number | null;
+  city: string;
+  phone: number | null;
 }
 
 export interface User {
-  // Define your user interface here
-  // This is just an example, replace it with your actual user interface
+  _id: string;
+  email: string;
+  isPaid: boolean;
+  payDate?: string;
+  image?: string;
+  provider?: string;
+  completed?: number;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  age: number | null;
+  city?: string;
+  phone?: string | null;
+}
+
+export type EditableUser = {
   firstName: string;
   lastName: string;
   email: string;
-  completed: number;
-  isPaid: boolean;
+  age: number | null;
   city: string;
-  // Add other fields as needed
-}
+  phone: string;
+  payDate?: string; // <-- Add this line
+};
+
+export type NewPassForm = {
+  email?: string;
+  password: string;
+  confirmPassword: string;
+};
 
 export interface FullUser extends User {
   _id: string;
+  firstName: string;
+  lastName: string;
   fullName: string;
   userId?: string;
-  age: number;
+  password?: string;
+  age: number | null;
   city: string;
-  phone: string;
+  phone?: string | null;
   isPaid: boolean;
   payDate: string;
 }

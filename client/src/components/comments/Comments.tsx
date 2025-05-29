@@ -14,7 +14,7 @@ const Comments = () => {
         >
           <div>
             <p>
-              <strong>{comment.fullName}</strong>
+              <strong>{comment.firstName}</strong>
             </p>
             <p>{comment.comment}</p>
           </div>

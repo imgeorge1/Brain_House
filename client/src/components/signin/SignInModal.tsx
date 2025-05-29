@@ -11,7 +11,7 @@ const SignInModal = () => {
   return (
     <>
       <Dashboard currentUser={currentUser} setShow={setShow} />
-      {show && (
+      {/* {show && (
         <div
           className="absolute top-0 left-0 right-0 bottom-0 h-screen bg-black bg-opacity-50"
           onClick={handleClose}
@@ -52,7 +52,7 @@ const SignInModal = () => {
             </div>
           </motion.div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

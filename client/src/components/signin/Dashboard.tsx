@@ -23,7 +23,7 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
           )}
 
           <h4 className="ctrlbtn mt-auto mb-auto users-name">
-            {currentUser.firstName + " " + (currentUser.lastName || "")}
+            {currentUser.firstName || ""}
           </h4>
           <button
             className="sign-out ctrlbtn buttonBorder px-6 py-2 rounded-3xl duration-200 hover:bg-orange-500 text-xl text-white"
@@ -33,12 +33,13 @@ const Dashboard = ({ currentUser, setShow }: DashboardTypes) => {
           </button>
         </div>
       ) : (
-        <button
+        <Link
+          to={"/login"}
           className="sign-out ctrlbtn buttonBorder px-6 py-2 w-full rounded-3xl duration-200 hover:bg-orange-500 text-xl text-white"
           onClick={handleShow}
         >
           შესვლა
-        </button>
+        </Link>
       )}
     </div>
   );

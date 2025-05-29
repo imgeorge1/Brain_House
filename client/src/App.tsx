@@ -12,7 +12,12 @@ import BuyCourse from "./pages/buycourse/BuyCourse";
 import Payment from "./pages/payment/Payment";
 import Policy from "./pages/policy/Policy";
 import PracticePage from "./pages/practice/PracticePage";
-import TheoryInfo from "./pages/theoryInfo/TheoryInfo"
+import TheoryInfo from "./pages/theoryInfo/TheoryInfo";
+import Register from "./pages/register/Register";
+import LogIn from "./pages/login/login";
+import Verify from "./pages/verifyemail/verify";
+import NewPass from "./pages/newpassword/newpassword";
+import ConfrimCode from "./pages/confrimcode/confrimCode";
 // import Updates from "./pages/updates/Update";
 
 const TicketsLazy = lazy(() => import("./pages/tickets/Tickets"));
@@ -39,8 +44,12 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/buy-course" element={<BuyCourse />} />
-          {/* <Route path="/register" element={<Register />} /> */}
+          <Route path="/buy-course" element={<BuyCourse />} />{" "}
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/verify" element={<Verify />} />
+          <Route path="/confrim" element={<ConfrimCode />} />
+          <Route path="/newpassword" element={<NewPass />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/tickets/:id" element={<TicketsLazy />} />

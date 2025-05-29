@@ -2,31 +2,42 @@ import { useState, useRef } from "react";
 import useDashboardPage from "../../hooks/useDashboard/useDashboardPage";
 import OldDashboard from "../../components/olddata";
 import API from "../../utils/API";
+import { EditableUser, User } from "../../types/Types";
 
 function Dashboard() {
   const { users, handleActive } = useDashboardPage();
 
   const [oldData, setOldData] = useState<boolean>(false);
-  const [editUser, setEditUser] = useState<any>(null);
+  const [editUser, setEditUser] = useState<EditableUser>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    age: null,
+    city: "",
+    phone: "",
+  });
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const handleOldData = () => setOldData(true);
   const handleNewData = () => setOldData(false);
 
-  const openEditDialog = (user: any) => {
+  const openEditDialog = (user: User) => {
     setEditUser({
-      fullName: user.fullName || "",
+      firstName: user.firstName || "",
+      lastName: user.lastName || "",
       email: user.email || "",
-      age: user.age || "",
+      age: user.age || null,
       city: user.city || "",
       phone: user.phone || "",
+      payDate: user.payDate || "", // <-- Add this
     });
     dialogRef.current?.showModal();
   };
+  console.log("edituser", editUser);
 
   const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setEditUser((prev: any) => ({ ...prev, [name]: value }));
+    setEditUser((prev: EditableUser) => ({ ...prev, [name]: value }));
   };
   console.log("edited user ", editUser);
 
@@ -35,7 +46,7 @@ function Dashboard() {
     try {
       console.log("userdataaa", editUser);
 
-      const res = await API.put("/signup", { editUser });
+      const res = await API.put("/edituser", { editUser });
 
       console.log("res: ", res);
     } catch (error) {
@@ -125,13 +136,19 @@ function Dashboard() {
           <form method="dialog" className="flex flex-col gap-4">
             <h2 className="text-xl font-bold">Edit User</h2>
             <input
-              name="fullName"
-              value={editUser.fullName}
+              name="firstName"
+              value={editUser.firstName}
               onChange={handleEditChange}
               placeholder="Full Name"
               className="border p-2 rounded"
             />
-
+            <input
+              name="lastName"
+              value={editUser.lastName}
+              onChange={handleEditChange}
+              placeholder="Full Name"
+              className="border p-2 rounded"
+            />
             <input
               name="email"
               value={editUser.email}
@@ -141,7 +158,7 @@ function Dashboard() {
             />
             <input
               name="age"
-              value={editUser.age}
+              value={editUser.age ?? ""}
               onChange={handleEditChange}
               placeholder="Age"
               className="border p-2 rounded"
@@ -158,6 +175,13 @@ function Dashboard() {
               value={editUser.phone}
               onChange={handleEditChange}
               placeholder="Phone"
+              className="border p-2 rounded"
+            />
+            <input
+              name="payDate"
+              type="date"
+              value={editUser.payDate ?? ""}
+              onChange={handleEditChange}
               className="border p-2 rounded"
             />
 
