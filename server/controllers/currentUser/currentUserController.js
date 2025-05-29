@@ -2,33 +2,23 @@ import mongoConnection from "../../db/mongoConnection.js";
 
 const { models } = await mongoConnection();
 
-const currentUser = async (req, res) => {
+export const currentUser = async (req, res) => {
   try {
-    const session = res.locals.session;
-    // console.log("currentUser>>>>>>>>>>>>>>", session);
-    const { email } = session.user;
-    console.log("gaeshvaaaa!!!!!!!!!!!!!!!!!");
-
-    const user = await models.User.findOne({
-      email,
-    });
-    const useraditionalinfo = await models.AdditionUserInfo.findOne({
-      email,
-    });
-
-    if (!user) {
-      console.error("user not found");
-      return res.status(404).json({ error: "User Not Found" });
+    // Assuming your middleware sets req.user = { userId: '...' }
+    const userId = req.user; // From middleware
+    if (!userId) {
+      return res.status(401).json({ message: "Unauthorized" });
     }
 
-    const { firstName, lastName, completed, isPaid } = user;
-    const city = useraditionalinfo?.city || null;
+    const user = await models.User.findById(userId).select("-password");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
-    res.json({ firstName, lastName, email, completed, isPaid, city });
+    res.status(200).json(user);
   } catch (error) {
-    console.error("Error fetching user:", error);
-    res.status(500).json({ error: "Internal server error" });
+    console.error("Get current user error:", error);
+    res.status(500).json({ message: "Server error" });
   }
 };
-
 export default currentUser;

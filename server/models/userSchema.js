@@ -4,12 +4,8 @@ import findOrCreate from "mongoose-findorcreate";
 import validator from "validator";
 
 const userSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-  },
-  lastName: {
-    type: String,
-  },
+  firstName: String,
+  lastName: String,
   email: {
     type: String,
     unique: true,
@@ -20,11 +16,11 @@ const userSchema = new mongoose.Schema({
       message: "Invalid email format",
     },
   },
+  password: String,
   image: String,
-  provider: {
-    type: String,
-    required: true,
-  },
+  age: String,
+  city: String,
+  phone: String,
   completed: {
     type: Number,
     default: 2,

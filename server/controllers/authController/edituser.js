@@ -3,10 +3,10 @@ import mongoConnection from "../../db/mongoConnection.js";
 const { models } = await mongoConnection();
 let userCounter = 0;
 
-const updateUserInfo = async (req, res) => {
+const editUser = async (req, res) => {
   try {
     const { editUser } = req.body;
-    const { fullName, email, age, city, phone } = editUser;
+    const { firstName, lastName, email, age, city, phone, payDate } = editUser;
 
     if (!email) {
       return res.status(400).json({
@@ -16,14 +16,16 @@ const updateUserInfo = async (req, res) => {
     }
 
     // Check if user exists
-    const existingUser = await models.AdditionUserInfo.findOne({ email });
+    const existingUser = await models.User.findOne({ email });
 
     if (existingUser) {
       // Update existing user
-      existingUser.fullName = fullName;
+      existingUser.firstName = firstName;
+      existingUser.lastName = lastName;
       existingUser.age = age;
       existingUser.city = city;
       existingUser.phone = phone;
+      existingUser.payDate = payDate;
 
       await existingUser.save();
 
@@ -37,12 +39,14 @@ const updateUserInfo = async (req, res) => {
     }
 
     // If user doesn't exist, create a new one
-    const newUser = new models.AdditionUserInfo({
-      fullName,
+    const newUser = new models.User({
+      firstName,
+      lastName,
       email,
       age,
       city,
       phone,
+      payDate,
     });
 
     await newUser.save();
@@ -56,11 +60,11 @@ const updateUserInfo = async (req, res) => {
       user: newUser,
     });
   } catch (error) {
-    console.error("Error in updateUserInfo:", error.message);
+    console.error("Error in editUser:", error.message);
     res
       .status(500)
       .json({ status: "error", message: "Failed to save user info" });
   }
 };
 
-export default updateUserInfo;
+export default editUser;

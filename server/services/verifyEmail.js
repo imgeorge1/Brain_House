@@ -19,14 +19,15 @@ transporter.verify((err, success) => {
   }
 });
 
-const sendConfirmationEmail = async (user) => {
+const sendVerificationEmail = async ({ email, firstName, code }) => {
   const mailOptions = {
     from: '"Brain House Team" <shvangiradze22giorgi@gmail.com>',
-    to: user.email,
-    subject: "Welcome to Brain House! We're glad to have you",
-    text: `Hi ${user.firstName},\nThank you for joining us!\nBest,\nBrain House Team`,
-    html: `<p>Hi <strong>${user.firstName}</strong>,</p>
-           <p>Thank you for joining us!</p>
+    to: email,
+    subject: "Your Verification Code from Brain House",
+    text: `Hi ${firstName},\n\nYour verification code is: ${code}\n\nPlease enter this code to verify your email.\n\nBest,\nBrain House Team`,
+    html: `<p>Hi <strong>${firstName}</strong>,</p>
+           <p>Your verification code is: <strong>${code}</strong></p>
+           <p>Please enter this code to verify your email.</p>
            <p>Best,<br>Brain House Team</p>`,
     headers: {
       "List-Unsubscribe": "<mailto:shvangiradze22giorgi@gmail.com>",
@@ -35,11 +36,11 @@ const sendConfirmationEmail = async (user) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log("Confirmation email sent to: ", user.email);
+    console.log(`Verification email sent to: ${email}`);
   } catch (error) {
-    console.error("Error sending confirmation email:", error);
-    throw new Error("Failed to send confirmation email");
+    console.error("Error sending verification email:", error);
+    throw new Error("Failed to send verification email");
   }
 };
 
-export default sendConfirmationEmail;
+export default sendVerificationEmail;

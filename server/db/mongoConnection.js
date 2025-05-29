@@ -38,6 +38,8 @@ const mongoConnection = async () => {
     const Comment = db1Connection.model("Comment", commentSchema);
     const Signs = db1Connection.model("Sign", signSchema);
     const Ticket = db1Connection.model("Ticket", ticketSchema);
+    const OldSigns = db2Connection.model("Sign", signSchema);
+    const OldTicket = db2Connection.model("Ticket", ticketSchema);
     // Return the connection object
     return {
       db1Connection,
@@ -50,6 +52,8 @@ const mongoConnection = async () => {
         Comment,
         Signs,
         Ticket,
+        OldSigns,
+        OldTicket,
       },
     };
   } catch (error) {

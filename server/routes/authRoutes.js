@@ -16,9 +16,14 @@ import {
   getComments,
   deleteComment,
 } from "../controllers/commentController/commentController.js";
-import { verifyToken } from "../middleware/auth.middleware.js";
-import signup from "../config/driveConfig/additionalinfo.js";
+import signup from "../controllers/authController/signup.js";
 import oldUser from "../controllers/oldUsers/oldUsers.js";
+import editUser from "../controllers/authController/edituser.js";
+import login from "../controllers/authController/login.js";
+import confrim from "../controllers/authController/confrimcode.js";
+import { authenticate } from "../middleware/auth.js";
+import verify from "../controllers/authController/verify.js";
+import newpassword from "../controllers/authController/newpassword.js";
 
 const authRoutes = express.Router();
 
@@ -26,7 +31,7 @@ authRoutes.get("/beka", (req, res) => {
   res.send("Hello beka!");
 });
 
-authRoutes.get("/user", currentUser);
+authRoutes.get("/user", authenticate, currentUser);
 authRoutes.put("/user", allowedNextCategory);
 authRoutes.get("/users", users);
 authRoutes.get("/oldusers", oldUser);
@@ -36,7 +41,13 @@ authRoutes.get("/usersInfo", usersInfo);
 authRoutes.get("/tickets/:id", ticket);
 authRoutes.post("/tickets", ticketTest);
 
-authRoutes.put("/signup", signup);
+authRoutes.post("/login", login);
+authRoutes.post("/signup", signup);
+authRoutes.post("/verify", verify);
+authRoutes.post("/confirm", confrim);
+authRoutes.post("/newpassword", newpassword);
+
+authRoutes.put("/edituser", editUser);
 
 // authRoutes.get("/api/video", generateVideos);
 
@@ -54,16 +65,7 @@ authRoutes.get("/logout", (req, res) => {
     secure: true, // make sure this matches how they were set
   };
 
-  // __Secure-
-  // __Host-
-
-  res.clearCookie("authjs.session-token", cookieOptions);
-  res.clearCookie("authjs.callback-url", {
-    path: "/",
-    sameSite: "None",
-    secure: true,
-  });
-  res.clearCookie("authjs.csrf-token", cookieOptions);
+  res.clearCookie("refreshToken", cookieOptions);
 
   res.redirect(`${process.env.CLIENT_URL}`);
 });

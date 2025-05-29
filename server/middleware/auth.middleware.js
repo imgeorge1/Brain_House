@@ -27,8 +27,6 @@ export async function currentSession(req, res, next) {
   return next();
 }
 
-// middleware/authMiddleware.ts
-
 export const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
   console.log("authHeader>>>>>>>>>>>>>", authHeader);
