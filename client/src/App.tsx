@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import About from "./pages/about/About";
 import BuyCourse from "./pages/buycourse/BuyCourse";
+import Vid from "./pages/vid/vid";
 import Payment from "./pages/payment/Payment";
 import Policy from "./pages/policy/Policy";
 import PracticePage from "./pages/practice/PracticePage";
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/buy-course" element={<BuyCourse />} />{" "}
           <Route path="/login" element={<LogIn />} />
+          <Route path="/vid" element={<Vid />} />
           <Route path="/verify" element={<Verify />} />
           <Route path="/confrim" element={<ConfrimCode />} />
           <Route path="/newpassword" element={<NewPass />} />
