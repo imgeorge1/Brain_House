@@ -93,68 +93,43 @@ const TicketRoutes = () => {
         {(show || width >= 1024) && (
           <ul className="w-full max-w-[690px] xl:w-[469px] font-roboto">
             {categoryData.map((item, index) => {
-              // If isPaid is false, only render the item at index 0
-              if (isPaid !== true && index === 0) {
-                return (
-                  <motion.li
-                    initial={{ opacity: 0, x: -200 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.1 * item.index }}
-                    onClick={() => handleChooseCategory(item.category)}
-                    key={item.id}
-                  >
-                    {!completedArray.includes(item.index) ? (
-                      <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 font-roboto">
-                        ვიდეო გაგეხსნებათ შეძენის შემდეგ
-                      </span>
-                    ) : (
-                      <Link
-                        className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
-                          item.id === categoryNumber
-                            ? "bg-[#230751]"
-                            : "bg-[#663aac]"
-                        }`}
-                        to={`/tickets/${item.id}`}
-                        state={item.index}
-                      >
-                        {item.id + "."} {item.category}
-                      </Link>
-                    )}
-                  </motion.li>
-                );
-              } else {
-                return (
-                  <motion.li
-                    initial={{ opacity: 0, x: -200 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 * item.index }}
-                    onClick={() => handleChooseCategory(item.category)}
-                    key={item.id}
-                  >
-                    {!completedArray.includes(item.index) ? (
-                      <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 font-roboto">
-                        ვიდეო გაგეხსნებათ შეძენის შემდეგ
-                      </span>
-                    ) : (
-                      <span
-                        title={
-                          item.id +
-                          `  თავი გაგეხსნებათ ფასიანი პაკეტის შეძენის შემდეგ`
-                        }
-                        className={`w-full no-underline mt-2 inline-block text-white p-3 opacity-70 rounded-md text-lg font-roboto  ${
-                          item.id === categoryNumber
-                            ? "bg-[#230751]"
-                            : "bg-[#663aac]"
-                        }`}
-                      >
-                        {isPaid
-                          ? item.id + ". " + item.category
-                          : item.id + ". " + "კატეგორია ფასიანია"}
-                      </span>
-                    )}
-                  </motion.li>
-                );
-              }
+              const isFirstItem = index === 0;
+              const isCompleted = completedArray.includes(item.index);
+              const isLocked = !isPaid && !isFirstItem;
+
+              return (
+                <motion.li
+                  key={item.id}
+                  initial={{ opacity: 0, x: -200 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.1 * item.index }}
+                  onClick={() => {
+                    if ((isPaid || isFirstItem) && isCompleted && !isLocked) {
+                      handleChooseCategory(item.category);
+                    }
+                  }}
+                  className={isLocked ? "pointer-events-none  opacity-60" : ""}
+                >
+                  {!isCompleted ? (
+                    <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 font-roboto">
+                      ვიდეო გაგეხსნებათ შეძენის შემდეგ
+                    </span>
+                  ) : (
+                    <Link
+                      className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
+                        item.id === categoryNumber
+                          ? "bg-[#230751]"
+                          : "bg-[#cfbdeb]"
+                      }`}
+                      to={`/tickets/${item.id}`}
+                      state={item.index}
+                    >
+                      {item.id + "."}{" "}
+                      {isPaid ? item.category : "კატეგორია ფასიანია"}
+                    </Link>
+                  )}
+                </motion.li>
+              );
             })}
           </ul>
         )}
