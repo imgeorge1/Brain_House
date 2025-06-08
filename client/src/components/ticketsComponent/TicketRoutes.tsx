@@ -116,16 +116,17 @@ const TicketRoutes = () => {
                     </span>
                   ) : (
                     <Link
-                      className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg ${
+                      className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg  ${
                         item.id === categoryNumber
                           ? "bg-[#230751]"
-                          : "bg-[#cfbdeb]"
+                          : "bg-[#663aac]"
                       }`}
                       to={`/tickets/${item.id}`}
                       state={item.index}
                     >
-                      {item.id + "."}{" "}
-                      {isPaid ? item.category : "კატეგორია ფასიანია"}
+                      {!isLocked
+                        ? item.id + "." + item.category
+                        : item.id + ". " + "კატეგორია ფასიანია"}
                     </Link>
                   )}
                 </motion.li>
