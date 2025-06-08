@@ -24,6 +24,7 @@ import confrim from "../controllers/authController/confrimcode.js";
 import { authenticate } from "../middleware/auth.js";
 import verify from "../controllers/authController/verify.js";
 import newpassword from "../controllers/authController/newpassword.js";
+import verifysignup from "../controllers/authController/verifysignup.js";
 
 const authRoutes = express.Router();
 
@@ -46,6 +47,7 @@ authRoutes.post("/signup", signup);
 authRoutes.post("/verify", verify);
 authRoutes.post("/confirm", confrim);
 authRoutes.post("/newpassword", newpassword);
+authRoutes.post("/verifysignup", verifysignup);
 
 authRoutes.put("/edituser", editUser);
 

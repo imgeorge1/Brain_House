@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-transporter.verify((err, success) => {
+transporter.verify((err) => {
   if (err) {
     console.error("Nodemailer setup error:", err);
   } else {
@@ -21,7 +21,7 @@ transporter.verify((err, success) => {
 
 const sendVerificationEmail = async ({ email, firstName, code }) => {
   const mailOptions = {
-    from: '"Brain House Team" <shvangiradze22giorgi@gmail.com>',
+    from: '"Brain House Team" <brainhousework@gmail.com>',
     to: email,
     subject: "Your Verification Code from Brain House",
     text: `Hi ${firstName},\n\nYour verification code is: ${code}\n\nPlease enter this code to verify your email.\n\nBest,\nBrain House Team`,
@@ -30,7 +30,7 @@ const sendVerificationEmail = async ({ email, firstName, code }) => {
            <p>Please enter this code to verify your email.</p>
            <p>Best,<br>Brain House Team</p>`,
     headers: {
-      "List-Unsubscribe": "<mailto:shvangiradze22giorgi@gmail.com>",
+      "List-Unsubscribe": "<mailto:brainhousework@gmail.com>",
     },
   };
 

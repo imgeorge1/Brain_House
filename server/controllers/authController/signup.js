@@ -1,4 +1,5 @@
 import mongoConnection from "../../db/mongoConnection.js";
+import { decryptCode } from "../../utils/codeEncryptor.js";
 import { hashPassword } from "../../utils/hash.js";
 
 // Inside your signup controller
@@ -7,9 +8,43 @@ const { models } = await mongoConnection();
 
 const signupUser = async (req, res) => {
   try {
-    const { firstName, lastName, email, password, age, city, phone } = req.body;
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      age,
+      city,
+      phone,
+      code,
+      token,
+    } = req.body;
+    console.log(
+      "signup!!!!!!!!!!",
+      firstName,
+      lastName,
+      email,
+      password,
+      age,
+      city,
+      phone,
+      code,
+      token
+    );
 
-    // Check if user already exists (optional)
+    const { code: storedCode, expiresAt } = decryptCode(token);
+    console.log(storedCode, code);
+
+    // Check if user already exists (optional)const { code: storedCode, expiresAt } = decryptCode(token);
+
+    if (Date.now() > expiresAt) {
+      return res.status(400).json({ message: "Code expired" });
+    }
+
+    if (String(code) !== String(storedCode)) {
+      return res.status(400).json({ message: "Invalid code" });
+    }
+
     const existingUser = await models.User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "Email already registered" });

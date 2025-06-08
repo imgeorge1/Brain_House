@@ -5,11 +5,7 @@ const confirm = async (req, res) => {
   console.log(code, token);
 
   try {
-    const {
-      email: storedEmail,
-      code: storedCode,
-      expiresAt,
-    } = decryptCode(token);
+    const { code: storedCode, expiresAt } = decryptCode(token);
 
     if (Date.now() > expiresAt) {
       return res.status(400).json({ message: "Code expired" });

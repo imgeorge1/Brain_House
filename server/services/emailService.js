@@ -21,7 +21,7 @@ transporter.verify((err, success) => {
 
 const sendConfirmationEmail = async (user) => {
   const mailOptions = {
-    from: '"Brain House Team" <shvangiradze22giorgi@gmail.com>',
+    from: '"Brain House Team" <brainhousework@gmail.com>',
     to: user.email,
     subject: "Welcome to Brain House! We're glad to have you",
     text: `Hi ${user.firstName},\nThank you for joining us!\nBest,\nBrain House Team`,
@@ -29,7 +29,7 @@ const sendConfirmationEmail = async (user) => {
            <p>Thank you for joining us!</p>
            <p>Best,<br>Brain House Team</p>`,
     headers: {
-      "List-Unsubscribe": "<mailto:shvangiradze22giorgi@gmail.com>",
+      "List-Unsubscribe": "<mailto:brainhousework@gmail.com>",
     },
   };
 

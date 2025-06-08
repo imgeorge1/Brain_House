@@ -103,7 +103,7 @@ const { models } = await mongoConnection();
 // const cleanedTickets = ticketsDocs.map((doc) => doc._doc);
 // const { models } = await mongoConnection();
 
-// Step 1: Get the old tickets in order (as plain objects)
+// // Step 1: Get the old tickets in order (as plain objects)
 // const oldTickets = await models.OldTicket.find().sort({ _id: 1 }).lean(); // or sort({ id: 1 })
 
 // // Step 2: Insert them into the new DB
@@ -134,7 +134,8 @@ const { models } = await mongoConnection();
 
 //     const orderedTickets = orderedIds
 //       .map((id) => ticketMap.get(id))
-//       .filter(Boolean); // Remove undefined if some IDs are missing
+//       .filter(Boolean)
+//       .map((doc) => JSON.parse(JSON.stringify(doc)));
 
 //     console.log(`🧹 Dropping 'tickets' collection in new DB...`);
 //     await db1Connection.dropCollection("tickets");
