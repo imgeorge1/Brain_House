@@ -110,16 +110,24 @@ const TicketRoutes = () => {
                   }}
                   className={isLocked ? "pointer-events-none  opacity-60" : ""}
                 >
-                  {!isCompleted ? (
-                    <span className="w-full mt-2 inline-block text-white p-3 rounded-md text-lg bg-gray-300 font-roboto">
-                      ვიდეო გაგეხსნებათ შეძენის შემდეგ
-                    </span>
-                  ) : (
+                  {currentUser && isPaid ? (
                     <Link
                       className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg  ${
                         item.id === categoryNumber
                           ? "bg-[#230751]"
                           : "bg-[#663aac]"
+                      }`}
+                      to={`/tickets/${item.id}`}
+                      state={item.index}
+                    >
+                      {item.id + "." + item.category}
+                    </Link>
+                  ) : (
+                    <Link
+                      className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg  ${
+                        item.id === categoryNumber
+                          ? "bg-[#230751]"
+                          : "bg-[#cbb7ea]"
                       }`}
                       to={`/tickets/${item.id}`}
                       state={item.index}
