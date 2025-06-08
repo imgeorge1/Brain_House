@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* For Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 :root {
   --l-purple: #2d2862;
   --purple: #272559;

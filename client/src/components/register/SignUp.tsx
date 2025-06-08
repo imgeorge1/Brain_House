@@ -10,35 +10,52 @@ const SignUp = () => {
     register,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm<FullUser>();
   const { currentUser } = useUserContext();
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalValue, setModalValue] = useState<number | null>(null);
 
   const navigate = useNavigate();
   console.log("currentUser", currentUser);
+  // const onSubmit: SubmitHandler<FullUser> = async (body) => {
+  //   console.log(body);
+
+  //   try {
+  //     const { firstName, lastName, email, password, age, city, phone } = body;
+
+  //     const res = await API.post("/signup", {
+  //       firstName,
+  //       lastName,
+  //       email,
+  //       password,
+  //       age,
+  //       city,
+  //       phone,
+  //     });
+  //     console.log("res: ", res);
+  //     navigate("/login");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   const onSubmit: SubmitHandler<FullUser> = async (body) => {
-    console.log(body);
-
     try {
-      const { firstName, lastName, email, password, age, city, phone } = body;
+      const { email, firstName } = body;
 
-      const res = await API.post("/signup", {
-        firstName,
-        lastName,
-        email,
-        password,
-        age,
-        city,
-        phone,
-      });
-      console.log("res: ", res);
-      navigate("/login");
+      const res = await API.post("/verifysignup", { email, firstName });
+
+      if (res.status === 200) {
+        console.log("verifyed");
+        localStorage.setItem("verifyToken", res.data.token);
+        setIsModalOpen(true);
+      }
     } catch (error) {
-      console.log(error);
+      console.error("Login failed:", error);
     }
   };
-
   return (
     <div className="w-2/3 md:w-2/3 lg:w-1/3 mx-auto mb-24 mt-40">
       <form
@@ -111,6 +128,10 @@ const SignUp = () => {
             placeholder="ელ.ფოსტა"
             {...register("email", {
               required: "ელ.ფოსტა აუცილებელია",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
+                message: "ელ.ფოსტა არასწორია",
+              },
             })}
           />
           {errors.email && (
@@ -160,7 +181,7 @@ const SignUp = () => {
             ასაკი
           </label>
           <input
-            type="text"
+            type="number"
             id="age"
             className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
               errors.age ? "border-red-500" : ""
@@ -215,6 +236,10 @@ const SignUp = () => {
             placeholder="ტელეფონი ნომერი"
             {...register("phone", {
               required: "ტელეფონი ნომერი აუცილებელია",
+              pattern: {
+                value: /^[+]?[\d\s\-()]{7,20}$/,
+                message: "ტელეფონის ნომერი არასწორია",
+              },
             })}
           />
           {errors.phone && (
@@ -255,6 +280,67 @@ const SignUp = () => {
           </span>
         </div>
       </form>
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-80">
+            <h3 className="text-lg font-semibold mb-4">შეიყვანე რიცხვი</h3>
+            <input
+              type="number"
+              value={modalValue === null ? "" : modalValue}
+              onChange={(e) => {
+                const value = e.target.value;
+                setModalValue(value === "" ? null : Number(value));
+              }}
+              className="w-full border px-3 py-2 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="რიცხვი"
+            />
+
+            <div className="flex justify-end space-x-3">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
+              >
+                გაუქმება
+              </button>
+              <button
+                onClick={async () => {
+                  try {
+                    const token = localStorage.getItem("verifyToken");
+                    if (!token) {
+                      console.error("Verify token is missing");
+                      return;
+                    }
+
+                    const formData = getValues();
+
+                    const payload = {
+                      ...formData,
+                      code: modalValue,
+                      token,
+                    };
+
+                    const res = await API.post("/signup", payload);
+
+                    if (res.status === 201) {
+                      setIsModalOpen(false);
+                      navigate("/login");
+                      localStorage.removeItem("verifyToken");
+                    } else {
+                      alert("Registration failed.");
+                    }
+                  } catch (err) {
+                    console.error(err);
+                    alert("An error occurred during registration.");
+                  }
+                }}
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              >
+                შენახვა
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

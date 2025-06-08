@@ -16,7 +16,6 @@ const Verify = () => {
 
   const onSubmit: SubmitHandler<VerificationForm> = async ({ code }) => {
     const token = localStorage.getItem("verifyToken");
-    const email = localStorage.getItem("verifyEmail"); // set this earlier when generating the code
 
     if (!token) {
       console.error("Missing email or token in localStorage");
@@ -25,13 +24,13 @@ const Verify = () => {
 
     try {
       const res = await API.post("/confirm", {
-        email,
         code,
         token,
       });
 
       if (res.status === 200) {
         console.log("Verified ✅");
+        localStorage.removeItem("verifyToken");
         navigate("/newpassword");
       }
     } catch (error) {

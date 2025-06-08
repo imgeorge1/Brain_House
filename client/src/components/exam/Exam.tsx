@@ -24,12 +24,11 @@ const Exam = ({
   return (
     <div className="mb-28">
       <button className="ml-3 mt-28 -mb-2 block">
-        {" "}
         <Link
           to="/tickets/21"
           className="flex rounded-lg hover:bg-slate-300 duration-200"
         >
-          <img src={back} width={16} alt="back" />{" "}
+          <img src={back} width={16} alt="back" />
           <p className="px-2">დაბრუნება</p>
         </Link>
       </button>

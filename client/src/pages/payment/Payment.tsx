@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 const Payment = () => {
   return (
     <div className="w-[100%] md:w-1/2 lg:w-[40%] mx-auto mb-24 mt-40 ">
-    <Link
-      to="/"
-      className="inline-block mb-4 text-blue-600 hover:text-blue-800 font-semibold transition duration-200"
-    >
-      ← მთავარ გვერდზე დაბრუნება
-    </Link>
+      <Link
+        to="/tickets/21"
+        className="inline-block mb-4 text-blue-600 hover:text-blue-800 font-semibold transition duration-200"
+      >
+        ← უკან დაბრუნება
+      </Link>
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8">
         <div className="mb-6">
           <label
