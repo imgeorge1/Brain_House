@@ -283,7 +283,9 @@ const SignUp = () => {
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-80">
-            <h3 className="text-lg font-semibold mb-4">შეიყვანე რიცხვი</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              შეიყვანე ელ.ფოსტაზე მიღებული კოდი
+            </h3>
             <input
               type="number"
               value={modalValue === null ? "" : modalValue}
@@ -335,7 +337,7 @@ const SignUp = () => {
                 }}
                 className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
               >
-                შენახვა
+                გაგზავნა
               </button>
             </div>
           </div>

@@ -29,13 +29,6 @@ const TicketRoutes = () => {
           className="drivebtnparent"
         >
           <NavLink
-            to="/payment"
-            className="drivebtn text-sm lg:text-lg  font-roboto border-2 mt-2 mb-2 px-6 py-2 pb-2 
-            rounded-3xl duration-200 bg-orange-500 text-white"
-          >
-            კურსის ყიდვა
-          </NavLink>
-          <NavLink
             to="/practice"
             className="drivebtn text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
             rounded-3xl duration-200 hover:bg-orange-500 hover:text-white"
@@ -65,6 +58,13 @@ const TicketRoutes = () => {
               გამოცდა
             </span>
           )}
+          <NavLink
+            to="/payment"
+            className="drivebtn text-sm lg:text-lg  font-roboto border-2 mt-2 mb-2 px-6 py-2 pb-2 
+            rounded-3xl duration-200 bg-orange-500 text-white"
+          >
+            კურსის ყიდვა
+          </NavLink>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: -200 }}
@@ -134,7 +134,7 @@ const TicketRoutes = () => {
                     >
                       {!isLocked
                         ? item.id + "." + item.category
-                        : item.id + ". " + "კატეგორია ფასიანია"}
+                        : "კატეგორია ფასიანია"}
                     </Link>
                   )}
                 </motion.li>
