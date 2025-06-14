@@ -134,7 +134,7 @@ const TicketRoutes = () => {
                     >
                       {!isLocked
                         ? item.id + "." + item.category
-                        : "კატეგორია ფასიანია"}
+                        : "თემა გაიხსნება კურსის შეძენის შემდეგ"}
                     </Link>
                   )}
                 </motion.li>
