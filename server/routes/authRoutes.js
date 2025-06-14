@@ -18,13 +18,15 @@ import {
 } from "../controllers/commentController/commentController.js";
 import signup from "../controllers/authController/signup.js";
 import oldUser from "../controllers/oldUsers/oldUsers.js";
-import editUser from "../controllers/authController/edituser.js";
+import editUser from "../controllers/usercontroller/edituser.js";
 import login from "../controllers/authController/login.js";
 import confrim from "../controllers/authController/confrimcode.js";
 import { authenticate } from "../middleware/auth.js";
 import verify from "../controllers/authController/verify.js";
 import newpassword from "../controllers/authController/newpassword.js";
 import verifysignup from "../controllers/authController/verifysignup.js";
+import addUserCity from "../controllers/usercontroller/addcityuser.js";
+import practice from "../controllers/practicecontroller/practice.js";
 
 const authRoutes = express.Router();
 
@@ -50,6 +52,9 @@ authRoutes.post("/newpassword", newpassword);
 authRoutes.post("/verifysignup", verifysignup);
 
 authRoutes.put("/edituser", editUser);
+authRoutes.put("/add_city", addUserCity);
+
+authRoutes.post("/practice", practice);
 
 // authRoutes.get("/api/video", generateVideos);
 

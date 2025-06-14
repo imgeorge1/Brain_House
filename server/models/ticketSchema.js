@@ -6,6 +6,10 @@ const ticketSchema = new mongoose.Schema({
   image: String,
   correctAnswer: Number,
   quantityAnswer: Number,
+  sort_id: {
+    type: Number,
+    default: null,
+  },
 });
 
 // const Ticket = mongoose.model("Ticket", ticketSchema);

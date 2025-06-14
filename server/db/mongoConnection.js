@@ -5,6 +5,7 @@ import AdditionUserInfoSchema from "../models/AdditionUserInfoSchema.js";
 import commentSchema from "../models/commentsSchema.js";
 import signSchema from "../models/signSchema.js";
 import ticketSchema from "../models/ticketSchema.js";
+import practiceSchema from "../models/practiceShema.js";
 
 // const MONGODB_URL = process.env.MONGODB_URL;
 console.log("MONGODB_URL", process.env.MONGODB_URL);
@@ -38,6 +39,7 @@ const mongoConnection = async () => {
     const Comment = db1Connection.model("Comment", commentSchema);
     const Signs = db1Connection.model("Sign", signSchema);
     const Ticket = db1Connection.model("Ticket", ticketSchema);
+    const Practice = db1Connection.model("Practice", practiceSchema);
     const OldSigns = db2Connection.model("Sign", signSchema);
     const OldTicket = db2Connection.model("Ticket", ticketSchema);
     // Return the connection object
@@ -52,6 +54,7 @@ const mongoConnection = async () => {
         Comment,
         Signs,
         Ticket,
+        Practice,
         OldSigns,
         OldTicket,
       },

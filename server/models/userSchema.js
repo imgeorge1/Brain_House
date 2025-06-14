@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
+  purchased_locations: {
+    type: [String],
+    default: [],
+  },
 });
 
 userSchema.plugin(uniqueValidator);

@@ -10,7 +10,9 @@ const ticket = async (req, res) => {
     // } else {
     // }
 
-    const ticket = await models.Ticket.find({ categoryID: req.params.id });
+    const ticket = await models.Ticket.find({ categoryID: req.params.id }).sort(
+      { sort_id: 1 }
+    );
 
     res.status(200).json(ticket);
   } catch (error) {
