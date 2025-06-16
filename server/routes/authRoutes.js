@@ -27,6 +27,9 @@ import newpassword from "../controllers/authController/newpassword.js";
 import verifysignup from "../controllers/authController/verifysignup.js";
 import addUserCity from "../controllers/usercontroller/addcityuser.js";
 import practice from "../controllers/practicecontroller/practice.js";
+import fetchPractice from "../controllers/practicecontroller/fetchpractice.js";
+import editPractice from "../controllers/practicecontroller/editpractice.js";
+import deletePractice from "../controllers/practicecontroller/deletepracticestreet.js";
 
 const authRoutes = express.Router();
 
@@ -55,6 +58,9 @@ authRoutes.put("/edituser", editUser);
 authRoutes.put("/add_city", addUserCity);
 
 authRoutes.post("/practice", practice);
+authRoutes.get("/practice_get", fetchPractice);
+authRoutes.put("/practice/:id", editPractice);
+authRoutes.delete("/practice/:id", deletePractice);
 
 // authRoutes.get("/api/video", generateVideos);
 
