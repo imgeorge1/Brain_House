@@ -1,71 +1,162 @@
-import { useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useUserContext } from "../../context/UserContext";
-import lecturers from "../../data/lecturer";
 import API from "../../utils/API";
+import { PracticeCity, PracticeFormData } from "../../types/Types";
 
 const Practice = () => {
   const { currentUser, booleanPaid } = useUserContext();
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const editRef = useRef<HTMLDialogElement>(null);
 
-  const { register, handleSubmit, reset } = useForm({
-    defaultValues: {
-      city: "",
-      street: "",
-      address: "",
-      lecturer: "",
-      phone: "",
-    },
-  });
+  const { register, handleSubmit, reset, setValue } = useForm<PracticeFormData>(
+    {
+      defaultValues: {
+        city: "",
+        street: "",
+        address: "",
+        lecturer: "",
+        phone: "",
+      },
+    }
+  );
 
-  const onSubmit = async (data) => {
+  const [practiceData, setPracticeData] = useState<PracticeCity[]>([]);
+  const [selectedCity, setSelectedCity] = useState("თბილისი");
+  const [selectedStreet, setSelectedStreet] = useState("გლდანი");
+  const [editingItem, setEditingItem] = useState<
+    (PracticeFormData & { _id: string }) | null
+  >(null);
+
+  const fetchPracticeData = async () => {
     try {
-      const response = await API.post("/practice", data);
-
-      console.log("Server response:", response);
-
-      dialogRef.current?.close();
-      reset();
-    } catch (error) {
-      console.error("Error sending data:");
+      const res = await API.get("/practice_get");
+      setPracticeData(res.data || []);
+    } catch (err) {
+      console.error("Failed to fetch practice data:", err);
     }
   };
 
-  const tbilisiData = lecturers.find((item) => item.city === "თბილისი");
+  useEffect(() => {
+    fetchPracticeData();
+  }, []);
 
-  const filteredLecturers = tbilisiData
-    ? tbilisiData.lectures.name.map((name, index) => ({
-        name,
-        phone: tbilisiData.lectures.phone[index],
-        street: tbilisiData.street[index],
-      }))
-    : [];
+  const selectedCityData = practiceData.find((c) => c.city === selectedCity);
+  const selectedStreetData = selectedCityData?.streets.find(
+    (s) => s.street === selectedStreet
+  );
+  const fullinfo = selectedStreetData?.fullinfo || [];
 
-  const openDialog = () => dialogRef.current?.showModal();
+  const handleCityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newCity = e.target.value;
+    setSelectedCity(newCity);
+    const firstStreet =
+      practiceData.find((c) => c.city === newCity)?.streets?.[0]?.street || "";
+    setSelectedStreet(firstStreet);
+  };
+
+  const handleStreetChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedStreet(e.target.value);
+  };
+
+  const onSubmit = async (data: PracticeFormData) => {
+    try {
+      const res = await API.post("/practice", data);
+      console.log(res);
+
+      fetchPracticeData();
+      dialogRef.current?.close();
+      reset();
+    } catch (err) {
+      console.error("Error sending data:", err);
+    }
+  };
+
+  const openDialog = () => {
+    dialogRef.current?.showModal();
+    setValue("city", selectedCity);
+    setValue("street", selectedStreet);
+  };
+
+  const openEditDialog = (info: any & { _id: string }) => {
+    setEditingItem(info);
+    setValue("address", info.address);
+    setValue("lecturer", info.lecturer);
+    setValue("phone", info.phone);
+    setValue("city", selectedCity);
+    setValue("street", selectedStreet);
+    editRef.current?.showModal();
+  };
+
+  const onSubmitEdit = async (data: PracticeFormData) => {
+    if (!editingItem?._id) return console.error("No item selected for editing");
+
+    try {
+      const res = await API.put(`/practice/${editingItem._id}`, data);
+      console.log(res);
+
+      fetchPracticeData();
+      editRef.current?.close();
+    } catch (err) {
+      console.error("Failed to update:", err);
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!confirm("ნამდვილად გსურს წაშლა?")) return;
+    console.log("delete", id);
+
+    try {
+      await API.delete(`/practice/${id}`);
+      fetchPracticeData(); // Refresh
+    } catch (err) {
+      console.error("Failed to delete:", err);
+    }
+  };
 
   return (
     <main className="container mt-80 mb-60 mx-auto p-4">
       <div className="flex justify-between">
         <div className="flex gap-2">
-          <div className="flex mb-4 px-4 py-2 bg-white w-fit rounded">
-            <span>ქალაქები</span>
-          </div>
-          <div className="flex mb-4 px-4 py-2 bg-white w-fit rounded">
-            <span>ქუჩები</span>
-          </div>
+          <select
+            className="px-4 py-2 rounded bg-white"
+            value={selectedCity}
+            onChange={handleCityChange}
+          >
+            {practiceData.map((c) => (
+              <option key={c.city} value={c.city}>
+                {c.city}
+              </option>
+            ))}
+          </select>
+
+          <select
+            className="px-4 py-2 rounded bg-white"
+            value={selectedStreet}
+            onChange={handleStreetChange}
+          >
+            {selectedCityData?.streets.map((s) => (
+              <option key={s.street} value={s.street}>
+                {s.street}
+              </option>
+            ))}
+          </select>
         </div>
 
-        {(currentUser?.email === "beka.lomsadze.1@btu.edu.ge" && booleanPaid) ||
-        (currentUser?.email === "shvangiradze22giorgi@gmail.com" &&
-          booleanPaid) ||
-        (currentUser?.email === "ubitoz133@gmail.com" && booleanPaid) ? (
-          <button
-            className="bg-blue-600 px-4 py-2 rounded mb-4"
-            onClick={openDialog}
-          >
-            Add Data
-          </button>
-        ) : null}
+        {currentUser?.email &&
+          [
+            "beka.lomsadze.1@btu.edu.ge",
+            "shvangiradze22giorgi@gmail.com",
+            "ubitoz133@gmail.com",
+          ].includes(currentUser.email) &&
+          booleanPaid && (
+            <button
+              className="bg-blue-600 px-4 py-2 rounded mb-4 text-white"
+              onClick={openDialog}
+            >
+              Add Data
+            </button>
+          )}
       </div>
 
       <table className="min-w-full bg-white">
@@ -74,14 +165,43 @@ const Practice = () => {
             <th className="py-2 w-36 border">მისამართი</th>
             <th className="py-2 w-36 border">ლექტორი</th>
             <th className="py-2 w-36 border">ნომერი</th>
+            {currentUser?.email &&
+              [
+                "beka.lomsadze.1@btu.edu.ge",
+                "shvangiradze22giorgi@gmail.com",
+                "ubitoz133@gmail.com",
+              ].includes(currentUser.email) &&
+              booleanPaid && <th className="py-2 w-36 border">რედაქტირება</th>}
           </tr>
         </thead>
         <tbody>
-          {filteredLecturers.map((lecturer, index) => (
-            <tr key={index}>
-              <td className="border px-4 py-2 w-36">{lecturer.street}</td>
-              <td className="border px-4 py-2 w-36">{lecturer.name}</td>
-              <td className="border px-4 py-2 w-36">{lecturer.phone}</td>
+          {fullinfo.map((info, idx) => (
+            <tr key={idx} className="w-full">
+              <td className="border px-4 py-2">{info.address}</td>
+              <td className="border px-4 py-2">{info.lecturer}</td>
+              <td className="border px-4 py-2">{info.phone}</td>
+              {currentUser?.email &&
+                [
+                  "beka.lomsadze.1@btu.edu.ge",
+                  "shvangiradze22giorgi@gmail.com",
+                  "ubitoz133@gmail.com",
+                ].includes(currentUser.email) &&
+                booleanPaid && (
+                  <td className="border px-4 py-2">
+                    <button
+                      className="bg-blue-600 px-4 py-2 rounded text-white"
+                      onClick={() => openEditDialog(info)}
+                    >
+                      Edit Data
+                    </button>
+                    <button
+                      className="bg-red-600 px-4 py-2 rounded text-white"
+                      onClick={() => handleDelete(info._id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                )}
             </tr>
           ))}
         </tbody>
@@ -95,13 +215,13 @@ const Practice = () => {
           <input
             type="text"
             placeholder="ქალაქი"
-            {...register("city", { required: true })}
+            {...register("city")}
             className="border px-2 py-1"
           />
           <input
             type="text"
             placeholder="ქუჩა"
-            {...register("street", { required: true })}
+            {...register("street")}
             className="border px-2 py-1"
           />
           <input
@@ -132,6 +252,50 @@ const Practice = () => {
             <button
               type="button"
               onClick={() => dialogRef.current?.close()}
+              className="bg-red-500 px-4 py-2 rounded text-white"
+            >
+              დახურვა
+            </button>
+          </div>
+        </form>
+      </dialog>
+
+      <dialog
+        ref={editRef}
+        className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl p-6 shadow-md backdrop:bg-black/50"
+      >
+        <form
+          onSubmit={handleSubmit(onSubmitEdit)}
+          className="flex flex-col gap-4"
+        >
+          <input
+            type="text"
+            placeholder="მისამართი"
+            {...register("address", { required: true })}
+            className="border px-2 py-1"
+          />
+          <input
+            type="text"
+            placeholder="ლექტორი"
+            {...register("lecturer", { required: true })}
+            className="border px-2 py-1"
+          />
+          <input
+            type="tel"
+            placeholder="ნომერი"
+            {...register("phone", { required: true })}
+            className="border px-2 py-1"
+          />
+          <div className="flex justify-between">
+            <button
+              type="submit"
+              className="bg-green-500 px-4 py-2 rounded text-white"
+            >
+              შენახვა
+            </button>
+            <button
+              type="button"
+              onClick={() => editRef.current?.close()}
               className="bg-red-500 px-4 py-2 rounded text-white"
             >
               დახურვა

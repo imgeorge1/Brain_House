@@ -113,3 +113,28 @@ export interface TestTypes {
   clickedAnswers: ClickedAnswers;
   ticketData: TicketsTypes[];
 }
+
+type FullInfo = {
+  _id: string;
+  address: string;
+  lecturer: string;
+  phone: string;
+};
+
+type Street = {
+  street: string;
+  fullinfo: FullInfo[];
+};
+
+export type PracticeCity = {
+  city: string;
+  streets: Street[];
+};
+
+export type PracticeFormData = {
+  city: string;
+  street: string;
+  address: string;
+  lecturer: string;
+  phone: string;
+};
