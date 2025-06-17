@@ -30,6 +30,7 @@ import practice from "../controllers/practicecontroller/practice.js";
 import fetchPractice from "../controllers/practicecontroller/fetchpractice.js";
 import editPractice from "../controllers/practicecontroller/editpractice.js";
 import deletePractice from "../controllers/practicecontroller/deletepracticestreet.js";
+import sendCode from "../controllers/usercontroller/sendcode.js";
 
 const authRoutes = express.Router();
 
@@ -61,6 +62,8 @@ authRoutes.post("/practice", practice);
 authRoutes.get("/practice_get", fetchPractice);
 authRoutes.put("/practice/:id", editPractice);
 authRoutes.delete("/practice/:id", deletePractice);
+
+authRoutes.post("/send_code", sendCode);
 
 // authRoutes.get("/api/video", generateVideos);
 

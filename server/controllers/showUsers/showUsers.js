@@ -18,8 +18,6 @@ const updateUserPaidStatus = async (req, res) => {
     const userId = req.params.userId;
     const { isPaid, payDate } = req.body;
 
-    console.log("payDate >>>>>>>>>", payDate);
-
     const user = await models.User.findByIdAndUpdate(
       userId,
       { isPaid, payDate },
@@ -32,8 +30,6 @@ const updateUserPaidStatus = async (req, res) => {
     // if (user.isPaid !== true) {
     //   sendConfirmationEmail(user);
     // }
-
-    console.log("Change Paid Status: ", user);
 
     res.status(200).json({ user });
   } catch (error) {
