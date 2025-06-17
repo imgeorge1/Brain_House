@@ -77,7 +77,6 @@ function Dashboard() {
   };
 
   const saveCity = async () => {
-    // Save logic goes here (e.g., API call or hook)
     try {
       const res = await API.put("/add_city", { addCity });
 
@@ -87,6 +86,16 @@ function Dashboard() {
     }
     dialogAddCityRef.current?.close();
   };
+
+  const handleSendCode = async (user: User) => {
+    try {
+      const res = await API.post("/send_code", { user });
+      console.log("Code sent:", res.data);
+    } catch (error) {
+      console.error("Error sending code:", error);
+    }
+  };
+
   return (
     <div className="mt-32 flex flex-col items-center pb-16">
       <div className="flex gap-8 mb-5">
@@ -155,6 +164,12 @@ function Dashboard() {
                     className="bg-blue-500 text-white px-3 py-1 rounded-lg"
                   >
                     Add
+                  </button>
+                  <button
+                    onClick={() => handleSendCode(user)}
+                    className="bg-yellow-800 text-white px-3 py-1 rounded-lg"
+                  >
+                    Send Code
                   </button>
                 </td>
               </tr>

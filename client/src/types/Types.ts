@@ -34,6 +34,7 @@ export interface User {
   age: number | null;
   city?: string;
   phone?: string | null;
+  purchased_locations: string[];
 }
 
 export type EditableUser = {

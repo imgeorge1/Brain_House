@@ -6,6 +6,12 @@ import { PracticeCity, PracticeFormData } from "../../types/Types";
 
 const Practice = () => {
   const { currentUser, booleanPaid } = useUserContext();
+
+  useEffect(() => {
+    console.log("User data:", currentUser);
+    console.log("Has paid:", booleanPaid);
+  }, [currentUser, booleanPaid]);
+
   const dialogRef = useRef<HTMLDialogElement>(null);
   const editRef = useRef<HTMLDialogElement>(null);
 
@@ -47,6 +53,10 @@ const Practice = () => {
   );
   const fullinfo = selectedStreetData?.fullinfo || [];
 
+  const hasAccess =
+    currentUser?.isPaid &&
+    currentUser?.purchased_locations?.includes(selectedStreet);
+
   const handleCityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newCity = e.target.value;
     setSelectedCity(newCity);
@@ -61,9 +71,7 @@ const Practice = () => {
 
   const onSubmit = async (data: PracticeFormData) => {
     try {
-      const res = await API.post("/practice", data);
-      console.log(res);
-
+      await API.post("/practice", data);
       fetchPracticeData();
       dialogRef.current?.close();
       reset();
@@ -90,11 +98,8 @@ const Practice = () => {
 
   const onSubmitEdit = async (data: PracticeFormData) => {
     if (!editingItem?._id) return console.error("No item selected for editing");
-
     try {
-      const res = await API.put(`/practice/${editingItem._id}`, data);
-      console.log(res);
-
+      await API.put(`/practice/${editingItem._id}`, data);
       fetchPracticeData();
       editRef.current?.close();
     } catch (err) {
@@ -104,11 +109,9 @@ const Practice = () => {
 
   const handleDelete = async (id: string) => {
     if (!confirm("ნამდვილად გსურს წაშლა?")) return;
-    console.log("delete", id);
-
     try {
       await API.delete(`/practice/${id}`);
-      fetchPracticeData(); // Refresh
+      fetchPracticeData();
     } catch (err) {
       console.error("Failed to delete:", err);
     }
@@ -159,27 +162,13 @@ const Practice = () => {
           )}
       </div>
 
-      <table className="min-w-full bg-white">
-        <thead>
-          <tr className="bg-gray-300">
-            <th className="py-2 w-36 border">მისამართი</th>
-            <th className="py-2 w-36 border">ლექტორი</th>
-            <th className="py-2 w-36 border">ნომერი</th>
-            {currentUser?.email &&
-              [
-                "beka.lomsadze.1@btu.edu.ge",
-                "shvangiradze22giorgi@gmail.com",
-                "ubitoz133@gmail.com",
-              ].includes(currentUser.email) &&
-              booleanPaid && <th className="py-2 w-36 border">რედაქტირება</th>}
-          </tr>
-        </thead>
-        <tbody>
-          {fullinfo.map((info, idx) => (
-            <tr key={idx} className="w-full">
-              <td className="border px-4 py-2">{info.address}</td>
-              <td className="border px-4 py-2">{info.lecturer}</td>
-              <td className="border px-4 py-2">{info.phone}</td>
+      <div className="relative mt-6">
+        <table className={`min-w-full bg-white transition-all duration-300`}>
+          <thead>
+            <tr className="bg-gray-300">
+              <th className="py-2 w-36 border">მისამართი</th>
+              <th className="py-2 w-36 border">ლექტორი</th>
+              <th className="py-2 w-36 border">ნომერი</th>
               {currentUser?.email &&
                 [
                   "beka.lomsadze.1@btu.edu.ge",
@@ -187,26 +176,53 @@ const Practice = () => {
                   "ubitoz133@gmail.com",
                 ].includes(currentUser.email) &&
                 booleanPaid && (
-                  <td className="border px-4 py-2">
-                    <button
-                      className="bg-blue-600 px-4 py-2 rounded text-white"
-                      onClick={() => openEditDialog(info)}
-                    >
-                      Edit Data
-                    </button>
-                    <button
-                      className="bg-red-600 px-4 py-2 rounded text-white"
-                      onClick={() => handleDelete(info._id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
+                  <th className="py-2 w-36 border">რედაქტირება</th>
                 )}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {hasAccess ? (
+              fullinfo.map((info, idx) => (
+                <tr key={idx} className="w-full">
+                  <td className="border px-4 py-2">{info.address}</td>
+                  <td className="border px-4 py-2">{info.lecturer}</td>
+                  <td className="border px-4 py-2">{info.phone}</td>
+                  {currentUser?.email &&
+                    [
+                      "beka.lomsadze.1@btu.edu.ge",
+                      "shvangiradze22giorgi@gmail.com",
+                      "ubitoz133@gmail.com",
+                    ].includes(currentUser.email) &&
+                    booleanPaid && (
+                      <td className="grid gap-2 grid-cols-2 border px-4 py-2">
+                        <button
+                          className="bg-blue-600 px-4 py-2 rounded text-white"
+                          onClick={() => openEditDialog(info)}
+                        >
+                          Edit Data
+                        </button>
+                        <button
+                          className="bg-red-600 px-4 py-2 rounded text-white"
+                          onClick={() => handleDelete(info._id)}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    )}
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={4} className="text-center p-4 text-gray-500">
+                  შეძენის შემდეგ გაგეხსნებათ წვდომა ამ ქუჩის მონაცემებზე.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
 
+      {/* Dialogs */}
       <dialog
         ref={dialogRef}
         className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl p-6 shadow-md backdrop:bg-black/50"
