@@ -135,7 +135,7 @@ const Practice = () => {
 
   return (
     <main className="container mt-32 mb-60 mx-auto p-4">
-      <div className="flex gap-6 items-end">
+      <div className="flex justify-between items-end">
         <div className="flex gap-2 h-fit">
           <select
             className="px-4 py-2 rounded bg-white"
