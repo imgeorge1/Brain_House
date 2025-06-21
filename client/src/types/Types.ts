@@ -120,6 +120,8 @@ type FullInfo = {
   address: string;
   lecturer: string;
   phone: string;
+  price: number;
+  saleprice: number;
 };
 
 type Street = {
@@ -129,13 +131,18 @@ type Street = {
 
 export type PracticeCity = {
   city: string;
+  image?: string;
+
   streets: Street[];
 };
 
-export type PracticeFormData = {
+export interface PracticeFormData {
   city: string;
   street: string;
   address: string;
   lecturer: string;
   phone: string;
-};
+  price?: number;
+  saleprice?: number;
+  image?: string;
+}

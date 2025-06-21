@@ -15,21 +15,30 @@ const Practice = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const editRef = useRef<HTMLDialogElement>(null);
 
-  const { register, handleSubmit, reset, setValue } = useForm<PracticeFormData>(
-    {
-      defaultValues: {
-        city: "",
-        street: "",
-        address: "",
-        lecturer: "",
-        phone: "",
-      },
-    }
-  );
+  const {
+    register: registerAdd,
+    handleSubmit: handleSubmitAdd,
+    reset: resetAdd,
+  } = useForm<PracticeFormData>({
+    defaultValues: {
+      city: "",
+      street: "",
+      address: "",
+      lecturer: "",
+      phone: "",
+    },
+  });
+
+  const {
+    register: registerEdit,
+    handleSubmit: handleSubmitEdit,
+    reset: resetEdit,
+  } = useForm<PracticeFormData>();
 
   const [practiceData, setPracticeData] = useState<PracticeCity[]>([]);
   const [selectedCity, setSelectedCity] = useState("თბილისი");
   const [selectedStreet, setSelectedStreet] = useState("გლდანი");
+
   const [editingItem, setEditingItem] = useState<
     (PracticeFormData & { _id: string }) | null
   >(null);
@@ -45,6 +54,7 @@ const Practice = () => {
 
   useEffect(() => {
     fetchPracticeData();
+    console.log(practiceData);
   }, []);
 
   const selectedCityData = practiceData.find((c) => c.city === selectedCity);
@@ -70,38 +80,44 @@ const Practice = () => {
   };
 
   const onSubmit = async (data: PracticeFormData) => {
+    console.log("Submitting new data:", data);
     try {
       await API.post("/practice", data);
       fetchPracticeData();
       dialogRef.current?.close();
-      reset();
+      resetAdd();
     } catch (err) {
       console.error("Error sending data:", err);
     }
   };
 
   const openDialog = () => {
+    resetAdd(); // clear form
     dialogRef.current?.showModal();
-    setValue("city", selectedCity);
-    setValue("street", selectedStreet);
   };
 
-  const openEditDialog = (info: any & { _id: string }) => {
+  const openEditDialog = (info: PracticeFormData & { _id: string }) => {
     setEditingItem(info);
-    setValue("address", info.address);
-    setValue("lecturer", info.lecturer);
-    setValue("phone", info.phone);
-    setValue("city", selectedCity);
-    setValue("street", selectedStreet);
+    resetEdit({
+      address: info.address,
+      lecturer: info.lecturer,
+      phone: info.phone,
+      price: info.price,
+      saleprice: info.saleprice,
+    });
+
     editRef.current?.showModal();
   };
 
   const onSubmitEdit = async (data: PracticeFormData) => {
     if (!editingItem?._id) return console.error("No item selected for editing");
+
+    console.log("Submitting edit:", data);
     try {
       await API.put(`/practice/${editingItem._id}`, data);
       fetchPracticeData();
       editRef.current?.close();
+      resetEdit();
     } catch (err) {
       console.error("Failed to update:", err);
     }
@@ -118,9 +134,9 @@ const Practice = () => {
   };
 
   return (
-    <main className="container mt-80 mb-60 mx-auto p-4">
-      <div className="flex justify-between">
-        <div className="flex gap-2">
+    <main className="container mt-32 mb-60 mx-auto p-4">
+      <div className="flex justify-between items-end">
+        <div className="flex gap-2 h-fit">
           <select
             className="px-4 py-2 rounded bg-white"
             value={selectedCity}
@@ -146,6 +162,15 @@ const Practice = () => {
           </select>
         </div>
 
+        {selectedCityData?.image && (
+          <img
+            src={selectedCityData.image}
+            alt={`${selectedCityData.city} Image`}
+            loading="lazy"
+            className="w-full max-w-lg h-auto object-cover rounded-lg"
+          />
+        )}
+
         {currentUser?.email &&
           [
             "beka.lomsadze.1@btu.edu.ge",
@@ -154,7 +179,7 @@ const Practice = () => {
           ].includes(currentUser.email) &&
           booleanPaid && (
             <button
-              className="bg-blue-600 px-4 py-2 rounded mb-4 text-white"
+              className="bg-blue-600 h-fit px-4 py-2 rounded text-white"
               onClick={openDialog}
             >
               Add Data
@@ -163,12 +188,14 @@ const Practice = () => {
       </div>
 
       <div className="relative mt-6">
-        <table className={`min-w-full bg-white transition-all duration-300`}>
+        <table className="min-w-full bg-white transition-all duration-300">
           <thead>
             <tr className="bg-gray-300">
               <th className="py-2 w-36 border">მისამართი</th>
               <th className="py-2 w-36 border">ლექტორი</th>
               <th className="py-2 w-36 border">ნომერი</th>
+              <th className="py-2 w-36 border">ფასი</th>
+
               {currentUser?.email &&
                 [
                   "beka.lomsadze.1@btu.edu.ge",
@@ -187,6 +214,23 @@ const Practice = () => {
                   <td className="border px-4 py-2">{info.address}</td>
                   <td className="border px-4 py-2">{info.lecturer}</td>
                   <td className="border px-4 py-2">{info.phone}</td>
+                  <td className="border px-4 py-2 text-center">
+                    {info.saleprice > 0 && info.saleprice < info.price ? (
+                      <>
+                        <span className="line-through text-gray-500 mr-2">
+                          {info.price}₾
+                        </span>
+                        <span className="text-green-600 font-bold">
+                          {info.saleprice}₾
+                        </span>
+                      </>
+                    ) : (
+                      <span className="text-black font-medium">
+                        {info.price}₾
+                      </span>
+                    )}
+                  </td>
+
                   {currentUser?.email &&
                     [
                       "beka.lomsadze.1@btu.edu.ge",
@@ -197,10 +241,17 @@ const Practice = () => {
                       <td className="grid gap-2 grid-cols-2 border px-4 py-2">
                         <button
                           className="bg-blue-600 px-4 py-2 rounded text-white"
-                          onClick={() => openEditDialog(info)}
+                          onClick={() =>
+                            openEditDialog({
+                              ...info,
+                              city: selectedCity,
+                              street: selectedStreet,
+                            })
+                          }
                         >
-                          Edit Data
+                          Edit
                         </button>
+
                         <button
                           className="bg-red-600 px-4 py-2 rounded text-white"
                           onClick={() => handleDelete(info._id)}
@@ -222,42 +273,58 @@ const Practice = () => {
         </table>
       </div>
 
-      {/* Dialogs */}
+      {/* Add Dialog */}
       <dialog
         ref={dialogRef}
         className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl p-6 shadow-md backdrop:bg-black/50"
       >
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+        <form
+          onSubmit={handleSubmitAdd(onSubmit)}
+          className="flex flex-col gap-4"
+        >
           <input
             type="text"
             placeholder="ქალაქი"
-            {...register("city")}
+            {...registerAdd("city", { required: true })}
             className="border px-2 py-1"
           />
           <input
             type="text"
             placeholder="ქუჩა"
-            {...register("street")}
+            {...registerAdd("street", { required: true })}
             className="border px-2 py-1"
           />
           <input
             type="text"
             placeholder="მისამართი"
-            {...register("address", { required: true })}
+            {...registerAdd("address", { required: true })}
             className="border px-2 py-1"
           />
           <input
             type="text"
             placeholder="ლექტორი"
-            {...register("lecturer", { required: true })}
+            {...registerAdd("lecturer", { required: true })}
             className="border px-2 py-1"
           />
           <input
             type="tel"
             placeholder="ნომერი"
-            {...register("phone", { required: true })}
+            {...registerAdd("phone", { required: true })}
             className="border px-2 py-1"
           />
+          <input
+            type="number"
+            placeholder="ფასი"
+            {...registerAdd("price", { valueAsNumber: true })}
+            className="border px-2 py-1"
+          />
+          <input
+            type="number"
+            placeholder="ფასდაკლებული ფასი"
+            {...registerAdd("saleprice", { valueAsNumber: true })}
+            className="border px-2 py-1"
+          />
+
           <div className="flex justify-between">
             <button
               type="submit"
@@ -276,32 +343,46 @@ const Practice = () => {
         </form>
       </dialog>
 
+      {/* Edit Dialog */}
       <dialog
         ref={editRef}
         className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl p-6 shadow-md backdrop:bg-black/50"
       >
         <form
-          onSubmit={handleSubmit(onSubmitEdit)}
+          onSubmit={handleSubmitEdit(onSubmitEdit)}
           className="flex flex-col gap-4"
         >
           <input
             type="text"
             placeholder="მისამართი"
-            {...register("address", { required: true })}
+            {...registerEdit("address", { required: true })}
             className="border px-2 py-1"
           />
           <input
             type="text"
             placeholder="ლექტორი"
-            {...register("lecturer", { required: true })}
+            {...registerEdit("lecturer", { required: true })}
             className="border px-2 py-1"
           />
           <input
             type="tel"
             placeholder="ნომერი"
-            {...register("phone", { required: true })}
+            {...registerEdit("phone", { required: true })}
             className="border px-2 py-1"
           />
+          <input
+            type="number"
+            placeholder="ფასი"
+            {...registerEdit("price", { valueAsNumber: true })}
+            className="border px-2 py-1"
+          />
+          <input
+            type="number"
+            placeholder="ფასდაკლებული ფასი"
+            {...registerEdit("saleprice", { valueAsNumber: true })}
+            className="border px-2 py-1"
+          />
+
           <div className="flex justify-between">
             <button
               type="submit"
