@@ -3,7 +3,7 @@ import mongoConnection from "../../db/mongoConnection.js";
 const { models } = await mongoConnection();
 
 const practice = async (req, res) => {
-  const { city, street, address, lecturer, phone } = req.body;
+  const { city, street, address, lecturer, phone, price, saleprice } = req.body;
 
   if (!city || !street || !address || !lecturer || !phone) {
     return res.status(400).json({ error: "All fields are required." });
@@ -12,12 +12,14 @@ const practice = async (req, res) => {
   try {
     let practiceDoc = await models.Practice.findOne({ city });
 
-    const newFullinfo = { address, lecturer, phone };
+    const newFullinfo = { address, lecturer, phone, price, saleprice };
 
     if (practiceDoc) {
+      // Check if street already exists under this city
       const streetObj = practiceDoc.streets.find((s) => s.street === street);
 
       if (streetObj) {
+        // Check if the address already exists under the street
         const fullinfoExists = streetObj.fullinfo.some(
           (info) => info.address === address
         );
@@ -25,21 +27,22 @@ const practice = async (req, res) => {
         if (fullinfoExists) {
           return res
             .status(409)
-            .json({ error: "This fullinfo already exists for the street." });
+            .json({ error: "This address already exists for the street." });
         }
 
+        // Add new address to existing street
         streetObj.fullinfo.push(newFullinfo);
-        await practiceDoc.save();
       } else {
-        // Street doesn't exist yet
+        // Street doesn't exist — add it with the new address
         practiceDoc.streets.push({
           street,
           fullinfo: [newFullinfo],
         });
-        await practiceDoc.save();
       }
+
+      await practiceDoc.save();
     } else {
-      // City doesn't exist
+      // City doesn't exist — create everything
       practiceDoc = await models.Practice.create({
         city,
         streets: [
@@ -51,10 +54,10 @@ const practice = async (req, res) => {
       });
     }
 
-    res.status(201).json(practiceDoc);
+    return res.status(201).json(practiceDoc);
   } catch (error) {
     console.error("Server error:", error);
-    res.status(500).json({ error: "Server error." });
+    return res.status(500).json({ error: "Server error." });
   }
 };
 

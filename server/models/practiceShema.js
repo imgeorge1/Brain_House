@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const practiceSchema = new mongoose.Schema({
   city: { type: String, required: true },
+  image: { type: String, default: "" },
   streets: [
     {
       street: { type: String, required: true },
@@ -10,11 +11,12 @@ const practiceSchema = new mongoose.Schema({
           address: String,
           lecturer: String,
           phone: String,
+          price: { type: Number, default: 0 },
+          saleprice: { type: Number, default: 0 },
         },
       ],
     },
   ],
 });
 
-// const Signs = mongoose.model("Signs", practiceSchema);
 export default practiceSchema;

@@ -4,7 +4,7 @@ const { models } = await mongoConnection();
 
 const editPractice = async (req, res) => {
   const { id } = req.params; // fullinfo ID
-  const { address, lecturer, phone } = req.body;
+  const { address, lecturer, phone, price, saleprice } = req.body;
 
   if (!address || !lecturer || !phone) {
     return res.status(400).json({ error: "All fields are required." });
@@ -18,6 +18,9 @@ const editPractice = async (req, res) => {
           "streets.$[street].fullinfo.$[info].address": address,
           "streets.$[street].fullinfo.$[info].lecturer": lecturer,
           "streets.$[street].fullinfo.$[info].phone": phone,
+          "streets.$[street].fullinfo.$[info].price": price,
+
+          "streets.$[street].fullinfo.$[info].saleprice": saleprice,
         },
       },
       {
