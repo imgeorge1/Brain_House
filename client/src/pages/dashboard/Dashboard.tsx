@@ -4,18 +4,10 @@ import OldDashboard from "../../components/olddata";
 import API from "../../utils/API";
 import { EditableUser, User } from "../../types/Types";
 
-type AddCity = {
-  email: string;
-
-  city: string;
-};
-
 function Dashboard() {
   const { users, handleActive } = useDashboardPage();
 
   const [oldData, setOldData] = useState<boolean>(false);
-  const [addCity, setAddCity] = useState<AddCity>({ email: "", city: "" });
-
   const [editUser, setEditUser] = useState<EditableUser>({
     firstName: "",
     lastName: "",
@@ -25,7 +17,6 @@ function Dashboard() {
     phone: "",
   });
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const dialogAddCityRef = useRef<HTMLDialogElement>(null);
 
   const handleOldData = () => setOldData(true);
   const handleNewData = () => setOldData(false);
@@ -42,25 +33,13 @@ function Dashboard() {
     });
     dialogRef.current?.showModal();
   };
-  const openAddCityDialog = (user: User) => {
-    console.log(user);
+  console.log("edituser", editUser);
 
-    setAddCity({ email: user.email, city: "" });
-    dialogAddCityRef.current?.showModal();
-  };
   const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setEditUser((prev: EditableUser) => ({ ...prev, [name]: value }));
   };
-
-  const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newCity = e.target.value;
-
-    setAddCity((prev) => ({
-      ...prev,
-      city: newCity,
-    }));
-  };
+  console.log("edited user ", editUser);
 
   const saveEdit = async () => {
     // Save logic goes here (e.g., API call or hook)
@@ -74,26 +53,6 @@ function Dashboard() {
       console.log(error);
     }
     dialogRef.current?.close();
-  };
-
-  const saveCity = async () => {
-    try {
-      const res = await API.put("/add_city", { addCity });
-
-      console.log("res: ", res);
-    } catch (error) {
-      console.log(error);
-    }
-    dialogAddCityRef.current?.close();
-  };
-
-  const handleSendCode = async (user: User) => {
-    try {
-      const res = await API.post("/send_code", { user });
-      console.log("Code sent:", res.data);
-    } catch (error) {
-      console.error("Error sending code:", error);
-    }
   };
 
   return (
@@ -114,7 +73,8 @@ function Dashboard() {
       </div>
 
       {!oldData ? (
-        <table className="table-auto border-collapse border w-[70%]">
+      <div className="w-full overflow-x-auto px-2">
+        <table className="min-w-[800px] table-auto border-collapse border">
           <thead className="bg-gray-800 text-white">
             <tr>
               <th className="px-4 py-2">სახელი გვარი</th>
@@ -152,68 +112,27 @@ function Dashboard() {
                     {user.isPaid ? "აქტიური" : "პასიური"}
                   </button>
                 </td>
-                <td className="flex gap-1 border px-4 py-2">
+                <td className="border px-4 py-2">
                   <button
                     onClick={() => openEditDialog(user)}
                     className="bg-blue-500 text-white px-3 py-1 rounded-lg"
                   >
                     Edit
                   </button>
-                  <button
-                    onClick={() => openAddCityDialog(user)}
-                    className="bg-blue-500 text-white px-3 py-1 rounded-lg"
-                  >
-                    Add
-                  </button>
-                  <button
-                    onClick={() => handleSendCode(user)}
-                    className="bg-yellow-800 text-white px-3 py-1 rounded-lg"
-                  >
-                    Send Code
-                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
       ) : (
         <OldDashboard />
       )}
-      <dialog
-        ref={dialogAddCityRef}
-        className=" top-1/2  left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl p-6 shadow-md backdrop:bg-black/50"
-      >
-        <form method="dialog" className="flex flex-col gap-4">
-          <h2 className="text-xl font-bold">Add City</h2>
-          <input
-            name="lastName"
-            value={addCity.city}
-            required
-            onChange={handleCityChange}
-            placeholder="City"
-            className="border p-2 rounded"
-          />
-          <div className="flex gap-4 justify-between">
-            <button
-              type="submit"
-              onClick={saveCity}
-              className="bg-green-600 text-white px-4 py-2 rounded"
-            >
-              Add
-            </button>
-            <button
-              type="button"
-              onClick={() => dialogAddCityRef.current?.close()}
-              className="bg-gray-400 text-black px-4 py-2 rounded"
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
-      </dialog>
+
+      {/* Edit Dialog */}
       <dialog
         ref={dialogRef}
-        className=" top-1/2  left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl p-6 shadow-md backdrop:bg-black/50"
+        className="rounded-xl p-6 shadow-md backdrop:bg-black/50"
       >
         {editUser && (
           <form method="dialog" className="flex flex-col gap-4">
