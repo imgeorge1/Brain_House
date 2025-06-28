@@ -4641,7 +4641,7 @@ const largeTicketList = [
   {
     id: 17,
     categoryID: 20,
-    image: "raw.githubusercontent.com/imgeorge1/tickets/refs/heads/master/%E1%83%97%E1%83%94%E1%83%9B%E1%83%9020-07_7.jpg",
+    image: "https://tinyurl.com/mrxbduyr",
     correctAnswer: 1,
     quantityAnswer: 3,
   },
