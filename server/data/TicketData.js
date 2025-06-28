@@ -2603,7 +2603,7 @@ const largeTicketList = [
     id: 437,
     categoryID: 11,
     image: "https://tinyurl.com/4axv58ky",
-    correctAnswer: 1,
+    correctAnswer: 2,
     quantityAnswer: 2,
   },
   {
