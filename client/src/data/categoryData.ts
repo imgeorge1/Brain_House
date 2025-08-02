@@ -117,13 +117,13 @@ const categoryData2 = [
     index: 17,
     videoUrl: "https://drive.google.com/file/d/1mlA1bditMZ-rJgxtjOtVNs7t_XmBYy-P/preview",
   },
-  {
-    id: 5,
-    category: "ამკრძალავი ნიშნები",
-    index: 18,
-    videoUrl:
-      "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
-  },
+  // {
+  //   id: 5,
+  //   category: "ამკრძალავი ნიშნები",
+  //   index: 18,
+  //   videoUrl:
+  //     "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
+  // },
   {
     id: 6,
     category: "მიმთითებელი ნიშნები",
@@ -159,13 +159,13 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview",
   },
-  {
-    id: 1,
-    category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
-    index: 23,
-    videoUrl:
-      "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
-  },
+  // {
+  //   id: 1,
+  //   category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
+  //   index: 23,
+  //   videoUrl:
+  //     "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
+  // },
   {
     id: 31,
     category: "ადმინისტრაციული კანონი",
