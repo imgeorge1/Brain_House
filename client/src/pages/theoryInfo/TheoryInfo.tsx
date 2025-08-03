@@ -24,6 +24,7 @@ const TheoryInfo = () => {
     comment8,
     comment9,
     comment10,
+    comment11,
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
