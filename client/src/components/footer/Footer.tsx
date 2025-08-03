@@ -25,13 +25,13 @@ function Footer() {
               წესები, პირობები და მონაცემთა დაცვა
             </Link>
           </div>
-          <div>
+{/*           <div>
             <Link to="/buy-course">
               <p className="mt-3 text-yellow-500  hover:text-yellow-600 duration-150">
                 თეორიის კურსის შეძენა
               </p>
             </Link>
-          </div>
+          </div> */}
           <div>
             <Link to="/about">
               <p className="mt-3 text-yellow-500  hover:text-yellow-600 duration-150">
