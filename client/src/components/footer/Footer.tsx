@@ -42,7 +42,7 @@ function Footer() {
           <div>
             <Link to="/theory-info">
               <p className="mt-3 text-yellow-500  hover:text-yellow-600 duration-150">
-                თეორიული კურსი
+                თეორიის ჭკვიანი კურსი
               </p>
             </Link>
           </div>
