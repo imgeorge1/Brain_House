@@ -159,13 +159,13 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview",
   },
-  // {
-  //   id: 1,
-  //   category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
-  //   index: 23,
-  //   videoUrl:
-  //     "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
-  // },
+  {
+    id: 1,
+    category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
+    index: 23,
+    videoUrl:
+      "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
+  },
   {
     id: 31,
     category: "ადმინისტრაციული კანონი",
