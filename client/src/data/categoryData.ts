@@ -105,31 +105,31 @@ const categoryData2 = [
       "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview",
   },
   {
-    id: 3,
-    category: "მაფრთხილებელი ნიშნები",
-    index: 16,
-    videoUrl:
-      "https://drive.google.com/file/d/1UugO30-4VeJRVJq37EzVpmeEteGzGM3y/preview",
-  },
-  {
-    id: 4,
-    category: "პრიორიტეტის ნიშნები",
-    index: 17,
-    videoUrl: "https://drive.google.com/file/d/1mlA1bditMZ-rJgxtjOtVNs7t_XmBYy-P/preview",
-  },
-  {
     id: 1,
     category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
-    index: 18,
+    index: 16,
     videoUrl:
       "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
   },
   {
     id: 5,
     category: "ამკრძალავი ნიშნები",
-    index: 19,
+    index: 17,
     videoUrl:
       "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
+  },
+  {
+    id: 3,
+    category: "მაფრთხილებელი ნიშნები",
+    index: 18,
+    videoUrl:
+      "https://drive.google.com/file/d/1UugO30-4VeJRVJq37EzVpmeEteGzGM3y/preview",
+  },
+  {
+    id: 4,
+    category: "პრიორიტეტის ნიშნები",
+    index: 19,
+    videoUrl: "https://drive.google.com/file/d/1mlA1bditMZ-rJgxtjOtVNs7t_XmBYy-P/preview",
   },
   {
     id: 6,
