@@ -32,6 +32,8 @@ import editPractice from "../controllers/practicecontroller/editpractice.js";
 import deletePractice from "../controllers/practicecontroller/deletepracticestreet.js";
 import sendCode from "../controllers/usercontroller/sendcode.js";
 
+import generateSitemap from "../generateSitemap.js";
+
 const authRoutes = express.Router();
 
 authRoutes.get("/beka", (req, res) => {
@@ -44,6 +46,12 @@ authRoutes.get("/users", users);
 authRoutes.get("/oldusers", oldUser);
 authRoutes.put("/users/:userId", updateUserPaidStatus);
 authRoutes.get("/usersInfo", usersInfo);
+
+authRoutes.get("/sitemap.xml", async (req, res) => {
+  const xml = await generateSitemap();
+  res.header("Content-Type", "application/xml");
+  res.send(xml);
+});
 
 authRoutes.get("/tickets/:id", ticket);
 authRoutes.post("/tickets", ticketTest);
