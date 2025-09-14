@@ -139,40 +139,40 @@ const categoryData2 = [
       "https://drive.google.com/file/d/1vvDClkf1DXuL1OizW8f-SXz2Kl-bt1XE/preview",
   },
   {
+    id: 30,
+    category: "მოძრაობის უსაფრთხოება",
+    index: 21,
+    videoUrl:
+     "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview",
+  },
+  {
     id: 12,
     category: "სპეციალური სიგნალის გამოყენება",
-    index: 21,
+    index: 22,
     videoUrl:
       "https://drive.google.com/file/d/1fGvyLtXDp0E09tQ6qsjnzPv1t6MFEIIf/preview",
   },
   {
     id: 13,
     category: "საავარიო შუქური სიგნალიზაცია",
-    index: 22,
+    index: 23,
     videoUrl:
       "https://drive.google.com/file/d/1EeniWZCHqaVQ3QyciSa_xPRjHAc3X9_-/preview",
   },
   {
     id: 9,
     category: "დამატებითი ინფორმაციის ნიშნები",
-    index: 23,
+    index: 24,
     videoUrl:
       "https://drive.google.com/file/d/1CgpIc0lZLDTIkPrRKtUruDnNFHdizvw_/preview",
   },
   {
     id: 14,
     category: "სანათი ხელსაწყოები, ხმოვანი სიგნალი",
-    index: 24,
+    index: 25,
     videoUrl:
       "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview",
   },
-  {
-    id: 30,
-    category: "მოძრაობის უსაფრთხოება",
-    index: 25,
-    videoUrl:
-     "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview",
-   },
   {
     id: 31,
     category: "ადმინისტრაციული კანონი",
