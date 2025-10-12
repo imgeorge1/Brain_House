@@ -97,12 +97,19 @@ const categoryData2 = [
     index: 14,
     videoUrl: "https://drive.google.com/file/d/1eUwYGyzFeCWXhvCUTIIOb6eN9eTjB4sF/preview",
   },
+  // {
+  //   id: 16,
+  //   category: "გასწრება შემხვედრის გვერდის ავლით",
+  //   index: 15,
+  //   videoUrl:
+  //     "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview",
+  // },
   {
-    id: 16,
+    id: 30,
     category: "გასწრება შემხვედრის გვერდის ავლით",
     index: 15,
     videoUrl:
-      "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview",
+     "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview",
   },
   {
     id: 1,
@@ -215,14 +222,21 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/17j6HEaqQrSYstrw3t8z0IwYFsIGCH57n/preview",
   },
+  // {
+  //   id: 30,
+  //   category: "მოძრაობის უსაფრთხოება",
+  //   index: 32,
+  //   videoUrl:
+  //    "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview",
+  // },
   {
-    id: 30,
-    category: "მოძრაობის უსაფრთხოება",
+    id: 16,
+    category: "გასწრება შემხვედრის გვერდის ავლით",
     index: 32,
     videoUrl:
-     "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview ",
+      "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview",
   },
-  //https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview
+  
 ];
 
 export default categoryData2;
