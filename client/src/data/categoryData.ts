@@ -105,7 +105,7 @@ const categoryData2 = [
   //     "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview",
   // },
   {
-    id: 30,
+    id: 16,
     category: "გასწრება შემხვედრის გვერდის ავლით",
     index: 15,
     videoUrl:
