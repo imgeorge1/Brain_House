@@ -231,7 +231,7 @@ const categoryData2 = [
   // },
   {
     id: 16,
-    category: "გასწრება შემხვედრის გვერდის ავლით",
+    category: "მოძრაობის უსაფრთხოება",
     index: 32,
     videoUrl:
       "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview",
