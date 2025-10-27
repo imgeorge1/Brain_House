@@ -97,13 +97,6 @@ const categoryData2 = [
     index: 14,
     videoUrl: "https://drive.google.com/file/d/1eUwYGyzFeCWXhvCUTIIOb6eN9eTjB4sF/preview",
   },
-  {
-    id: 16,
-    category: "გასწრება შემხვედრის გვერდის ავლით",
-    index: 15,
-    videoUrl:
-      "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview",
-  },
   // {
   //   id: 30,
   //   category: "გასწრება შემხვედრის გვერდის ავლით",
@@ -114,16 +107,23 @@ const categoryData2 = [
   {
     id: 1,
     category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
-    index: 16,
+    index: 15,
     videoUrl:
       "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
   },
   {
     id: 5,
     category: "ამკრძალავი ნიშნები",
-    index: 17,
+    index: 16,
     videoUrl:
       "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
+  },
+  {
+    id: 16,
+    category: "გასწრება შემხვედრის გვერდის ავლით",
+    index: 17,
+    videoUrl:
+      "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview",
   },
   {
     id: 3,
