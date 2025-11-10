@@ -172,35 +172,36 @@ const categoryData2 = [
     index: 24,
     videoUrl:
       "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview",
+  },  
+  {
+    id: 30,
+    category: "მოძრაობის უსაფრთხოება",
+    index: 25,
+    videoUrl:
+     "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview",
   },
   {
     id: 31,
     category: "ადმინისტრაციული კანონი",
-    index: 25,
+    index: 26,
     videoUrl:
       "https://drive.google.com/file/d/1NTioStNbM4RrJMZXAy0BOC5sSBu7fSdT/preview",
   },
   {
     id: 29,
     category: "სამედიცინო დახმარება",
-    index: 26,
+    index: 27,
     videoUrl:
       "https://drive.google.com/file/d/15XKo1iU7ag5PSvwR5FFuZBHrSZhLVnIA/preview",
   },
   {
     id: 18,
     category: "სამუხრუჭე მანძილი, დისტანცია",
-    index: 27,
+    index: 28,
     videoUrl:
       "https://drive.google.com/file/d/19-UVBDzH73QY_SpSUfYAoucPOi7yRn_F/preview",
   },
-  {
-    id: 30,
-    category: "მოძრაობის უსაფრთხოება",
-    index: 28,
-    videoUrl:
-     "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview",
-  },
+
   {
     id: 20,
     category: "გზაჯვარედინის გავლა",
