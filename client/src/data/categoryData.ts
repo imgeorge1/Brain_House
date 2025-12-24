@@ -92,9 +92,23 @@ const categoryData2 = [
       "https://drive.google.com/file/d/1HOJygatWf8bV0pjKY5L6SwXYq0QGUEmb/preview",
   },
   {
+    id: 1,
+    category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
+    index: 14,
+    videoUrl:
+      "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
+  },
+  {
+    id: 5,
+    category: "ამკრძალავი ნიშნები",
+    index: 15,
+    videoUrl:
+      "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
+  },
+  {
     id: 17,
     category: "მოძრაობის სიჩქარე",
-    index: 14,
+    index: 16,
     videoUrl: "https://drive.google.com/file/d/1eUwYGyzFeCWXhvCUTIIOb6eN9eTjB4sF/preview",
   },
   // {
@@ -104,20 +118,6 @@ const categoryData2 = [
   //   videoUrl:
   //    "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview",
   // },
-  {
-    id: 1,
-    category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
-    index: 15,
-    videoUrl:
-      "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
-  },
-  {
-    id: 5,
-    category: "ამკრძალავი ნიშნები",
-    index: 16,
-    videoUrl:
-      "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
-  },
   {
     id: 16,
     category: "გასწრება შემხვედრის გვერდის ავლით",
