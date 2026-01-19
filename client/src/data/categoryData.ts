@@ -84,26 +84,26 @@ const categoryData2 = [
     index: 12,
     videoUrl:
       "https://drive.google.com/file/d/1LNKTQXaqub25gWkHqn3TrdIf82PcK-92/preview",
+  }, 
+  {
+    id: 1,
+    category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
+    index: 13,
+    videoUrl:
+      "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
   },
   {
     id: 26,
     category: "გადაზიდვები, ხალხი, ტვირთი",
-    index: 13,
+    index: 14,
     videoUrl: "https://drive.google.com/file/d/1IKNRL9i5afleq_HAmhqAP0mbRiOiw7qh/preview",
   },
   {
     id: 19,
     category: "გაჩერება დგომა",
-    index: 14,
-    videoUrl:
-      "https://drive.google.com/file/d/1HOJygatWf8bV0pjKY5L6SwXYq0QGUEmb/preview",
-  },
-  {
-    id: 1,
-    category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
     index: 15,
     videoUrl:
-      "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
+      "https://drive.google.com/file/d/1HOJygatWf8bV0pjKY5L6SwXYq0QGUEmb/preview",
   },
   {
     id: 5,
