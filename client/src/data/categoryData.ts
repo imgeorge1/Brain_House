@@ -29,93 +29,73 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/1H5cLSppz3GpUhAwzeBk8sfyHXhXWW3Up/preview",
   },
-        {
-    id: 5,
-    category: "ამკრძალავი ნიშნები",
-    index: 5,
-    videoUrl:
-      "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
-  },
-  {
-    id: 30,
-    category: "მოძრაობის უსაფრთხოება",
-    index: 6,
-    videoUrl:
-     "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview",
-  },
-  {
-    id: 1,
-    category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
-    index: 7,
-    videoUrl:
-      "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
-  },
+
   {
     id: 25,
     category: "სასწავლო სვლა",
-    index: 8,
+    index: 5,
     videoUrl:
       "https://drive.google.com/file/d/1_AH1cz2S54xp2hzInM28ew7OPfaYjmMk/preview",
   },
   {
     id: 8,
     category: "სერვისის ნიშნები",
-    index: 9,
+    index: 6,
     videoUrl:
       "https://drive.google.com/file/d/1zEcExd2izh80rIGxf5IrwTbQeWJhHLze/preview",
   },
   {
     id: 2,
     category: "უწესივრობა და მართვის პირობები",
-    index: 10,
+    index: 7,
     videoUrl:
       "https://drive.google.com/file/d/1JdkbINAHiRr7WeO6OHNPq2TVdk5vNukV/preview",
   },
   {
     id: 7,
     category: "საინფორმაციო-მაჩვენებელი ნიშნები",
-    index: 11,
+    index: 8,
     videoUrl:
       "https://drive.google.com/file/d/1Y0rfr3VRIO3tKgOn9Y3ZbheMWd2zeCnK/preview",
   },
   {
     id: 27,
     category: "ველოსიპედი, მოპედი და პირუტყვის გადარეკვა",
-    index: 12,
+    index: 9,
     videoUrl:
       "https://drive.google.com/file/d/1DO_HUubUFv6s5wEXT94u8bEVngD9dR4x/preview",
   },
   {
     id: 28,
     category: "საგზაო მონიშვნა",
-    index: 13,
+    index: 10,
     videoUrl:
       "https://drive.google.com/file/d/1wt_0C7CDQMv3IcR_uMTTLqNmVKkpQ5N7/preview",
   },
   {
     id: 15,
     category: "მოძრაობა, მანევრირება, სავალი ნაწილი",
-    index: 14,
+    index: 11,
     videoUrl:
       "https://drive.google.com/file/d/1LNKTQXaqub25gWkHqn3TrdIf82PcK-92/preview",
   }, 
   {
     id: 26,
     category: "გადაზიდვები, ხალხი, ტვირთი",
-    index: 15,
+    index: 12,
     videoUrl: "https://drive.google.com/file/d/1IKNRL9i5afleq_HAmhqAP0mbRiOiw7qh/preview",
   },
   {
     id: 19,
     category: "გაჩერება დგომა",
-    index: 16,
+    index: 13,
     videoUrl:
       "https://drive.google.com/file/d/1HOJygatWf8bV0pjKY5L6SwXYq0QGUEmb/preview",
   },
   {
     id: 17,
     category: "მოძრაობის სიჩქარე",
-    index: 17,
+    index: 14,
     videoUrl: "https://drive.google.com/file/d/1eUwYGyzFeCWXhvCUTIIOb6eN9eTjB4sF/preview",
   },
   // {
@@ -128,9 +108,30 @@ const categoryData2 = [
   {
     id: 16,
     category: "გასწრება შემხვედრის გვერდის ავლით",
-    index: 18,
+    index: 15,
     videoUrl:
       "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview",
+  },
+          {
+    id: 5,
+    category: "ამკრძალავი ნიშნები",
+    index: 16,
+    videoUrl:
+      "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
+  },
+  {
+    id: 30,
+    category: "მოძრაობის უსაფრთხოება",
+    index: 17,
+    videoUrl:
+     "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview",
+  },
+  {
+    id: 1,
+    category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
+    index: 18,
+    videoUrl:
+      "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
   },
   {
     id: 3,
