@@ -61,7 +61,7 @@ const categoryData2 = [
   {
     id: 8,
     category: "სერვისის ნიშნები",
-    index: o,
+    index: 9,
     videoUrl:
       "https://drive.google.com/file/d/1zEcExd2izh80rIGxf5IrwTbQeWJhHLze/preview",
   },
