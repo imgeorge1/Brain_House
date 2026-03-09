@@ -58,12 +58,12 @@ const categoryData2 = [
       "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
   },
   {
-    id: 31,
-    category: "ადმინისტრაციული კანონი",
+    id: 5,
+    category: "ამკრძალავი ნიშნები",
     index: 9,
     videoUrl:
-      "https://drive.google.com/file/d/1NTioStNbM4RrJMZXAy0BOC5sSBu7fSdT/preview",
-  },
+      "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
+  },  
   {
     id: 2,
     category: "უწესივრობა და მართვის პირობები",
@@ -181,12 +181,12 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview",
   },
-    {
-    id: 5,
-    category: "ამკრძალავი ნიშნები",
+  {
+    id: 31,
+    category: "ადმინისტრაციული კანონი",
     index: 26,
     videoUrl:
-      "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
+      "https://drive.google.com/file/d/1NTioStNbM4RrJMZXAy0BOC5sSBu7fSdT/preview",
   },
   {
     id: 29,
