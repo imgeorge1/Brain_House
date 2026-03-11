@@ -219,7 +219,7 @@ const categoryData2 = [
   {
     id: 5,
     category: "ამკრძალავი ნიშნები",
-    inindex: 31,
+    index: 31,
     videoUrl:
       "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
   },  
