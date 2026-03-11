@@ -43,7 +43,6 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/1zEcExd2izh80rIGxf5IrwTbQeWJhHLze/preview",
   },
-
   {
     id: 2,
     category: "უწესივრობა და მართვის პირობები",
@@ -182,7 +181,6 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/19-UVBDzH73QY_SpSUfYAoucPOi7yRn_F/preview",
   },
-
   {
     id: 20,
     category: "გზაჯვარედინის გავლა",
@@ -204,7 +202,7 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/17gvFmO5cLmiSS_2GsFR2k_7cxUZzqxS4/preview",
   },
-      {
+  {
     id: 30,
     category: "მოძრაობის უსაფრთხოება",
     index: 29,
