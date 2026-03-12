@@ -19,16 +19,20 @@ const Ticket = ({
     >
       <div className="w-full min-h-[380px] md:w-[640px] md:h-[560px]">
         <img
-          loading="eager"
           src={data.image}
-          alt={`drive ticket image ${data.id}`}
+          alt={`ticket ${data.id}`}
           className="w-full h-full rounded-lg"
-          // onError={(e) => {
-          //   const target = e.target as HTMLImageElement;
-          //   target.onerror = null;
-          //   target.src =
-          //     "https://via.placeholder.com/500x300.png?text=Image+Not+Available";
-          // }}
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            // Only retry once
+            if (!target.dataset.retry) {
+              target.dataset.retry = "true"; 
+              target.src = data.image; 
+            } else {
+              target.onerror = null;
+              target.src = "/fallback.png";
+            }
+          }}
         />
       </div>
       <div className="flex gap-3 py-3">
