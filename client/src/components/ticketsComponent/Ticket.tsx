@@ -19,7 +19,7 @@ const Ticket = ({
     >
       <div className="w-full min-h-[380px] md:w-[640px] md:h-[560px]">
         <img
-          loading="eager"
+          loading="lazy"
           src={data.image}
           alt={`ticket ${data.id}`}
           className="w-full h-full rounded-lg"
