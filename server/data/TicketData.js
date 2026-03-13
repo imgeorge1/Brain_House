@@ -4922,7 +4922,7 @@ const largeTicketList = [
   {
     id: 155,
     categoryID: 21,
-    image: "https://tinyurl.com/bdz43epb",
+    image: "https://raw.githubusercontent.com/imgeorge1/tickets/refs/heads/master/assets/%E1%83%97%E1%83%94%E1%83%9B%E1%83%9021/%E1%83%97%E1%83%94%E1%83%9B%E1%83%9021-01_10.jpg",
     correctAnswer: 3,
     quantityAnswer: 4,
   },
