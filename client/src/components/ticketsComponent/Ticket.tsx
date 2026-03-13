@@ -25,13 +25,15 @@ const Ticket = ({
           className="w-full h-full rounded-lg"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
-            // Only retry once
+        
             if (!target.dataset.retry) {
-              target.dataset.retry = "true"; 
-              target.src = data.image; 
+              target.dataset.retry = "true";
+        
+              setTimeout(() => {
+                target.src = data.image;
+              }, 1000); // retry after 1s
             } else {
               target.onerror = null;
-              target.src = "/fallback.png";
             }
           }}
         />
