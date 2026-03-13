@@ -28,10 +28,11 @@ const Ticket = ({
         
             if (!target.dataset.retry) {
               target.dataset.retry = "true";
-        
+              
               setTimeout(() => {
-                target.src = data.image;
-              }, 1000); // retry after 1s
+                target.src = `${data.image}?v=${Date.now()}`;
+              }, 1000);
+              
             } else {
               target.onerror = null;
             }
