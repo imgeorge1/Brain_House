@@ -25,7 +25,7 @@ dynamicTicketIds.forEach((id) => {
 const generateSitemap = async () => {
   const stream = new SitemapStream({ hostname: "http://brainhouse.ge" });
   return streamToPromise(Readable.from(links).pipe(stream)).then((data) =>
-    data.toString()
+    data.toString(),
   );
 };
 

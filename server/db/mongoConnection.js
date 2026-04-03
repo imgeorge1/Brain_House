@@ -13,9 +13,7 @@ const mongoConnection = async () => {
   try {
     // Establish MongoDB connection
     const db1Connection = mongoose.createConnection(process.env.MONGODB_URL);
-    const db2Connection = mongoose.createConnection(
-      process.env.OLD_MONGODB_URL
-    );
+    const db2Connection = mongoose.createConnection(process.env.MONGODB_URL);
 
     // Log success message
     db1Connection.on("open", () => {
@@ -30,11 +28,11 @@ const mongoConnection = async () => {
     const OldUser = db2Connection.model("User", userSchema);
     const AdditionUserInfo = db1Connection.model(
       "AdditionUserInfo",
-      AdditionUserInfoSchema
+      AdditionUserInfoSchema,
     );
     const OldAdditionUserInfo = db2Connection.model(
       "AdditionUserInfo",
-      AdditionUserInfoSchema
+      AdditionUserInfoSchema,
     );
     const Comment = db1Connection.model("Comment", commentSchema);
     const Signs = db1Connection.model("Sign", signSchema);
