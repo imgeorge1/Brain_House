@@ -42,7 +42,8 @@ const TicketRoutes = () => {
           >
             საგზაო ნიშნები
           </Link>
-          {currentUser && isPaid ? (
+          {
+            //currentUser && isPaid ? (
             <NavLink
               to="/exams"
               className="drivebtn text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
@@ -50,14 +51,14 @@ const TicketRoutes = () => {
             >
               გამოცდა
             </NavLink>
-          ) : (
-            <span
+          {/* ) : ( */}
+            {/* <span
               className="text-center text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
             rounded-3xl opacity-30"
             >
               გამოცდა
-            </span>
-          )}
+            </span> */}
+          {/* )} */}
           <NavLink
             to="/payment"
             className="drivebtn text-sm lg:text-lg  font-roboto border-2 mt-2 mb-2 px-6 py-2 pb-2 
