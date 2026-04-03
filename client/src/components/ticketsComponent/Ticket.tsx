@@ -8,6 +8,7 @@ const Ticket = ({
   getAnswerClass,
 }: TicketTypes) => {
   console.log(data);
+  console.log("data ^");
 
   return (
     <motion.div
