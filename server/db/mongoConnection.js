@@ -7,10 +7,6 @@ import signSchema from "../models/signSchema.js";
 import ticketSchema from "../models/ticketSchema.js";
 import practiceSchema from "../models/practiceShema.js";
 
-
-const { models } = await mongoConnection();
-const tickets = await models.Ticket.find({}).limit(5);
-console.log(tickets.map(t => ({ id: t.id, image: t.image, categoryID: t.categoryID })));
 // const MONGODB_URL = process.env.MONGODB_URL;
 console.log("MONGODB_URL", process.env.MONGODB_URL);
 const mongoConnection = async () => {
