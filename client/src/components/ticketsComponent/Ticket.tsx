@@ -7,7 +7,7 @@ const Ticket = ({
   handleButtonClick,
   getAnswerClass,
 }: TicketTypes) => {
-  console.log(data.image);
+  console.log(data);
 
   return (
     <motion.div
