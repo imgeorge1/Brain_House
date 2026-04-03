@@ -15,8 +15,8 @@ const TicketRoutes = () => {
     completedArray,
     currentUser,
   } = useTicketRoutes();
-  const isPaid = localStorage.getItem("paid") === "true";
-
+  // const isPaid = localStorage.getItem("paid") === "true";
+  const isPaid = "true";
   console.log(isPaid);
 
   return (
@@ -127,7 +127,9 @@ const TicketRoutes = () => {
                       className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg  ${
                         item.id === categoryNumber
                           ? "bg-[#230751]"
-                          : "bg-[#cbb7ea]"
+                          : "bg-[#663aac]"
+                          // ? "bg-[#230751]"
+                          // : "bg-[#cbb7ea]"
                       }`}
                       to={`/tickets/${item.id}`}
                       state={item.index}

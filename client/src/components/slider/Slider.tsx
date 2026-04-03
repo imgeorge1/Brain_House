@@ -23,9 +23,9 @@ function Slider() {
         ></div>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className=" flex flex-col gap-4 items-center ">
-            <h2 className="text-5xl md:text-8xl font-semibold text-[#2D2862] font-roboto">
+            <h1 className="text-5xl md:text-8xl font-semibold text-[#2D2862] font-roboto">
               მართვის ბარათი
-            </h2>
+            </h1>
             <p className="text-1xl md:text-2xl text-[#FDE047] mt-2 font-roboto">
               მართვის მოწმობის გაკვეთილები
             </p>

@@ -21,8 +21,8 @@ function OldDashboard() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center pb-16">
-      <table className="table-auto border-collapse border w-[90%]">
+ <div className="w-full overflow-x-auto px-2">
+        <table className="min-w-[800px] table-auto border-collapse border m-auto">
         <thead className="bg-gray-800 text-white">
           <tr>
             <th className="px-4 py-2">სახელი გვარი</th>

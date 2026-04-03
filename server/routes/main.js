@@ -1,6 +1,8 @@
 import dotenv from "dotenv/config";
 import express from "express";
 import authRoutes from "./authRoutes.js";
+import generateSitemap from "../generateSitemap.js";
+
 
 const router = express.Router();
 
@@ -15,6 +17,12 @@ router.get("/", (req, res) => {
   } else {
     console.log("No session token found, clearing all cookies...");
   }
+});
+
+router.get("/sitemap.xml", async (req, res) => {
+  const xml = await generateSitemap();
+  res.header("Content-Type", "application/xml");
+  res.send(xml);
 });
 
 export default router;

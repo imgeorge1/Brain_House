@@ -31,7 +31,7 @@ const useTicketRoutes = () => {
 
   const getUser = async () => {
     const res = await API.get("/user");
-    console.log(res);
+    console.log("user " + res);
   };
 
   useEffect(() => {

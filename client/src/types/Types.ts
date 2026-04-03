@@ -91,6 +91,7 @@ export interface CheckboxState {
 export interface Images {
   image: string;
   id: number;
+  signID: number; 
 }
 
 export interface SignCache {

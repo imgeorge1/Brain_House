@@ -8,6 +8,7 @@ const Ticket = ({
   getAnswerClass,
 }: TicketTypes) => {
   console.log(data.image);
+  console.log("data ^");
 
   return (
     <motion.div
@@ -21,14 +22,22 @@ const Ticket = ({
         <img
           loading="lazy"
           src={data.image}
-          alt={`drive ticket image ${data.id}`}
+          alt={`ticket ${data.id}`}
           className="w-full h-full rounded-lg"
-          // onError={(e) => {
-          //   const target = e.target as HTMLImageElement;
-          //   target.onerror = null;
-          //   target.src =
-          //     "https://via.placeholder.com/500x300.png?text=Image+Not+Available";
-          // }}
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+        
+            if (!target.dataset.retry) {
+              target.dataset.retry = "true";
+              
+              setTimeout(() => {
+                target.src = `${data.image}?v=${Date.now()}`;
+              }, 1000);
+              
+            } else {
+              target.onerror = null;
+            }
+          }}
         />
       </div>
       <div className="flex gap-3 py-3">

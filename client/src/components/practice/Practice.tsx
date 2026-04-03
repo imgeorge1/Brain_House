@@ -173,7 +173,7 @@ const Practice = () => {
 
         {currentUser?.email &&
           [
-            "beka.lomsadze.1@btu.edu.ge",
+            "b.ejibishvili1@gmail.com",
             "shvangiradze22giorgi@gmail.com",
             "ubitoz133@gmail.com",
           ].includes(currentUser.email) &&
@@ -198,7 +198,7 @@ const Practice = () => {
 
               {currentUser?.email &&
                 [
-                  "beka.lomsadze.1@btu.edu.ge",
+                  "b.ejibishvili1@gmail.com",
                   "shvangiradze22giorgi@gmail.com",
                   "ubitoz133@gmail.com",
                 ].includes(currentUser.email) &&
@@ -233,7 +233,7 @@ const Practice = () => {
 
                   {currentUser?.email &&
                     [
-                      "beka.lomsadze.1@btu.edu.ge",
+                      "b.ejibishvili1@gmail.com",
                       "shvangiradze22giorgi@gmail.com",
                       "ubitoz133@gmail.com",
                     ].includes(currentUser.email) &&
