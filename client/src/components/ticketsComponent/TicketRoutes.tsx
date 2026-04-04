@@ -15,8 +15,8 @@ const TicketRoutes = () => {
     completedArray,
     currentUser,
   } = useTicketRoutes();
-  // const isPaid = localStorage.getItem("paid") === "true";
-  const isPaid = "true";
+  const isPaid = localStorage.getItem("paid") === "true";
+  // const isPaid = "true";
   console.log(isPaid);
 
   return (
