@@ -117,7 +117,7 @@ const TicketRoutes = () => {
                   ) : (
                     <Link
                       className={`w-full no-underline mt-2 inline-block text-white p-3 rounded-md text-lg  ${
-                        // item.id === categoryNumber
+                        item.id === categoryNumber
                         //   ? "bg-[#230751]"
                         //   : "bg-[#663aac]"
                           ? "bg-[#230751]"
