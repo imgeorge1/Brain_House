@@ -15,8 +15,8 @@ const TicketRoutes = () => {
     completedArray,
     currentUser,
   } = useTicketRoutes();
-  // const isPaid = localStorage.getItem("paid") === "true";
-  const isPaid = "true";
+  const isPaid = localStorage.getItem("paid") === "true";
+  // const isPaid = "true";
   console.log(isPaid);
 
   return (
@@ -42,6 +42,7 @@ const TicketRoutes = () => {
           >
             საგზაო ნიშნები
           </Link>
+{currentUser && isPaid ? (
             <NavLink
               to="/exams"
               className="drivebtn text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
@@ -49,6 +50,14 @@ const TicketRoutes = () => {
             >
               გამოცდა
             </NavLink>
+          ) : (
+            <span
+              className="text-center text-sm lg:text-lg text-black font-roboto buttonBorder mt-2 mb-2 px-6 py-2 pb-2 
+            rounded-3xl opacity-30"
+            >
+              გამოცდა
+            </span>
+          )}
          
           <NavLink
             to="/payment"
