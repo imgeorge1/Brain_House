@@ -7,7 +7,7 @@ function Vid() {
         border-solid rounded-sm"
         title="Video for sign in"
         src={
-          "https://drive.google.com/file/d/1Z2GYZkLJ2nBT_ECSuS3zwmYXkGvtmAbV/preview"
+          "https://drive.google.com/file/d/1xzgvvkByIA9OGrqjQ2Oro5jx10ByyQix/preview"
         }
         sandbox="allow-same-origin allow-scripts"
         allowFullScreen
