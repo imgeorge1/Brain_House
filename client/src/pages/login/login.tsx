@@ -117,7 +117,7 @@ const LogIn = () => {
               to={"/register"}
               className={`text-blue-500 border-b-2  border-blue-500`}
             >
-              რეგისრაცია
+              რეგისტრაცია
             </Link>
           </div>
         </form>
