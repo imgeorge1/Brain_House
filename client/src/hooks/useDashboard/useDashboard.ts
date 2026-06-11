@@ -26,14 +26,11 @@ const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
     currentUser?.email === "b.ejibishvili1@gmail.com";
 
   useEffect(() => {
-    if (currentUser === null){
-      window.location.href ="https://www.brainhouse.ge/"
-    }
     if (location.pathname === "/dashboard" && !checkAdmin) {
-      navigate("/");
+     window.location.href ="https://www.brainhouse.ge/"
     }
      if (location.pathname === "/dashboard/" && !checkAdmin) {
-      navigate("/");
+      window.location.href ="https://www.brainhouse.ge/"
     }
   }, [checkAdmin, currentUser, navigate, location.pathname]);
 
