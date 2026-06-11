@@ -27,7 +27,7 @@ const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
 
   useEffect(() => {
     if (currentUser === null){
-      navigate("/")
+      window.location.href ="https://www.brainhouse.ge/"
     }
     if (location.pathname === "/dashboard" && !checkAdmin) {
       navigate("/");
