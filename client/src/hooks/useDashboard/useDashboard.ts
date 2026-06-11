@@ -26,7 +26,7 @@ const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
     currentUser?.email === "b.ejibishvili1@gmail.com";
 
   useEffect(() => {
-    if (!currentUser) return;
+    if (!currentUser && location.pathname === "/dashboard") return;
     if (location.pathname === "/dashboard" && !checkAdmin) {
      navigate("/")
     }
