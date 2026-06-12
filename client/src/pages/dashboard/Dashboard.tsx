@@ -24,10 +24,15 @@ function Dashboard() {
 
   const token = localStorage.getItem("accessToken");
   const parsedUser = token ? parseJwt(token) : null;
-  const checkAdmin = parsedUser?.email === "your-admin-email@example.com";
+  const checkAdmin = parsedUser?.email === 
+    currentUser?.email === "beka.lomsadze.1@btu.edu.ge" ||
+    currentUser?.email === "shvangiradze22giorgi@gmail.com" ||
+    currentUser?.email === "chikviladze555@gmail.com" ||
+    currentUser?.email === "ubitoz133@gmail.com" ||
+    currentUser?.email === "b.ejibishvili1@gmail.com";
 
   const [isVerifying, setIsVerifying] = useState<boolean>(true);
-  const { users, handleActive } = useDashboardPage(checkAdmin);
+  const { users, handleActive } = useDashboardPage();
 
   useEffect(() => {
     const currentPath = location.pathname.endsWith("/") && location.pathname !== "/"
