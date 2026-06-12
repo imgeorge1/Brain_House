@@ -12,10 +12,8 @@ type AddCity = {
 };
 
 function Dashboard({ currentUser, setShow }: DashboardTypes) {
-const { logout, checkAdmin } = useDashboard({ currentUser, setShow });
-  
-  // 2. Pass 'checkAdmin' into the page hook so it stops unauthorized network requests
-  const { users, handleActive } = useDashboardPage(checkAdmin);
+ const { users, handleActive } = useDashboardPage();
+  const { logout, handleShow, checkAdmin } = useDashboard({ currentUser, setShow });
 
   // 4. 🛡️ THE F12 DEVTOOLS GUARD:
   // If they aren't an admin, stop rendering immediately.
