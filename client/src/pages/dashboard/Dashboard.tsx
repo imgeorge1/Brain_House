@@ -24,9 +24,11 @@ function Dashboard() {
 
   const token = localStorage.getItem("accessToken");
   const parsedUser = token ? parseJwt(token) : null;
-  const checkAdmin = parsedUser?.email === "shvangiradze22giorgi@gmail.com" || "ubitoz133@gmail.com" ||"b.ejibishvili1@gmail.com";
+  const checkAdmin = parsedUser?.email === "shvangiradze22giorgi@gmail.com" || 
+    parsedUser?.email ===  "ubitoz133@gmail.com" ||
+    parsedUser?.email === "b.ejibishvili1@gmail.com";
   //"beka.lomsadze.1@btu.edu.ge" || "chikviladze555@gmail.com" || 
-  console.log(checkAdmin)
+  // console.log(checkAdmin)
   const [isVerifying, setIsVerifying] = useState<boolean>(true);
   const { users, handleActive } = useDashboardPage();
 
