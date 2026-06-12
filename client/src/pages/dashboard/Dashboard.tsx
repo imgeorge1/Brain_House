@@ -10,26 +10,37 @@ type AddCity = {
   city: string;
 };
 
-const parseJwt = (token: string) => {
-  try {
-    return JSON.parse(atob(token.split('.')[1]));
-  } catch (e) {
-    return null;
-  }
-};
-
 function Dashboard() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Read raw storage data safely
   const token = localStorage.getItem("accessToken");
-  const parsedUser = token ? parseJwt(token) : null;
-  const checkAdmin = parsedUser?.email === "shvangiradze22giorgi@gmail.com" || 
+  
+  let userEmail = "";
+  if (token) {
+    try {
+      // Try to parse it as raw JSON first since your data looks like a direct DB object
+      const parsed = JSON.parse(token);
+      userEmail = parsed?.email || "";
+    } catch (e) {
+      // Fallback: Try to decode it as a JWT if JSON parsing fails
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        userEmail = payload?.email || "";
+      } catch (jwtErr) {
+        console.error("Could not read token as standard JSON or base64 JWT string", jwtErr);
+      }
+    }
+  }
+
+  // Exact match logic using your comment addresses
+  const checkAdmin = parsedUser?.email === "shvangiradze22giorgi@gmail.com" ||
     parsedUser?.email ===  "ubitoz133@gmail.com" ||
     parsedUser?.email === "b.ejibishvili1@gmail.com";
-  
-  //"beka.lomsadze.1@btu.edu.ge" || "chikviladze555@gmail.com" || 
-  console.log(checkAdmin)
+
+  console.log("Logged In User Email:", userEmail);
+  console.log("Is Authorized Admin:", checkAdmin);
   
   const [isVerifying, setIsVerifying] = useState<boolean>(true);
   const { users, handleActive } = useDashboardPage();
@@ -39,7 +50,7 @@ function Dashboard() {
       ? location.pathname.slice(0, -1)
       : location.pathname;
 
-    if (currentPath === "/dashboard" && checkAdmin == false) {
+    if (currentPath === "/dashboard" && !checkAdmin) {
       navigate("/", { replace: true });
       return;
     }
@@ -50,6 +61,7 @@ function Dashboard() {
 
     return () => clearTimeout(timer);
   }, [checkAdmin, navigate, location.pathname]);
+  //
 
   const [oldData, setOldData] = useState<boolean>(false);
   const [addCity, setAddCity] = useState<AddCity>({ email: "", city: "" });
