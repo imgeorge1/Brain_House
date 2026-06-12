@@ -12,8 +12,17 @@ type AddCity = {
 };
 
 function Dashboard() {
-  const { users, handleActive } = useDashboardPage();
 
+  const { logout, checkAdmin } = useDashboard();
+  const { users, handleActive } = useDashboardPage(checkAdmin);
+
+  // 🛡️ Instant Page Gatekeeper
+  if (!checkAdmin) {
+    return null;
+  }
+
+  const [oldData, setOldData] = useState<boolean>(false);
+  
   const [oldData, setOldData] = useState<boolean>(false);
   const [addCity, setAddCity] = useState<AddCity>({ email: "", city: "" });
 
