@@ -29,7 +29,7 @@ function Dashboard() {
     parsedUser?.email === "b.ejibishvili1@gmail.com";
   
   //"beka.lomsadze.1@btu.edu.ge" || "chikviladze555@gmail.com" || 
-  // console.log(checkAdmin)
+  console.log(checkAdmin)
   
   const [isVerifying, setIsVerifying] = useState<boolean>(true);
   const { users, handleActive } = useDashboardPage();
@@ -39,7 +39,7 @@ function Dashboard() {
       ? location.pathname.slice(0, -1)
       : location.pathname;
 
-    if (currentPath === "/dashboard" && !checkAdmin) {
+    if (currentPath === "/dashboard" && checkAdmin == false) {
       navigate("/")
       return;
     }
