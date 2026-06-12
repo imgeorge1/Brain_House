@@ -10,20 +10,10 @@ type AddCity = {
   city: string;
 };
 
-const decodeJwtPayload = (token: string) => {
+const parseJwt = (token: string) => {
   try {
-    const base64Url = token.split(".")[1];
-    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-    const jsonPayload = decodeURIComponent(
-      window
-        .atob(base64)
-        .split("")
-        .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
-        .join("")
-    );
-    return JSON.parse(jsonPayload);
-  } catch (error) {
-    console.error("JWT Payload decoding failed:", error);
+    return JSON.parse(atob(token.split('.')[1]));
+  } catch (e) {
     return null;
   }
 };
@@ -33,18 +23,15 @@ function Dashboard() {
   const location = useLocation();
 
   const token = localStorage.getItem("accessToken");
-  const parsedUser = token ? decodeJwtPayload(token) : null;  
+  const parsedUser = token ? parseJwt(token) : null;
+  
+  // PASTE YOUR 3 ADMIN USER ID STRINGS HERE INSTEAD OF EMAILS
+  const checkAdmin = 
+    parsedUser?.userId === "69d0e31e299a651e4d72d351" || 
+    parsedUser?.userId === "your_second_admin_id_here" || 
+    parsedUser?.userId === "your_third_admin_id_here";
 
-  // Exact match logic using your comment addresses
-  const checkAdmin = parsedUser?.email === "shvangiradze22giorgi@gmail.com" ||
-    parsedUser?.email ===  "ubitoz133@gmail.com" ||
-    parsedUser?.email === "b.ejibishvili1@gmail.com";
-  
-console.log("Decoded Token Payload:", parsedUser);
-  console.log("Extracted Email:", parsedUser?.email);
-  console.log("Is Admin Match:", checkAdmin);
-  
-const [isVerifying, setIsVerifying] = useState<boolean>(true);
+  const [isVerifying, setIsVerifying] = useState<boolean>(true);
   const { users, handleActive } = useDashboardPage();
 
   useEffect(() => {
