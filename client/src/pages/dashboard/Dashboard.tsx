@@ -1,7 +1,7 @@
 // src/pages/Dashboard.tsx
 import { useState, useRef } from "react";
 import useDashboardPage from "../../hooks/useDashboard/useDashboardPage";
-import useDashboard from "../../../hooks/useDashboard"; // Your slash & admin validation hook
+import useDashboard from "../../hooks/useDashboard/useDashboard"; // Your slash & admin validation hook
 import OldDashboard from "../../components/olddata";
 import API from "../../utils/API";
 import { EditableUser, User, DashboardTypes } from "../../types/Types";
