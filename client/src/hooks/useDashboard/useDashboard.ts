@@ -10,12 +10,12 @@ const parseJwt = (token: string) => {
   }
 };
 
-const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
+const useDashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
   const token = localStorage.getItem("accessToken");
-  const currentUser = token ? parseJwt(token) : null;
+  const parsedUser = token ? parseJwt(token) : null;
   
 
   const checkAdmin =
