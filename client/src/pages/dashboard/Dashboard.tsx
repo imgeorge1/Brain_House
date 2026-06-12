@@ -28,8 +28,8 @@ function Dashboard() {
   // PASTE YOUR 3 ADMIN USER ID STRINGS HERE INSTEAD OF EMAILS
   const checkAdmin = 
     parsedUser?.userId === "69d0e31e299a651e4d72d351" || 
-    parsedUser?.userId === "your_second_admin_id_here" || 
-    parsedUser?.userId === "your_third_admin_id_here";
+    parsedUser?.userId === "69d0f69c2cf4822aa71a1dfb" || 
+    parsedUser?.userId === "";
 
   const [isVerifying, setIsVerifying] = useState<boolean>(true);
   const { users, handleActive } = useDashboardPage();
