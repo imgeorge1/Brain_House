@@ -27,8 +27,10 @@ function Dashboard() {
   const checkAdmin = parsedUser?.email === "shvangiradze22giorgi@gmail.com" || 
     parsedUser?.email ===  "ubitoz133@gmail.com" ||
     parsedUser?.email === "b.ejibishvili1@gmail.com";
+  
   //"beka.lomsadze.1@btu.edu.ge" || "chikviladze555@gmail.com" || 
   // console.log(checkAdmin)
+  
   const [isVerifying, setIsVerifying] = useState<boolean>(true);
   const { users, handleActive } = useDashboardPage();
 
@@ -38,21 +40,13 @@ function Dashboard() {
       : location.pathname;
 
     if (currentPath === "/dashboard" && !checkAdmin) {
-      // 1. Wipe everything out of local storage immediately
-      localStorage.removeItem("paid");
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("user");
-      localStorage.removeItem("email");
-      localStorage.clear();
-
-      // 2. Clear backend session and drop user at home page
-      window.open(`${import.meta.env.VITE_SERVER_URL}/logout`, "_self");
+      navigate("/")
       return;
     }
 
     const timer = setTimeout(() => {
       setIsVerifying(false);
-    }, 3000);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [checkAdmin, navigate, location.pathname]);
