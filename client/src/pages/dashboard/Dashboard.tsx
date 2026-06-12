@@ -23,7 +23,9 @@ function Dashboard() {
   const location = useLocation();
 
   const token = localStorage.getItem("accessToken");
+  console.log(token)
   const parsedUser = token ? parseJwt(token) : null;
+  console.log(parsedUser)
   const checkAdmin = parsedUser?.email === "shvangiradze22giorgi@gmail.com" || 
     parsedUser?.email ===  "ubitoz133@gmail.com" ||
     parsedUser?.email === "b.ejibishvili1@gmail.com";
@@ -40,7 +42,7 @@ function Dashboard() {
       : location.pathname;
 
     if (currentPath === "/dashboard" && checkAdmin == false) {
-      navigate("/")
+      navigate("/", { replace: true });
       return;
     }
 
