@@ -2,17 +2,20 @@ import { useEffect, useState } from "react";
 import API from "../../utils/API";
 import { FullUser } from "../../types/Types";
 
-const useDashboardPage = () => {
+// Add { checkAdmin } as a parameter to the hook
+const useDashboardPage = (checkAdmin: boolean) => {
   const [users, setUsers] = useState<FullUser[]>([]);
 
   useEffect(() => {
+    // 🛡️ FRONTEND GATEKEEPER:
+    // If they aren't an admin, STOP. Do not fetch a single byte of data from the network.
+    if (!checkAdmin) return;
+
     const getUsers = async () => {
       try {
         const res = await API.get("/users");
-
         const res2 = await API.get("/usersInfo");
 
-        // Merge the data from both responses
         const userInfoMap = res2.data.userInfoList.reduce(
           (acc: { [email: string]: FullUser }, userInfo: FullUser) => {
             acc[userInfo.email] = userInfo;
@@ -21,15 +24,14 @@ const useDashboardPage = () => {
           {}
         );
 
-        // Merge data from both responses while ensuring _id from res remains intact
         const mergedUsers = res.data.users.map((user: FullUser) => {
           const userInfo = userInfoMap[user.email];
           const mergedUser = {
-            ...(userInfo || {}), // Merge userInfo if available
-            ...user, // Merge user data
+            ...(userInfo || {}),
+            ...user,
           };
           if (userInfo) {
-            mergedUser._id = user._id; // Keep the _id from the first response
+            mergedUser._id = user._id;
           }
           return mergedUser;
         });
@@ -38,14 +40,14 @@ const useDashboardPage = () => {
         console.error(error);
       }
     };
+    
     getUsers();
-  }, []);
+  }, [checkAdmin]); // Add checkAdmin to the dependency array
 
   const handleActive = async (userId: string, isPaid: boolean) => {
+    if (!checkAdmin) return; // Prevent non-admins from triggering this action
     try {
       const currentDate = new Date().toISOString().split("T")[0];
-
-      console.log(currentDate);
 
       await API.put(`/users/${userId}`, {
         isPaid: !isPaid,
