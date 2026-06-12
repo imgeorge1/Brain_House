@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import useDashboardPage from "../../hooks/useDashboard/useDashboardPage";
-import useDashboardPage from "../../hooks/useDashboard/useDashboard";
 import OldDashboard from "../../components/olddata";
 import API from "../../utils/API";
 import { EditableUser, User } from "../../types/Types";
@@ -12,9 +11,8 @@ type AddCity = {
 };
 
 function Dashboard() {
-
   const { users, handleActive } = useDashboardPage();
-  
+
   const [oldData, setOldData] = useState<boolean>(false);
   const [addCity, setAddCity] = useState<AddCity>({ email: "", city: "" });
 
