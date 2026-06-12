@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import useDashboardPage from "../../hooks/useDashboard/useDashboardPage";
 import OldDashboard from "../../components/olddata";
 import API from "../../utils/API";
@@ -6,12 +7,49 @@ import { EditableUser, User } from "../../types/Types";
 
 type AddCity = {
   email: string;
-
   city: string;
 };
 
+const parseJwt = (token: string) => {
+  try {
+    return JSON.parse(atob(token.split('.')[1]));
+  } catch (e) {
+    return null;
+  }
+};
+
 function Dashboard() {
-  const { users, handleActive } = useDashboardPage();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const token = localStorage.getItem("accessToken");
+  const parsedUser = token ? parseJwt(token) : null;
+  const checkAdmin = parsedUser?.email === "your-admin-email@example.com";
+
+  const [isVerifying, setIsVerifying] = useState<boolean>(true);
+  const { users, handleActive } = useDashboardPage(checkAdmin);
+
+  useEffect(() => {
+    const currentPath = location.pathname.endsWith("/") && location.pathname !== "/"
+      ? location.pathname.slice(0, -1)
+      : location.pathname;
+
+    if (currentPath === "/dashboard" && !checkAdmin) {
+      navigate("/", { replace: true });
+    }
+
+    const timer = setTimeout(() => {
+      setIsVerifying(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [checkAdmin, navigate, location.pathname]);
+
+  const logout = () => {
+    localStorage.removeItem("paid");
+    localStorage.removeItem("accessToken");
+    window.open(`${import.meta.env.VITE_SERVER_URL}/logout`, "_self");
+  };
 
   const [oldData, setOldData] = useState<boolean>(false);
   const [addCity, setAddCity] = useState<AddCity>({ email: "", city: "" });
@@ -38,7 +76,7 @@ function Dashboard() {
       age: user.age || null,
       city: user.city || "",
       phone: user.phone || "",
-      payDate: user.payDate || "", // <-- Add this
+      payDate: user.payDate || "",
     });
     dialogRef.current?.showModal();
   };
@@ -56,14 +94,13 @@ function Dashboard() {
   const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newCity = e.target.value;
 
-    setAddCity((prev) => ({
+    setAddCity((prev: AddCity) => ({
       ...prev,
       city: newCity,
     }));
   };
 
   const saveEdit = async () => {
-    // Save logic goes here (e.g., API call or hook)
     try {
       console.log("userdataaa", editUser);
 
@@ -96,6 +133,14 @@ function Dashboard() {
     }
   };
 
+  if (isVerifying) {
+    return <div className="min-h-screen bg-transparent"></div>;
+  }
+
+  if (!checkAdmin) {
+    return null;
+  }
+
   return (
     <div className="mt-32 flex flex-col items-center pb-16">
       <div className="flex gap-8 mb-5">
@@ -110,6 +155,12 @@ function Dashboard() {
           className="px-3 py-2 bg-green-700 rounded-lg focus:outline-none focus:border-b-4 focus:border-[#2d2862]"
         >
           Old Data
+        </button>
+        <button
+          onClick={logout}
+          className="px-3 py-2 bg-red-700 text-white rounded-lg focus:outline-none"
+        >
+          Log Out
         </button>
       </div>
 
