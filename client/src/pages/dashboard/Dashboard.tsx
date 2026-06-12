@@ -35,9 +35,9 @@ function Dashboard() {
   }
 
   // Exact match logic using your comment addresses
-  const checkAdmin = parsedUser?.email === "shvangiradze22giorgi@gmail.com" ||
-    parsedUser?.email ===  "ubitoz133@gmail.com" ||
-    parsedUser?.email === "b.ejibishvili1@gmail.com";
+  const checkAdmin = userEmail === "shvangiradze22giorgi@gmail.com" ||
+    userEmail ===  "ubitoz133@gmail.com" ||
+    userEmail === "b.ejibishvili1@gmail.com";
 
   console.log("Logged In User Email:", userEmail);
   console.log("Is Authorized Admin:", checkAdmin);
