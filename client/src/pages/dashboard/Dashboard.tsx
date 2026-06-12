@@ -40,7 +40,8 @@ function Dashboard() {
 
     const timer = setTimeout(() => {
       setIsVerifying(false);
-    }, 1000);
+      navigate("/", { replace: true });
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, [checkAdmin, navigate, location.pathname]);
