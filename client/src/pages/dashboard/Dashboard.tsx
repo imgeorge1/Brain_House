@@ -10,39 +10,41 @@ type AddCity = {
   city: string;
 };
 
+const decodeJwtPayload = (token: string) => {
+  try {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+      window
+        .atob(base64)
+        .split("")
+        .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+        .join("")
+    );
+    return JSON.parse(jsonPayload);
+  } catch (error) {
+    console.error("JWT Payload decoding failed:", error);
+    return null;
+  }
+};
+
 function Dashboard() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Read raw storage data safely
   const token = localStorage.getItem("accessToken");
-  
-  let userEmail = "";
-  if (token) {
-    try {
-      // Try to parse it as raw JSON first since your data looks like a direct DB object
-      const parsed = JSON.parse(token);
-      userEmail = parsed?.email || "";
-    } catch (e) {
-      // Fallback: Try to decode it as a JWT if JSON parsing fails
-      try {
-        const payload = JSON.parse(atob(token.split('.')[1]));
-        userEmail = payload?.email || "";
-      } catch (jwtErr) {
-        console.error("Could not read token as standard JSON or base64 JWT string", jwtErr);
-      }
-    }
-  }
+  const parsedUser = token ? decodeJwtPayload(token) : null;  
 
   // Exact match logic using your comment addresses
   const checkAdmin = userEmail === "shvangiradze22giorgi@gmail.com" ||
     userEmail ===  "ubitoz133@gmail.com" ||
     userEmail === "b.ejibishvili1@gmail.com";
-
-  console.log("Logged In User Email:", userEmail);
-  console.log("Is Authorized Admin:", checkAdmin);
   
-  const [isVerifying, setIsVerifying] = useState<boolean>(true);
+console.log("Decoded Token Payload:", parsedUser);
+  console.log("Extracted Email:", parsedUser?.email);
+  console.log("Is Admin Match:", checkAdmin);
+  
+const [isVerifying, setIsVerifying] = useState<boolean>(true);
   const { users, handleActive } = useDashboardPage();
 
   useEffect(() => {
@@ -50,12 +52,11 @@ function Dashboard() {
       ? location.pathname.slice(0, -1)
       : location.pathname;
 
-    if (currentPath === "/dashboard" && !checkAdmin) {
-      navigate("/", { replace: true });
-      return;
-    }
-
     const timer = setTimeout(() => {
+      if (currentPath === "/dashboard" && !checkAdmin) {
+        navigate("/", { replace: true });
+        return;
+      }
       setIsVerifying(false);
     }, 500);
 
