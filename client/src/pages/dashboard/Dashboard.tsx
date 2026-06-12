@@ -24,8 +24,9 @@ function Dashboard() {
 
   const token = localStorage.getItem("accessToken");
   const parsedUser = token ? parseJwt(token) : null;
-  const checkAdmin = parsedUser?.email === "beka.lomsadze.1@btu.edu.ge" || "shvangiradze22giorgi@gmail.com" || "chikviladze555@gmail.com" || "ubitoz133@gmail.com" ||"b.ejibishvili1@gmail.com";
-
+  const checkAdmin = parsedUser?.email === "shvangiradze22giorgi@gmail.com" || "ubitoz133@gmail.com" ||"b.ejibishvili1@gmail.com";
+  //"beka.lomsadze.1@btu.edu.ge" || "chikviladze555@gmail.com" || 
+  console.log(checkAdmin)
   const [isVerifying, setIsVerifying] = useState<boolean>(true);
   const { users, handleActive } = useDashboardPage();
 
@@ -34,7 +35,7 @@ function Dashboard() {
       ? location.pathname.slice(0, -1)
       : location.pathname;
 
-    if (currentPath === "/dashboard" && !checkAdmin || currentPath === "/dashboard" && checkAdmin === null) {
+    if (currentPath === "/dashboard" && !checkAdmin) {
       navigate("/", { replace: true });
     }
 
