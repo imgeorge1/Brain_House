@@ -40,7 +40,9 @@ function Dashboard() {
 
     const timer = setTimeout(() => {
       setIsVerifying(false);
+        if (currentPath === "/dashboard" && !checkAdmin) {
       navigate("/", { replace: true });
+    }
     }, 5000);
 
     return () => clearTimeout(timer);
