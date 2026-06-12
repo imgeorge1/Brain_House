@@ -3,7 +3,7 @@ import useDashboardPage from "../../hooks/useDashboard/useDashboardPage";
 import useDashboard from "../../hooks/useDashboard/useDashboard";
 import OldDashboard from "../../components/olddata";
 import API from "../../utils/API";
-import { EditableUser, User } from "../../types/Types";
+import { EditableUser, User, DashboardTypes } from "../../types/Types";
 
 type AddCity = {
   email: string;
