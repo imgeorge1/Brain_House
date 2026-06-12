@@ -25,14 +25,17 @@ const useDashboard = ({ currentUser, setShow }: DashboardTypes) => {
     currentUser?.email === "ubitoz133@gmail.com" ||
     currentUser?.email === "b.ejibishvili1@gmail.com";
 
-  useEffect(() => {
-    if (location.pathname === "/dashboard" && !checkAdmin) {
-     navigate("/")
+useEffect(() => {
+    // 1. Normalize the path: strip trailing slash if it exists (e.g., "/dashboard/" becomes "/dashboard")
+    const currentPath = location.pathname.endsWith("/") && location.pathname !== "/"
+      ? location.pathname.slice(0, -1)
+      : location.pathname;
+
+    // 2. Run a singular check against the normalized path
+    if (currentPath === "/dashboard" && !checkAdmin) {
+      navigate("/", { replace: true }); // 'replace: true' stops them from hitting 'back' to return to the dashboard
     }
-     if (location.pathname === "/dashboard/" && !checkAdmin) {
-      navigate("/")
-    }
-  }, [checkAdmin, currentUser, navigate, location.pathname]);
+  }, [checkAdmin, navigate, location.pathname]);
 
   return {
     logout,
