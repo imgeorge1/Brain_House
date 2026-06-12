@@ -6,6 +6,10 @@ import OldDashboard from "../../components/olddata";
 import API from "../../utils/API";
 import { EditableUser, User, DashboardTypes } from "../../types/Types";
 
+type AddCity = {
+  email: string;
+  city: string;
+};
 function Dashboard({ currentUser, setShow }: DashboardTypes) {
   // 1. First, check if they are an admin and resolve trailing slashes
   const { logout, handleShow, checkAdmin } = useDashboard({ currentUser, setShow });
