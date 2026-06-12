@@ -34,7 +34,7 @@ function Dashboard() {
       ? location.pathname.slice(0, -1)
       : location.pathname;
 
-    if (currentPath === "/dashboard" && !checkAdmin) {
+    if (currentPath === "/dashboard" && !checkAdmin || currentPath === "/dashboard" && checkAdmin === null) {
       navigate("/", { replace: true });
     }
 
