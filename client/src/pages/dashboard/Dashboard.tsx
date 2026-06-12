@@ -36,21 +36,24 @@ function Dashboard() {
       : location.pathname;
 
     if (currentPath === "/dashboard" && !checkAdmin) {
-      navigate("/", { replace: true });
+      // 1. Wipe everything out of local storage immediately
+      localStorage.removeItem("paid");
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("user");
+      localStorage.removeItem("email");
+      localStorage.clear();
+
+      // 2. Clear backend session and drop user at home page
+      window.open(`${import.meta.env.VITE_SERVER_URL}/logout`, "_self");
+      return;
     }
 
     const timer = setTimeout(() => {
       setIsVerifying(false);
-    }, 5000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [checkAdmin, navigate, location.pathname]);
-
-  const logout = () => {
-    localStorage.removeItem("paid");
-    localStorage.removeItem("accessToken");
-    window.open(`${import.meta.env.VITE_SERVER_URL}/logout`, "_self");
-  };
 
   const [oldData, setOldData] = useState<boolean>(false);
   const [addCity, setAddCity] = useState<AddCity>({ email: "", city: "" });
@@ -156,12 +159,6 @@ function Dashboard() {
           className="px-3 py-2 bg-green-700 rounded-lg focus:outline-none focus:border-b-4 focus:border-[#2d2862]"
         >
           Old Data
-        </button>
-        <button
-          onClick={logout}
-          className="px-3 py-2 bg-red-700 text-white rounded-lg focus:outline-none"
-        >
-          Log Out
         </button>
       </div>
 
