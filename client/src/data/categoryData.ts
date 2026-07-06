@@ -138,68 +138,68 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/1fGvyLtXDp0E09tQ6qsjnzPv1t6MFEIIf/preview",
   },
-  {
-    id: 13,
-    category: "საავარიო შუქური სიგნალიზაცია",
-    index: 20,
-    videoUrl:
-      "https://drive.google.com/file/d/1EeniWZCHqaVQ3QyciSa_xPRjHAc3X9_-/preview",
-  },
-  {
-    id: 9,
-    category: "დამატებითი ინფორმაციის ნიშნები",
-    index: 21,
-    videoUrl:
-      "https://drive.google.com/file/d/1CgpIc0lZLDTIkPrRKtUruDnNFHdizvw_/preview",
-  },
-  {
-    id: 14,
-    category: "სანათი ხელსაწყოები, ხმოვანი სიგნალი",
-    index: 22,
-    videoUrl:
-      "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview",
-  },
-  {
-    id: 31,
-    category: "ადმინისტრაციული კანონი",
-    index: 23,
-    videoUrl:
-      "https://drive.google.com/file/d/1NTioStNbM4RrJMZXAy0BOC5sSBu7fSdT/preview",
-  },
-  {
-    id: 29,
-    category: "სამედიცინო დახმარება",
-    index: 24,
-    videoUrl:
-      "https://drive.google.com/file/d/15XKo1iU7ag5PSvwR5FFuZBHrSZhLVnIA/preview",
-  },
-  {
-    id: 18,
-    category: "სამუხრუჭე მანძილი, დისტანცია",
-    index: 25,
-    videoUrl:
-      "https://drive.google.com/file/d/19-UVBDzH73QY_SpSUfYAoucPOi7yRn_F/preview",
-  }, 
-     {
+       {
     id: 1,
     category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
-    index: 26,
+    index: 20,
     videoUrl:
       "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
   },
   {
     id: 5,
     category: "ამკრძალავი ნიშნები",
-    index: 27,
+    index: 21,
     videoUrl:
       "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
   },
     {
     id: 30,
     category: "მოძრაობის უსაფრთხოება",
-    index: 28,
+    index: 22,
     videoUrl:
      "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview https://drive.google.com/file/d/1UFiVGlL7pPe51qv3HIWgp7sOIxAdN-iI/preview",
+  },
+  {
+    id: 13,
+    category: "საავარიო შუქური სიგნალიზაცია",
+    index: 23,
+    videoUrl:
+      "https://drive.google.com/file/d/1EeniWZCHqaVQ3QyciSa_xPRjHAc3X9_-/preview",
+  },
+  {
+    id: 9,
+    category: "დამატებითი ინფორმაციის ნიშნები",
+    index: 24,
+    videoUrl:
+      "https://drive.google.com/file/d/1CgpIc0lZLDTIkPrRKtUruDnNFHdizvw_/preview",
+  },
+  {
+    id: 14,
+    category: "სანათი ხელსაწყოები, ხმოვანი სიგნალი",
+    index: 25,
+    videoUrl:
+      "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview",
+  },
+  {
+    id: 31,
+    category: "ადმინისტრაციული კანონი",
+    index: 26,
+    videoUrl:
+      "https://drive.google.com/file/d/1NTioStNbM4RrJMZXAy0BOC5sSBu7fSdT/preview",
+  },
+  {
+    id: 29,
+    category: "სამედიცინო დახმარება",
+    index: 27,
+    videoUrl:
+      "https://drive.google.com/file/d/15XKo1iU7ag5PSvwR5FFuZBHrSZhLVnIA/preview",
+  },
+  {
+    id: 18,
+    category: "სამუხრუჭე მანძილი, დისტანცია",
+    index: 28,
+    videoUrl:
+      "https://drive.google.com/file/d/19-UVBDzH73QY_SpSUfYAoucPOi7yRn_F/preview",
   },
   {
     id: 20,
