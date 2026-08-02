@@ -29,7 +29,7 @@ const RoadSign = () => {
           <p className="px-2">დაბრუნება</p>
         </Link>
       </button>
-        <iFrame
+        <iframe
           className="w-full max-w-4xl mx-auto h-[280px] md:h-[460px] my-2 border mb-10
           border-slate-300 border-solid rounded-sm"
           title="Video for sign in"
