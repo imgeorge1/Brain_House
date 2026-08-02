@@ -20,7 +20,7 @@ const VideoRender = ({
     return videoUrls.map((url, index) => (
         <div className="w-full max-w-4xl mx-auto h-[280px] overflow-hidden">
       <iframe
-        className="w-full h-[680px] md:h-[460px] py-4 -translate-x-[2.5%] -translate-y-[20px] "
+        className="w-full h-[680px] md:h-[460px] py-4 -translate-x-[2.5%] -translate-y-[100px] "
         key={`video-${checkForVideo.id}-${index}`} // Unique key for each iframe
         title={`Video ${checkForVideo.id}-${index}`}
         src={url}
@@ -35,7 +35,7 @@ const VideoRender = ({
       <div>
         <div className="w-full max-w-4xl mx-auto h-[280px] overflow-hidden">
         <iframe
-          className="w-full h-[640px] md:h-[380px] my-4 -translate-x-[2.5%] -translate-y-[20px]" 
+          className="w-full h-[640px] md:h-[380px] my-4 -translate-x-[2.5%] -translate-y-[100px]" 
           key={`video-${checkForVideo.id}`} // Unique key for each iframe
           title={`Video ${checkForVideo.id}`}
           src={videoUrls[0]}
