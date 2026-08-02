@@ -18,7 +18,7 @@ const VideoRender = ({
 
   if (isThirtyPath) {
     return videoUrls.map((url, index) => (
-        <div className="w-full max-w-4xl mx-auto h-[450px] overflow-hidden">
+        <div className="w-full max-w-4xl mx-auto h-[500px] overflow-hidden">
       <iframe
         className="w-full h-[680px] md:h-[460px] -translate-y-[210px] "
         key={`video-${checkForVideo.id}-${index}`} // Unique key for each iframe
@@ -33,7 +33,7 @@ const VideoRender = ({
   } else {
     return (
       <div>
-        <div className="w-full max-w-4xl mx-auto h-[450px] overflow-hidden">
+        <div className="w-full max-w-4xl mx-auto h-[500px] overflow-hidden">
         <iframe
           className="w-full h-[640px] md:h-[480px] -translate-y-[210px]" 
           key={`video-${checkForVideo.id}`} // Unique key for each iframe
