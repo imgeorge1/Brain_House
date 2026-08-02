@@ -30,12 +30,13 @@ const RoadSign = () => {
         </Link>
       </button>
       <iframe
-        className="w-full mx-auto h-[500px] md:h-[460px]"
+        className="w-full mx-auto h-[400px] md:h-[460px]"
         title="Video for sign in"
         src={
           "https://drive.google.com/file/d/1inPqi124ACuYemMz3ZUL8MU1FxU77OZo/preview"
         }
-        sandbox="allow-same-origin allow-scripts"
+        sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+        allow="autoplay; fullscreen"
         allowFullScreen
       />
       <ul className="flex flex-wrap mx-auto justify-center gap-2 max-w-[950px] mb-20">
