@@ -61,7 +61,7 @@ const Header = () => {
           <motion.div
             initial={{ opacity: 0, x: -200 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.2 }}
           >
             <NavLink
               to="/"
@@ -82,7 +82,7 @@ const Header = () => {
             <motion.nav
               initial={{ opacity: 0, y: -200 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
               className="flex lg:bg-transparent bg-opacity-95 bg-black md:bg-black md:bg-opacity-95 w-[100%]
               h-fit pb-6 flex-col lg:flex-row absolute top-0 text-center
@@ -133,7 +133,7 @@ const Header = () => {
             <motion.div
               initial={{ opacity: 0, x: 300 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.2 }}
               className="z-20 bigparent justify-center flex"
             >
               <SignInModal />
