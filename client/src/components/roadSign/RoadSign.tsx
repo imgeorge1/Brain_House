@@ -36,7 +36,6 @@ const RoadSign = () => {
           src={
             "https://drive.google.com/file/d/1inPqi124ACuYemMz3ZUL8MU1FxU77OZo/preview?controls=0"
           }
-          allowFullScreen
         />
       <ul className="flex flex-wrap mx-auto justify-center gap-2 max-w-[950px] mb-20">
         {roadSignsData.map((signs) => (
