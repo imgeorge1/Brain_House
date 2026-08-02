@@ -31,7 +31,7 @@ const VideoRender = ({
     return (
       <div>
         <iframe
-          className="w-full h-[640px] md:h-[380px] py-4"
+          className="w-full h-[640px] md:h-[380px] my-4"
           key={`video-${checkForVideo.id}`} // Unique key for each iframe
           title={`Video ${checkForVideo.id}`}
           src={videoUrls[0]}
