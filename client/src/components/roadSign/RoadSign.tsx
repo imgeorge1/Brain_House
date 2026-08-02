@@ -34,7 +34,7 @@ const RoadSign = () => {
         border-slate-300 border-solid rounded-sm"
         title="Video for sign in"
         src={
-          "https://drive.google.com/file/d/1inPqi124ACuYemMz3ZUL8MU1FxU77OZo/preview"
+          "https://drive.google.com/file/d/1inPqi124ACuYemMz3ZUL8MU1FxU77OZo/preview?controls=0"
         }
         sandbox="allow-same-origin allow-scripts"
         allowFullScreen
