@@ -75,7 +75,7 @@ const categoryData2 = [
     id: 15,
     category: "მოძრაობა, მანევრირება, სავალი ნაწილი",
     index: 11,
-    videoUrl: "https://www.youtube.com/embed/HEJqo0JNQi8?rel=0&playsinline=1",
+    videoUrl: "https://www.youtube.com/embed/HEJqo0JNQi8?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1LNKTQXaqub25gWkHqn3TrdIf82PcK-92/preview",
   }, 
   {
