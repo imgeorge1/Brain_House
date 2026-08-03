@@ -18,9 +18,8 @@ const VideoRender = ({
 
   if (isThirtyPath) {
     return videoUrls.map((url, index) => (
-        <div className="w-full max-w-4xl mx-auto h-[500px] overflow-hidden">
       <iframe
-        className="w-full h-[740px] md:h-[460px] max-md:-translate-y-[210px] "
+        className="w-full h-[240px] md:h-[460px] "
         key={`video-${checkForVideo.id}-${index}`} // Unique key for each iframe
         title={`Video ${checkForVideo.id}-${index}`}
         src={url}
@@ -28,21 +27,18 @@ const VideoRender = ({
         allowFullScreen
       />
       
-        </div>
     ));
   } else {
     return (
       <div>
-        <div className="w-full max-w-4xl mx-auto h-[500px] overflow-hidden">
         <iframe
-          className="w-full h-[740px] md:h-[480px] max-md:-translate-y-[210px]" 
+          className="w-full h-[240px] md:h-[480px]" 
           key={`video-${checkForVideo.id}`} // Unique key for each iframe
           title={`Video ${checkForVideo.id}`}
           src={videoUrls[0]}
           sandbox="allow-same-origin allow-scripts"
           allowFullScreen
         />
-        </div>
         <div className="flex justify-between pt-2 mx-2">
           <p className="flex justify-center items-center">
             <img
