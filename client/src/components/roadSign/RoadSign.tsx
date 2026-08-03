@@ -31,7 +31,7 @@ const RoadSign = () => {
       </button>
       <div className="w-full max-w-4xl mx-auto h-[500px] overflow-hidden my-2 border border-slate-300 border-solid rounded-sm">
         <iframe
-          className="w-full h-[740px] md:h-[460px] max-md:-translate-y-[210px]"
+          className="w-full h-[240px] md:h-[460px] "
           title="Video for sign in"
           src="https://drive.google.com/file/d/1inPqi124ACuYemMz3ZUL8MU1FxU77OZo/preview"
           sandbox="allow-same-origin allow-scripts"
