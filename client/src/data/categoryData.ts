@@ -4,7 +4,8 @@ const categoryData2 = [
     category: "რკინიგზის გადასასვლელი",
     index: 1,
     videoUrl:
-      "https://drive.google.com/file/d/16FoULhq3rp6RaP0BdiIy3f5uQwzZ7TKS/preview",
+      "https://www.youtube-nocookie.com/embed/v4yZpiUSLn4?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/16FoULhq3rp6RaP0BdiIy3f5uQwzZ7TKS/preview",
     // "https://drive.google.com/file/d/1z1Z1ABJrhkeYEyAOY2O1QINDmX_lekx0/preview", // this is not our video
   },
   {
@@ -92,13 +93,16 @@ const categoryData2 = [
     category: "გაჩერება დგომა",
     index: 13,
     videoUrl:
-      "https://drive.google.com/file/d/1HOJygatWf8bV0pjKY5L6SwXYq0QGUEmb/preview",
+      "https://www.youtube-nocookie.com/embed/GI31uLJAeqw?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1HOJygatWf8bV0pjKY5L6SwXYq0QGUEmb/preview",
   },
   {
     id: 17,
     category: "მოძრაობის სიჩქარე",
     index: 14,
-    videoUrl: "https://drive.google.com/file/d/1eUwYGyzFeCWXhvCUTIIOb6eN9eTjB4sF/preview",
+    videoUrl:
+      "https://www.youtube-nocookie.com/embed/Pm6TnkQHjC0?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1eUwYGyzFeCWXhvCUTIIOb6eN9eTjB4sF/preview",
   },
   // {
   //   id: 30,
@@ -189,7 +193,8 @@ const categoryData2 = [
     category: "სამუხრუჭე მანძილი, დისტანცია",
     index: 25,
     videoUrl:
-      "https://drive.google.com/file/d/19-UVBDzH73QY_SpSUfYAoucPOi7yRn_F/preview",
+      "https://www.youtube-nocookie.com/embed/XeLERLnY49g?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/19-UVBDzH73QY_SpSUfYAoucPOi7yRn_F/preview",
   },
   {
     id: 1,
@@ -219,7 +224,8 @@ const categoryData2 = [
     category: "გზაჯვარედინის გავლა",
     index: 29,
     videoUrl:
-      "https://drive.google.com/file/d/1qVHsMBD8PdjchZHqy4eIo5uDHXgh-JBX/preview",
+      "https://www.youtube-nocookie.com/embed/KyzC_8xZvDI?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1qVHsMBD8PdjchZHqy4eIo5uDHXgh-JBX/preview",
   },
   {
     id: 10,
