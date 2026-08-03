@@ -26,7 +26,14 @@ const VideoRender = ({
         sandbox="allow-same-origin allow-scripts"
         allowFullScreen
       />
-      
+  //     <iframe
+  //   className="w-full h-[240px] md:h-[460px]"
+  //   key={url}
+  //   title={`Video ${index + 1}`}
+  //   src={url}
+  //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  //   allowFullScreen
+  // />
     ));
   } else {
     return (
