@@ -41,7 +41,8 @@ const categoryData2 = [
     category: "სერვისის ნიშნები",
     index: 6,
     videoUrl:
-      "https://drive.google.com/file/d/1zEcExd2izh80rIGxf5IrwTbQeWJhHLze/preview",
+      "https://www.youtube-nocookie.com/embed/WrODkkSplxQ?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1zEcExd2izh80rIGxf5IrwTbQeWJhHLze/preview",
   },
   {
     id: 2,
@@ -56,7 +57,8 @@ const categoryData2 = [
     category: "საინფორმაციო-მაჩვენებელი ნიშნები",
     index: 8,
     videoUrl:
-      "https://drive.google.com/file/d/1Y0rfr3VRIO3tKgOn9Y3ZbheMWd2zeCnK/preview",
+      "https://www.youtube-nocookie.com/embed/bY7LTzO40A0?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1Y0rfr3VRIO3tKgOn9Y3ZbheMWd2zeCnK/preview",
   },
   {
     id: 27,
@@ -110,7 +112,8 @@ const categoryData2 = [
     category: "გასწრება შემხვედრის გვერდის ავლით",
     index: 15,
     videoUrl:
-      "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview",
+      "https://www.youtube-nocookie.com/embed/yZn2ZQYXzK0?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview",
   },
   {
     id: 3,
@@ -124,42 +127,48 @@ const categoryData2 = [
     id: 4,
     category: "პრიორიტეტის ნიშნები",
     index: 17,
-    videoUrl: "https://drive.google.com/file/d/1mlA1bditMZ-rJgxtjOtVNs7t_XmBYy-P/preview",
+    videoUrl: "https://www.youtube-nocookie.com/embed/CHEloaYFicQ?rel=0&modestbranding=1&playsinline=1", 
+      // "https://drive.google.com/file/d/1mlA1bditMZ-rJgxtjOtVNs7t_XmBYy-P/preview",
   },
   {
     id: 6,
     category: "მიმთითებელი ნიშნები",
     index: 18,
     videoUrl:
-      "https://drive.google.com/file/d/1vvDClkf1DXuL1OizW8f-SXz2Kl-bt1XE/preview",
+      "https://www.youtube-nocookie.com/embed/zKnAnrGaskI?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1vvDClkf1DXuL1OizW8f-SXz2Kl-bt1XE/preview",
   },
   {
     id: 12,
     category: "სპეციალური სიგნალის გამოყენება",
     index: 19,
     videoUrl:
-      "https://drive.google.com/file/d/1fGvyLtXDp0E09tQ6qsjnzPv1t6MFEIIf/preview",
+      "https://www.youtube-nocookie.com/embed/fy27Xz1t4yo?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1fGvyLtXDp0E09tQ6qsjnzPv1t6MFEIIf/preview",
   },
   {
     id: 13,
     category: "საავარიო შუქური სიგნალიზაცია",
     index: 20,
     videoUrl:
-      "https://drive.google.com/file/d/1EeniWZCHqaVQ3QyciSa_xPRjHAc3X9_-/preview",
+      "https://www.youtube-nocookie.com/embed/unQ267unqgY?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1EeniWZCHqaVQ3QyciSa_xPRjHAc3X9_-/preview",
   },
   {
     id: 9,
     category: "დამატებითი ინფორმაციის ნიშნები",
     index: 21,
     videoUrl:
-      "https://drive.google.com/file/d/1CgpIc0lZLDTIkPrRKtUruDnNFHdizvw_/preview",
+      "https://www.youtube-nocookie.com/embed/bwJaDg3CxrE?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1CgpIc0lZLDTIkPrRKtUruDnNFHdizvw_/preview",
   },
   {
     id: 14,
     category: "სანათი ხელსაწყოები, ხმოვანი სიგნალი",
     index: 22,  
     videoUrl:
-      "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview",
+      "https://www.youtube-nocookie.com/embed/PnMVE7ohLgY?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview",
   },
   {
     id: 31,
@@ -182,19 +191,21 @@ const categoryData2 = [
     videoUrl:
       "https://drive.google.com/file/d/19-UVBDzH73QY_SpSUfYAoucPOi7yRn_F/preview",
   },
-       {
+  {
     id: 1,
     category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
     index: 26,
     videoUrl:
-      "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
+      "https://www.youtube-nocookie.com/embed/_xgQVP-pji4?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
   },
   {
     id: 5,
     category: "ამკრძალავი ნიშნები",
     index: 27,
     videoUrl:
-      "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
+      "https://www.youtube-nocookie.com/embed/H_SzPQrvrzY?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
   },
     {
     id: 30,
@@ -215,14 +226,16 @@ const categoryData2 = [
     category: "შუქნიშნის სიგნალები",
     index: 30,
     videoUrl:
-      "https://drive.google.com/file/d/1PVHsyIQ16D9Vm1dcwmarqPr9ygz58P7Q/preview",
+      "https://www.youtube-nocookie.com/embed/zUtmcJpdHYs?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1PVHsyIQ16D9Vm1dcwmarqPr9ygz58P7Q/preview",
   },
   {
     id: 11,
     category: "მარეგულირებლის სიგნალები",
     index: 31,
     videoUrl:
-      "https://drive.google.com/file/d/17gvFmO5cLmiSS_2GsFR2k_7cxUZzqxS4/preview",
+      "https://www.youtube-nocookie.com/embed/GPAUIwgm6O8?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/17gvFmO5cLmiSS_2GsFR2k_7cxUZzqxS4/preview",
   },  
   {
     id: 32,
