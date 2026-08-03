@@ -117,7 +117,8 @@ const categoryData2 = [
     category: "მაფრთხილებელი ნიშნები",
     index: 16,
     videoUrl:
-      "https://drive.google.com/file/d/1UugO30-4VeJRVJq37EzVpmeEteGzGM3y/preview",
+      "https://www.youtube-nocookie.com/embed/F657gRYmRy8?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1UugO30-4VeJRVJq37EzVpmeEteGzGM3y/preview",
   },
   {
     id: 4,
