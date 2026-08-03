@@ -48,7 +48,8 @@ const categoryData2 = [
     category: "უწესივრობა და მართვის პირობები",
     index: 7,
     videoUrl:
-      "https://drive.google.com/file/d/1JdkbINAHiRr7WeO6OHNPq2TVdk5vNukV/preview",
+      "https://www.youtube-nocookie.com/embed/hMWhMmQ6TsY?si=ICAelPItrXaYNJj_",
+      // "https://drive.google.com/file/d/1JdkbINAHiRr7WeO6OHNPq2TVdk5vNukV/preview",
   },
   {
     id: 7,
