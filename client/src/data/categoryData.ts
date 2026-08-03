@@ -75,8 +75,8 @@ const categoryData2 = [
     id: 15,
     category: "მოძრაობა, მანევრირება, სავალი ნაწილი",
     index: 11,
-    videoUrl:
-      "https://drive.google.com/file/d/1LNKTQXaqub25gWkHqn3TrdIf82PcK-92/preview",
+    videoUrl: "https://www.youtube.com/embed/HEJqo0JNQi8",
+      // "https://drive.google.com/file/d/1LNKTQXaqub25gWkHqn3TrdIf82PcK-92/preview",
   }, 
   {
     id: 26,
@@ -155,7 +155,7 @@ const categoryData2 = [
   {
     id: 14,
     category: "სანათი ხელსაწყოები, ხმოვანი სიგნალი",
-    index: 22,
+    index: 22,  
     videoUrl:
       "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview",
   },
