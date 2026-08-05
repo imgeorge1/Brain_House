@@ -22,8 +22,8 @@ const categoryData2 = [
     category: "საცხოვრებელი ზონა, სამარშრუტოს პრიორიტეტი",
     index: 3,
     videoUrl:
-      "https://www.youtube-nocookie.com/embed/rBQrlqwZHx0",
-      // "https://drive.google.com/file/d/1jtzGFXDkpJt2kzb24WMvdYXXrJWdLSBq/preview?rel=0&modestbranding=1&playsinline=1",
+      "https://www.youtube-nocookie.com/embed/rBQrlqwZHx0?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1jtzGFXDkpJt2kzb24WMvdYXXrJWdLSBq/preview",
   },
   {
     id: 24,
@@ -38,7 +38,8 @@ const categoryData2 = [
     category: "სასწავლო სვლა",
     index: 5,
     videoUrl:
-      "https://drive.google.com/file/d/1_AH1cz2S54xp2hzInM28ew7OPfaYjmMk/preview",
+      "https://www.youtube-nocookie.com/embed/kb8fviXlFDY?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1_AH1cz2S54xp2hzInM28ew7OPfaYjmMk/preview",
   },
   {
     id: 8,
@@ -69,14 +70,16 @@ const categoryData2 = [
     category: "ველოსიპედი, მოპედი და პირუტყვის გადარეკვა",
     index: 9,
     videoUrl:
-      "https://drive.google.com/file/d/1DO_HUubUFv6s5wEXT94u8bEVngD9dR4x/preview",
+      "https://www.youtube-nocookie.com/embed/gHLsLOxlwbQ?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1DO_HUubUFv6s5wEXT94u8bEVngD9dR4x/preview",
   },
   {
     id: 28,
     category: "საგზაო მონიშვნა",
     index: 10,
     videoUrl:
-      "https://drive.google.com/file/d/1wt_0C7CDQMv3IcR_uMTTLqNmVKkpQ5N7/preview",
+      "https://www.youtube-nocookie.com/embed/AKTOhZQ7hZ4?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1wt_0C7CDQMv3IcR_uMTTLqNmVKkpQ5N7/preview",
   },
   {
     id: 15,
@@ -89,7 +92,9 @@ const categoryData2 = [
     id: 26,
     category: "გადაზიდვები, ხალხი, ტვირთი",
     index: 12,
-    videoUrl: "https://drive.google.com/file/d/1IKNRL9i5afleq_HAmhqAP0mbRiOiw7qh/preview",
+    videoUrl:
+      "https://www.youtube-nocookie.com/embed/iYnbaCpZUes?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1IKNRL9i5afleq_HAmhqAP0mbRiOiw7qh/preview",
   },
   {
     id: 19,
@@ -189,7 +194,8 @@ const categoryData2 = [
     category: "სამედიცინო დახმარება",
     index: 24,
     videoUrl:
-      "https://drive.google.com/file/d/15XKo1iU7ag5PSvwR5FFuZBHrSZhLVnIA/preview",
+      "https://www.youtube-nocookie.com/embed/ShHRHnPOuoc?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/15XKo1iU7ag5PSvwR5FFuZBHrSZhLVnIA/preview",
   },
   {
     id: 18,
