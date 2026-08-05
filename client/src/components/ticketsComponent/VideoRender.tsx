@@ -24,6 +24,7 @@ const VideoRender = ({
         title={`Video ${checkForVideo.id}-${index}`}
         src={url}
         sandbox="allow-same-origin allow-scripts"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       />
   //     <iframe
@@ -44,6 +45,7 @@ const VideoRender = ({
           title={`Video ${checkForVideo.id}`}
           src={videoUrls[0]}
           sandbox="allow-same-origin allow-scripts"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
         <div className="flex justify-between pt-2 mx-2">
