@@ -187,7 +187,8 @@ const categoryData2 = [
     category: "ადმინისტრაციული კანონი",
     index: 23,
     videoUrl:
-      "https://drive.google.com/file/d/1NTioStNbM4RrJMZXAy0BOC5sSBu7fSdT/preview",
+      "https://www.youtube-nocookie.com/embed/_Z3PSL4rbk0?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1NTioStNbM4RrJMZXAy0BOC5sSBu7fSdT/preview",
   },
   {
     id: 29,
@@ -226,7 +227,8 @@ const categoryData2 = [
     category: "მოძრაობის უსაფრთხოება",
     index: 28,
     videoUrl:
-     "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview https://drive.google.com/file/d/1UFiVGlL7pPe51qv3HIWgp7sOIxAdN-iI/preview",
+      "https://www.youtube.com/embed/c-shQDdBseI?rel=0&modestbranding=1&playsinline=1 https://www.youtube-nocookie.com/embed/1_RetJyh_uM?rel=0&modestbranding=1&playsinline=1 https://www.youtube-nocookie.com/embed/GvNgLaugAoU?rel=0&modestbranding=1&playsinline=1",
+     // "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview https://drive.google.com/file/d/1UFiVGlL7pPe51qv3HIWgp7sOIxAdN-iI/preview",
   },
   {
     id: 20,
@@ -257,7 +259,8 @@ const categoryData2 = [
     category: "ეკო-მართვა",
     index: 32,
     videoUrl:
-      "https://drive.google.com/file/d/17j6HEaqQrSYstrw3t8z0IwYFsIGCH57n/preview",
+      "https://www.youtube-nocookie.com/embed/he9URQA219U?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/17j6HEaqQrSYstrw3t8z0IwYFsIGCH57n/preview",
   },
   // {
   //   id: 16,
