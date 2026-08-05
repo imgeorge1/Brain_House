@@ -13,7 +13,8 @@ const categoryData2 = [
     category: "მოძრაობა ავტომაგისტრალზე",
     index: 2,
     videoUrl:
-      "https://drive.google.com/file/d/1wLGb8tGMLKE-KYZwBHVXh-N0i-2AMyTO/preview",
+      "https://www.youtube-nocookie.com/embed/RUA5WpmmKck?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1wLGb8tGMLKE-KYZwBHVXh-N0i-2AMyTO/preview",
     // "https://drive.google.com/file/d/18RZKvWRRxMjfeA2GFFUlr6zlR8JvWwOu/preview", // this is not our video
   },
   {
@@ -21,14 +22,16 @@ const categoryData2 = [
     category: "საცხოვრებელი ზონა, სამარშრუტოს პრიორიტეტი",
     index: 3,
     videoUrl:
-      "https://drive.google.com/file/d/1jtzGFXDkpJt2kzb24WMvdYXXrJWdLSBq/preview",
+      "https://www.youtube-nocookie.com/embed/rBQrlqwZHx0",
+      // "https://drive.google.com/file/d/1jtzGFXDkpJt2kzb24WMvdYXXrJWdLSBq/preview?rel=0&modestbranding=1&playsinline=1",
   },
   {
     id: 24,
     category: "ბუქსირება",
     index: 4,
     videoUrl:
-      "https://drive.google.com/file/d/1H5cLSppz3GpUhAwzeBk8sfyHXhXWW3Up/preview",
+      "https://www.youtube-nocookie.com/embed/miyOTv3t8-0?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1H5cLSppz3GpUhAwzeBk8sfyHXhXWW3Up/preview",
   },
   {
     id: 25,
