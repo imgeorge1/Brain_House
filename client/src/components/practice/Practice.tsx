@@ -400,6 +400,11 @@ const Practice = () => {
           </div>
         </form>
       </dialog>
+           {booleanPaid && (
+        <div className="mt-6">
+          <h2 className="text-xl font-bold mb-4">.</h2>
+        </div>
+      )}
     </main>
   );
 };
