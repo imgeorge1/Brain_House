@@ -73,26 +73,10 @@ const categoryData2 = [
       "https://www.youtube-nocookie.com/embed/gHLsLOxlwbQ?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1DO_HUubUFv6s5wEXT94u8bEVngD9dR4x/preview",
   },
-    {
-    id: 1,
-    category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
-    index: 10,
-    videoUrl:
-      "https://www.youtube-nocookie.com/embed/_xgQVP-pji4?rel=0&modestbranding=1&playsinline=1",
-      // "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
-  },
-    {
-    id: 30,
-    category: "მოძრაობის უსაფრთხოება",
-    index: 11,
-    videoUrl:
-      "https://www.youtube.com/embed/c-shQDdBseI?rel=0&modestbranding=1&playsinline=1 https://www.youtube-nocookie.com/embed/1_RetJyh_uM?rel=0&modestbranding=1&playsinline=1 https://www.youtube-nocookie.com/embed/GvNgLaugAoU?rel=0&modestbranding=1&playsinline=1",
-     // "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview https://drive.google.com/file/d/1UFiVGlL7pPe51qv3HIWgp7sOIxAdN-iI/preview",
-  },
   {
     id: 28,
     category: "საგზაო მონიშვნა",
-    index: 12,
+    index: 10,
     videoUrl:
       "https://www.youtube-nocookie.com/embed/AKTOhZQ7hZ4?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1wt_0C7CDQMv3IcR_uMTTLqNmVKkpQ5N7/preview",
@@ -100,14 +84,14 @@ const categoryData2 = [
   {
     id: 15,
     category: "მოძრაობა, მანევრირება, სავალი ნაწილი",
-    index: 13,
+    index: 11,
     videoUrl: "https://www.youtube-nocookie.com/embed/HEJqo0JNQi8?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1LNKTQXaqub25gWkHqn3TrdIf82PcK-92/preview",
   }, 
   {
     id: 26,
     category: "გადაზიდვები, ხალხი, ტვირთი",
-    index: 14,
+    index: 12,
     videoUrl:
       "https://www.youtube-nocookie.com/embed/iYnbaCpZUes?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1IKNRL9i5afleq_HAmhqAP0mbRiOiw7qh/preview",
@@ -115,7 +99,7 @@ const categoryData2 = [
   {
     id: 19,
     category: "გაჩერება დგომა",
-    index: 15,
+    index: 13,
     videoUrl:
       "https://www.youtube-nocookie.com/embed/GI31uLJAeqw?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1HOJygatWf8bV0pjKY5L6SwXYq0QGUEmb/preview",
@@ -123,7 +107,7 @@ const categoryData2 = [
   {
     id: 17,
     category: "მოძრაობის სიჩქარე",
-    index: 16,
+    index: 14,
     videoUrl:
       "https://www.youtube-nocookie.com/embed/Pm6TnkQHjC0?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1eUwYGyzFeCWXhvCUTIIOb6eN9eTjB4sF/preview",
@@ -138,7 +122,7 @@ const categoryData2 = [
   {
     id: 16,
     category: "გასწრება შემხვედრის გვერდის ავლით",
-    index: 17,
+    index: 15,
     videoUrl:
       "https://www.youtube-nocookie.com/embed/yZn2ZQYXzK0?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1vYWtraZ_0Iqc1GOrgjKeNJPmtQmIqIFa/preview",
@@ -146,7 +130,7 @@ const categoryData2 = [
   {
     id: 3,
     category: "მაფრთხილებელი ნიშნები",
-    index: 18,
+    index: 16,
     videoUrl:
       "https://www.youtube-nocookie.com/embed/F657gRYmRy8?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1UugO30-4VeJRVJq37EzVpmeEteGzGM3y/preview",
@@ -154,22 +138,14 @@ const categoryData2 = [
   {
     id: 4,
     category: "პრიორიტეტის ნიშნები",
-    index: 19,
+    index: 17,
     videoUrl: "https://www.youtube-nocookie.com/embed/CHEloaYFicQ?rel=0&modestbranding=1&playsinline=1", 
       // "https://drive.google.com/file/d/1mlA1bditMZ-rJgxtjOtVNs7t_XmBYy-P/preview",
-  },
-    {
-    id: 5,
-    category: "ამკრძალავი ნიშნები",
-    index: 20,
-    videoUrl:
-      "https://www.youtube-nocookie.com/embed/H_SzPQrvrzY?rel=0&modestbranding=1&playsinline=1",
-      // "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
   },
   {
     id: 6,
     category: "მიმთითებელი ნიშნები",
-    index: 21,
+    index: 18,
     videoUrl:
       "https://www.youtube-nocookie.com/embed/zKnAnrGaskI?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1vvDClkf1DXuL1OizW8f-SXz2Kl-bt1XE/preview",
@@ -177,7 +153,7 @@ const categoryData2 = [
   {
     id: 12,
     category: "სპეციალური სიგნალის გამოყენება",
-    index: 22,
+    index: 19,
     videoUrl:
       "https://www.youtube-nocookie.com/embed/fy27Xz1t4yo?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1fGvyLtXDp0E09tQ6qsjnzPv1t6MFEIIf/preview",
@@ -185,7 +161,7 @@ const categoryData2 = [
   {
     id: 13,
     category: "საავარიო შუქური სიგნალიზაცია",
-    index: 23,
+    index: 20,
     videoUrl:
       "https://www.youtube-nocookie.com/embed/unQ267unqgY?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1EeniWZCHqaVQ3QyciSa_xPRjHAc3X9_-/preview",
@@ -193,7 +169,7 @@ const categoryData2 = [
   {
     id: 9,
     category: "დამატებითი ინფორმაციის ნიშნები",
-    index: 24,
+    index: 21,
     videoUrl:
       "https://www.youtube-nocookie.com/embed/bwJaDg3CxrE?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1CgpIc0lZLDTIkPrRKtUruDnNFHdizvw_/preview",
@@ -201,7 +177,7 @@ const categoryData2 = [
   {
     id: 14,
     category: "სანათი ხელსაწყოები, ხმოვანი სიგნალი",
-    index: 25,  
+    index: 22,  
     videoUrl:
       "https://www.youtube-nocookie.com/embed/PnMVE7ohLgY?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1kX-vv_s5WfuY6Frx3JAY9LWO6JN46Rrf/preview",
@@ -209,7 +185,7 @@ const categoryData2 = [
   {
     id: 31,
     category: "ადმინისტრაციული კანონი",
-    index: 26,
+    index: 23,
     videoUrl:
       "https://www.youtube-nocookie.com/embed/_Z3PSL4rbk0?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/1NTioStNbM4RrJMZXAy0BOC5sSBu7fSdT/preview",
@@ -217,7 +193,7 @@ const categoryData2 = [
   {
     id: 29,
     category: "სამედიცინო დახმარება",
-    index: 27,
+    index: 24,
     videoUrl:
       "https://www.youtube-nocookie.com/embed/ShHRHnPOuoc?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/15XKo1iU7ag5PSvwR5FFuZBHrSZhLVnIA/preview",
@@ -225,10 +201,34 @@ const categoryData2 = [
   {
     id: 18,
     category: "სამუხრუჭე მანძილი, დისტანცია",
-    index: 28,
+    index: 25,
     videoUrl:
       "https://www.youtube-nocookie.com/embed/XeLERLnY49g?rel=0&modestbranding=1&playsinline=1",
       // "https://drive.google.com/file/d/19-UVBDzH73QY_SpSUfYAoucPOi7yRn_F/preview",
+  },
+      {
+    id: 1,
+    category: "მძღოლი, მგზავრი და ქვეითი, ნიშნები, კონვეცია",
+    index: 26,
+    videoUrl:
+      "https://www.youtube-nocookie.com/embed/_xgQVP-pji4?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1FqLBpM8TbskDMTHHxC2NwEleQP5W2Yjq/preview",
+  },
+      {
+    id: 5,
+    category: "ამკრძალავი ნიშნები",
+    index: 27,
+    videoUrl:
+      "https://www.youtube-nocookie.com/embed/H_SzPQrvrzY?rel=0&modestbranding=1&playsinline=1",
+      // "https://drive.google.com/file/d/1XPa6Qw_1JmiSBMSPwAq6RAO1Cmwcqomc/preview",
+  },
+    {
+    id: 30,
+    category: "მოძრაობის უსაფრთხოება",
+    index: 28,
+    videoUrl:
+      "https://www.youtube.com/embed/c-shQDdBseI?rel=0&modestbranding=1&playsinline=1 https://www.youtube-nocookie.com/embed/1_RetJyh_uM?rel=0&modestbranding=1&playsinline=1 https://www.youtube-nocookie.com/embed/GvNgLaugAoU?rel=0&modestbranding=1&playsinline=1",
+     // "https://drive.google.com/file/d/1wZT72ejlk1UZMzt7CDGhyS0MwZVBwuYI/preview https://drive.google.com/file/d/18CwmFhlG-VFWryb8fqV2srN4o6S_On_H/preview https://drive.google.com/file/d/1UFiVGlL7pPe51qv3HIWgp7sOIxAdN-iI/preview",
   },
   {
     id: 20,
